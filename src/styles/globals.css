@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* html,body{
+  min-width: 320px;
+} */
+
+
+h1 {
+  font-size: clamp(1.6rem, 1.9vw + 0.9rem, 2.9rem);
+  
+}
+.blog-content-editor h1{
+  font-size: clamp(1.6rem, 1.9vw + 0.9rem, 2.9rem);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 1.7vw + 0.8rem, 2.4rem) 
+}
+.blog-content-editor h2, .ql-snow .ql-editor h2{
+  font-size: 1.5rem /* 24px */;
+  line-height: 2rem /* 32px */;
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+}
+
+h3 {
+  font-size: clamp(1.4rem, 1.5vw + 0.7rem, 1.9rem);
+}
+.blog-content-editor h3, .ql-snow .ql-editor h3{
+  font-size: 1.25rem /* 20px */;
+  line-height: 1.75rem /* 28px */;
+  font-weight: 500;
+  margin-bottom: 0.7rem;
+}
+
+h4 {
+  font-size: clamp(1.3rem, 1.3vw + 0.6rem, 1.65rem);
+}
+.blog-content-editor h4, .ql-snow .ql-editor h4{
+  font-size: 1.125rem /* 18px */;
+  line-height: 1.75rem /* 28px */;
+  font-weight: 500;
+  margin-bottom: 0.7rem;
+}
+
+h5 {
+  font-size: clamp(1.2rem, 1.1vw + 0.5rem, 1.4rem);
+}
+.blog-content-editor h5,  .ql-snow .ql-editor h5{
+  font-size: 1rem /* 16px */;
+  line-height: 1.5rem /* 24px */;
+  font-weight: 500;
+  margin-bottom: 0.7rem;
+}
+
+h6 {
+  font-size: clamp(1.1rem, 0.9vw + 0.4rem, 1.15rem);
+}
+.blog-content-editor h6,  .ql-snow .ql-editor h6{
+  font-size: 0.875rem /* 14px */;
+  line-height: 1.25rem /* 20px */;
+  font-weight: 500;
+  margin-bottom: 0.7rem;
+}
+
+p {
+  font-size: clamp(1rem, 1.5vw + 0.4rem, 1.1rem);
+}
+.blog-content-editor p, .ql-snow .ql-editor p{
+  margin-bottom: 1.5rem;
+}
+.blog-content-editor p img,.ql-snow .ql-editor p img {
+  aspect-ratio: 16 / 9; /* Maintains the 16:9 aspect ratio */
+  width: 100%; /* Ensures the image takes the full width of its container */
+  height: auto; /* Maintains the aspect ratio and adjusts the height automatically */
+  object-fit: cover; /* Ensures the image covers the area without distortion */
+  max-width: 100%; /* Ensures the image does not overflow its container */
+  max-height: 520px; /* Sets a maximum height to prevent overly large images */
+}
+
+
+.custom-border-radius-1 {
+  border-radius: 31% 69% 51% 49% / 48% 66% 34% 52% ;
+}
+.custom-border-radius-2 {
+  border-radius:  47% 53% 29% 71% / 35% 49% 51% 65% ;
+}
+
+/* For Webkit browsers (Chrome, Safari, etc.) */
+::-webkit-scrollbar {
+  width: 6px; /* Adjust the width of the scrollbar */
+  height: 6px; /* Adjust the height for horizontal scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888; /* Thumb color */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Thumb hover color */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Track color */
+  border-radius: 10px;
+}
+
+.ql-container.ql-snow {
+  border-top: 0px;
+  min-height: 100px;
+  border-radius:0 0 5px 5px;
+}
+
+.ql-toolbar.ql-snow {
+  border: 1px solid #ccc;
+  border-radius: 5px 5px 0 0 ;
+  box-sizing: border-box;
+  font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  padding:4px;
+}
+.ql-editor {
+  padding: 10px 10px;
+  
+}
+.ql-snow .ql-editor img {
+  width: 100%; /* Make the image take up the full width of the container */
+  height: auto; /* Maintain the aspect ratio */
+  display: block; /* Remove any inline-block spacing */
+  margin: auto; /* Center the image horizontally */
+  max-height: 550px; /* Set a maximum height to prevent oversized images */
+  object-fit: contain; /* Ensure the image scales correctly */
+}
+/* .editor-content{
+  position: relative;
+}
+.editor-content .ql-toolbar.ql-snow{
+  position: sticky;
+  top:20px;
+  z-index: 10;
+  background-color: white;
+}
+.editor-content .ql-container .ql-snow{
+  height: 100vh;
+  overflow-y: auto;
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+/* 404 stone age person */
+
+/*======================
+    404 page
+=======================*/
+
+
+.page_404{ padding:40px 0; background:#fff; font-family: 'Arvo', serif;
+}
+
+.page_404  img{ width:100%;}
+
+.four_zero_four_bg{
+ 
+ background-image: url('/gif/stone_age.gif');
+    height: 400px;
+    background-position: center;
+ }
+ 
+ 
+ .four_zero_four_bg h1{
+ font-size:80px;
+ }
+ 
+  .four_zero_four_bg h3{
+			 font-size:80px;
+			 }
+			 
+			 .link_404{			 
+	color: #fff!important;
+    padding: 10px 20px;
+    background: #39ac31;
+    margin: 20px 0;
+    display: inline-block;}
+	.contant_box_404{ margin-top:-50px;}
