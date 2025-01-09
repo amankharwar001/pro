@@ -1,4 +1,4 @@
-import AboutSection2 from "@/models/aboutPage/section2";
+import AboutSection2 from "@/models/aboutPage/Section2";
 
 
 
