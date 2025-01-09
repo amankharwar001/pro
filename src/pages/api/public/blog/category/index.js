@@ -2,7 +2,7 @@
 
 import BlogStatus from '@/models/blogPage/BlogStatus';
 import Category from '@/models/blogPage/Category';
-import CommonBlogContent from '@/models/blogPage/commonBlogContent';
+import CommonBlogContent from '@/models/blogPage/CommonBlogContent';
 import SEOBlogPage from '@/models/blogPage/SEO';
 import ImagesData from '@/models/homePage/ImagesData';
 const { Op } = require('sequelize');

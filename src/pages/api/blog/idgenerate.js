@@ -2,7 +2,7 @@
 
 // pages/api/blogs.js
 import BlogStatus from '@/models/blogPage/BlogStatus';
-import CommonBlogContent from '@/models/blogPage/commonBlogContent';
+import CommonBlogContent from '@/models/blogPage/CommonBlogContent';
 import CreateBlogId from '@/models/blogPage/IdGenerate';
 import ImagesData from '@/models/homePage/ImagesData';
 import SEOBlogPage from "@/models/blogPage/SEO";

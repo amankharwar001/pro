@@ -1,9 +1,9 @@
 import BlogStatus from '@/models/blogPage/BlogStatus';
-import CommonBlogContent from '@/models/blogPage/commonBlogContent';
 import ImagesData from '@/models/homePage/ImagesData';
 import CreateBlogId from '@/models/blogPage/IdGenerate';
 import SEOBlogPage from "@/models/blogPage/SEO";
 import ContentBlog from '@/models/blogPage/content';
+import CommonBlogContent from '@/models/blogPage/CommonBlogContent';
 
 export default async function handler(req, res) {
     const { id } = req.query;

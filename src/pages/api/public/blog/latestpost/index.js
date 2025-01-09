@@ -1,6 +1,6 @@
 import BlogStatus from '@/models/blogPage/BlogStatus';
 import CreateBlogId from '@/models/blogPage/IdGenerate';
-import CommonBlogContent from '@/models/blogPage/commonBlogContent';
+import CommonBlogContent from '@/models/blogPage/CommonBlogContent';
 import ContentBlog from '@/models/blogPage/content';
 import SEOBlogPage from '@/models/blogPage/SEO';
 import ImagesData from '@/models/homePage/ImagesData';

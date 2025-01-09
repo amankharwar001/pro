@@ -1,4 +1,4 @@
-import CommonBlogContent from '@/models/blogPage/commonBlogContent';
+import CommonBlogContent from '@/models/blogPage/CommonBlogContent';
 import CreateBlogId from '@/models/blogPage/IdGenerate';
 
 export default async function handler(req, res) {
