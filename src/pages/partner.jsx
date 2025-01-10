@@ -12,9 +12,9 @@ const PartnerPage = ({ data, error, baseUrl }) => {
   return (
     <div>
       <HeadTagSEO data={data} />
-        <HeroSections heroSection={data.heroSection.heroSectionPartner[0]} image={data.heroSection.Images[0].filePath} baseUrl={baseUrl}/>        
+        <HeroSections heroSection={data?.heroSection?.heroSectionPartner[0]} image={data?.heroSection?.Images[0]?.filePath} baseUrl={baseUrl}/>        
         <Form1/>
-        <ContactInfo data={data.getInTouchData} baseUrl={baseUrl} />
+        <ContactInfo data={data?.getInTouchData} baseUrl={baseUrl} />
         <div className='mt-40'></div>
         <FooterSection />
     </div>

@@ -10,7 +10,7 @@ const TermCondition = ({ data, error, baseUrl }) => {
   return (
     <div>
       <HeadTagSEO data={data} />
-      <HeroSections heroSection={data.heroSection} image={data.heroSection.images[0].filePath} alttext={data.heroSection.images[0].filePath} baseUrl={baseUrl} />
+      <HeroSections heroSection={data?.heroSection} image={data?.heroSection?.images[0]?.filePath} alttext={data?.heroSection?.images[0]?.altText} baseUrl={baseUrl} />
       <div
         className="mt-8 blog-content-editor prose container"
         dangerouslySetInnerHTML={{ __html: data?.content || "no content available" }}
@@ -25,7 +25,7 @@ export async function getServerSideProps(context) {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_PATH;
 
   try {
-    const response = await fetch(`${baseUrl}/api/public/refund-policy`);
+    const response = await fetch(`${baseUrl}/api/public/term-condition`);
     if (!response.ok) {
       return { props: { error: "Product not found", data: null, baseUrl } };
     }

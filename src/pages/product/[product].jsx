@@ -8,24 +8,15 @@ import CardSection2 from "../../components/ClientSide/product/CardSection2";
 import PaymentOptions from "../../components/ClientSide/product/PaymentOptions";
 import WeWorkSection from "../../components/ClientSide/product/WeWorkSection";
 import WeChooseSection from "../../components/ClientSide/product/WeChooseSection";
+import Found4O4 from "@/components/NotFound/4O4";
 
 const ProductPage = ({ data, error, baseUrl }) => {
   if (error) {
     return (
-      <div className="text-center mt-20">
-        <h1 className="text-4xl font-bold text-red-500">404 - Product Not Found</h1>
-        <p className="text-gray-600 mt-4">The product you are looking for does not exist.</p>
-      </div>
+      <Found4O4 />
     );
   }
 
-  if (!data) {
-    return (
-      <div className="text-center mt-20">
-        <h1 className="text-4xl font-bold text-gray-500">Loading...</h1>
-      </div>
-    );
-  }
 
   const { seo } = data;
 

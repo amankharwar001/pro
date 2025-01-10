@@ -13,11 +13,11 @@ const about = ({ data, error, baseUrl }) => {
   return (
     <div>
         <HeadTagSEO data={data} />
-        <HeroSections heroSection={data.heroSection} image={data.heroSection.images[0].filePath} baseUrl={baseUrl}/>
-        <AboutUs data={data.section2} baseUrl={baseUrl}/>
-        <FeatureGrid data={data.section3} baseUrl={baseUrl}/>
-        <VisionMissionSection data={data.section4} baseUrl={baseUrl}/>
-        <CountingSection data={data.section5} />
+        <HeroSections heroSection={data?.heroSection} image={data?.heroSection?.images[0]?.filePath} baseUrl={baseUrl}/>
+        <AboutUs data={data?.section2} baseUrl={baseUrl}/>
+        <FeatureGrid data={data?.section3} baseUrl={baseUrl}/>
+        <VisionMissionSection data={data?.section4} baseUrl={baseUrl}/>
+        <CountingSection data={data?.section5} />
         <FooterSection />
     </div>
   )

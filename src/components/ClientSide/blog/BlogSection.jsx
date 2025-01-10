@@ -1,6 +1,3 @@
-
-
-
 import React, { useEffect, useState } from "react";
 import Card1 from "./Card-1";
 import LatestBlog from "./LatestBlog";
@@ -8,7 +5,7 @@ import { FaSearch } from "react-icons/fa";
 
 const BlogSection = ({ data, baseUrl }) => {
   const [categories, setCategories] = useState([]); // Categories list
-  const [blogs, setBlogs] = useState(data ); // All blogs from props
+  const [blogs, setBlogs] = useState(data); // All blogs from props
   const [filteredBlogs, setFilteredBlogs] = useState(data); // Displayed blogs (initialized with all blogs)
   const [searchTerm, setSearchTerm] = useState(""); // Search input state
   const [notFound, setNotFound] = useState(false); // "Not Found" state
@@ -31,7 +28,7 @@ const BlogSection = ({ data, baseUrl }) => {
   }, []);
 
   const handleCategoryClick = (category) => {
-    const categoryBlogs = category.blogs ; // All blogs in the category
+    const categoryBlogs = category.blogs; // All blogs in the category
     setBlogs(categoryBlogs); // Update blogs state
     setFilteredBlogs(categoryBlogs); // Update displayed blogs
     setSearchTerm(""); // Clear search input
@@ -44,7 +41,7 @@ const BlogSection = ({ data, baseUrl }) => {
   };
 
   const handleSearch = () => {
-    const searchedBlogs = (data ).filter((blog) =>
+    const searchedBlogs = (data).filter((blog) =>
       blog.heading?.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
@@ -81,25 +78,28 @@ const BlogSection = ({ data, baseUrl }) => {
             <span className="mr-2 text-primary">—</span> Categories
           </h2>
           <div className="flex flex-col space-y-4 mt-5">
-            {categories
-              .filter((category) => category.blogCount > 0)
-              .map((category, index) => (
-                <div
-                  key={index}
-                  className="flex justify-between hover:bg-[#003167] items-center overflow-hidden text-white rounded-lg shadow-md bg-[#295a92] cursor-pointer"
-                  onClick={() => handleCategoryClick(category)}
-                >
-                  <span className="font-semibold p-4">{category.category}</span>
-                  <div className="bg-[#03274f] h-[100%] p-4">
-                    <span className="font-bold text-lg">{category.blogCount}</span>
+
+            {categories?.length > 0 &&
+              categories
+                .filter((category) => category.blogCount > 0)
+                .map((category, index) => (
+                  <div
+                    key={index}
+                    className="flex justify-between hover:bg-[#003167] items-center overflow-hidden text-white rounded-lg shadow-md bg-[#295a92] cursor-pointer"
+                    onClick={() => handleCategoryClick(category)}
+                  >
+                    <span className="font-semibold p-4">{category?.category || 'No Category'}</span>
+                    <div className="bg-[#03274f] h-[100%] p-4">
+                      <span className="font-bold text-lg">{category?.blogCount || 0}</span>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+
           </div>
         </div>
 
         {/* Latest Blog */}
-        <LatestBlog baseUrl={baseUrl}/>
+        <LatestBlog baseUrl={baseUrl} />
       </div>
 
       {/* Right Column (Card1 - Blog Section) */}
@@ -110,7 +110,7 @@ const BlogSection = ({ data, baseUrl }) => {
             <p className="text-lg">Try searching for a different title or select another category.</p>
           </div>
         ) : (
-          <Card1 blogData={filteredBlogs||data} baseUrl={baseUrl} />
+          <Card1 blogData={filteredBlogs || data} baseUrl={baseUrl} />
         )}
       </div>
     </div>

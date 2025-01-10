@@ -90,7 +90,7 @@ const Sidebar = ({setSidebarOpen,sidebarOpen}) => {
 
 
   const [adminData, setAdminData] = useState(); // State to store admin settings
-  const [avatarImages, setAvatarImages] = useState(); // State to store avatar images
+  const [avatarImages, setAvatarImages] = useState(null); // State to store avatar images
 
   useEffect(() => {
     // Function to fetch admin setting data
@@ -128,18 +128,22 @@ const Sidebar = ({setSidebarOpen,sidebarOpen}) => {
         {/* Admin Header */}
         <div className="flex items-center gap-4 p-4 md:p-6 border-b border-gray-700 bg-gray-800 shadow-md">
           <div className="w-12 h-12 flex-shrink-0 rounded-full overflow-hidden border-2 border-orange-500 shadow-sm">
-            <Image
-              src={`${baseUrl}${avatarImages?.filePath}`}
-              alt={avatarImages?.altText || 'Avatar'}
-              className="w-full h-full object-cover"
-              height={20}
-              width={20}
-            />
+            {avatarImages?.filePath &&
+
+              <Image
+                src={avatarImages?.filePath ? `${baseUrl}${avatarImages.filePath}` : '/default-avatar.png'}
+                // src={`${baseUrl}${avatarImages?.filePath}`}
+                alt={avatarImages?.altText || 'Avatar'}
+                className="w-full h-full object-cover"
+                height={20}
+                width={20}
+              />
+            }
           </div>
           <div>
             <p className="text-[10px] md:text-sm">Welcome</p>
             <span className="text-sm md:text-md font-semibold text-orange-400  max-w-full">
-              {adminData}
+              {adminData?.length > 0 ? adminData : "Admin"}
             </span>
           </div>
 
