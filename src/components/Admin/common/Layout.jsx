@@ -248,11 +248,7 @@ const Layout = ({ children }) => {
 
   const logo = "/paramotor_assets/paramotor_logo.png"; // Example logo path
 
-  // Handle loading state and render fallback UI
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
+ 
   return (
     <div className="h-screen w-full flex overflow-hidden transition-all duration-300 ease-in-out">
       <div
