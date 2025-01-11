@@ -55,12 +55,8 @@ const Blog = ({ blogData }) => {
 
   return (
     <div className='scroll-smooth'>
-      <div className='container py-5'>
-        <Header />
-      </div>
       <HeroSection />
       <BlogSection data={blogData} baseUrl={baseUrl} />
-      <FooterSection />
     </div>
   );
 };

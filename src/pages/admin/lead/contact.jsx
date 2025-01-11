@@ -45,7 +45,7 @@ export default function ContactFormList() {
     }
 
     return (
-        <Layout>
+        <>
             <div className="md:p-6 bg-gray-50 min-h-screen">
                 <div className="overflow-x-auto shadow-lg rounded-lg bg-white p-4">
                     <table className="table-auto w-full text-left border-collapse border border-gray-200">
@@ -105,6 +105,6 @@ export default function ContactFormList() {
                     </table>
                 </div>
             </div>
-        </Layout>
+        </>
     );
 }

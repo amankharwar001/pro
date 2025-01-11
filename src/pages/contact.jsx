@@ -71,7 +71,7 @@ const Contact = ({ data = {}, baseUrl }) => {
       />
       <FormSection />
       <ContactInfo data={data?.getInTouchData || []} baseUrl={baseUrl} />
-      <FooterSection />
+      
     </div>
   );
 };

@@ -18,7 +18,6 @@ const about = ({ data, error, baseUrl }) => {
         <FeatureGrid data={data?.section3} baseUrl={baseUrl}/>
         <VisionMissionSection data={data?.section4} baseUrl={baseUrl}/>
         <CountingSection data={data?.section5} />
-        <FooterSection />
     </div>
   )
 }

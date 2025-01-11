@@ -49,7 +49,7 @@ const AddProduct = () => {
 
   return (
     <div>
-      <Layout>
+      <>
         <div className='sticky top-16 border-b shadow-md z-10 flex gap-2 bg-white p-4 overflow-x-auto'>
           <span className={getTabClass(1)} onClick={() => handleClick(1)}>Hero Banner Section</span>
           <span className={getTabClass(2)} onClick={() => handleClick(2)}>Section2</span>
@@ -61,7 +61,7 @@ const AddProduct = () => {
         </div>
         
         {activeBox === 1 && <div><HeroSectionForm productpage={data} onSubmitId={handleHeroSectionSubmit} /></div>}
-      </Layout>
+      </>
     </div>
   );
 };

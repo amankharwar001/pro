@@ -16,7 +16,6 @@ const PartnerPage = ({ data, error, baseUrl }) => {
         <Form1/>
         <ContactInfo data={data?.getInTouchData} baseUrl={baseUrl} />
         <div className='mt-40'></div>
-        <FooterSection />
     </div>
   )
 }

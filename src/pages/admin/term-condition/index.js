@@ -19,7 +19,7 @@ const Index = () => {
 
   return (
     <div>
-      <Layout>
+      <>
         <div className='flex justify-evenly pb-5 '>
           <span className={getTabClass(1)} onClick={() => handleClick(1)}>Hero Banner Section</span>
           <span className={getTabClass(2)} onClick={() => handleClick(2)}>Section2</span>
@@ -28,7 +28,7 @@ const Index = () => {
         {activeBox === 1 && <div><HeroSectionForm url={"term-condition-page/herosection"} referencetype={"herosection_term_condition_page"} /></div>}
         {activeBox === 2 && <div><ClientSideCommonEditor referenceType={"term_condition_policy"}  /></div>}
         {activeBox === 3 && <div><SeoPage page={"term-condition"}/></div>}
-      </Layout>
+      </>
     </div>
   );
 };

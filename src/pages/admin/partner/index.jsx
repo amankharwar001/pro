@@ -18,14 +18,14 @@ const Index = () => {
 
   return (
     <div>
-      <Layout>
+      <>
         <div className='flex justify-evenly pb-5 fgdfg '>
           <span className={getTabClass(1)} onClick={() => handleClick(1)}>Hero Banner Section</span>
           <span className={getTabClass(2)} onClick={() => handleClick(3)}>SEO</span>
         </div>
         {activeBox === 1 && <div><HeroSectionForm setActiveBox={setActiveBox} url={"partnerpage/herosection"} referencetype={"herosection_partner_page"} /></div>}
         {activeBox === 2 && <div><SeoPage page={"partner-page"}/></div>}
-      </Layout>
+      </>
     </div>
   );
 };

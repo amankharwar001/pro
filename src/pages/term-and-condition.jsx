@@ -17,7 +17,7 @@ const TermCondition = ({ data, error, baseUrl }) => {
       />
       {/* <ContactInfo /> */}
       <div className='mt-40'></div>
-      <FooterSection />
+      
     </div>
   )
 }

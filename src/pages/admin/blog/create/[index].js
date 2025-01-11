@@ -110,9 +110,9 @@ const Index = () => {
   // Show loading message or error if data is not loaded
   if (loading) {
     return (
-      <Layout>
+      <>
         <div className="flex justify-center items-center p-20 text-xl">Loading...</div>
-      </Layout>
+      </>
     );
   }
 
@@ -126,7 +126,7 @@ const Index = () => {
   // }
 
   return (
-    <Layout>
+    <>
       <div className="relative">
         <div className="flex items-center justify-between bg-slate-100 sticky top-[68.2px] z-[100] px-2 py-2 mb-5 shadow-lg  border-b-2 border-red-800">
           <h2 className="text-2xl font-semibold text-gray-700 ">Edit Blog</h2>
@@ -191,7 +191,7 @@ const Index = () => {
           <SeoPage blogpageId={index} />
         </div>
       </div>
-    </Layout>
+    </>
   );
 };
 

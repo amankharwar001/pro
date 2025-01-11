@@ -25,7 +25,7 @@ const Index = () => {
      ${activeBox === id ? 'bg-gradient-to-r from-black to-gray-700 text-white' : 'bg-gray-100 text-gray-700 hover:bg-black hover:text-white'}`;
 
   return (
-    <Layout>
+    <>
       <div className="bg-white shadow-lg rounded-lg p-4">
         {/* Tabs Navigation */}
         <div className="sticky top-16 z-10 flex gap-2 overflow-x-auto">
@@ -49,7 +49,7 @@ const Index = () => {
           {tabs.find((tab) => tab.id === activeBox)?.component}
         </div>
       </div>
-    </Layout>
+    </>
   );
 };
 

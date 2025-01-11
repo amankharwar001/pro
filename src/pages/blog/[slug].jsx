@@ -37,11 +37,7 @@ const Slug = ({ data, error, baseUrl }) => {
                 <meta name="twitter:image" content={featureImageUrl} />
             </Head>
 
-            <div className='container py-5'>
-                <Header />
-            </div>
-
-            <div className='container'>
+            <div className='container mt-5'>
                 {featureImageUrl ? (
                     <Image
                         src={featureImageUrl}
@@ -78,7 +74,7 @@ const Slug = ({ data, error, baseUrl }) => {
 
             <SocialShare url={blogUrl} title={data.heading} />
             <div className='pt-10'></div>
-            <FooterSection />
+            
         </div>
     );
 };

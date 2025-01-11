@@ -86,7 +86,7 @@ const ScriptManager = () => {
   }, [activeTab]);
 
   return (
-    <Layout>
+    <>
       <div className="p-8 bg-gray-100 min-h-screen">
         <div className="bg-white shadow-lg rounded-lg p-6">
           <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">
@@ -195,7 +195,7 @@ const ScriptManager = () => {
           </div>
         </div>
       </div>
-    </Layout>
+    </>
   );
 };
 

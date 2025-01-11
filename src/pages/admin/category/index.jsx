@@ -4,11 +4,11 @@ import React from 'react'
 
 const index = () => {
   return (
-    <Layout>
+    <>
         <div>
             <CategoryList/>
         </div>
-    </Layout>
+    </>
   )
 }
 

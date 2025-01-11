@@ -63,6 +63,8 @@ const CardSection1 = ({ section3, baseUrl }) => {
                                         src={`${baseUrl}${svg1.filePath}`}
                                         alt={section3.Images[0].altText || "Default Alt Text"}
                                         className="w-6 h-6 rounded-full object-contain"
+                                        width={550}
+                                        height={20}
                                     />
                                 </div>
                                 <div>
@@ -80,6 +82,8 @@ const CardSection1 = ({ section3, baseUrl }) => {
                                         src={`${baseUrl}${svg2.filePath}`}
                                         alt={section3.Images[0].altText || "Default Alt Text"}
                                         className="w-6 h-6 rounded-full object-contain"
+                                        width={550}
+                                height={20}
                                     />
                                 </div>
                                 <div>

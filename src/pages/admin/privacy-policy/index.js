@@ -47,7 +47,7 @@ const Index = () => {
 
   return (
     <div>
-      <Layout>
+      <>
         <div className='flex justify-evenly pb-5 '>
           <span className={getTabClass(1)} onClick={() => handleClick(1)}>Hero Banner Section</span>
           <span className={getTabClass(2)} onClick={() => handleClick(2)}>Section2</span>
@@ -56,7 +56,7 @@ const Index = () => {
         {activeBox === 1 && <div><HeroSectionForm url={"privacypage/herosection"} referencetype={"herosection_privacy_policy_page"} /></div>}
         {activeBox === 2 && <div> <ClientSideCommonEditor referenceType={"privacy_policy"}  /></div>}
         {activeBox === 3 && <div><SeoPage page={"privacy-policy"}/></div>}
-      </Layout>
+      </>
     </div>
   );
 };

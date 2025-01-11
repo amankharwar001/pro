@@ -57,37 +57,39 @@ const Header = ({data}) => {
     fetchData();
   }, []);
   return (
-    <div className=''>
-      <Head>
-        <link rel="icon" href={`${baseUrl}${feviconIcon?.filePath}`} />
-      </Head>
-      <div className="flex justify-between items-center ">
-        <div className="flex items-center gap-10 ">
-          {/* Logo with animation */}
-          <div className="flex items-center">
-            <Image
-              src={`${baseUrl}${logo?.filePath}`}
-              alt={logo?.altText || 'logo'}
-              className="w-54"
-              width={100}
-              height={100}
-            />
+    <header className='bg-[#F2F2F2] py-5 z-[9999]'>
+      <div className='container'>
+        <Head>
+          <link rel="icon" href={`${baseUrl}${feviconIcon?.filePath}`} />
+        </Head>
+        <div className="flex justify-between items-center ">
+          <div className="flex items-center gap-10 ">
+            {/* Logo with animation */}
+            <div className="flex items-center">
+              <Image
+                src={`${baseUrl}${logo?.filePath}`}
+                alt={logo?.altText || 'logo'}
+                className="w-54"
+                width={100}
+                height={100}
+              />
+            </div>
+
+
+            {/* User type selection with animation */}
           </div>
+          <div className='hidden md:flex md:justify-end items-center justify-end gap-5 sm:justify-between ml-5 w-full evenly'>
+            <div className='z-[9999]'>
+              <DropDown data={productList} />
+            </div>
 
-
-          {/* User type selection with animation */}
-        </div>
-        <div className='hidden md:flex md:justify-end items-center justify-end gap-5 sm:justify-between ml-5 w-full evenly'>
-          <div className='z-10'>
-            <DropDown data={productList} />
           </div>
-
-        </div>
-        <div className='block md:hidden'>
-          <Sidebar data={productList}/>
+          <div className='block md:hidden'>
+            <Sidebar data={productList}/>
+          </div>
         </div>
       </div>
-    </div>
+    </header>
   );
 };
 

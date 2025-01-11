@@ -42,7 +42,7 @@ const Index = () => {
     ${activeBox === id ? 'bg-gradient-to-r from-black to-gray-700 text-white' : 'bg-gray-100 text-gray-700 hover:bg-black hover:text-white'}`;
 
   return (
-    <Layout>
+    <>
       <div className="bg-white shadow-lg rounded-lg  pb-4">
         <div className="sticky top-16 border-b shadow-md z-10 flex gap-2 bg-white p-4 overflow-x-auto">
           {tabs.map((tab) => (
@@ -70,7 +70,7 @@ const Index = () => {
         </div>
 
       </div>
-    </Layout>
+    </>
   );
 };
 

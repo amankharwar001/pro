@@ -70,7 +70,7 @@ const Index = () => {
   };
 
   return (
-    <Layout>
+    <>
       <div>
         <h1 className="text-xl font-bold mb-4">Setting</h1>
       </div>
@@ -120,7 +120,7 @@ const Index = () => {
           <ChangeCredentials/>
         </div>
       </div>
-    </Layout>
+    </>
   );
 };
 

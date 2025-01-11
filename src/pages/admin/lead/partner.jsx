@@ -54,7 +54,7 @@ export default function PartnerContactList() {
     }
 
     return (
-        <Layout>
+        <>
             <div className="md:p-6 bg-gray-50 min-h-screen">
                 {error && (
                     <div className="bg-red-100 text-red-600 p-4 mb-4 rounded">
@@ -109,6 +109,6 @@ export default function PartnerContactList() {
                     </table>
                 </div>
             </div>
-        </Layout>
+        </>
     );
 }

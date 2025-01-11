@@ -124,7 +124,7 @@ const handleDeleteBlog = async (blogId) => {
   };
 
   return (
-    <Layout>
+    <>
       <div className="container mx-auto p-6">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-bold text-gray-700">Blog List</h2>
@@ -171,6 +171,8 @@ const handleDeleteBlog = async (blogId) => {
                       className="w-32 h-20 object-cover border rounded-lg"
                       src={`${basePath}${blog?.image[0]?.filePath}`}
                       alt={blog?.image[0]?.altText}
+                      width={100}
+                      height={100}
                       onError={(e) => e.target.src = '/fallback/image.webp'}
                     />
                   </td>
@@ -249,7 +251,7 @@ const handleDeleteBlog = async (blogId) => {
           </div>
         )}
       </div>
-    </Layout>
+    </>
   );
 };
 

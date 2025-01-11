@@ -37,7 +37,7 @@ const Index = ({ data, error }) => {
       <Testomonial apidata={data?.testimonials} />
       <SectionSecurity apidata={data?.section11} />
       <FaqSection apidata={data?.faq} />
-      <FooterSection />
+      
     </div>
   );
 };

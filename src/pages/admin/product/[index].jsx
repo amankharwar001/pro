@@ -59,7 +59,7 @@ const Index = () => {
 
   return (
     <div>
-      <Layout>
+      <>
         <div className=' pt-4  md:p-4 bg-white rounded-lg'>
           <div className='flex justify-end px-2'>
             <StatusSelector productId={index} />
@@ -89,7 +89,7 @@ const Index = () => {
           </div>
         </div>
 
-      </Layout>
+      </>
     </div>
   );
 };

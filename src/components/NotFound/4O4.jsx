@@ -7,9 +7,7 @@ import Image from 'next/image';
 const Found4O4 = () => {
     return (
         <>
-            <div className='container py-5'>
-                <Header />
-            </div>
+            
             <section className="flex justify-center items-center pb-20">
       <div className="text-center container mx-auto px-4">
         <div className="flex justify-center items-center">
@@ -40,7 +38,7 @@ const Found4O4 = () => {
         </div>
       </div>
     </section>
-            <FooterSection />
+            
         </>
 
     );

@@ -24,7 +24,7 @@ const Index = () => {
 
   return (
     <div>
-      <Layout>
+      <>
         <div className='bg-white rounded-lg md:p-4'>
           <div className=' sticky top-16 border-b shadow-md z-10 flex gap-2 bg-white p-4 overflow-x-auto  '>
             {/** Tab Navigation */}
@@ -58,7 +58,7 @@ const Index = () => {
           </div>
         </div>
 
-      </Layout>
+      </>
     </div>
   );
 };

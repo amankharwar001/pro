@@ -53,7 +53,7 @@ const ProductList = () => {
   // code
 
   return (
-    <Layout>
+    <>
       <div className="container mx-auto mt-4 md:p-4">
         {/* Header */}
         <div className="flex justify-between items-center mb-6">
@@ -123,7 +123,7 @@ const ProductList = () => {
           )}
         </div>
       </div>
-    </Layout>
+    </>
   );
 };
 

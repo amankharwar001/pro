@@ -42,7 +42,6 @@ const ProductPage = ({ data, error, baseUrl }) => {
       <PaymentOptions section5={data.section5} baseUrl={baseUrl} />
       <WeWorkSection section6={data.section6} baseUrl={baseUrl} />
       <WeChooseSection section7={data.section7} baseUrl={baseUrl} />
-      <FooterSection />
     </div>
   );
 };
