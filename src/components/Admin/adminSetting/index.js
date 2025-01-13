@@ -37,7 +37,7 @@ const handleSubmit = async (e) => {
   
       // API call to change the username
       try {
-        const response = await fetch('/api/admin/change-credentials', {
+        const response = await fetch('/api/adminpassword/change-credentials', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ const handleSubmit = async (e) => {
   
       // API call to change the password
       try {
-        const response = await fetch('/api/admin/change-credentials', {
+        const response = await fetch('/api/adminpassword/change-credentials', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

@@ -9,7 +9,11 @@ export async function getServerSideProps() {
   
   try {
     // Fetch the sitemap XML from your API
-    const response = await fetch(`${url}api/sitemap`);
+    const response = await fetch(`${url}api/sitemap`,{
+      headers: {
+        'api-key': process.env.API_KEY, // Send the API key in the request header
+      },
+    });
     if (!response.ok) {
       throw new Error("Failed to fetch sitemap");
     }

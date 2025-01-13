@@ -24,7 +24,7 @@ export default function FooterSection() {
               setProductList(result); // Save data to state
              
             } catch (err) {
-              response.json(err.message); // Save error message
+              console.warn(err.message); // Save error message
             }
           };
       

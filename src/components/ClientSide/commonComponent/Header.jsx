@@ -5,8 +5,10 @@ import DropDown from './DropDown';
 import Sidebar from './ToogleSlidebar';
 import Head from 'next/head';
 import { FaBars } from 'react-icons/fa';
-const Header = ({data}) => {
+
+const Header = ({data,apikey}) => {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_PATH;
+  const apiKey = process.env.API_KEY;
 
   const [productList, setProductList] = useState(null); // State to store API data
   const [logo, setlogo] = useState(); // State to store admin settings
@@ -17,7 +19,12 @@ const Header = ({data}) => {
     // Function to fetch admin setting data
     const fetchAdminSetting = async () => {
       try {
-        const response = await fetch('/api/public/logo');
+        const response = await fetch('/api/public/logo',{
+          method: 'GET',
+          headers: {
+            'api-key': apiKey,
+          },
+        });
         if (response.ok) {
           const data = await response.json();
           setlogo(data.logo || {}); // Set admin settings or empty object
@@ -42,7 +49,12 @@ const Header = ({data}) => {
     // Fetch data from API
     const fetchData = async () => {
       try {
-        const response = await fetch('/api/public/product/list');
+        const response = await fetch('/api/public/product/list',{
+          method: 'GET',
+          headers: {
+            'api-key': apiKey, // Send the API key in the request header
+          },
+        });
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -50,7 +62,7 @@ const Header = ({data}) => {
         setProductList(result); // Save data to state
 
       } catch (err) {
-        response.json(err.message); // Save error message
+        console.warn(err.message); // Save error message
       }
     };
 

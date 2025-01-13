@@ -13,7 +13,7 @@ const Test = ({setActiveBox}) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('/api/submitForm', {
+        const response = await fetch('/api/homepage/submitForm', {
           method: 'GET',
         });
         const result = await response.json();
@@ -49,7 +49,7 @@ const Test = ({setActiveBox}) => {
     try {
       setIsUploading(true);
 
-      const response = await fetch('/api/submitForm', {
+      const response = await fetch('/api/homepage/submitForm', {
         method: id ? 'PUT' : 'POST', // Use PUT for updating, POST for creatings
         headers: {
           'Content-Type': 'application/json',

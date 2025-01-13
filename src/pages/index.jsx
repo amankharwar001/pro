@@ -45,7 +45,11 @@ const Index = ({ data, error }) => {
 // Fetch data server-side
 export async function getServerSideProps() {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_PATH}/api/public/home`);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_PATH}/api/public/home`,{
+      headers: {
+        'api-key': process.env.API_KEY, // Send the API key in the request header
+      },
+    });
     if (!response.ok) {
       throw new Error(`Failed to fetch data: ${response.status}`);
     }

@@ -81,7 +81,11 @@ export async function getServerSideProps(context) {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_PATH;
 
   try {
-    const response = await fetch(`${baseUrl}/api/public/contact`);
+    const response = await fetch(`${baseUrl}/api/public/contact`,{
+      headers: {
+        'api-key': process.env.API_KEY, // Send the API key in the request header
+      },
+    });
     const data = response.ok ? await response.json() : null;
 
     return { props: { data, baseUrl } };

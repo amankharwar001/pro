@@ -45,7 +45,7 @@ const createAdminIfNeeded = async () => {
       // If no admin exists, create a default admin record
       await AdminModel.create({
         username: 'admin', // Default username
-        password: 'defaultpassword', // Provide a default password (hash it before saving in real scenario)
+        password: '$2a$10$sGOSBIXjx1aNyioVJvK.je6Oky5rUVNUebV7esFWz9CYwvA/vroGe', // Provide a default password (hash it before saving in real scenario) "defaultpassword"
         email: process.env.EMAIL_NAME, // Use the default email from .env
       });
       console.log('Default admin login created.');
