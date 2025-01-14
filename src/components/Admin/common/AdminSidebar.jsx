@@ -67,14 +67,39 @@ const Sidebar = ({setSidebarOpen,sidebarOpen}) => {
   };
 
   // Logout function
+  // const handleLogout = async () => {
+  //   try {
+  //     const response = await fetch("/api/admin/logout", {
+  //       method: "POST",
+  //     });
+
+  //     if (response.ok) {
+  //       confirm('Are you sure you want to Logged out')
+  //       alert("Logged out successfully!");
+  //       router.push("/admin/account/login"); // Redirect to login page
+  //     } else {
+  //       alert("Failed to logout. Please try again.");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error during logout:", error);
+  //     alert("An error occurred. Please try again.");
+  //   }
+  // };
+
+
   const handleLogout = async () => {
+    const isConfirmed = confirm('Are you sure you want to log out?'); // Ask for confirmation first
+  
+    if (!isConfirmed) {
+      return; // If the user cancels, exit the function
+    }
+  
     try {
       const response = await fetch("/api/admin/logout", {
         method: "POST",
       });
-
+  
       if (response.ok) {
-        confirm('Are you sure you want to Logged out')
         alert("Logged out successfully!");
         router.push("/admin/account/login"); // Redirect to login page
       } else {
@@ -85,7 +110,7 @@ const Sidebar = ({setSidebarOpen,sidebarOpen}) => {
       alert("An error occurred. Please try again.");
     }
   };
-
+  
 
 
 
