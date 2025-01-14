@@ -6,9 +6,10 @@ import Sidebar from './ToogleSlidebar';
 import Head from 'next/head';
 import { FaBars } from 'react-icons/fa';
 
-const Header = ({data,apikey}) => {
+const Header = ({data,apikey,img}) => {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_PATH;
   const apiKey = process.env.API_KEY;
+  console.log("heaer _app show is here",img)
 
   const [productList, setProductList] = useState(null); // State to store API data
   const [logo, setlogo] = useState(); // State to store admin settings

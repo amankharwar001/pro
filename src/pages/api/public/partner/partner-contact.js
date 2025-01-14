@@ -4,6 +4,7 @@
 
 import PartnerContactForm from "@/models/partnerPage/PartnerContactForm";
 import nodemailer from "nodemailer";
+import LeadFormEmail from "@/models/formEmail/Email";
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
@@ -39,21 +40,31 @@ export default async function handler(req, res) {
         query,
         authorization,
       });
+       // Fetch the email and password from the LeadFormEmail model (database)
+       const leadFormEmailData = await LeadFormEmail.findOne(); // Adjust query if necessary (e.g., filtering based on conditions)
+
+       if (!leadFormEmailData) {
+         return res.status(500).json({ error: 'Email configuration not found in database' });
+       }
+ 
+       const { email: emailUser, password } = leadFormEmailData;
+
 
       // Nodemailer transporter configurati on
       const transporter = nodemailer.createTransport({
-        host: "smtp.ethereal.email",
-        port: 587,
+        service: 'gmail',
+        secure:true,
+        port:465,
         auth: {
-          user: process.env.EMAIL_NAME, // Add these to .env file
-          pass: process.env.EMAIL_PASS,
-        },
+          user: emailUser, // Add these to .env file
+          pass: password,
+        }
       });
 
       // Email content
       const mailOptions = {
         from: '"Partner Contact Form" <no-reply@yourapp.com>',
-        to: "your-email@example.com", // Replace with the recipient's email
+        to: `${email}`, // Replace with the recipient's email
         subject: "New Partner Contact Form Submission",
         text: `A new partner contact form has been submitted:
         

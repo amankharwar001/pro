@@ -66,6 +66,8 @@ import AdminSetting from '../models/adminSetting/index.js';
 import HeadScript from '../models/Script/HeadScript.js';
 import BodyScript from '../models/Script/BodyScript.js';
 import FooterScript from '../models/Script/FooterScript.js';
+// lead reciveing email
+import LeadFormEmail from '../models/formEmail/Email.js';
 
 
  async function syncDatabase() {

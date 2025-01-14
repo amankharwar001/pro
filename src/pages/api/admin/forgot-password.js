@@ -2,7 +2,7 @@
 import nodemailer from "nodemailer";
 import crypto from 'crypto'; // For secure token generation
 import AdminModel from "@/models/AdminModel";
-
+import LeadFormEmail from "@/models/formEmail/Email";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -29,14 +29,24 @@ export default async function handler(req, res) {
   admin.passwordResetExpires = new Date(resetExpires);
   await admin.save();
 
+  // Fetch the email and password from the LeadFormEmail model (database)
+  const leadFormEmailData = await LeadFormEmail.findOne(); // Adjust query if necessary (e.g., filtering based on conditions)
+
+  if (!leadFormEmailData) {
+    return res.status(500).json({ error: 'Email configuration not found in database' });
+  }
+
+  const { email: emailUser, password } = leadFormEmailData;
+
   // Configure nodemailer
   const transporter = nodemailer.createTransport({
-    host: "smtp.ethereal.email",
-    port: 587,
+    service: 'gmail',
+    secure: true,
+    port: 465,
     auth: {
-      user: process.env.EMAIL_NAME, // Add these to .env file
-      pass: process.env.EMAIL_PASS,
-    },
+      user: emailUser, // Add these to .env file
+      pass: password,
+    }
   });
 
   // Construct the reset URL with the token
@@ -45,7 +55,7 @@ export default async function handler(req, res) {
   try {
     // Send the reset email
     await transporter.sendMail({
-      from: process.env.EMAIL_USER, // Sender email (from .env)
+      from: emailUser, // Sender email (from .env)
       to: email, // Recipient email (provided in the request body)
       subject: "Password Reset",
       html: `<p>Click <a href="${resetUrl}">here</a> to reset your password.</p>`,

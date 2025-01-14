@@ -238,15 +238,15 @@ const OverviewSection3 = ({apidata1,apidata2}) => {
                                 {apidata2?.content}
                             </p>
                         </div>
-                        <div class="flex md:justify-center justify-center pb-10  text-white items-center bg-background px-6">
-                            <div class="text-center mr-8">
-                                <div class="text-4xl lg:text-7xl font-bold text-red-600">{apidata2?.leadDetails[0].leadNo}</div>
-                                <span class="text-muted-foreground">{apidata2?.leadDetails[0].leadName}</span>
+                        <div className="flex md:justify-center justify-center pb-10  text-white items-center bg-background px-6">
+                            <div className="text-center mr-8">
+                                <div className="text-4xl lg:text-7xl font-bold text-red-600">{apidata2?.leadDetails[0].leadNo}</div>
+                                <span className="text-muted-foreground">{apidata2?.leadDetails[0].leadName}</span>
                             </div>
-                            <div class="border-l-2 border-muted h-16"></div>
-                            <div class="text-center ml-8">
-                                <div class="text-4xl lg:text-7xl font-bold text-red-600">{apidata2?.leadDetails[1].leadNo}</div>
-                                <span class="text-muted-foreground">{apidata2?.leadDetails[1].leadName}</span>
+                            <div className="border-l-2 border-muted h-16"></div>
+                            <div className="text-center ml-8">
+                                <div className="text-4xl lg:text-7xl font-bold text-red-600">{apidata2?.leadDetails[1].leadNo}</div>
+                                <span className="text-muted-foreground">{apidata2?.leadDetails[1].leadName}</span>
                             </div>
                         </div>
 

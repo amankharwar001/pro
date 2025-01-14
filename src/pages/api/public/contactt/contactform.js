@@ -1,5 +1,16 @@
+
+
+
+
+
+
 import ContactForm from "@/models/contactPage/ContactForm";
+import LeadFormEmail from "@/models/formEmail/Email";
 import nodemailer from "nodemailer";
+
+
+
+
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
@@ -38,27 +49,34 @@ export default async function handler(req, res) {
         enquiryType,
         queryComment,
       });
+       // Fetch the email and password from the LeadFormEmail model (database)
+       const leadFormEmailData = await LeadFormEmail.findOne(); // Adjust query if necessary (e.g., filtering based on conditions)
+
+       if (!leadFormEmailData) {
+         return res.status(500).json({ error: 'Email configuration not found in database' });
+       }
+ 
+       const { email: emailUser, password } = leadFormEmailData;
 
       // Configure Nodemailer
       const transporter = nodemailer.createTransport({
-        host: 'smtp.ethereal.email',
-        port: 587,
+        service: 'gmail',
+        secure:true,
+        port:465,
         auth: {
-          user: process.env.EMAIL_NAME, // Add these to .env file
-          pass: process.env.EMAIL_PASS,
+          user: emailUser, // Add these to .env file
+          pass: password,
         }
     });
 
-      // Email content
+
       const mailOptions = {
-        // from: process.env.CLIENT_EMAIL, // Sender email
-        // to: process.env.CLIENT_EMAIL, // Recipient email (client)
-        from: '"Partner Contact Form" <no-reply@yourapp.com>',
-        to: "your-email@example.com", // Replace with the recipient's email
+        from: '"Partner Contact Form" <no-reply@yourapp.com>', // Sender's email address
+        to: `${email}`, // Replace with your own email address
         subject: `New Contact Form Submission - ${name}`,
         text: `
           A new contact form has been submitted.
-
+      
           Name: ${name}
           Designation: ${designation}
           Company Name: ${companyName}
@@ -73,6 +91,9 @@ export default async function handler(req, res) {
           Query/Comment: ${queryComment}
         `,
       };
+      
+
+
 
       // Send email
       await transporter.sendMail(mailOptions);
@@ -92,24 +113,3 @@ export default async function handler(req, res) {
 
 
 
-
-
-
-
-
-
-// Anonymous Mail Services
-// Kuch services anonymous email send karne ki permission deti hain, lekin ye practice secure nahi hoti.
-
-// Aap libraries jaise nodemailer-smtp-transport ko configure kar sakte hain:
-
-// javascript
-// Copy code
-// const transporter = nodemailer.createTransport({
-//   host: 'smtp.example.com',
-//   port: 25, // Open SMTP port
-//   secure: false,
-//   tls: {
-//     rejectUnauthorized: false,
-//   },
-// });

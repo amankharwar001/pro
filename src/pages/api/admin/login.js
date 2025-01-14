@@ -27,7 +27,7 @@ export default async function handler(req, res) {
     }
 
     // Create JWT token
-    const token = jwt.sign({ id: admin.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    const token = jwt.sign({ id: admin.id }, process.env.JWT_SECRET, { expiresIn: '1w' });
 
     const isProduction = process.env.NODE_ENV === 'production';
     res.setHeader(

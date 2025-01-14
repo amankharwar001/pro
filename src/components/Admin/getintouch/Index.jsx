@@ -88,7 +88,7 @@ export default function Section5Product({setActiveBox}) {
   return (
     <div className="p-4 bg-white rounded-md">
       <h1 className="text-2xl font-bold mb-4">Section 5 Product</h1>
-      {loading && <p>Loading...</p>}
+      {/* {loading && <p>Loading...</p>} */}
       {error && <p className="text-red-500">{error}</p>}
       {!loading && (
         <form className="space-y-4">

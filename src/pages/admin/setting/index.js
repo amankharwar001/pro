@@ -1,4 +1,5 @@
 import ChangeCredentials from '@/components/Admin/adminSetting';
+import UpdateEmailForm from '@/components/Admin/adminSetting/UpdateEmail';
 import Layout from '@/components/Admin/common/Layout';
 import ImageUploader from '@/components/Admin/ImageUploader';
 import React, { useState, useEffect } from 'react';
@@ -119,6 +120,10 @@ const Index = () => {
         <div className='grow'>
           <ChangeCredentials/>
         </div>
+        
+      </div>
+      <div>
+      <UpdateEmailForm/>
       </div>
     </>
   );

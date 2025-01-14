@@ -1,4 +1,5 @@
 import Layout from "@/components/Admin/common/Layout";
+import LeadFormEmailComponent from "@/components/Admin/leadform";
 import React, { useState, useEffect } from "react";
 
 const ScriptManager = () => {
@@ -195,6 +196,7 @@ const ScriptManager = () => {
           </div>
         </div>
       </div>
+      <LeadFormEmailComponent/>
     </>
   );
 };
