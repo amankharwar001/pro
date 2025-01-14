@@ -57,7 +57,7 @@ export default function DropDown({ data }) {
                         </Link>
                         {/* Dynamically Generated Items */}
                         {data?.map((product) => (
-                            <Link key={product.id} href={`product/${product?.seo}`}>
+                            <Link key={product.id} href={`${process.env.NEXT_PUBLIC_BASE_PATH}product/${product?.seo}`}>
                                 <li className="px-6 text-lg flex justify-between text-start items-center gap-5 py-3 text-md text-black hover:bg-[#f1f1f1] hover:text-[#003066] font-semibold cursor-pointer transition-colors hover:scale-105">
                                 <MdKeyboardArrowLeft className='text-slate-500' size={20} /> {product.nickname} 
                                 </li>

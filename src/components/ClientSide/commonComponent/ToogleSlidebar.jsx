@@ -71,7 +71,7 @@ export default function Sidebar({ data }) {
                             <li className=" py-2 text-lg  hover:text-[#003066] font-bold cursor-pointer">Contact</li>
                         </Link>
                         {data?.map((product) => (
-                            <Link key={product.id} href={`product/${product?.seo}`}>
+                            <Link key={product.id} href={`${process.env.NEXT_PUBLIC_BASE_PATH}product/${product?.seo}`}>
                                 <li className=" py-2 text-lg  hover:text-[#003066] font-bold cursor-pointer">{product.nickname} </li>
                             </Link>
                         ))}
