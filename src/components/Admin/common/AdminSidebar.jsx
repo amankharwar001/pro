@@ -354,22 +354,13 @@ const Sidebar = ({setSidebarOpen,sidebarOpen}) => {
     }
   };
 
-  // const toggleMenu = (key) => {
-  //   setIsOpen((prevState) => ({
-  //     ...prevState,
-  //     [key]: !prevState[key], // Toggle the specific submenu
-  //   }));
-  // };
   const toggleMenu = (key) => {
-    setIsOpen((prevState) => {
-      // Close all other submenus if one is opened
-      const newState = Object.keys(prevState).reduce((acc, k) => {
-        acc[k] = k === key ? !prevState[k] : false;
-        return acc;
-      }, {});
-      return newState;
-    });
+    setIsOpen((prevState) => ({
+      ...prevState,
+      [key]: !prevState[key], // Toggle the specific submenu
+    }));
   };
+  
   
 
 
