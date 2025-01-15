@@ -7,7 +7,6 @@ import Form1 from '../components/ClientSide/forms/Form1'
 import HeroSectionForm from '@/components/Admin/common/HeroSection';
 import HeadTagSEO from '@/components/HeadTag'
 
-
 const PartnerPage = ({ data, error, baseUrl }) => {
   return (
     <div>
@@ -19,6 +18,7 @@ const PartnerPage = ({ data, error, baseUrl }) => {
     </div>
   )
 }
+
 export async function getServerSideProps(context) {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_PATH;
 

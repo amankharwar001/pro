@@ -59,6 +59,12 @@ const Sidebar = ({setSidebarOpen,sidebarOpen}) => {
   const router = useRouter(); // Get router object
   const baseUrl = process.env.NEXT_PUBLIC_BASE_PATH;
 
+  const handleMenuItemClick = () => {
+    if (window.innerWidth < 768) {
+      setSidebarOpen(false); // Close the sidebar on small devices
+    }
+  };
+
   const toggleMenu = (key) => {
     setIsOpen((prevState) => ({
       ...prevState,
@@ -66,25 +72,6 @@ const Sidebar = ({setSidebarOpen,sidebarOpen}) => {
     }));
   };
 
-  // Logout function
-  // const handleLogout = async () => {
-  //   try {
-  //     const response = await fetch("/api/admin/logout", {
-  //       method: "POST",
-  //     });
-
-  //     if (response.ok) {
-  //       confirm('Are you sure you want to Logged out')
-  //       alert("Logged out successfully!");
-  //       router.push("/admin/account/login"); // Redirect to login page
-  //     } else {
-  //       alert("Failed to logout. Please try again.");
-  //     }
-  //   } catch (error) {
-  //     console.error("Error during logout:", error);
-  //     alert("An error occurred. Please try again.");
-  //   }
-  // };
 
 
   const handleLogout = async () => {
@@ -148,7 +135,7 @@ const Sidebar = ({setSidebarOpen,sidebarOpen}) => {
   return (
     <>
     
-      <div className="relative bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 h-screen text-white flex flex-col shadow-lg">
+      <div className="relative bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 h-full  text-white flex flex-col shadow-lg">
         <span className="absolute top-2 right-1 md:hidden" onClick={toggleSidebar}><RxCrossCircled size={20}/></span>
         {/* Admin Header */}
         <div className="flex items-center gap-4 p-4 md:p-6 border-b border-gray-700 bg-gray-800 shadow-md">
@@ -196,8 +183,9 @@ const Sidebar = ({setSidebarOpen,sidebarOpen}) => {
                     onClick={() => item.subMenus && toggleMenu(item.key)}
                   >
                     <Link
+                    onClick={handleMenuItemClick}
                       href={item.link || "#"}
-                      className={`flex items-center gap-4 w-full ${router.pathname === item.link ? "text-red-500 font-bold" : "text-gray-200"
+                      className={`flex items-center gap-4 w-full  hover:text-red-500 ${router.pathname === item.link ? "text-red-500 font-bold" : "text-gray-200"
                         }`}
                     >
                       <div className="text-sm">{item.icon}</div>
@@ -208,6 +196,7 @@ const Sidebar = ({setSidebarOpen,sidebarOpen}) => {
                         {isOpen[item.key] ? <IoIosArrowDown /> : <IoIosArrowForward />}
                       </span>
                     )}
+                    
                   </div>
 
                   {/* Submenu Items */}
@@ -220,6 +209,7 @@ const Sidebar = ({setSidebarOpen,sidebarOpen}) => {
                         {item.subMenus.map((submenu, index) => (
                           <li key={`${item.key}-submenu-${index}`}>
                             <Link
+                              onClick={handleMenuItemClick}
                               href={submenu.link}
                               className={`block py-2 text-xs rounded-md px-2 transition-all duration-200 ${router.pathname === submenu.link
                                 ? "text-red-500 font-bold"
@@ -240,7 +230,7 @@ const Sidebar = ({setSidebarOpen,sidebarOpen}) => {
         </div>
 
         {/* Footer */}
-        <div className="p-4 text-center text-xs text-gray-500 border-t border-gray-700 bg-gray-800">
+        <div className="absolute bottom-0 p-4 text-center text-xs text-gray-500 border-t border-gray-700 bg-gray-800">
           © 2024 Admin Panel. All Rights Reserved.
         </div>
       </div>

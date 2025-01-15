@@ -70,7 +70,7 @@ const HeroSectionForm = ({ onSubmitId, url,referencetype,setActiveBox }) => {
   };
 
   return (
-    <div className="mx-auto p-4 bg-white shadow-md rounded flex flex-row-reverse gap-10 items-center">
+    <div className="mx-auto p-4 border bg-gray-50 shadow-inner rounded flex flex-row-reverse gap-10 items-center">
       <div>
         <span className="font-bold text-xs">Hero Section Image</span>
         <div className="bg-slate-100 p-4 rounded-md mt-2">

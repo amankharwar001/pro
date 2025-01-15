@@ -220,7 +220,7 @@ const AboutSectionForm = ({ setActiveBox }) => {
   };
 
   return (
-    <div className="mx-auto p-4 bg-white shadow-md rounded">
+    <div className="mx-auto ">
       <div className="flex gap-10 items-center mb-3">
         <ImageUploader referenceType="about_section_primaryImage" />
         <ImageUploader referenceType="about_section_secondaryImage" />

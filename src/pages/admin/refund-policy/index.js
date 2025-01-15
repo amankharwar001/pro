@@ -11,24 +11,25 @@ const Index = () => {
   };
 
   // Helper function to determine the classes for each tab
-  const getTabClass = (box) => {
-    return activeBox === box
-      ? 'border-B border-black px-4 hover:text-white cursor-pointer hover:bg-black bg-black  text-white '
-      : 'border-B border-black px-4 hover:text-white cursor-pointer hover:bg-black  opacity-55';
-  };
+  const getTabClass = (id) =>
+    `cursor-pointer px-4 py-2 text-xs transition-all duration-300 ease-in-out rounded-md border 
+     ${activeBox === id ? 'bg-gradient-to-r from-black to-gray-700 text-white' : 'bg-gray-100 text-gray-700 hover:bg-black hover:text-white'}`;
+
 
   return (
     <div>
       <>
-        <div className='flex justify-evenly pb-5 '>
-          <span className={getTabClass(1)} onClick={() => handleClick(1)}>Hero Banner Section</span>
-          <span className={getTabClass(2)} onClick={() => handleClick(2)}>Section2</span>
-          <span className={getTabClass(3)} onClick={() => handleClick(3)}>Section3</span>
-        </div>
-        {activeBox === 1 && <div><HeroSectionForm url={"refund-policy-page/herosection"} referencetype={"herosection_refund_policy_page"} /></div>}
-        {activeBox === 2 && <div><ClientSideCommonEditor referenceType={"refund_policy"}  /></div>}
-        {activeBox === 3 && <div><SeoPage page={"refund-policy"}/></div>}
-        
+      <div className='bg-white shadow-lg rounded-lg p-4'>
+          <div className='flex gap-3 pb-5 '>
+            <span className={getTabClass(1)} onClick={() => handleClick(1)}>Hero Banner Section</span>
+            <span className={getTabClass(2)} onClick={() => handleClick(2)}>Section2</span>
+            <span className={getTabClass(3)} onClick={() => handleClick(3)}>Section3</span>
+          </div>
+          {activeBox === 1 && <div><HeroSectionForm url={"refund-policy-page/herosection"} referencetype={"herosection_refund_policy_page"} /></div>}
+          {activeBox === 2 && <div><ClientSideCommonEditor referenceType={"refund_policy"}  /></div>}
+          {activeBox === 3 && <div className=' border bg-gray-50 shadow-inner rounded'><SeoPage page={"refund-policy"}/></div>}
+          
+      </div>
       </>
     </div>
   );

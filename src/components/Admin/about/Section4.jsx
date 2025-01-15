@@ -197,7 +197,7 @@ const AboutSection4Form = ({ setActiveBox }) => {
   };
 
   return (
-    <div className="mx-auto p-4 bg-white shadow-md rounded">
+    <div className="mx-auto ">
       <div className="mb-3 border-blue-500 border p-4">
         <span className="text-sm font-medium">Main images</span>
         <div className="flex gap-10 items-center">

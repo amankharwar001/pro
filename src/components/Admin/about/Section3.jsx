@@ -222,7 +222,7 @@ const AboutSection3Form = ({ setActiveBox }) => {
   };
 
   return (
-    <div className="mx-auto p-4 bg-white shadow-md rounded">
+    <div className="mx-auto ">
       <form onSubmit={handleSubmit} className="space-y-4 w-full">
         <div>
           <label className="block font-medium mb-1 text-xs">Heading</label>

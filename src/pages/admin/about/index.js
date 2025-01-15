@@ -48,13 +48,13 @@ const Index = () => {
           ))}
 
           {/** Render Active Component */}
-          <div className="mt-5 border bg-gray-50 rounded-lg shadow-inner p-2">
-            {activeBox === 1 && <HeroSectionForm setActiveBox={setActiveBox} url={"aboutpage/herosection"} referencetype={"aboutpage_herosection"} />}
-            {activeBox === 2 && <AboutSectionForm setActiveBox={setActiveBox}/>}
-            {activeBox === 3 && <AboutSection3Form setActiveBox={setActiveBox}/>}
-            {activeBox === 4 && <AboutSection4Form setActiveBox={setActiveBox}/>}
-            {activeBox === 5 && <AboutSection5Form setActiveBox={setActiveBox}/>}
-            {activeBox === 6 && <SeoPage page={"about"} />}
+          <div className="mt-5 ">
+            {activeBox === 1 && <div><HeroSectionForm setActiveBox={setActiveBox} url={"aboutpage/herosection"} referencetype={"aboutpage_herosection"} /></div> }
+            {activeBox === 2 && <div className='p-4  border bg-gray-50 shadow-inner rounded'> <AboutSectionForm setActiveBox={setActiveBox}/></div>}
+            {activeBox === 3 && <div className='p-4  border bg-gray-50 shadow-inner rounded'><AboutSection3Form setActiveBox={setActiveBox}/></div> }
+            {activeBox === 4 && <div className='p-4  border bg-gray-50 shadow-inner rounded'> <AboutSection4Form setActiveBox={setActiveBox}/></div>}
+            {activeBox === 5 && <div className='p-4  border bg-gray-50 shadow-inner rounded'> <AboutSection5Form setActiveBox={setActiveBox}/></div>}
+            {activeBox === 6 && <div className=' border bg-gray-50 shadow-inner rounded'> <SeoPage page={"about"} /></div>}
           </div>
         </div>
 
