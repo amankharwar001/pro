@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import ImageUploader from "./ImageUploader";
 import CommonImageUpload from "./CommonImageUpload";
 
-const Section8Page = ({setActiveBox}) => {
+const Section8Page = ({ setActiveBox }) => {
   const [sectionData, setSectionData] = useState({
     heading: "",
     content: "",
@@ -89,11 +89,11 @@ const Section8Page = ({setActiveBox}) => {
   return (
     <div className="p-4">
       {/* <h1 className="text-3xl font-semibold text-center text-gray-800 mb-6">Manage Section 8</h1> */}
-      <div className="flex gap-5 items-center">
+      <div className="flex flex-wrap gap-5 items-center">
         <ImageUploader referenceType={"homepage_section_8_primary"} />
         <div className="grow">
 
-        <CommonImageUpload referenceType={"homepage_section_8"} imageCount={2} />
+          <CommonImageUpload referenceType={"homepage_section_8"} imageCount={2} />
         </div>
       </div>
 

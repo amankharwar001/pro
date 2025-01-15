@@ -140,7 +140,7 @@ const SeoPage = ({ blogpageId }) => {
 
     return (
         <div className="">
-            <form className="border rounded p-3 bg-white" onSubmit={handleSubmitSeoField}>
+            <form className="border rounded p-3 bg-gray-50 shadow-inner" onSubmit={handleSubmitSeoField}>
                 {/* Title */}
                 <div className="flex flex-col mb-2">
                     <label className="text-para font-semibold" htmlFor="title">

@@ -112,18 +112,50 @@ p {
   border-top: 0px;
   min-height: 100px;
   border-radius:0 0 5px 5px;
+  background-color: #fff;
 }
+
+.ql-container.ql-snow .ql-formats{
+  color: #39ac31;
+}
+
+
 
 .ql-toolbar.ql-snow {
   border: 1px solid #ccc;
+  background-color: rgb(187, 187, 187);
   border-radius: 5px 5px 0 0 ;
+  position: relative;
+  top:0;
   box-sizing: border-box;
   font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
   padding:4px;
 }
 .ql-editor {
+  overflow-y: auto;
+  max-height: 100vh;
   padding: 10px 10px;
+  /* scrollbar-width: thin; Firefox */
   
+  
+}
+
+.ql-editor::-webkit-scrollbar {
+  width: 0.8vw; /* Scrollbar width */
+}
+
+.ql-editor::-webkit-scrollbar-thumb {
+  background-color: #888; /* Scrollbar thumb color */
+  border-radius: 0px; /* Rounded edges */
+}
+
+.ql-editor::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Thumb hover color */
+}
+
+.ql-editor::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Scrollbar track color */
+  border-radius: 0px;
 }
 .ql-snow .ql-editor img {
   width: 100%; /* Make the image take up the full width of the container */

@@ -33,7 +33,7 @@ function LeadFormEmailComponent() {
   }
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 border rounded-lg shadow-lg bg-white">
+    <div className="max-w-md mx-auto  p-6  rounded-lg shadow-inner border bg-gray-50">
       <h2 className="text-2xl font-bold text-gray-800 mb-4">
         {formData.email ? 'Update Lead Form Email' : 'Create Lead Form Email'}
       </h2>

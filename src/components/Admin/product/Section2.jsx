@@ -63,7 +63,7 @@ const Section2Form = ({ productpage,setActiveBox }) => {  // Add productpage?.id
       <h1 className="text-xl font-bold mb-4">
         {isEditMode ? "Edit Section 2 Product" : "Create Section 2 Product"}
       </h1>
-      <div className="flex gap-5">
+      <div className="flex flex-wrap gap-5">
         {[...Array(4)].map((_, index) => (
           <ImageUploader
             key={index}

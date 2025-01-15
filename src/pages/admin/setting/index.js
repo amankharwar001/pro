@@ -16,6 +16,11 @@ const debounce = (func, delay) => {
 const Index = () => {
   const [adminName, setAdminName] = useState('');
   const [loading, setLoading] = useState(true);
+  const [activeBox, setActiveBox] = useState(1);
+
+  const handleClick = (box) => {
+    setActiveBox(box);
+  };
 
   // Fetch admin name from the API when the page first loads
   useEffect(() => {
@@ -61,7 +66,7 @@ const Index = () => {
   // Debounced function to save admin name after typing stops for 1 second
   const debouncedSave = debounce((name) => {
     saveAdminName(name);
-  }, );
+  },);
 
   // Handle change in admin name input
   const handleAdminNameChange = (e) => {
@@ -69,36 +74,42 @@ const Index = () => {
     setAdminName(name); // Update state immediately
     debouncedSave(name); // Trigger debounced save
   };
+  const getTabClass = (id) =>
+    `cursor-pointer px-4 py-2 text-xs transition-all duration-300 ease-in-out rounded-md border 
+     ${activeBox === id ? 'bg-gradient-to-r from-black to-gray-700 text-white' : 'bg-gray-100 text-gray-700 hover:bg-black hover:text-white'}`;
+
+
+
 
   return (
     <>
       <div>
         <h1 className="text-xl font-bold mb-4">Setting</h1>
       </div>
-      <div className="flex gap-5 justify-between bg-white p-4 rounded">
+      <div className="flex flex-wrap gap-5 justify-between bg-white p-4 rounded">
         <div className="rounded">
           <div>
             <div className="border-b mb-4">
               <p className="font-semibold">Basic Setting</p>
             </div>
-            <div className="flex gap-5 flex-wrap items-center justify-center">
-              <div className="flex flex-wrap gap-5">
-                <div className="bg-gray-500 p-5 rounded-md overflow-hidden">
+            <div >
+              <div className="flex max-w-[320px] md:max-w-full overflow-x-auto  gap-5">
+                <div className="bg-gray-500 p-5 rounded-md overflow-hidden min-w-[210px] md:min-w-auto">
                   <span className="font-semibold text-white underline">Admin Panel Avatar</span>
                   <ImageUploader referenceType="adminAvatar" />
                 </div>
-                <div className="bg-gray-500 p-5 rounded-md overflow-hidden">
+                <div className="bg-gray-500 p-5 rounded-md overflow-hidden min-w-[210px] md:min-w-auto">
                   <span className="font-semibold text-white underline">Website Logo</span>
                   <ImageUploader referenceType="websitelogo" />
                 </div>
-                <div className="bg-gray-500 p-5 rounded-md overflow-hidden">
+                <div className="bg-gray-500 p-5 rounded-md overflow-hidden min-w-[210px] md:min-w-auto">
                   <span className="font-semibold text-white underline">Website Fevicon Logo</span>
                   <ImageUploader referenceType="websitefevicon" />
                 </div>
               </div>
             </div>
           </div>
-          <div className="m-auto mb-5">
+          <div className="m-auto my-5">
             <div>
               <label className="font-semibold text-black/70 text-para" htmlFor="adminName">
                 Admin Name
@@ -118,13 +129,15 @@ const Index = () => {
           </div>
         </div>
         <div className='grow'>
-          <ChangeCredentials/>
+          <div className='flex gap-3 justify-center'>
+            <span className={getTabClass(1)} onClick={() => handleClick(1)}>Update Username/Password</span>
+            <span className={getTabClass(2)} onClick={() => handleClick(2)}>Update Email</span>
+          </div>
+          {activeBox === 1 && <div><ChangeCredentials /></div>}
+          {activeBox === 2 && <div><UpdateEmailForm /></div>}          
         </div>
-        
       </div>
-      <div>
-      <UpdateEmailForm/>
-      </div>
+      
     </>
   );
 };

@@ -10,7 +10,7 @@ import { Tooltip } from 'react-tooltip';
 import { useState } from 'react';
 
 const Index = () => {
-  const [activeBox, setActiveBox] = useState(2);
+  const [activeBox, setActiveBox] = useState(1);
 
   const handleClick = (box) => {
     setActiveBox(box);
@@ -54,7 +54,7 @@ const Index = () => {
             {activeBox === 3 && <div className='p-4  border bg-gray-50 shadow-inner rounded'><AboutSection3Form setActiveBox={setActiveBox}/></div> }
             {activeBox === 4 && <div className='p-4  border bg-gray-50 shadow-inner rounded'> <AboutSection4Form setActiveBox={setActiveBox}/></div>}
             {activeBox === 5 && <div className='p-4  border bg-gray-50 shadow-inner rounded'> <AboutSection5Form setActiveBox={setActiveBox}/></div>}
-            {activeBox === 6 && <div className=' border bg-gray-50 shadow-inner rounded'> <SeoPage page={"about"} /></div>}
+            {activeBox === 6 &&<div className='p-4 pt-0'><div className=' border bg-gray-50 shadow-inner rounded'> <SeoPage page={"about"} /></div></div> }
           </div>
         </div>
 

@@ -51,9 +51,9 @@ const UpdateEmailForm = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
-      <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-lg">
-        <h2 className="text-2xl font-semibold text-center text-gray-800 mb-6">
+    <div className="flex justify-center  mt-5">
+      <div className="w-full max-w-md bg-gray-50 p-8 rounded-lg shadow-inner border  ">
+        <h2 className="text-2xl font-bold text-center text-black mb-6">
           Update Admin Email
         </h2>
 
@@ -69,8 +69,8 @@ const UpdateEmailForm = () => {
           </div>
         )}
 
-        <form onSubmit={handleSubmit}>
-          <div className="mb-4">
+        <form onSubmit={handleSubmit} >
+          <div className="mb-4 ">
             <label
               htmlFor="currentPassword"
               className="block text-sm font-medium text-gray-700"

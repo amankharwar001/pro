@@ -366,17 +366,17 @@ const CommonImageUpload = ({ referenceType, imageCount }) => {
   };
 
   return (
-    <div className="container mx-auto">
+    <div className="">
       {/* Uploaded Images */}
       <div className="flex items-center gap-4 p-4 bg-gray-200 rounded-md overflow-x-auto">
         {images.length > 0 ? (
-          images.map((img) => (
+          images.map((img) => ( 
             <div
               key={img.id}
-              className="relative w-24 h-24 overflow-hidden border bg-white rounded-md shadow-md flex flex-col items-center justify-end"
+              className="relative min-w-24 h-24 overflow-hidden border bg-white rounded-md shadow-md flex flex-col items-center justify-end"
             >
               <Image
-                className="w-full h-24 object-cover"
+                className="min-w-24 h-24 object-cover"
                 src={`${basePath}${img.filePath}`}
                 alt={img.altText}
                 height={20}
@@ -425,7 +425,7 @@ const CommonImageUpload = ({ referenceType, imageCount }) => {
             className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
             disabled={images.length >= imageCount && !editImageId}
           >
-            {editImageId ? "Update" : "Upload"}
+            {editImageId ? "Image Update" : "Image Upload"}
           </button>
         </div>
         {uploadStatus && <p className="mt-2 text-gray-600">{uploadStatus}</p>}

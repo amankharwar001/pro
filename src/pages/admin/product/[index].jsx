@@ -85,7 +85,7 @@ const Index = () => {
           {activeBox === 5 && <div><Section5Product productpage={data} setActiveBox={setActiveBox}/></div>}
           {activeBox === 6 && <div><Section6Product productpage={data} setActiveBox={setActiveBox}/></div>}
           {activeBox === 7 && <div><Section7Product productpage={data} setActiveBox={setActiveBox}/></div>}
-          {activeBox === 8 && <div><SeoPage productpage={data}/></div>}
+          {activeBox === 8 && <div className='p-4 pt-0'><div className=' border bg-gray-50 shadow-inner rounded'> <SeoPage productpage={data}/></div></div>}
           </div>
         </div>
 

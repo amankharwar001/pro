@@ -103,7 +103,7 @@ const handleSubmit = async (e) => {
   
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 border rounded-lg shadow-lg">
+    <div className="max-w-md mx-auto mt-5 p-6 border rounded-lg shadow-inner bg-gray-50">
       <h2 className="text-2xl font-bold mb-6 text-center">Change {isUsername ? 'Username' : 'Password'}</h2>
 
       {error && <p className="text-red-500 mb-4">{error}</p>}

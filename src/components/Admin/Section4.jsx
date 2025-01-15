@@ -85,7 +85,7 @@ const Section4Form = ({setActiveBox}) => {
             <div className=''>
                 <ImageUploader referenceType={"homepage_section4"} referenceId={1} />
             </div>
-            <div className='grow'>
+            <div className='max-w-full grow '>
                 <CommonImageUpload referenceType={"homepage_section_4"} imageCount={3} /> 
             </div>
         </div>

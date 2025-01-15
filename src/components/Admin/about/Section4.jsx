@@ -200,7 +200,7 @@ const AboutSection4Form = ({ setActiveBox }) => {
     <div className="mx-auto ">
       <div className="mb-3 border-blue-500 border p-4">
         <span className="text-sm font-medium">Main images</span>
-        <div className="flex gap-10 items-center">
+        <div className="flex flex-wrap gap-10 items-center">
           <ImageUploader referenceType={"about_section4_primaryImage"} />
           <ImageUploader referenceType={"about_section4_secondaryImage"} />
         </div>

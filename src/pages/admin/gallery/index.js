@@ -77,14 +77,14 @@ const Gallery = ({ images }) => {
       <div className="container mx-auto p-6">
         <h2 className="text-2xl font-bold text-gray-700 mb-6">Image Gallery</h2>
 
-        <div className="flex flex-wrap gap-6">
+        <div className="flex flex-wrap justify-center gap-6">
           {imageList.map((image, index) => (
             <div key={index} className="bg-gray-100 rounded-lg overflow-hidden shadow-lg relative">
               {/* Display image */}
               <img
                 src={`${baseUrl}${image}`} // Display the image from the uploads folder
                 alt={`Image ${index + 1}`}
-                className="w-28 h-28 object-cover"
+                className="w-24 h-24 object-cover"
                 height={100}
                 width={100}
               />
