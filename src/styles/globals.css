@@ -225,3 +225,16 @@ p {
     margin: 20px 0;
     display: inline-block;}
 	.contant_box_404{ margin-top:-50px;}
+
+
+
+
+
+
+
+
+/* react silk */
+/* This CSS will target the slick-slide and remove any set width */
+.brand-slider  .slick-slide {
+  width: auto !important; /* Ensures the width is overridden */
+}

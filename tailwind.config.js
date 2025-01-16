@@ -12,9 +12,9 @@ module.exports = {
         DEFAULT: '1rem',    // Default padding on smaller screens
         sm: '1.5rem',       // Small screens
         md: '1rem',         // Medium screens
-        // lg: '2.5rem',       // Large screens
-        xl: '3rem',         // Extra-large screens
-        '2xl': '4rem',      // 2XL screens
+        lg: '2.5rem',       // Large screens
+        // xl: '3rem',         // Extra-large screens
+        // '2xl': '4rem',      // 2XL screens
       },
       screens: {
         sm: '90%',

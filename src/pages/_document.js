@@ -17,7 +17,7 @@ export default function MyDocument({ contentResponse }) {
   const bodyScripts = body ? extractScriptContent(body) : [];
 
   return (
-    <Html>
+    <Html lang="en">
       <Head>
         {headerScripts.map((script, index) => (
           <div
@@ -76,3 +76,5 @@ MyDocument.getInitialProps = async (ctx) => {
     contentResponse,
   };
 };
+
+
