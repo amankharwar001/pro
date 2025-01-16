@@ -5,6 +5,7 @@ import DropDown from './DropDown';
 import Sidebar from './ToogleSlidebar';
 import Head from 'next/head';
 import { FaBars } from 'react-icons/fa';
+import Link from 'next/link';
 
 const Header = ({data,apikey,img}) => {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_PATH;
@@ -79,13 +80,15 @@ const Header = ({data,apikey,img}) => {
           <div className="flex items-center gap-10 ">
             {/* Logo with animation */}
             <div className="flex items-center">
-              <Image
-                src={`${baseUrl}${logo?.filePath}`}
-                alt={logo?.altText || 'logo'}
-                className="w-54"
-                width={100}
-                height={100}
-              />
+              <Link href={baseUrl}>
+                <Image
+                  src={`${baseUrl}${logo?.filePath}`}
+                  alt={logo?.altText || 'logo'}
+                  className="w-54"
+                  width={100}
+                  height={100}
+                />
+              </Link>
             </div>
 
 

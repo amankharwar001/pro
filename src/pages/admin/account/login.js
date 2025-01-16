@@ -22,7 +22,7 @@ export default function AdminLogin() {
     setIsLoading(false);
 
     if (response.ok) {
-      router.push("/admin/partner");
+      router.push("/admin/dashboard");
     } else {
       alert("Invalid username or password.");
     }
