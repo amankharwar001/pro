@@ -66,7 +66,7 @@ const HeroSectionForm = ({ productpage, onSubmitId,setActiveBox }) => {
         alert(`Error: ${error.error}`);
       }
     } catch (error) {
-      alert("Failed to submit data. Please try again.");
+      console.warn("Failed to submit data. Please try again.");
     } finally {
       setIsLoading(false);
     }
