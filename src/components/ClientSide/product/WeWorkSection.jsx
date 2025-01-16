@@ -27,8 +27,8 @@ const WeWorkSection = ({section6,baseUrl}) => {
                         <div className='flex items-center justify-center'>
                             <Zoom triggerOnce delay={400}>
                                 <Image
-                                    src={`${baseUrl}${svg1.filePath}`}
-                                    alt={svg1.altText}
+                                    src={`${baseUrl}${svg1?.filePath}`}
+                                    alt={svg1?.altText}
                                     className=" mb-10 "
                                     width={80}
                                     height={20}
@@ -54,8 +54,8 @@ const WeWorkSection = ({section6,baseUrl}) => {
                                 <Zoom triggerOnce delay={500}>
 
                                     <Image
-                                        src={`${baseUrl}${svg2.filePath}`}
-                                        alt={svg2.altText}
+                                        src={`${baseUrl}${svg2?.filePath}`}
+                                        alt={svg2?.altText}
                                         className=" mb-10 "
                                         width={80}
                                         height={20}

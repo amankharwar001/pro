@@ -35,8 +35,8 @@ const PaymentOptions = ({ section5, baseUrl }) => {
 
           {/* Foreground Image of the Girl */}
           <Image 
-            src={`${baseUrl}${primaryImage.filePath}`}
-            alt={primaryImage.altText}
+            src={`${baseUrl}${primaryImage?.filePath}`}
+            alt={primaryImage?.altText}
             className="relative z-10 max-w-[180px] sm:max-w-[280px] md:max-w-[320px] lg:max-w-[380px] xl:max-w-[450px] m-auto"
             width={550}
             height={20}
@@ -60,8 +60,8 @@ const PaymentOptions = ({ section5, baseUrl }) => {
             <Fade direction="up" delay={400} triggerOnce>
               <div className="sm:flex items-start gap-4 p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
                 <Image
-                  src={`${baseUrl}${svg1.filePath}`}
-                  alt={svg1.altText}
+                  src={`${baseUrl}${svg1?.filePath}`}
+                  alt={svg1?.altText}
                   className="w-12 h-12 m-auto sm:m-0"
                   width={50}
                   height={50}
@@ -79,8 +79,8 @@ const PaymentOptions = ({ section5, baseUrl }) => {
             <Fade direction="up" delay={500} triggerOnce>
               <div className="sm:flex items-start gap-4 p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
                 <Image
-                  src={`${baseUrl}${svg2.filePath}`}
-                  alt={svg2.altText}
+                  src={`${baseUrl}${svg2?.filePath}`}
+                  alt={svg2?.altText}
                   className="w-12 h-12 m-auto sm:m-0"
                   width={50}
                   height={50}
@@ -98,8 +98,8 @@ const PaymentOptions = ({ section5, baseUrl }) => {
             <Fade direction="up" delay={600} triggerOnce>
               <div className="sm:flex items-start gap-4 p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
                 <Image
-                  src={`${baseUrl}${svg2.filePath}`}
-                  alt={svg2.altText}
+                  src={`${baseUrl}${svg2?.filePath}`}
+                  alt={svg2?.altText}
                   className="w-12 h-12 m-auto sm:m-0"
                   width={50}
                   height={50}

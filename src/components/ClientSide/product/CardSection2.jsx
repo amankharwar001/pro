@@ -36,8 +36,8 @@ const CardSection2 = ({ section4, baseUrl }) => {
                     <div className="relative w-full max-w-[400px] lg:max-w-[550px]">
                         <Zoom triggerOnce delay={50}>
                             <Image
-                                src={`${baseUrl}${primaryImage.filePath}`}
-                                alt={primaryImage.altText}
+                                src={`${baseUrl}${primaryImage?.filePath}`}
+                                alt={primaryImage?.altText}
                                 layout="responsive"
                                 width={550} // Width ratio for responsive behavior
                                 height={350} // Height ratio for responsive behavior

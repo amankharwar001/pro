@@ -30,8 +30,8 @@ const CardSection1 = ({ section3, baseUrl }) => {
                         <Zoom triggerOnce delay={50}>
 
                             <Image
-                                src={`${baseUrl}${primaryImage.filePath}`}
-                                alt={primaryImage.altText}
+                                src={`${baseUrl}${primaryImage?.filePath}`}
+                                alt={primaryImage?.altText}
                                 width={550}
                                 height={20}
                                 className=""
@@ -60,8 +60,8 @@ const CardSection1 = ({ section3, baseUrl }) => {
                             <div>
                                 <div className="flex-shrink-0 w-10 h-10 m-auto lg:m-0 rounded-full bg-red-100 flex items-center justify-center mb-3">
                                     <Image
-                                        src={`${baseUrl}${svg1.filePath}`}
-                                        alt={section3.Images[0].altText || "Default Alt Text"}
+                                        src={`${baseUrl}${svg1?.filePath}`}
+                                        alt={svg1?.altText || "Default Alt Text"}
                                         className="w-6 h-6 rounded-full object-contain"
                                         width={550}
                                         height={20}
@@ -79,8 +79,8 @@ const CardSection1 = ({ section3, baseUrl }) => {
                             <div>
                                 <div className="flex-shrink-0 w-10 h-10 rounded-full m-auto lg:m-0 bg-green-100 flex items-center justify-center mb-3">
                                     <Image
-                                        src={`${baseUrl}${svg2.filePath}`}
-                                        alt={section3.Images[0].altText || "Default Alt Text"}
+                                        src={`${baseUrl}${svg2?.filePath}`}
+                                        alt={svg2?.altText || "Default Alt Text"}
                                         className="w-6 h-6 rounded-full object-contain"
                                         width={550}
                                 height={20}
