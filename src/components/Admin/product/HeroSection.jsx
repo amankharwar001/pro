@@ -81,7 +81,7 @@ const HeroSectionForm = ({ productpage, onSubmitId,setActiveBox }) => {
         <div>
           <span className="font-bold text-xs">Hero Section Image</span>
           <div className="bg-slate-100 p-4 rounded-md mt-2">
-            <ImageUploader referenceType={productpage?.id} />
+            <ImageUploader referenceType={productpage?.id} width={1920} height={750}/>
           </div>
         </div>
         : ""

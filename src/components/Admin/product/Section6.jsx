@@ -114,7 +114,7 @@ export default function Section6Product({ productpage, setActiveBox }) {
 
       {formData.info.map((item, index) => (
         <div key={index} className="mb-4">
-          <ImageUploader referenceType={productpage?.id} referenceId={index + 61} />
+          <ImageUploader referenceType={productpage?.id} referenceId={index + 61}  width={80} height={80}/>
           <h3 className="font-medium">Info {index + 1}</h3>
           <div className="mb-2">
             <label className="block text-sm">Title:</label>

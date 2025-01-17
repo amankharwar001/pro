@@ -15,9 +15,18 @@ const Footercta = () => {
                 </div>
                 <div className="flex items-center">
                     <Fade triggerOnce duration={1000} delay={500}>
-                        <button className="flex bg-white text-black font-bold text-base md:text-lg justify-start md:justify-center p-2 md:p-4 px-4 md:px-6 rounded-full mt-6">
+                        {/* <button className="flex bg-white text-black font-bold text-base md:text-lg justify-start md:justify-center p-2 md:p-4 px-4 md:px-6 rounded-full mt-6">
                             Contact Us
-                        </button>
+                        </button> */}
+                        <div class="p-4 flex flex-col items-center justify-center">
+                            <div class="cursor-pointer">
+                                <button class="relative inline-flex items-center justify-center bg-white px-6 py-3 overflow-hidden font-medium text-teal-600 transition duration-300 ease-out rounded-md shadow-md group">
+                                    <span class="absolute inset-0 flex items-center justify-center w-full h-full  duration-300 -translate-x-full bg-red-600 group-hover:translate-x-0 ease">
+                                    </span>
+                                    <span class="relative font-bold text-base md:text-lg text-[#013466] group-hover:text-white">Contact Us</span>
+                                </button>
+                            </div>
+                        </div>
                     </Fade>
                 </div>
             </div>

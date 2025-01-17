@@ -50,7 +50,7 @@ export default function PersonSection1({ apidata }) {
                                     window.location.href = apidata.btnLink;
                                 }
                             }}
-                            className="flex bg-[#003066] text-white text-base md:text-lg justify-start md:justify-center p-2 md:p-4 px-4 md:px-6 rounded-full mt-6"
+                            className="flex bg-[#013466] hover:bg-red-600 text-white text-base md:text-lg justify-start md:justify-center p-2 md:p-4 px-4 md:px-6 rounded-full mt-6"
                         >
                             {apidata?.btn}
                         </button>

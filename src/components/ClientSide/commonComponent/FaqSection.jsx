@@ -20,7 +20,7 @@ const FaqSection = ({apidata}) => {
           {apidata?.questions?.map((faq, index) => (
             <motion.div
               key={index}
-              className={`${activeIndex === index?"pb-5":"pb-0"} bg-white border border-gray-200 shadow-lg  cursor-pointer overflow-hidden hover:bg-gray-50`}
+              className={`${activeIndex === index?"pb-5":"pb-0"} bg-white border border-gray-200 shadow-lg  cursor-pointer overflow-hidden hover:bg-gray-50 rounded-md`}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 10 }}

@@ -76,7 +76,7 @@ const Section3Form = ({ productpage,setActiveBox }) => {
       <h1 className="text-xl font-bold mb-4">
         {isEditMode ? "Edit Section 3 Product" : "Create Section 3 Product"}
       </h1>
-      <ImageUploader referenceType={productpage?.id} referenceId={3} />
+      <ImageUploader referenceType={productpage?.id} referenceId={3} width={550} height={300} />
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block font-medium mb-2">Heading</label>
@@ -106,6 +106,8 @@ const Section3Form = ({ productpage,setActiveBox }) => {
               key={index}
               referenceType={productpage?.id}
               referenceId={index + 31}
+              width={25} height={25}
+              
             />
             <label className="block font-medium mb-2">Info {index + 1}</label>
             <input

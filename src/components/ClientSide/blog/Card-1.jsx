@@ -50,7 +50,7 @@ const Card1 = ({ blogData, baseUrl }) => {
                                     </div>
                                 </div>
                                 <hr className='mt-4' />
-                                <a href={`/blog/${card.seo}`} className="mt-4  inline-block bg-[#003066e1] hover:bg-[#003066] text-white px-2 hover:bg-secondary/80 py-2 rounded-lg">
+                                <a href={`/blog/${card.seo}`} className="mt-4  inline-block bg-[#013466] hover:bg-red-600 text-white px-2 hover:bg-secondary/80 py-2 rounded-lg">
                                     Read More
                                 </a>
                             </div>

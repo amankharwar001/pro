@@ -119,6 +119,7 @@ export default function Section5Product({setActiveBox}) {
                   <ImageUploader
                     referenceType={"get_in_touch"}
                     referenceId={index + 2}
+                    width={50} height={50}
                   />
                   <label className="block font-medium">Title {index + 1}</label>
                   <input

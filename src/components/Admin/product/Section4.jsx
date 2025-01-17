@@ -87,7 +87,7 @@ export default function Section4Product({ productpage, setActiveBox }) {
       <h1 className="text-2xl font-bold mb-4">Section 4 Product</h1>
       {loading && <p>Loading...</p>}
       {error && <p className="text-red-500">{error}</p>}
-      <ImageUploader referenceType={productpage?.id} referenceId={4} />
+      <ImageUploader referenceType={productpage?.id} referenceId={4} width={550} height={300}/>
 
       {!loading && (
         <form className="space-y-4">

@@ -24,7 +24,7 @@ export default function PersonSection2({ apidata }) {
                     {/* Slide In Animation for Button */}
                     <Slide triggerOnce direction="up" delay={600}>
                         <a href={apidata?.btnLink || '#'} target="_blank" rel="noopener noreferrer">
-                            <button className="flex bg-[#003066] text-white text-base md:text-lg justify-start md:justify-center p-2 md:p-4 px-4 md:px-6 rounded-full mt-6">
+                            <button className="flex bg-[#013466] hover:bg-red-600 text-white text-base md:text-lg justify-start md:justify-center p-2 md:p-4 px-4 md:px-6 rounded-full mt-6">
                                 {apidata?.btn}
                             </button>
                         </a>

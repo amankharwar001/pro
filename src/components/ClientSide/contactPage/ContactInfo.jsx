@@ -144,7 +144,7 @@ function ContactCard({ title, content, imageUrl, altText }) {
       <Fade triggerOnce delay={500} direction="up">
         <div>
           <Image
-            className="bg-black w-14 h-14 rounded-full p-2 m-auto"
+            className=" w-14 h-14 rounded-full m-auto"
             src={imageUrl}
             alt={altText}
             width={56}

@@ -26,7 +26,7 @@ const Homecard = ({ apidata }) => {
                 {apidata?.card.map((card, index) => (
                     <motion.div
                         key={index}
-                        className={`${index === 1 ? 'bg-blue-800 text-white relative md:-top-10 ' : 'bg-white'} grow lg:max-w-[360px] relative pb-10 max-w-sm mx-auto bg-card border rounded-lg shadow-lg`}
+                        className={`${index === 1 ? 'bg-[#013466] text-white relative md:-top-10 ' : 'bg-white'} grow lg:max-w-[360px] relative pb-10 max-w-sm mx-auto bg-card border rounded-lg shadow-lg`}
                         initial="hidden"
                         animate={isInView ? 'visible' : 'hidden'}
                         variants={cardVariants}
@@ -55,7 +55,7 @@ const Homecard = ({ apidata }) => {
                                 ></div>
                                 <div className="w-full absolute right-2/4 translate-x-2/4 -bottom-5">
                                     <button
-                                        className="bg-blue-900 text-white flex m-auto items-center justify-center py-3 px-5 rounded-full"
+                                        className={`${index === 1 ? "bg-white text-black shadow-md"  :"bg-[#013466] hover:bg-red-600 text-white "}  flex m-auto items-center justify-center py-3 px-5 rounded-full`}
                                         onClick={() => window.open(card.btnlink, '_blank')}
                                     >
                                         {card.btnname}
@@ -67,8 +67,9 @@ const Homecard = ({ apidata }) => {
                 ))}
             </div>
             <div
-                className="container w-full flex justify-center mt-8 text-xs md:text-sm"
+                className="container w-full flex justify-center mt-8 text-xs"
                 dangerouslySetInnerHTML={{ __html: apidata?.bottomtext }}
+                
             ></div>
         </div>
     );

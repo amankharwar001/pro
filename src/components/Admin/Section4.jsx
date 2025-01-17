@@ -83,7 +83,7 @@ const Section4Form = ({setActiveBox}) => {
     <div className="p-4 bg-slate-50 shadow-inner rounded-md space-y-4">
         <div className='flex gap-5 items-center flex-wrap'>
             <div className=''>
-                <ImageUploader referenceType={"homepage_section4"} referenceId={1} />
+                <ImageUploader referenceType={"homepage_section4"} referenceId={1} width={349} height={563} />
             </div>
             <div className='max-w-full grow '>
                 <CommonImageUpload referenceType={"homepage_section_4"} imageCount={3} /> 

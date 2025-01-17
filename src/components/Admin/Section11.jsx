@@ -80,7 +80,7 @@ export default function Section11Manager({ setActiveBox }) {
 
       {/* ImageUploader will be shown only if sectionData is loaded */}
       {sectionData && (
-        <ImageUploader referenceType={"homepage_section_11_primary"} />
+        <ImageUploader referenceType={"homepage_section_11_primary"} width={62} height={52} />
       )}
 
       {message && <p className="text-red-500 mb-4">{message}</p>}

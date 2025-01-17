@@ -103,7 +103,7 @@ export default function Section5Product({ productpage, setActiveBox }) {
       <h1 className="text-2xl font-bold mb-4">Section 5 Product</h1>
       {loading && <p>Loading...</p>}
       {error && <p className="text-red-500">{error}</p>}
-      <ImageUploader referenceType={productpage?.id} referenceId={5} />
+      <ImageUploader referenceType={productpage?.id} referenceId={5} width={450} height={610}/>
 
       {!loading && (
         <form className="space-y-4">
@@ -132,7 +132,7 @@ export default function Section5Product({ productpage, setActiveBox }) {
             {data?.info?.map((item, index) => (
               <div key={index} className="border p-4 rounded mb-4">
                 <div>
-                  <ImageUploader referenceType={productpage?.id} referenceId={index + 51} />
+                  <ImageUploader referenceType={productpage?.id} referenceId={index + 51} width={50} height={50}/>
                   <label className="block font-medium">Title {index + 1}</label>
                   <input
                     type="text"

@@ -74,8 +74,8 @@ export default function Section7Manager({setActiveBox}) {
     <div className="p-4">
       {message && <p className={`mb-4 ${message.includes("Failed") ? "text-red-500" : "text-green-500"}`}>{message}</p>}
       <div className="flex gap-5 items-center pb-5">
-        <ImageUploader referenceType={"homepage_section7_primary"} />
-        <ImageUploader referenceType={"homepage_section7_1"} />
+        <ImageUploader referenceType={"homepage_section7_primary"} width={470} height={630} />
+        <ImageUploader referenceType={"homepage_section7_1"} width={365} height={245} />
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">

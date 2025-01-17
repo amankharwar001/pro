@@ -5,6 +5,10 @@ import { Fade, Slide } from 'react-awesome-reveal';
 import Footercta from './Footercta';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { FaTwitter } from "react-icons/fa";
+import { FaFacebookF } from "react-icons/fa";
+import { FaLinkedinIn } from "react-icons/fa";
+import { FaPinterestP } from "react-icons/fa";
 
 
 export default function FooterSection() {
@@ -139,30 +143,30 @@ export default function FooterSection() {
 
             <div className="flex space-x-4 justify-center mt-3 md:mt-0">
               <Fade triggerOnce delay={1000}>
-                <div className="border border-slate-700 rounded-full p-2 flex items-center justify-center w-8 h-8">
-                  <a href="https://twitter.com/yourprofile" target="_blank" rel="noopener noreferrer">
-                    <FontAwesomeIcon icon={faTwitter} size="lg" style={{ color: '#334155' }} />
+                <div className="border border-slate-700 group  hover:border-red-600  rounded-full p-2 flex items-center justify-center w-8 h-8">
+                  <a href="#" target="_blank" rel="noopener noreferrer" className=''>
+                    <FaTwitter  size={18} className='text-[#334155] group-hover:text-red-600'/>
                   </a>
                 </div>
               </Fade>
               <Fade triggerOnce delay={1100}>
-                <div className="border border-slate-700 rounded-full p-2 flex items-center justify-center w-8 h-8">
-                  <a href="https://facebook.com/yourprofile" target="_blank" rel="noopener noreferrer">
-                    <FontAwesomeIcon icon={faFacebookF} size="lg" style={{ color: '#334155' }} />
+                <div className="border border-slate-700 group hover:border-red-600 rounded-full p-2 flex items-center justify-center w-8 h-8">
+                  <a href="#" target="_blank" rel="noopener noreferrer">
+                    <FaFacebookF  size={18} className='text-[#334155] group-hover:text-red-600' />
                   </a>
                 </div>
               </Fade>
               <Fade triggerOnce delay={1200}>
-                <div className="border border-slate-700 rounded-full p-2 flex items-center justify-center w-8 h-8">
-                  <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">
-                    <FontAwesomeIcon icon={faLinkedinIn} size="lg" style={{ color: '#334155' }} />
+                <div className="border border-slate-700 group hover:border-red-600 rounded-full p-2 flex items-center justify-center w-8 h-8">
+                  <a href="#" target="_blank" rel="noopener noreferrer">
+                    <FaLinkedinIn size={18} className='text-[#334155] group-hover:text-red-600'/>
                   </a>
                 </div>
               </Fade>
               <Fade triggerOnce delay={1300}>
-                <div className="border border-slate-700 rounded-full p-2 flex items-center justify-center w-8 h-8">
-                  <a href="https://pinterest.com/yourprofile" target="_blank" rel="noopener noreferrer">
-                    <FontAwesomeIcon icon={faPinterestP} size="lg" style={{ color: '#334155' }} />
+                <div className="border border-slate-700 group hover:border-red-600 rounded-full p-2 flex items-center justify-center w-8 h-8">
+                  <a href="#" target="_blank" rel="noopener noreferrer">
+                    <FaPinterestP size={18} className='text-[#334155] group-hover:text-red-600' />
                   </a>
                 </div>
               </Fade>

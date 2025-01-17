@@ -13,7 +13,7 @@ const HeroSections = ({
     <div className="bg-[#F2F2F2] w-full">
       <div className="container min-w-[360px] overflow-hidden mx-auto pb-5">
         {/* Hero Section Wrapper */}
-        <div className="relative bg-zinc-100 rounded-2xl overflow-hidden mt-5 min-h-[45vh] flex flex-col justify-center">
+        <div className="relative bg-zinc-100 rounded-2xl overflow-hidden min-h-[45vh] flex flex-col justify-center">
           {/* Hero Image */}
           {image ? (
             <motion.img
@@ -37,7 +37,8 @@ const HeroSections = ({
           <div className="absolute inset-0 bg-black bg-opacity-30"></div>
 
           {/* Hero Content */}
-          <div className="absolute inset-0 z-10 flex flex-col justify-center items-start text-white px-6 sm:px-10">
+          {/* <div className="absolute inset-0 z-10 flex flex-col justify-center items-start text-white px-6 sm:px-10"> */}
+          <div className="absolute z-10 top-20 md:top-1/4 flex md:max-w-2xl flex-col md:pl-20 md:items-start text-white px-7">
             {/* Title */}
             {heroSection.title && (
               <motion.h1
@@ -83,7 +84,7 @@ const HeroSections = ({
                 className="mt-5"
               >
                 <Link href={heroSection.btnLink}>
-                  <button className="bg-[#003066] rounded-full text-white text-sm sm:text-base lg:text-lg px-4 sm:px-6 py-2 sm:py-3">
+                  <button className="bg-[#013466] hover:bg-red-600 rounded-full text-white text-sm sm:text-base lg:text-lg px-4 sm:px-6 py-2 sm:py-3">
                     {heroSection.btn}
                   </button>
                 </Link>

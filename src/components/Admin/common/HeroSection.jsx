@@ -74,7 +74,7 @@ const HeroSectionForm = ({ onSubmitId, url,referencetype,setActiveBox }) => {
       <div>
         <span className="font-bold text-xs">Hero Section Image</span>
         <div className="bg-slate-100 p-4 rounded-md mt-2">
-          <ImageUploader referenceType={referencetype} />
+          <ImageUploader referenceType={referencetype} width={1920} height={750}/>
         </div>
       </div>
       <form onSubmit={handleSubmit} className="space-y-4 w-full">

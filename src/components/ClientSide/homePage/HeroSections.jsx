@@ -31,7 +31,7 @@
 //               transition={{ duration: 1 }}
 //             />
 //           )}
-          
+
 //           <div className="absolute z-10 top-20 md:top-1/4 flex md:max-w-2xl flex-col md:pl-20 md:items-start text-white px-7">
 //             <motion.h1
 //               initial={{ opacity: 0, y: 50 }}
@@ -108,12 +108,21 @@ const HeroSections = ({ apidata }) => {
 
   return (
     <div className="bg-[#F2F2F2]  ">
+      {/* <div class="p-4 flex flex-col items-center justify-center">
+        <div class="cursor-pointer">
+          <button class="relative inline-flex items-center justify-center bg-[#013466] px-6 py-3 overflow-hidden font-medium text-teal-600 transition duration-300 ease-out rounded-md shadow-md group">
+            <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-red-600 group-hover:translate-x-0 ease">
+            </span>
+            <span class="relative text-white">Contact Us</span>
+          </button>
+        </div>
+      </div> */}
       <div className="">
         <div className="container  min-w-[360px] overflow-hidden mx-auto pb-5">
           {/* <Header /> */}
 
           {/* Hero Section Wrapper */}
-          <div className="relative bg-zinc-100 rounded-2xl overflow-hidden mt-5 min-h-[45vh] flex flex-col justify-center">
+          <div className="relative bg-zinc-100 rounded-2xl overflow-hidden  min-h-[45vh] flex flex-col justify-center">
             {/* Hero Image */}
             {image && (
               <motion.img
@@ -130,7 +139,8 @@ const HeroSections = ({ apidata }) => {
             <div className="absolute inset-0 bg-black bg-opacity-30 "></div>
 
             {/* Hero Content */}
-            <div className="absolute inset-0 z-10 flex flex-col justify-center items-start text-white px-6 sm:px-10">
+            {/* <div className="absolute inset-0 z-10 flex flex-col justify-center items-start text-white px-6 sm:px-10"> */}
+            <div className="absolute z-10 top-20 md:top-1/4 flex md:max-w-2xl flex-col md:pl-20 md:items-start text-white px-7">
               <motion.h1
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -156,7 +166,7 @@ const HeroSections = ({ apidata }) => {
                 className="mt-5"
               >
                 <Link href={btnLink}>
-                  <button className="bg-[#003066] rounded-full text-white text-sm sm:text-base lg:text-lg px-4 sm:px-6 py-2 sm:py-3">
+                  <button className="bg-[#013466] hover:bg-red-600 rounded-full text-white text-sm sm:text-base lg:text-lg px-4 sm:px-6 py-2 sm:py-3">
                     {btn}
                   </button>
                 </Link>

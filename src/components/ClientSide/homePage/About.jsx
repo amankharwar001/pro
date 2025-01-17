@@ -21,7 +21,7 @@ const About = ({ apidata }) => {
                                 href={apidata?.btnLink}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex w-auto border border-white text-white text-base md:text-lg justify-start md:justify-center p-2 md:px-4 rounded-full "
+                                className="flex w-auto border border-white hover:bg-white hover:text-black text-white text-base md:text-lg justify-start md:justify-center p-2 md:px-4 rounded-full "
                             >
                                 {apidata?.btn}
                             </a>
@@ -52,7 +52,7 @@ const About = ({ apidata }) => {
                                 <Image
                                     src={`/${image.filePath}`}
                                     alt={image.altText || `Paramotor image ${index + 1}`}
-                                    className="w-full md:h-5 object-contain mx-auto"
+                                    className=" md:w-full  md:h-5 object-contain mx-auto mt-5 md:mt-0"
                                     width={131}
                                     height={75}
                                 />

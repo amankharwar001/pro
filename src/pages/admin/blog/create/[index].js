@@ -377,7 +377,7 @@ const Index = () => {
           <div className="mt-5 md:mt-0 md:w-64">
             <div className="border shadow-inner rounded-lg p-4 flex md:block items-center flex-col bg-gray-50">
               <label className="block font-medium text-gray-600 mb-1">Feature Image</label>
-              <ImageUploader referenceType={index} />
+              <ImageUploader referenceType={index} width={1320} height={420}/>
             </div>
             <div className="mt-5 px-4 pb-4 border border-gray-200 bg-white rounded-lg shadow-lg">
               <label className="block font-medium text-gray-600 pt-2 pb-1">Categories</label>

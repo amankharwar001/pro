@@ -76,7 +76,7 @@ const Test = ({setActiveBox}) => {
 
   return (
     <div className=" mx-auto p-4 bg-slate-100 shadow-inner rounded-lg space-y-4">
-      <ImageUploader referenceType={"hero_section"}/>
+      <ImageUploader referenceType={"hero_section"} width={1920} height={750}/>
       <div className="flex flex-col space-y-1">
         <label className="text-sm font-medium text-gray-700">Heading</label>
         <input

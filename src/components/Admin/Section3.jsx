@@ -85,8 +85,8 @@ const Section3Form = ({setActiveBox}) => {
         <div className="p-4 mx-auto bg-slate-50 shadow-inner rounded-lg">
             {/* <h2 className="text-xl font-semibold mb-4"> Section 3</h2> */}
             <div className='flex gap-10 flex-wrap mb-5'>
-                <ImageUploader referenceType={"home_section3_1"} />
-                <ImageUploader referenceType={"home_section3_2"}/>
+                <ImageUploader referenceType={"home_section3_1"} width={350} height={700} />
+                <ImageUploader referenceType={"home_section3_2"} width={250} height={410} />
             </div>
 
             {error && <div className="text-red-500 mb-4">{error}</div>}

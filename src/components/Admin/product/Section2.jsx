@@ -69,6 +69,7 @@ const Section2Form = ({ productpage,setActiveBox }) => {  // Add productpage?.id
             key={index}
             referenceType={productpage?.id}
             referenceId={index + 21}
+            width={160} height={115}
           />
         ))}
       </div>

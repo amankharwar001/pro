@@ -116,7 +116,7 @@ const Section5Form = ({setActiveBox}) => {
                                 <h4 className="text-md font-medium text-gray-700 mb-2">Box {index + 1}</h4>
                                 <div>
 
-                                <ImageUploader referenceType={`homepage_section5_${index+1}`} />
+                                <ImageUploader referenceType={`homepage_section5_${index+1}`} width={200} height={100}  />
                                     <div className="">
                                         <div>
                                             <label className="block text-sm font-medium text-gray-700 mb-1">Box Heading</label>

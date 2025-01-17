@@ -1,4 +1,5 @@
 import ChangeCredentials from '@/components/Admin/adminSetting';
+import ScriptAndEmail from '@/components/Admin/adminSetting/ScriptAndEmail';
 import UpdateEmailForm from '@/components/Admin/adminSetting/UpdateEmail';
 import Layout from '@/components/Admin/common/Layout';
 import ImageUploader from '@/components/Admin/ImageUploader';
@@ -137,6 +138,7 @@ const Index = () => {
           {activeBox === 2 && <div><UpdateEmailForm /></div>}          
         </div>
       </div>
+      <ScriptAndEmail/>
       
     </>
   );

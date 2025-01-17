@@ -90,7 +90,7 @@ const Section8Page = ({ setActiveBox }) => {
     <div className="p-4">
       {/* <h1 className="text-3xl font-semibold text-center text-gray-800 mb-6">Manage Section 8</h1> */}
       <div className="flex flex-wrap gap-5 items-center">
-        <ImageUploader referenceType={"homepage_section_8_primary"} />
+        <ImageUploader referenceType={"homepage_section_8_primary"} width={497} height={642} />
         <div className="grow">
 
           <CommonImageUpload referenceType={"homepage_section_8"} imageCount={2} />

@@ -189,7 +189,7 @@ const Form1 = () => {
             </div>
             <button
               type="submit"
-              className="w-full sm:w-auto px-6 py-3 text-white bg-blue-800 rounded-md hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full sm:w-auto px-6 py-3 text-white bg-[#013466] hover:bg-red-600 rounded-md  focus:outline-none focus:ring-2 focus:ring-blue-500"
               disabled={loading}
             >
               {loading ? "Submitting..." : "SEND MESSAGE"}
