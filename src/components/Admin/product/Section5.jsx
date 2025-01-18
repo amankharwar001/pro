@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ImageUploader from "../ImageUploader";
 
-export default function Section5Product({ productpage, setActiveBox }) {
+export default function Section5Product({ productpage, setActiveBox,sectionsStatusHandle }) {
   const [data, setData] = useState({
     heading: "",
     text: "",
@@ -27,6 +27,7 @@ export default function Section5Product({ productpage, setActiveBox }) {
         const result = await response.json();
         setData(result);
         setIsEditing(true); // Data exists, switch to edit mode
+        sectionsStatusHandle(true)
       } catch (err) {
         setError(err.message);
         setIsEditing(false); // No data, switch to create mode

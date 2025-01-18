@@ -16,7 +16,7 @@ const modules = {
   ],
 };
 
-const Section2 = ({setActiveBox}) => {
+const Section2 = ({setActiveBox,sectionsStatusHandle}) => {
   const [editorContent, setEditorContent] = useState('');
   const [loading, setLoading] = useState(true);
   const [contentId, setContentId] = useState(null);
@@ -30,6 +30,7 @@ const Section2 = ({setActiveBox}) => {
           const data = await response.json();
           setEditorContent(data.section.heading);
           setContentId(data.section.id); // Save the ID for future updates
+          sectionsStatusHandle(true)
         } else {
           console.warn('No content found');
         }

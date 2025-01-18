@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ImageUploader from './ImageUploader';
 import CommonImageUpload from './CommonImageUpload';
 
-const Section4Form = ({setActiveBox}) => {
+const Section4Form = ({setActiveBox,sectionsStatusHandle}) => {
   const [heading, setHeading] = useState('');
   const [content, setContent] = useState('');
   const [leadName1, setLeadName1] = useState('');
@@ -30,6 +30,7 @@ const Section4Form = ({setActiveBox}) => {
             setLeadName2(leadDetails[1].leadName || '');
             setLeadNo2(leadDetails[1].leadNo || '');
           }
+          sectionsStatusHandle(true)
         } 
       } catch (error) {
         console.error('Error fetching data:', error);

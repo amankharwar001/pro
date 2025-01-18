@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { FaInfo } from "react-icons/fa";
 
-const ImageUploader = ({ referenceType, referenceId: propReferenceId, width, height }) => {
+const ImageUploader = ({ referenceType, referenceId: propReferenceId, width, height,setImageStatus }) => {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
   const [image, setImage] = useState(null);
   const [altText, setAltText] = useState('');
@@ -24,8 +24,10 @@ const ImageUploader = ({ referenceType, referenceId: propReferenceId, width, hei
         const data = await res.json();
         if (data.success) {
           setImages(data.images);
+          setImageStatus(true)
         } else {
           setUploadStatus('Failed to fetch images.');
+          setImageStatus(false)
         }
       } catch (error) {
         console.error('Error fetching images:', error);
@@ -69,6 +71,7 @@ const ImageUploader = ({ referenceType, referenceId: propReferenceId, width, hei
         }
         setImage(null);
         setAltText('');
+        setImageStatus(true)
       } else {
         setUploadStatus('Failed to upload image.');
       }
@@ -87,6 +90,7 @@ const ImageUploader = ({ referenceType, referenceId: propReferenceId, width, hei
       const data = await res.json();
       if (data.success) {
         setImages((prevImages) => prevImages.filter((img) => img.id !== id));
+        setImageStatus(false)
       } else {
         setUploadStatus('Failed to delete image.');
       }
@@ -198,7 +202,7 @@ const ImageUploader = ({ referenceType, referenceId: propReferenceId, width, hei
         {width && height &&(
           <span className='text-[10px] mb-2 flex gap-1 items-center text-gray-500'><FaInfo className='rounded-full bg-slate-700 text-white p-[2px]' size={12} /> Width: {width}px | Height: {height}px</span>
         )}
-        <form className="space-y-4 max-w-[320px]">
+        <div className="space-y-4 max-w-[320px]">
           <div className="flex flex-col space-y-2 max-w-40">
             <input
               type="file"
@@ -220,7 +224,7 @@ const ImageUploader = ({ referenceType, referenceId: propReferenceId, width, hei
               {editImageId ? 'Update' : 'Upload'}
             </button>
           </div>
-        </form>
+        </div>
       </div>
       <div className="flex pl-2   break-words max-w-44 justify-center">
         {uploadStatus && <p className=" text-cyan-600 text-sm">{uploadStatus}</p>}

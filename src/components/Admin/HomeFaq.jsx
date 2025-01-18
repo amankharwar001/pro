@@ -5,7 +5,7 @@ import "react-quill/dist/quill.snow.css";
 // Dynamically import React-Quill
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
-export default function FAQManager({setActiveBox}) {
+export default function FAQManager({setActiveBox,sectionsStatusHandle}) {
   const [faqData, setFaqData] = useState(null);
   const [form, setForm] = useState({
     heading: "",
@@ -23,6 +23,7 @@ export default function FAQManager({setActiveBox}) {
         if (result.success) {
           setFaqData(result.data);
           setForm(result.data); // Prefill form with fetched data
+          sectionsStatusHandle(true)
         } else {
           setMessage(result.message);
         }

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import ImageUploader from '../ImageUploader';
 
-const AboutSection3Form = ({ setActiveBox }) => {
+const AboutSection3Form = ({ setActiveBox,sectionsStatusHandle }) => {
   const [formData, setFormData] = useState({
     heading: '',
     card: [
@@ -38,6 +38,7 @@ const AboutSection3Form = ({ setActiveBox }) => {
             ],
           });
           setIsUpdate(true); // Set to update mode
+          sectionsStatusHandle(true)
         } else {
           console.error('Failed to fetch data from the server');
         }

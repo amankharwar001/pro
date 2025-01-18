@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import ImageUploader from './ImageUploader';
 import CommonImageUpload from './CommonImageUpload';
 
-const Section3Form = ({setActiveBox}) => {
+const Section3Form = ({ setActiveBox, sectionsStatusHandle }) => {
     const [sectionData, setSectionData] = useState(null);
     const [heading, setHeading] = useState('');
     const [content, setContent] = useState('');
@@ -26,6 +26,7 @@ const Section3Form = ({setActiveBox}) => {
                     setAgentBrief(result.data.agentBrief);
                     setLeadNo(result.data.leadNo);
                     setLeadName(result.data.leadName);
+                    sectionsStatusHandle(true)
                 } else {
                     setError('Section not found');
                 }
@@ -84,95 +85,98 @@ const Section3Form = ({setActiveBox}) => {
     return (
         <div className="p-4 mx-auto bg-slate-50 shadow-inner rounded-lg">
             {/* <h2 className="text-xl font-semibold mb-4"> Section 3</h2> */}
-            <div className='flex gap-10 flex-wrap mb-5'>
-                <ImageUploader referenceType={"home_section3_1"} width={350} height={700} />
-                <ImageUploader referenceType={"home_section3_2"} width={250} height={410} />
+            <div className='md:flex block gap-5 items-center '>
+                <div className='flex gap-10 flex-wrap mb-5'>
+                    <ImageUploader referenceType={"home_section3_1"} width={350} height={700} />
+                    <ImageUploader referenceType={"home_section3_2"} width={250} height={410} />
+                </div>
+                <div className='border bg-slate-100  rounded-lg overflow-hidden max-w-full grow '>
+                    <div className='p-5'>
+                        <span className='font-semibold opacity-40'> Agent Brief Images</span>
+                        <CommonImageUpload referenceType={"homepage_section_3"} imageCount={4} />
+                    </div>
+                </div>
             </div>
 
             {error && <div className="text-red-500 mb-4">{error}</div>}
-            
-                <form onSubmit={handleSubmit} className='pt-5'>
-                    <div className="mb-4">
-                        <label htmlFor="heading" className="block text-sm font-medium text-gray-700">
-                            Heading
+
+            <form onSubmit={handleSubmit} className='pt-5'>
+                <div className="mb-4">
+                    <label htmlFor="heading" className="block text-sm font-medium text-gray-700">
+                        Heading
+                    </label>
+                    <input
+                        type="text"
+                        id="heading"
+                        value={heading}
+                        onChange={(e) => setHeading(e.target.value)}
+                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    />
+                </div>
+
+                <div className="mb-4">
+                    <label htmlFor="content" className="block text-sm font-medium text-gray-700">
+                        Content
+                    </label>
+                    <textarea
+                        id="content"
+                        value={content}
+                        onChange={(e) => setContent(e.target.value)}
+                        rows="4"
+                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    ></textarea>
+                </div>
+
+
+                <div className="mb-4 mt-2">
+                    <label htmlFor="agentBrief" className="block text-sm font-medium text-gray-700">
+                        Agent Brief
+                    </label>
+                    <textarea
+                        id="agentBrief"
+                        value={agentBrief}
+                        onChange={(e) => setAgentBrief(e.target.value)}
+                        rows="3"
+                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    ></textarea>
+                </div>
+                <div className='flex gap-5 '>
+                    <div className="mb-4 grow">
+                        <label htmlFor="leadNo" className="block text-sm font-medium text-gray-700">
+                            Lead Number
                         </label>
                         <input
                             type="text"
-                            id="heading"
-                            value={heading}
-                            onChange={(e) => setHeading(e.target.value)}
+                            id="leadNo"
+                            value={leadNo}
+                            onChange={(e) => setLeadNo(e.target.value)}
                             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         />
                     </div>
-
-                    <div className="mb-4">
-                        <label htmlFor="content" className="block text-sm font-medium text-gray-700">
-                            Content
+                    <div className="mb-4 grow">
+                        <label htmlFor="leadName" className="block text-sm font-medium text-gray-700">
+                            Lead Name
                         </label>
-                        <textarea
-                            id="content"
-                            value={content}
-                            onChange={(e) => setContent(e.target.value)}
-                            rows="4"
+                        <input
+                            type="text"
+                            id="leadName"
+                            value={leadName}
+                            onChange={(e) => setLeadName(e.target.value)}
                             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                        ></textarea>
+                        />
                     </div>
-                    <div className='border bg-slate-100  rounded-lg overflow-hidden '>
-                        <div className='p-5'>
-                            <span className='font-semibold opacity-40'> Agent Brief Images</span>
-                            <CommonImageUpload referenceType={"homepage_section_3"} imageCount={4} />
-                        </div>
-                    </div>
-
-                    <div className="mb-4 mt-2">
-                        <label htmlFor="agentBrief" className="block text-sm font-medium text-gray-700">
-                            Agent Brief
-                        </label>
-                        <textarea
-                            id="agentBrief"
-                            value={agentBrief}
-                            onChange={(e) => setAgentBrief(e.target.value)}
-                            rows="3"
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                        ></textarea>
-                    </div>
-                    <div className='flex gap-5 '>
-                        <div className="mb-4 grow">
-                            <label htmlFor="leadNo" className="block text-sm font-medium text-gray-700">
-                                Lead Number
-                            </label>
-                            <input
-                                type="text"
-                                id="leadNo"
-                                value={leadNo}
-                                onChange={(e) => setLeadNo(e.target.value)}
-                                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                            />
-                        </div>
-                        <div className="mb-4 grow">
-                            <label htmlFor="leadName" className="block text-sm font-medium text-gray-700">
-                                Lead Name
-                            </label>
-                            <input
-                                type="text"
-                                id="leadName"
-                                value={leadName}
-                                onChange={(e) => setLeadName(e.target.value)}
-                                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                            />
-                        </div>
-                    </div>
+                </div>
 
 
 
-                    <button
-                        type="submit"
-                        className="w-full bg-blue-500 text-white px-4 py-2 rounded-md"
-                    >
-                        Update Section 3
-                    </button>
-                </form>
-            
+                <button
+                    type="submit"
+                    className="w-full bg-blue-500 text-white px-4 py-2 rounded-md"
+                >
+                    Update Section 3
+                </button>
+            </form>
+
         </div>
     );
 };

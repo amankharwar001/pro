@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ImageUploader from './ImageUploader';
 
-const Section5Form = ({setActiveBox}) => {
+const Section5Form = ({setActiveBox,sectionsStatusHandle}) => {
     const [heading, setHeading] = useState('');
     const [content, setContent] = useState('');
     const [boxes, setBoxes] = useState([
@@ -26,6 +26,7 @@ const Section5Form = ({setActiveBox}) => {
                         { heading: '', content: '' },
                         { heading: '', content: '' },
                     ]);
+                    sectionsStatusHandle(true)
                 } else {
                     alert('Failed to fetch section data');
                 }
@@ -116,7 +117,7 @@ const Section5Form = ({setActiveBox}) => {
                                 <h4 className="text-md font-medium text-gray-700 mb-2">Box {index + 1}</h4>
                                 <div>
 
-                                <ImageUploader referenceType={`homepage_section5_${index+1}`} width={200} height={100}  />
+                                    <ImageUploader referenceType={`homepage_section5_${index+1}`} width={200} height={100}  />
                                     <div className="">
                                         <div>
                                             <label className="block text-sm font-medium text-gray-700 mb-1">Box Heading</label>

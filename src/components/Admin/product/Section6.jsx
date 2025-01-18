@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import ImageUploader from "../ImageUploader";
 
-export default function Section6Product({ productpage, setActiveBox }) {
+export default function Section6Product({ productpage, setActiveBox,sectionsStatusHandle }) {
   const [formData, setFormData] = useState({
     heading: "",
     text: "",
@@ -30,7 +30,7 @@ export default function Section6Product({ productpage, setActiveBox }) {
         const result = await response.json();
         setFormData(result);
         setIsEditing(true); // Data fetched, it's in edit mode
-        
+        sectionsStatusHandle(true)
       } catch (err) {
         setError(err.message);
       } finally {

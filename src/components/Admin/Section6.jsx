@@ -4,7 +4,7 @@ const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 import 'react-quill/dist/quill.snow.css';
 import ImageUploader from "./ImageUploader";
 
-const AdminSection6Panel = ({setActiveBox}) => {
+const AdminSection6Panel = ({setActiveBox,sectionsStatusHandle}) => {
   const [formData, setFormData] = useState({
     heading: "",
     content: "",
@@ -31,6 +31,7 @@ const AdminSection6Panel = ({setActiveBox}) => {
             ...result.data,
             card: result.data.card.slice(0, 3), // Ensure exactly 3 cards
           });
+          sectionsStatusHandle(true)
         }
       } catch (error) {
         console.error("Error fetching data:", error);

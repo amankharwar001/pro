@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default function Section7Product({ productpage, setActiveBox }) {
+export default function Section7Product({ productpage, setActiveBox,sectionsStatusHandle }) {
   const [formData, setFormData] = useState({
     heading: "",
     text: "",
@@ -32,6 +32,7 @@ export default function Section7Product({ productpage, setActiveBox }) {
         const result = await response.json();
         setFormData(result);
         setIsEditing(true); // Data exists, switch to edit mode
+        sectionsStatusHandle(true)
       } catch (err) {
         setError(err.message);
       } finally {

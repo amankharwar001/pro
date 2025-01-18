@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import CommonImageUpload from "../CommonImageUpload";
 import ImageUploader from "../ImageUploader";
 
-const Section2Form = ({ productpage,setActiveBox }) => {  // Add productpage?.id as a prop
+const Section2Form = ({ productpage,setActiveBox,sectionsStatusHandle }) => {  // Add productpage?.id as a prop
   const [title, setTitle] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false); // Track if data exists for editing
@@ -18,6 +18,7 @@ const Section2Form = ({ productpage,setActiveBox }) => {  // Add productpage?.id
           setTitle(data.title || "");
           setIsEditMode(true); // Enable edit mode if data exists
         }
+        sectionsStatusHandle(true)
       } catch (error) {
         console.error("Error fetching data:", error);
       }

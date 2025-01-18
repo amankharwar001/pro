@@ -4,7 +4,7 @@
 import { useState, useEffect } from 'react';
 import ImageUploader from '../ImageUploader';
 
-const AboutSectionForm = ({ setActiveBox }) => {
+const AboutSectionForm = ({ setActiveBox,sectionsStatusHandle }) => {
   const [formData, setFormData] = useState({
     title: '',
     heading: '',
@@ -30,6 +30,7 @@ const AboutSectionForm = ({ setActiveBox }) => {
               text: data.text,
             });
           }
+          sectionsStatusHandle(true)
         } else {
           throw new Error('Failed to fetch section data');
         }

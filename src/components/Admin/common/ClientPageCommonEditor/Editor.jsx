@@ -10,7 +10,7 @@ import { useRouter } from "next/router";
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 // Custom modules and handlers
-const ClientSideCommonEditor =({ referenceType }) => {
+const ClientSideCommonEditor =({ referenceType, sectionsStatusHandle}) => {
   
   const [editorContent, setEditorContent] = useState("");
   const [loading, setLoading] = useState(true);
@@ -104,6 +104,7 @@ const ClientSideCommonEditor =({ referenceType }) => {
           const data = await response.json();
           setEditorContent(data.data.content); // Fetch full HTML content
           setContentId(data.data.id); // Save the ID for future updates
+          sectionsStatusHandle(true)
         } else {
           console.warn("No content found.");
         }

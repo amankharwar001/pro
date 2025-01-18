@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import ImageUploader from "../ImageUploader";
 
-const HeroSectionForm = ({ onSubmitId, url,referencetype,setActiveBox }) => {
+const HeroSectionForm = ({ onSubmitId, url,referencetype,setActiveBox,sectionsStatusHandle }) => {
   const [formData, setFormData] = useState({
     id: "",
     title: "",
@@ -23,6 +23,7 @@ const HeroSectionForm = ({ onSubmitId, url,referencetype,setActiveBox }) => {
           if (response.data) {
             setFormData({ ...response.data, id: response.data._id });
           }
+          sectionsStatusHandle(true)
         } else {
           console.error("Failed to fetch data", await res.text());
         }

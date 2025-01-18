@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import ImageUploader from "../ImageUploader";
 
-const Section3Form = ({ productpage,setActiveBox }) => {
+const Section3Form = ({ productpage,setActiveBox,sectionsStatusHandle }) => {
   const [heading, setHeading] = useState("");
   const [text, setText] = useState("");
   const [info, setInfo] = useState([
@@ -26,6 +26,7 @@ const Section3Form = ({ productpage,setActiveBox }) => {
           setInfo(data.info || info); // Use the existing data or defaults
           setIsEditMode(true); // Enable edit mode if data exists
         }
+        sectionsStatusHandle(true)
       } catch (error) {
         console.error("Error fetching data:", error);
       }

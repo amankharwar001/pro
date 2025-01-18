@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import ImageUploader from "./ImageUploader";
 import CommonImageUpload from "./CommonImageUpload";
 
-const Section8Page = ({ setActiveBox }) => {
+const Section8Page = ({ setActiveBox,sectionsStatusHandle }) => {
   const [sectionData, setSectionData] = useState({
     heading: "",
     content: "",
@@ -21,6 +21,7 @@ const Section8Page = ({ setActiveBox }) => {
 
         if (data.success) {
           setSectionData(data.data);
+          sectionsStatusHandle(true)
         } else {
           setMessage(data.message);
         }

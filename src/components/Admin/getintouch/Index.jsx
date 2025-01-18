@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ImageUploader from "../ImageUploader";
 
-export default function Section5Product({setActiveBox}) {
+export default function Section5Product({setActiveBox,sectionsStatusHandle}) {
   const [data, setData] = useState({
     heading: "",
     content: "",
@@ -30,6 +30,7 @@ export default function Section5Product({setActiveBox}) {
           card: result.card || [{ title: "", content: "" }, { title: "", content: "" }, { title: "", content: "" }],
         });
         setEdit(true);
+        sectionsStatusHandle(true)
       } catch (err) {
         setError(err.message);
       } finally {

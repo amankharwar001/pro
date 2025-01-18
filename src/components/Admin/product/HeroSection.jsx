@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import ImageUploader from "../ImageUploader";
 
-const HeroSectionForm = ({ productpage, onSubmitId,setActiveBox }) => {
+const HeroSectionForm = ({ productpage, onSubmitId,setActiveBox,sectionsStatusHandle }) => {
   const [formData, setFormData] = useState({
     nickname:"",
     title: "",
@@ -26,6 +26,7 @@ const HeroSectionForm = ({ productpage, onSubmitId,setActiveBox }) => {
           setFormData(data); // Populate form with existing data
           setIsEditMode(true); // Enable edit mode
         }
+        sectionsStatusHandle(true)
       } catch (error) {
         console.error("Error fetching data:", error);
       }

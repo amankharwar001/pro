@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CommonImageUpload from "./CommonImageUpload";
 
-const TestimonialManager = ({setActiveBox}) => {
+const TestimonialManager = ({setActiveBox,sectionsStatusHandle}) => {
   const [formData, setFormData] = useState({
     heading: "",
     content: "",
@@ -16,6 +16,7 @@ const TestimonialManager = ({setActiveBox}) => {
       const data = await response.json();
       if (data.success) {
         setFormData(data.data); // Prepopulate form if data exists
+        sectionsStatusHandle(true)
       } else {
         setFormData({
           heading: "",

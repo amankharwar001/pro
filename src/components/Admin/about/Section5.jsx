@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const AboutSection5Form = ({setActiveBox}) => {
+const AboutSection5Form = ({setActiveBox,sectionsStatusHandle}) => {
     const [formData, setFormData] = useState([
         { counting: '', text: '' },
         { counting: '', text: '' },
@@ -20,6 +20,7 @@ const AboutSection5Form = ({setActiveBox}) => {
                         setFormData(data.card); // Populate formData with fetched data
                         setIsUpdate(true); // Set update mode
                     }
+                    sectionsStatusHandle(true)
                 } else {
                     console.error('Failed to fetch data');
                 }

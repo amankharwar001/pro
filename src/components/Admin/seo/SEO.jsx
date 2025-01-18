@@ -200,7 +200,7 @@
 
 import React, { useState, useEffect } from "react";
 
-const SeoPage = ({ page }) => {
+const SeoPage = ({ page,sectionsStatusHandle }) => {
   const [isSEOField, setIsSEOField] = useState({
     title: "",
     description: "",
@@ -226,10 +226,11 @@ const SeoPage = ({ page }) => {
         if (!response.ok) {
           throw new Error("Failed to fetch data.");
         }
-
+        
         const result = await response.json();
         setIsSEOField(result);
         setIsUpdating(true); // Set to true if data exists, indicating update mode
+        sectionsStatusHandle(true)
       } catch (error) {
         console.error(error);
       }

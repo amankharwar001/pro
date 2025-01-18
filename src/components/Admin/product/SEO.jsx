@@ -696,7 +696,7 @@
 
 import React, { useState, useEffect } from "react";
 
-const SeoPage = ({ productpage }) => {
+const SeoPage = ({ productpage,sectionsStatusHandle }) => {
     const [isSEOField, setIsSEOField] = useState({
         title: "",
         description: "",
@@ -719,7 +719,7 @@ const SeoPage = ({ productpage }) => {
                 slug: prevFields.title.replace(/\s+/g, "-").toLowerCase(),
             }));
         }
-    }, [isSEOField.title]);
+    }, [isSEOField]);
 
     // Fetch existing SEO data
     useEffect(() => {
@@ -731,6 +731,7 @@ const SeoPage = ({ productpage }) => {
                         const result = await response.json();
                         setIsSEOField(result);
                         setDataFetched(true); // Mark as existing data
+                        sectionsStatusHandle(true)
                     }
                 } catch (error) {
                     console.error("Error fetching SEO data:", error);

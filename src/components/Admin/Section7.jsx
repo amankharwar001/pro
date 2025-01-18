@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import ImageUploader from "./ImageUploader";
 
-export default function Section7Manager({setActiveBox}) {
+export default function Section7Manager({setActiveBox,sectionsStatusHandle}) {
   const [form, setForm] = useState({
     heading: "",
     content: "",
@@ -21,6 +21,7 @@ export default function Section7Manager({setActiveBox}) {
         if (result.success) {
           setForm(result.data); // Populate the form with fetched data
           setIsEditMode(true); // Enable PUT mode if data exists
+          sectionsStatusHandle(true)
         } else {
           setMessage(result.message);
           setIsEditMode(false); // Enable POST mode if no data

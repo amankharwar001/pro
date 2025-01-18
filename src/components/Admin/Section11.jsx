@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import ImageUploader from './ImageUploader';
 
-export default function Section11Manager({ setActiveBox }) {
+export default function Section11Manager({ setActiveBox,sectionsStatusHandle }) {
   const [sectionData, setSectionData] = useState(null);
   const [form, setForm] = useState({
     heading: "",
@@ -24,6 +24,7 @@ export default function Section11Manager({ setActiveBox }) {
           setSectionData(result.data);
           setForm(result.data); // Prefill form with fetched data for editing
           setIsEditing(true); // Mark as editing if data exists
+          sectionsStatusHandle(true)
         } else {
           setMessage(result.message);
         }

@@ -67,13 +67,7 @@ export default async function handler(req, res) {
       });
 
     } else if (req.method === 'GET') {
-      const heroSections = await HeroSection.findAll({
-        // include: SingleImage, 
-        include: [{
-          model: SingleImage,
-          where: { referenceType: 'hero_section' },
-        }]
-      })
+      const heroSections = await HeroSection.findOne()
 
       return res.status(200).json({
         success: true,

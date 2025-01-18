@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import CommonImageUpload from "./CommonImageUpload";
 
-export default function Section9Manager({setActiveBox}) {
+export default function Section9Manager({setActiveBox,sectionsStatusHandle}) {
     const [form, setForm] = useState({
         heading: "",
         content: "",
@@ -26,6 +26,7 @@ export default function Section9Manager({setActiveBox}) {
 
                 if (result.success) {
                     setForm(result.data); // Prefill form with fetched data
+                    sectionsStatusHandle(true)
                 } else {
                     setMessage(result.message);
                 }

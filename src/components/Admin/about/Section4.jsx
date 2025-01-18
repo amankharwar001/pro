@@ -127,7 +127,7 @@
 import { useState, useEffect } from 'react';
 import ImageUploader from '../ImageUploader';
 
-const AboutSection4Form = ({ setActiveBox }) => {
+const AboutSection4Form = ({ setActiveBox,sectionsStatusHandle }) => {
   const [formData, setFormData] = useState({
     card: [{ title: '', description: '' }, { title: '', description: '' }],
   });
@@ -148,6 +148,7 @@ const AboutSection4Form = ({ setActiveBox }) => {
         } else {
           console.error('Failed to fetch data', await res.text());
         }
+        sectionsStatusHandle(true)
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
