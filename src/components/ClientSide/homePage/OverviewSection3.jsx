@@ -53,7 +53,7 @@ const OverviewSection3 = ({apidata1,apidata2}) => {
 
     
     return (
-        <div className="container overflow-hidden m-auto pt-20 relative -mb-44">
+        <div className="container m-auto pt-20 relative -mb-44">
             <div className="grid md:grid-cols-2 z-10 gap-10" ref={ref}>
                 <div className="relative">
                     <div>

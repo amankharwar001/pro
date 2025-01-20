@@ -33,7 +33,7 @@ const Index = ({ data, error }) => {
       <Homecard apidata={data?.section6} />
       <PersonSection1 apidata={data?.section7} />
       <PersonSection2 apidata={data?.section8} />
-      <About apidata={data?.section9} />
+      {/* <About apidata={data?.section9} />  */}
       <Testomonial apidata={data?.testimonials} />
       <SectionSecurity apidata={data?.section11} />
       <FaqSection apidata={data?.faq} />
