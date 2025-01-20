@@ -72,11 +72,11 @@ export default function FooterSection() {
         <div className="container m-auto  md:place-content-start  md:text-start grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-10">
           <Slide triggerOnce direction="left">
             <div className="mt-4">
-            <Link href={baseUrl} className='flex m-auto'>
+            <Link href={baseUrl} className=''>
               <Image
                 src={`${baseUrl}${logo?.filePath}`}
                 alt={logo?.altText || 'logo'}
-                className="w-28 m-auto"
+                className="w-[10rem] "
                 width={100}
                 height={100}
               />

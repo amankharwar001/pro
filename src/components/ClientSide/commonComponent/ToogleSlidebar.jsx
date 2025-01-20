@@ -104,40 +104,38 @@ import Image from "next/image";
 import { Fade } from 'react-awesome-reveal';
 import Link from 'next/link';
 
-export default function Sidebar({ data }) {
-    const [isOpen, setIsOpen] = useState(false);
+export default function Sidebar({ data,isOpen ,closeSidebar}) {
+    // const [isOpen, setIsOpen] = useState(false);
 
     // Toggle sidebar visibility
-    const toggleSidebar = () => {
-        setIsOpen(!isOpen);
-    };
+    // const toggleSidebar = () => {
+    //     setIsOpen(!isOpen);
+    // };
 
     // Close sidebar when clicking a link or outside of the sidebar
-    const closeSidebar = () => {
-        setIsOpen(false);
-    };
+    
 
     return (
         <>
             {/* Menu icon */}
-            <button
+            {/* <button
                 onClick={toggleSidebar}
                 className="text-2xl p-2 m-2 text-[#003066]"
             >
                 <FaBars />
-            </button>
+            </button> */}
 
             {/* Sidebar overlay (dark background) */}
             {isOpen && (
                 <div
-                    className="fixed inset-0 bg-black opacity-50 z-40"
+                    className="fixed inset-0 bg-black opacity-50 z-[9999]"
                     onClick={closeSidebar}
                 ></div>
             )}
 
             {/* Sidebar */}
             <div
-                className={`fixed top-0 left-0 h-full w-64 bg-white shadow-lg z-50 transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'
+                className={`fixed top-0 left-0 h-full w-64 bg-white shadow-lg z-[9999] transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'
                     }`}
             >
                 {/* Sidebar content */}

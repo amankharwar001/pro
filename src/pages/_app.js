@@ -6,14 +6,36 @@ import Header from '@/components/ClientSide/commonComponent/Header';
 import { useRouter } from "next/router";
 import FooterSection from '@/components/ClientSide/commonComponent/FooterSection';
 import Layout from '@/components/Admin/common/Layout'; // Assuming Layout contains the Sidebar
+import { FaArrowCircleUp } from "react-icons/fa";
+import { useEffect, useState } from 'react';
 
 export default function App({ Component, pageProps, data }) {
   const router = useRouter();
   const pathname = router.pathname;
-  console.log("logo show is here1111",data)
+  console.log("logo show is here1111", data)
   // Check if it's an admin page or admin account page
   const isAdminPage = pathname.startsWith("/admin");
   const isAdminAccountPage = pathname.startsWith("/admin/account");
+  const [showScroll, setShowScroll] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 200) {
+        setShowScroll(true);
+      } else {
+        setShowScroll(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   const renderLayout = () => {
     switch (true) {
@@ -31,10 +53,22 @@ export default function App({ Component, pageProps, data }) {
         // For non-admin pages, render Header and Footer
         return (
           <>
-            <Header apikey={process.env.API_KEY} img={data}/>
+            <Header apikey={process.env.API_KEY} img={data} />
+            <div className='mt-[72px]'> </div>
+            
             <Component {...pageProps} />
             <FooterSection />
-          </>
+            {showScroll && (
+              <span
+                className="fixed z-[9999] bottom-16 md:bottom-20 right-10 w-[8vw] text-[#013466] cursor-pointer"
+                onClick={scrollToTop}
+              >
+                <FaArrowCircleUp
+                  className="border rounded-full  shadow-xl bg-white hover:bg-[#1f4469] hover:scale-105"
+                  size={50}
+                />
+              </span>
+            )}</>
         );
     }
   };
@@ -54,7 +88,7 @@ export default function App({ Component, pageProps, data }) {
 // Fetch data server-side
 export async function getServerSideProps() {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_PATH}api/public/logo`,{
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_PATH}api/public/logo`, {
       headers: {
         'api-key': process.env.API_KEY, // Send the API key in the request header
       },

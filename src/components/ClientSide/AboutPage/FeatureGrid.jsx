@@ -145,7 +145,7 @@ export default function FeatureGrid({ data = {}, baseUrl = "" }) {
             </div>
 
             {/* Feature Cards Grid */}
-            <div className="container overflow-hidden mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-6">
+            <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-6">
                 {data?.card?.map((feature, index) => {
                     const currentImage = images[index];
 
