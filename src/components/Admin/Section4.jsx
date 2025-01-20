@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ImageUploader from './ImageUploader';
 import CommonImageUpload from './CommonImageUpload';
 
-const Section4Form = ({setActiveBox,sectionsStatusHandle}) => {
+const Section4Form = ({ setActiveBox, sectionsStatusHandle }) => {
   const [heading, setHeading] = useState('');
   const [content, setContent] = useState('');
   const [leadName1, setLeadName1] = useState('');
@@ -10,6 +10,21 @@ const Section4Form = ({setActiveBox,sectionsStatusHandle}) => {
   const [leadName2, setLeadName2] = useState('');
   const [leadNo2, setLeadNo2] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [apiStatus, setApiStatus] = useState(false)
+  const [imageStatus, setImageStatus] = useState(false)
+  const [multiImageStatus, setMultiImageStatus] = useState(false)
+  console.log("multiImages show is here",multiImageStatus)
+
+
+
+  useEffect(() => {
+    if (apiStatus && imageStatus && multiImageStatus) {
+      sectionsStatusHandle(true);
+    } else {
+      sectionsStatusHandle(false);
+
+    }
+  }, [apiStatus, imageStatus,multiImageStatus]);
 
   // Fetch existing data from the API
   useEffect(() => {
@@ -30,8 +45,8 @@ const Section4Form = ({setActiveBox,sectionsStatusHandle}) => {
             setLeadName2(leadDetails[1].leadName || '');
             setLeadNo2(leadDetails[1].leadNo || '');
           }
-          sectionsStatusHandle(true)
-        } 
+          setApiStatus(true)
+        }
       } catch (error) {
         console.error('Error fetching data:', error);
         alert('Failed to fetch data');
@@ -69,6 +84,7 @@ const Section4Form = ({setActiveBox,sectionsStatusHandle}) => {
       if (response.ok && result.success) {
         alert('Data updated successfully!');
         setActiveBox(5)
+        setApiStatus(true)
       } else {
         alert(`Error: ${result.message}`);
       }
@@ -82,14 +98,14 @@ const Section4Form = ({setActiveBox,sectionsStatusHandle}) => {
 
   return (
     <div className="p-4 bg-slate-50 shadow-inner rounded-md space-y-4">
-        <div className='flex gap-5 items-center flex-wrap'>
-            <div className=''>
-                <ImageUploader referenceType={"homepage_section4"} referenceId={1} width={349} height={563} />
-            </div>
-            <div className='max-w-full grow '>
-                <CommonImageUpload referenceType={"homepage_section_4"} imageCount={3} /> 
-            </div>
+      <div className='flex gap-5 items-center flex-wrap'>
+        <div className=''>
+          <ImageUploader referenceType={"homepage_section4"} referenceId={1} width={349} height={563} setImageStatus={setImageStatus} />
         </div>
+        <div className='max-w-full grow '>
+          <CommonImageUpload referenceType={"homepage_section_4"} imageCount={3}  setMultiImageStatus={setMultiImageStatus}/>
+        </div>
+      </div>
       <div className="flex flex-col space-y-1">
         <label className="text-sm font-medium text-gray-700">Heading</label>
         <input
@@ -112,7 +128,7 @@ const Section4Form = ({setActiveBox,sectionsStatusHandle}) => {
       {/* Static Lead Details */}
       <div className="space-y-2">
         <label className="text-sm font-medium text-gray-700">Lead Details</label>
-        
+
         {/* Lead 1 */}
         <div className="flex space-x-4">
           <input

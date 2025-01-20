@@ -14,6 +14,18 @@ export default function Section5Product({setActiveBox,sectionsStatusHandle}) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [edit, setEdit] = useState(false);
+   const [apiStatus, setApiStatus] = useState(false)
+    const [imageStatus, setImageStatus] = useState(false)
+    
+  
+   useEffect(() => {
+      if (apiStatus && imageStatus) {
+        sectionsStatusHandle(true);
+      }else{
+        sectionsStatusHandle(false);
+  
+      }
+    }, [apiStatus, imageStatus]); 
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,7 +42,7 @@ export default function Section5Product({setActiveBox,sectionsStatusHandle}) {
           card: result.card || [{ title: "", content: "" }, { title: "", content: "" }, { title: "", content: "" }],
         });
         setEdit(true);
-        sectionsStatusHandle(true)
+        setApiStatus(true)
       } catch (err) {
         setError(err.message);
       } finally {
@@ -121,6 +133,7 @@ export default function Section5Product({setActiveBox,sectionsStatusHandle}) {
                     referenceType={"get_in_touch"}
                     referenceId={index + 2}
                     width={50} height={50}
+                    setImageStatus={setImageStatus}
                   />
                   <label className="block font-medium">Title {index + 1}</label>
                   <input

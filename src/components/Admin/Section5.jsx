@@ -10,6 +10,18 @@ const Section5Form = ({setActiveBox,sectionsStatusHandle}) => {
         { heading: '', content: '' },
     ]);
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [apiStatus, setApiStatus] = useState(false)
+      const [imageStatus, setImageStatus] = useState(false)
+      
+    
+     useEffect(() => {
+        if (apiStatus && imageStatus) {
+          sectionsStatusHandle(true);
+        }else{
+          sectionsStatusHandle(false);
+    
+        }
+      }, [apiStatus, imageStatus]); 
 
     useEffect(() => {
         const fetchSectionData = async () => {
@@ -26,7 +38,7 @@ const Section5Form = ({setActiveBox,sectionsStatusHandle}) => {
                         { heading: '', content: '' },
                         { heading: '', content: '' },
                     ]);
-                    sectionsStatusHandle(true)
+                    setApiStatus(true)
                 } else {
                     alert('Failed to fetch section data');
                 }
@@ -66,6 +78,7 @@ const Section5Form = ({setActiveBox,sectionsStatusHandle}) => {
             if (response.ok && result.success) {
                 alert('Section updated successfully!');
                 setActiveBox(6)
+                setApiStatus(true)
             } else {
                 alert(`Error: ${result.message}`);
             }
@@ -117,7 +130,7 @@ const Section5Form = ({setActiveBox,sectionsStatusHandle}) => {
                                 <h4 className="text-md font-medium text-gray-700 mb-2">Box {index + 1}</h4>
                                 <div>
 
-                                    <ImageUploader referenceType={`homepage_section5_${index+1}`} width={200} height={100}  />
+                                    <ImageUploader referenceType={`homepage_section5_${index+1}`} width={200} height={100} setImageStatus={setImageStatus} />
                                     <div className="">
                                         <div>
                                             <label className="block text-sm font-medium text-gray-700 mb-1">Box Heading</label>

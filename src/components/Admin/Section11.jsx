@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import ImageUploader from './ImageUploader';
 
-export default function Section11Manager({ setActiveBox,sectionsStatusHandle }) {
+export default function Section11Manager({ setActiveBox, sectionsStatusHandle }) {
   const [sectionData, setSectionData] = useState(null);
   const [form, setForm] = useState({
     heading: "",
@@ -12,6 +12,18 @@ export default function Section11Manager({ setActiveBox,sectionsStatusHandle }) 
   });
   const [isEditing, setIsEditing] = useState(false);
   const [message, setMessage] = useState("");
+  const [apiStatus, setApiStatus] = useState(false)
+  const [imageStatus, setImageStatus] = useState(false)
+
+
+  useEffect(() => {
+    if (apiStatus && imageStatus) {
+      sectionsStatusHandle(true);
+    } else {
+      sectionsStatusHandle(false);
+
+    }
+  }, [apiStatus, imageStatus]);
 
   // Fetch data on component mount
   useEffect(() => {
@@ -24,7 +36,7 @@ export default function Section11Manager({ setActiveBox,sectionsStatusHandle }) 
           setSectionData(result.data);
           setForm(result.data); // Prefill form with fetched data for editing
           setIsEditing(true); // Mark as editing if data exists
-          sectionsStatusHandle(true)
+          setApiStatus(true)
         } else {
           setMessage(result.message);
         }
@@ -66,6 +78,7 @@ export default function Section11Manager({ setActiveBox,sectionsStatusHandle }) 
         setMessage(result.message);
         setIsEditing(true); // Switch to editing mode
         setActiveBox(12); // Move to next box
+        setApiStatus(true)
       } else {
         setMessage(result.message);
       }
@@ -80,9 +93,9 @@ export default function Section11Manager({ setActiveBox,sectionsStatusHandle }) 
       <h1 className="text-2xl font-bold mb-4">Section 11 Manager</h1>
 
       {/* ImageUploader will be shown only if sectionData is loaded */}
-      {sectionData && (
-        <ImageUploader referenceType={"homepage_section_11_primary"} width={62} height={52} />
-      )}
+
+      <ImageUploader referenceType={"homepage_section_11_primary"} width={62} height={52} setImageStatus={setImageStatus} />
+
 
       {message && <p className="text-red-500 mb-4">{message}</p>}
 

@@ -45,7 +45,7 @@ import SeoPage from '@/components/Admin/seo/SEO';
 import ClientSideCommonEditor from '@/components/Admin/common/ClientPageCommonEditor/Editor';
 
 const Index = () => {
-  const [activeBox, setActiveBox] = useState(2);
+  const [activeBox, setActiveBox] = useState(1);
   const [sectionsStatus, setSectionsStatus] = useState(Array(3).fill(false)); // Initialize for 3 sections
 
   const handleClick = (box) => {
@@ -73,6 +73,7 @@ const Index = () => {
         <HeroSectionForm
           url="term-condition-page/herosection"
           referencetype="herosection_term_condition_page"
+          setActiveBox={setActiveBox}
           sectionsStatusHandle={(status) => sectionsStatusHandle(0, status)}
         />
       ),
@@ -82,6 +83,7 @@ const Index = () => {
       component: (
         <ClientSideCommonEditor
           referenceType="term_condition_policy"
+          setActiveBox={setActiveBox}
           sectionsStatusHandle={(status) => sectionsStatusHandle(1, status)}
         />
       ),

@@ -16,6 +16,20 @@ export default function Section9Manager({setActiveBox,sectionsStatusHandle}) {
         bottomtext: "",
     });
     const [message, setMessage] = useState("");
+    const [apiStatus, setApiStatus] = useState(false)
+    const [multiImageStatus, setMultiImageStatus] = useState(false)
+    useEffect(() => {
+      if (apiStatus && multiImageStatus) {
+        sectionsStatusHandle(true);
+        console.log("api status in if ")
+      } else {
+        sectionsStatusHandle(false);
+        console.log("api status in else ")
+  
+      }
+    }, [apiStatus,multiImageStatus]);
+  
+    
 
     // Fetch Section 12 data on component mount
     useEffect(() => {
@@ -26,7 +40,7 @@ export default function Section9Manager({setActiveBox,sectionsStatusHandle}) {
 
                 if (result.success) {
                     setForm(result.data); // Prefill form with fetched data
-                    sectionsStatusHandle(true)
+                    setApiStatus(true)
                 } else {
                     setMessage(result.message);
                 }
@@ -75,6 +89,7 @@ export default function Section9Manager({setActiveBox,sectionsStatusHandle}) {
             if (result.success) {
                 setMessage(result.message);
                 setActiveBox(10)
+                setApiStatus(true)
             } else {
                 setMessage(result.message);
             }
@@ -89,7 +104,7 @@ export default function Section9Manager({setActiveBox,sectionsStatusHandle}) {
             <h1 className="text-2xl font-bold mb-4">Section 12 Manager</h1>
 
             {message && <p className={`mb-4 ${message.includes("Failed") ? "text-red-500" : "text-green-500"}`}>{message}</p>}
-            <CommonImageUpload referenceType={"homepage_section_9"} imageCount={4} />
+            <CommonImageUpload referenceType={"homepage_section_9"} imageCount={4} setMultiImageStatus={setMultiImageStatus}/>
 
             <form onSubmit={handleSubmit} className="space-y-4">
                 {/* Heading */}

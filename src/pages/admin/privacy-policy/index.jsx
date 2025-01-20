@@ -45,7 +45,7 @@ import SeoPage from '@/components/Admin/seo/SEO';
 import ClientSideCommonEditor from '@/components/Admin/common/ClientPageCommonEditor/Editor';
 
 const Index = () => {
-  const [activeBox, setActiveBox] = useState(2);
+  const [activeBox, setActiveBox] = useState(1);
   const [sectionsStatus, setSectionsStatus] = useState(Array(3).fill(false)); // Initialize for 3 sections
 
   const handleClick = (box) => {
@@ -80,6 +80,7 @@ const Index = () => {
         <HeroSectionForm
           url="privacypage/herosection"
           referencetype="herosection_privacy_policy_page"
+          setActiveBox={setActiveBox}
           sectionsStatusHandle={(status) => sectionsStatusHandle(0, status)}
         />
       ),
@@ -88,6 +89,7 @@ const Index = () => {
       label: 'Section2',
       component: (
         <ClientSideCommonEditor
+        setActiveBox={setActiveBox}
           referenceType="privacy_policy"
           sectionsStatusHandle={(status) => sectionsStatusHandle(1, status)}
         />
@@ -98,6 +100,7 @@ const Index = () => {
       component: (
         <SeoPage
           page="privacy-policy"
+          
           sectionsStatusHandle={(status) => sectionsStatusHandle(2, status)}
         />
       ),

@@ -235,7 +235,7 @@ import { TiDelete } from "react-icons/ti";
 import { MdEditSquare } from "react-icons/md";
 import Image from "next/image";
 
-const CommonImageUpload = ({ referenceType, imageCount }) => {
+const CommonImageUpload = ({ referenceType, imageCount,setMultiImageStatus }) => {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
   const [image, setImage] = useState(null);
   const [altText, setAltText] = useState("");
@@ -252,12 +252,15 @@ const CommonImageUpload = ({ referenceType, imageCount }) => {
         if (data.success) {
           setImages(data.images);
           setReferenceId(data.images.length + 1); // Set next unique referenceId
+          setMultiImageStatus(true) //this is show image is avaible or not more than 0 like 1 images alleast have then working
         } else {
           setUploadStatus("Failed to fetch images.");
+          setMultiImageStatus(false)
         }
       } catch (error) {
         console.error("Error fetching images:", error);
         setUploadStatus("Error fetching images.");
+      
       }
     };
 
@@ -294,6 +297,7 @@ const CommonImageUpload = ({ referenceType, imageCount }) => {
         setImage(null);
         setAltText("");
         setReferenceId((prev) => prev + 1);
+        setMultiImageStatus(true);
       } else {
         setUploadStatus("Failed to upload image.");
       }
@@ -310,6 +314,7 @@ const CommonImageUpload = ({ referenceType, imageCount }) => {
 
       if (data.success) {
         setImages((prev) => prev.filter((img) => img.id !== id));
+        setMultiImageStatus(images.length - 1 > 0);
       } else {
         setUploadStatus("Failed to delete image.");
       }

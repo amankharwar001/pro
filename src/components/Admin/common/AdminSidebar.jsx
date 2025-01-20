@@ -81,22 +81,22 @@
 //       return newState;
 //     });
 //   };
-  
+
 
 
 
 //   const handleLogout = async () => {
 //     const isConfirmed = confirm('Are you sure you want to log out?'); // Ask for confirmation first
-  
+
 //     if (!isConfirmed) {
 //       return; // If the user cancels, exit the function
 //     }
-  
+
 //     try {
 //       const response = await fetch("/api/admin/logout", {
 //         method: "POST",
 //       });
-  
+
 //       if (response.ok) {
 //         alert("Logged out successfully!");
 //         router.push("/admin/account/login"); // Redirect to login page
@@ -108,7 +108,7 @@
 //       alert("An error occurred. Please try again.");
 //     }
 //   };
-  
+
 
 
 
@@ -145,7 +145,7 @@
 
 //   return (
 //     <>
-    
+
 //       <div className="relative bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 h-full  text-white flex flex-col shadow-lg">
 //         <span className="absolute top-2 right-1 md:hidden" onClick={toggleSidebar}><RxCrossCircled size={20}/></span>
 //         {/* Admin Header */}
@@ -343,7 +343,7 @@ const menuItems = [
   { name: "Logout", icon: <FaSignOutAlt />, key: "logout" }, // Logout without a link
 ];
 
-const Sidebar = ({setSidebarOpen,sidebarOpen}) => {
+const Sidebar = ({ setSidebarOpen, sidebarOpen }) => {
   const [isOpen, setIsOpen] = useState({});
   const router = useRouter(); // Get router object
   const baseUrl = process.env.NEXT_PUBLIC_BASE_PATH;
@@ -360,23 +360,23 @@ const Sidebar = ({setSidebarOpen,sidebarOpen}) => {
       [key]: !prevState[key], // Toggle the specific submenu
     }));
   };
-  
-  
+
+
 
 
 
   const handleLogout = async () => {
     const isConfirmed = confirm('Are you sure you want to log out?'); // Ask for confirmation first
-  
+
     if (!isConfirmed) {
       return; // If the user cancels, exit the function
     }
-  
+
     try {
       const response = await fetch("/api/admin/logout", {
         method: "POST",
       });
-  
+
       if (response.ok) {
         alert("Logged out successfully!");
         router.push("/admin/account/login"); // Redirect to login page
@@ -388,7 +388,7 @@ const Sidebar = ({setSidebarOpen,sidebarOpen}) => {
       alert("An error occurred. Please try again.");
     }
   };
-  
+
 
 
 
@@ -425,9 +425,9 @@ const Sidebar = ({setSidebarOpen,sidebarOpen}) => {
 
   return (
     <>
-    
+
       <div className="relative bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 h-full  text-white flex flex-col shadow-lg">
-        <span className="absolute top-2 right-1 md:hidden" onClick={toggleSidebar}><RxCrossCircled size={20}/></span>
+        <span className="absolute top-2 right-1 md:hidden" onClick={toggleSidebar}><RxCrossCircled size={20} /></span>
         {/* Admin Header */}
         <div className="flex items-center gap-4 p-4 md:p-6 border-b border-gray-700 bg-gray-800 shadow-md">
           <div className="w-12 h-12 flex-shrink-0 rounded-full overflow-hidden border-2 border-orange-500 shadow-sm">
@@ -474,7 +474,11 @@ const Sidebar = ({setSidebarOpen,sidebarOpen}) => {
                     onClick={() => item.subMenus && toggleMenu(item.key)}
                   >
                     <Link
-                    onClick={handleMenuItemClick}
+                      onClick={(e) => {
+                        if (!item.subMenus) {
+                          handleMenuItemClick(e);  // Only call handleMenuItemClick if no subMenus
+                        }
+                      }}
                       href={item.link || "#"}
                       className={`flex items-center gap-4 w-full  hover:text-red-500 ${router.pathname === item.link ? "text-red-500 font-bold" : "text-gray-200"
                         }`}
@@ -487,7 +491,7 @@ const Sidebar = ({setSidebarOpen,sidebarOpen}) => {
                         {isOpen[item.key] ? <IoIosArrowDown /> : <IoIosArrowForward />}
                       </span>
                     )}
-                    
+
                   </div>
 
                   {/* Submenu Items */}
@@ -500,14 +504,15 @@ const Sidebar = ({setSidebarOpen,sidebarOpen}) => {
                         {item.subMenus.map((submenu, index) => (
                           <li key={`${item.key}-submenu-${index}`}>
                             <Link
-                              onClick={handleMenuItemClick}
+
                               href={submenu.link}
                               className={`block py-2 text-xs rounded-md px-2 transition-all duration-200 ${router.pathname === submenu.link
                                 ? "text-red-500 font-bold"
                                 : "text-gray-400 hover:text-white"
                                 }`}
                             >
-                              {submenu.name}
+                              <span onClick={handleMenuItemClick}>{submenu.name}</span>
+
                             </Link>
                           </li>
                         ))}

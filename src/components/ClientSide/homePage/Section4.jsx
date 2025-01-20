@@ -42,7 +42,7 @@ const BoxCard = ({ box, image }) => (
 const Section4 = ({ apidata }) => {
   return (
     <div className="bg-gray-100 py-20">
-      <div className="container mx-auto px-4">
+      <div className="container overflow-hidden mx-auto px-4">
         <div className="md:flex items-center gap-8">
           {/* Fade In Animation for Heading */}
           <Fade triggerOnce direction="up">

@@ -15,7 +15,18 @@ export default function Section6Product({ productpage, setActiveBox,sectionsStat
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [isEditing, setIsEditing] = useState(false); // Track if data is fetched
-
+  const [apiStatus, setApiStatus] = useState(false)
+    const [imageStatus, setImageStatus] = useState(false)
+    
+  
+   useEffect(() => {
+      if (apiStatus && imageStatus) {
+        sectionsStatusHandle(true);
+      }else{
+        sectionsStatusHandle(false);
+  
+      }
+    }, [apiStatus, imageStatus]); 
   // Fetch existing data on component mount
   useEffect(() => {
     async function fetchData() {
@@ -30,7 +41,7 @@ export default function Section6Product({ productpage, setActiveBox,sectionsStat
         const result = await response.json();
         setFormData(result);
         setIsEditing(true); // Data fetched, it's in edit mode
-        sectionsStatusHandle(true)
+        setApiStatus(true)
       } catch (err) {
         setError(err.message);
       } finally {
@@ -78,6 +89,7 @@ export default function Section6Product({ productpage, setActiveBox,sectionsStat
       setSuccess("Data saved successfully!");
       setFormData(result);
       setActiveBox(7); // Navigate to the next box after successful save
+      setApiStatus(true)
     } catch (err) {
       setError(err.message);
     } finally {
@@ -114,7 +126,7 @@ export default function Section6Product({ productpage, setActiveBox,sectionsStat
 
       {formData.info.map((item, index) => (
         <div key={index} className="mb-4">
-          <ImageUploader referenceType={productpage?.id} referenceId={index + 61}  width={80} height={80}/>
+          <ImageUploader referenceType={productpage?.id} referenceId={index + 61}  width={80} height={80} setImageStatus={setImageStatus}/>
           <h3 className="font-medium">Info {index + 1}</h3>
           <div className="mb-2">
             <label className="block text-sm">Title:</label>

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import ImageUploader from "./ImageUploader";
 import CommonImageUpload from "./CommonImageUpload";
 
-const Section8Page = ({ setActiveBox,sectionsStatusHandle }) => {
+const Section8Page = ({ setActiveBox, sectionsStatusHandle }) => {
   const [sectionData, setSectionData] = useState({
     heading: "",
     content: "",
@@ -11,6 +11,19 @@ const Section8Page = ({ setActiveBox,sectionsStatusHandle }) => {
   });
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const [apiStatus, setApiStatus] = useState(false)
+  const [imageStatus, setImageStatus] = useState(false)
+  const [multiImageStatus, setMultiImageStatus] = useState(false)
+
+
+  useEffect(() => {
+    if (apiStatus && imageStatus && multiImageStatus) {
+      sectionsStatusHandle(true);
+    } else {
+      sectionsStatusHandle(false);
+
+    }
+  }, [apiStatus, imageStatus,multiImageStatus]);
 
   // Fetch the current data for Section8 (GET request)
   useEffect(() => {
@@ -21,7 +34,7 @@ const Section8Page = ({ setActiveBox,sectionsStatusHandle }) => {
 
         if (data.success) {
           setSectionData(data.data);
-          sectionsStatusHandle(true)
+          setApiStatus(true)
         } else {
           setMessage(data.message);
         }
@@ -67,6 +80,7 @@ const Section8Page = ({ setActiveBox,sectionsStatusHandle }) => {
         setMessage(data.message);
         setSectionData(data.data); // Update state with the new/updated data
         setActiveBox(9)
+        setApiStatus(true)
       } else {
         setMessage(data.message);
       }
@@ -91,10 +105,10 @@ const Section8Page = ({ setActiveBox,sectionsStatusHandle }) => {
     <div className="p-4">
       {/* <h1 className="text-3xl font-semibold text-center text-gray-800 mb-6">Manage Section 8</h1> */}
       <div className="flex flex-wrap gap-5 items-center">
-        <ImageUploader referenceType={"homepage_section_8_primary"} width={497} height={642} />
+        <ImageUploader referenceType={"homepage_section_8_primary"} width={497} height={642} setImageStatus={setImageStatus} />
         <div className="grow">
 
-          <CommonImageUpload referenceType={"homepage_section_8"} imageCount={2} />
+          <CommonImageUpload referenceType={"homepage_section_8"} imageCount={2} setMultiImageStatus={setMultiImageStatus}/>
         </div>
       </div>
 

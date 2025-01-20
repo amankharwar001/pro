@@ -118,7 +118,7 @@ const HeroSections = ({ apidata }) => {
         </div>
       </div> */}
       <div className="">
-        <div className="container  min-w-[360px] overflow-hidden mx-auto pb-5">
+        <div className="container   min-w-[360px] overflow-hidden mx-auto pb-5">
           {/* <Header /> */}
 
           {/* Hero Section Wrapper */}

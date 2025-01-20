@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import ImageUploader from "../ImageUploader";
 
-const Section3Form = ({ productpage,setActiveBox,sectionsStatusHandle }) => {
+const Section3Form = ({ productpage, setActiveBox, sectionsStatusHandle }) => {
   const [heading, setHeading] = useState("");
   const [text, setText] = useState("");
   const [info, setInfo] = useState([
@@ -11,6 +11,18 @@ const Section3Form = ({ productpage,setActiveBox,sectionsStatusHandle }) => {
   ]);
   const [isLoading, setIsLoading] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
+  const [apiStatus, setApiStatus] = useState(false)
+  const [imageStatus, setImageStatus] = useState(false)
+
+
+  useEffect(() => {
+    if (apiStatus && imageStatus) {
+      sectionsStatusHandle(true);
+    } else {
+      sectionsStatusHandle(false);
+
+    }
+  }, [apiStatus, imageStatus]);
 
   // Fetch existing data based on productpage?.id
   useEffect(() => {
@@ -25,8 +37,8 @@ const Section3Form = ({ productpage,setActiveBox,sectionsStatusHandle }) => {
           setText(data.text || "");
           setInfo(data.info || info); // Use the existing data or defaults
           setIsEditMode(true); // Enable edit mode if data exists
+          setApiStatus(true)
         }
-        sectionsStatusHandle(true)
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -51,7 +63,7 @@ const Section3Form = ({ productpage,setActiveBox,sectionsStatusHandle }) => {
       if (res.ok) {
         const response = await res.json();
         alert(`Data ${isEditMode ? "updated" : "created"} successfully!`);
-
+        setApiStatus(true)
         setActiveBox(4)
       } else {
         const error = await res.json();
@@ -77,7 +89,7 @@ const Section3Form = ({ productpage,setActiveBox,sectionsStatusHandle }) => {
       <h1 className="text-xl font-bold mb-4">
         {isEditMode ? "Edit Section 3 Product" : "Create Section 3 Product"}
       </h1>
-      <ImageUploader referenceType={productpage?.id} referenceId={3} width={550} height={300} />
+      <ImageUploader referenceType={productpage?.id} referenceId={3} width={550} height={300} setImageStatus={setImageStatus}/>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block font-medium mb-2">Heading</label>
@@ -108,7 +120,7 @@ const Section3Form = ({ productpage,setActiveBox,sectionsStatusHandle }) => {
               referenceType={productpage?.id}
               referenceId={index + 31}
               width={25} height={25}
-              
+
             />
             <label className="block font-medium mb-2">Info {index + 1}</label>
             <input

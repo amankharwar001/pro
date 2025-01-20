@@ -8,7 +8,7 @@ const SectionSecurity = ({ apidata }) => {
 
   return (
     <div className="bg-[#003066] mt-5 relative">
-      <div className="container m-auto">
+      <div className="container overflow-hidden m-auto">
         <div className="bg-primary text-primary-foreground p-6 text-center text-white py-24">
 
           {/* Animate Image */}

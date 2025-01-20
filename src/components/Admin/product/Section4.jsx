@@ -1,12 +1,23 @@
 import React, { useState, useEffect } from "react";
 import ImageUploader from "../ImageUploader";
 
-export default function Section4Product({ productpage, setActiveBox,sectionsStatusHandle }) {
+export default function Section4Product({ productpage, setActiveBox, sectionsStatusHandle }) {
   const [data, setData] = useState({ heading: "", text: "" });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [isEditing, setIsEditing] = useState(false); // To check if data exists for editing
+  const [apiStatus, setApiStatus] = useState(false)
+  const [imageStatus, setImageStatus] = useState(false)
 
+
+  useEffect(() => {
+    if (apiStatus && imageStatus) {
+      sectionsStatusHandle(true);
+    } else {
+      sectionsStatusHandle(false);
+
+    }
+  }, [apiStatus, imageStatus]);
   // Fetch data on component mount
   useEffect(() => {
     const fetchData = async () => {
@@ -19,7 +30,7 @@ export default function Section4Product({ productpage, setActiveBox,sectionsStat
         const result = await response.json();
         setData(result);
         setIsEditing(true); // Data exists, so switch to editing mode
-        sectionsStatusHandle(true)
+        setApiStatus(true)
       } catch (err) {
         setError(err.message);
         setIsEditing(false); // No data, switch to create mode
@@ -54,6 +65,7 @@ export default function Section4Product({ productpage, setActiveBox,sectionsStat
       setData(updatedData);
       alert("Data updated successfully!");
       setActiveBox(5);
+      setApiStatus(true)
     } catch (err) {
       setError(err.message);
     } finally {
@@ -74,7 +86,9 @@ export default function Section4Product({ productpage, setActiveBox,sectionsStat
         throw new Error("Failed to create data");
       }
       const newData = await response.json();
+      setActiveBox(5);
       setData(newData);
+      setApiStatus(true)
       alert("Data created successfully!");
     } catch (err) {
       setError(err.message);
@@ -88,7 +102,7 @@ export default function Section4Product({ productpage, setActiveBox,sectionsStat
       <h1 className="text-2xl font-bold mb-4">Section 4 Product</h1>
       {loading && <p>Loading...</p>}
       {error && <p className="text-red-500">{error}</p>}
-      <ImageUploader referenceType={productpage?.id} referenceId={4} width={550} height={300}/>
+      <ImageUploader referenceType={productpage?.id} referenceId={4} width={550} height={300} setImageStatus={setImageStatus}/>
 
       {!loading && (
         <form className="space-y-4">
@@ -116,9 +130,8 @@ export default function Section4Product({ productpage, setActiveBox,sectionsStat
             <button
               type="button"
               onClick={isEditing ? handleSave : handleCreate}
-              className={`px-4 py-2 rounded ${
-                isEditing ? "bg-blue-500" : "bg-green-500"
-              } text-white`}
+              className={`px-4 py-2 rounded ${isEditing ? "bg-blue-500" : "bg-green-500"
+                } text-white`}
             >
               {isEditing ? "Update" : "Create"}
             </button>

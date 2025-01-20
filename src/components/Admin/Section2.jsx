@@ -20,6 +20,19 @@ const Section2 = ({setActiveBox,sectionsStatusHandle}) => {
   const [editorContent, setEditorContent] = useState('');
   const [loading, setLoading] = useState(true);
   const [contentId, setContentId] = useState(null);
+  const [apiStatus, setApiStatus] = useState(false)
+  const [multiImageStatus, setMultiImageStatus] = useState(false)
+  useEffect(() => {
+    if (apiStatus && multiImageStatus) {
+      sectionsStatusHandle(true);
+      console.log("api status in if ")
+    } else {
+      sectionsStatusHandle(false);
+      console.log("api status in else ")
+
+    }
+  }, [apiStatus,multiImageStatus]);
+
 
   // Fetch existing content on component mount
   useEffect(() => {
@@ -30,9 +43,11 @@ const Section2 = ({setActiveBox,sectionsStatusHandle}) => {
           const data = await response.json();
           setEditorContent(data.section.heading);
           setContentId(data.section.id); // Save the ID for future updates
-          sectionsStatusHandle(true)
+          
+          setApiStatus(true)
         } else {
           console.warn('No content found');
+          
         }
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -68,6 +83,7 @@ const Section2 = ({setActiveBox,sectionsStatusHandle}) => {
           setContentId(result.section.id); // Save the new content ID
         }
         setActiveBox(3)
+        setApiStatus(true)
       } else {
         alert(result.error); // Show error message
       }
@@ -99,7 +115,7 @@ const Section2 = ({setActiveBox,sectionsStatusHandle}) => {
           </button>
         </form>
       )}
-      <CommonImageUpload referenceType={"homepage_section_2"} imageCount={5}/>
+      <CommonImageUpload referenceType={"homepage_section_2"} imageCount={5} setMultiImageStatus={setMultiImageStatus}/>
     </div>
   );
 };

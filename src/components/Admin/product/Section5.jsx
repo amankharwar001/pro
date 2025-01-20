@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ImageUploader from "../ImageUploader";
 
-export default function Section5Product({ productpage, setActiveBox,sectionsStatusHandle }) {
+export default function Section5Product({ productpage, setActiveBox, sectionsStatusHandle }) {
   const [data, setData] = useState({
     heading: "",
     text: "",
@@ -14,7 +14,18 @@ export default function Section5Product({ productpage, setActiveBox,sectionsStat
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [isEditing, setIsEditing] = useState(false); // To check if data exists for editing
+  const [apiStatus, setApiStatus] = useState(false)
+  const [imageStatus, setImageStatus] = useState(false)
 
+
+  useEffect(() => {
+    if (apiStatus && imageStatus) {
+      sectionsStatusHandle(true);
+    } else {
+      sectionsStatusHandle(false);
+
+    }
+  }, [apiStatus, imageStatus]);
   // Fetch data on component mount using productpage.id
   useEffect(() => {
     const fetchData = async () => {
@@ -27,7 +38,7 @@ export default function Section5Product({ productpage, setActiveBox,sectionsStat
         const result = await response.json();
         setData(result);
         setIsEditing(true); // Data exists, switch to edit mode
-        sectionsStatusHandle(true)
+        setApiStatus(true)
       } catch (err) {
         setError(err.message);
         setIsEditing(false); // No data, switch to create mode
@@ -70,6 +81,7 @@ export default function Section5Product({ productpage, setActiveBox,sectionsStat
 
       alert("Data updated successfully!");
       setActiveBox(6); // Navigate to next box
+      setApiStatus(true)
     } catch (err) {
       setError(err.message);
     } finally {
@@ -92,6 +104,7 @@ export default function Section5Product({ productpage, setActiveBox,sectionsStat
       const newData = await response.json();
       setData(newData);
       alert("Data created successfully!");
+      setApiStatus(true)
     } catch (err) {
       setError(err.message);
     } finally {
@@ -104,7 +117,7 @@ export default function Section5Product({ productpage, setActiveBox,sectionsStat
       <h1 className="text-2xl font-bold mb-4">Section 5 Product</h1>
       {loading && <p>Loading...</p>}
       {error && <p className="text-red-500">{error}</p>}
-      <ImageUploader referenceType={productpage?.id} referenceId={5} width={450} height={610}/>
+      <ImageUploader referenceType={productpage?.id} referenceId={5} width={450} height={610} setImageStatus={setImageStatus} />
 
       {!loading && (
         <form className="space-y-4">
@@ -133,7 +146,7 @@ export default function Section5Product({ productpage, setActiveBox,sectionsStat
             {data?.info?.map((item, index) => (
               <div key={index} className="border p-4 rounded mb-4">
                 <div>
-                  <ImageUploader referenceType={productpage?.id} referenceId={index + 51} width={50} height={50}/>
+                  <ImageUploader referenceType={productpage?.id} referenceId={index + 51} width={50} height={50} setImageStatus={setImageStatus} />
                   <label className="block font-medium">Title {index + 1}</label>
                   <input
                     type="text"

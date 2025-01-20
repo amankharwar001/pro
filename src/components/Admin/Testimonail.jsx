@@ -8,6 +8,19 @@ const TestimonialManager = ({setActiveBox,sectionsStatusHandle}) => {
     info: "",
   }); // Form input data
   const [message, setMessage] = useState(null); // Success/error message
+  const [apiStatus, setApiStatus] = useState(false)
+    const [multiImageStatus, setMultiImageStatus] = useState(false)
+    useEffect(() => {
+      if (apiStatus && multiImageStatus) {
+        sectionsStatusHandle(true);
+        console.log("api status in if ")
+      } else {
+        sectionsStatusHandle(false);
+        console.log("api status in else ")
+  
+      }
+    }, [apiStatus,multiImageStatus]);
+  
 
   // Fetch Testimonial Data
   const fetchTestimonial = async () => {
@@ -16,7 +29,7 @@ const TestimonialManager = ({setActiveBox,sectionsStatusHandle}) => {
       const data = await response.json();
       if (data.success) {
         setFormData(data.data); // Prepopulate form if data exists
-        sectionsStatusHandle(true)
+        setApiStatus(true)
       } else {
         setFormData({
           heading: "",
@@ -60,6 +73,7 @@ const TestimonialManager = ({setActiveBox,sectionsStatusHandle}) => {
         setMessage(result.message);
         fetchTestimonial(); // Refresh data after success
         setActiveBox(11)
+        setApiStatus(true)
       } else {
         setMessage(result.message || "An error occurred");
       }
@@ -72,7 +86,7 @@ const TestimonialManager = ({setActiveBox,sectionsStatusHandle}) => {
   return (
     <div className="p-4  mx-auto">
       <h1 className="text-2xl font-bold mb-4">Testimonial Manager</h1>
-      <CommonImageUpload referenceType={"homepage_testimonial"} imageCount={9} />
+      <CommonImageUpload referenceType={"homepage_testimonial"} imageCount={9} setMultiImageStatus={setMultiImageStatus}/>
       {message && (
         <div className="mb-4 p-2 bg-gray-100 border rounded">
           {message}

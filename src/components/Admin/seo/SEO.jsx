@@ -292,7 +292,7 @@ const SeoPage = ({ page,sectionsStatusHandle }) => {
         const errorData = await response.json();
         throw new Error(errorData.error || "Failed to save data.");
       }
-
+      setApiStatus(true)
       alert("SEO Data Submitted Successfully");
     } catch (error) {
       console.error(error);

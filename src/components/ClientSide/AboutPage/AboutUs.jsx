@@ -80,7 +80,7 @@ const AboutUs = ({ data = {}, baseUrl = "" }) => {
 
   return (
     <section className="py-16 px-4 sm:px-8 lg:px-16">
-      <div className="container mx-auto flex flex-col lg:flex-row items-center lg:space-x-10">
+      <div className="container mx-auto overflow-hidden flex flex-col lg:flex-row items-center lg:space-x-10">
 
         {/* Text Content */}
         <div className="lg:w-1/2">

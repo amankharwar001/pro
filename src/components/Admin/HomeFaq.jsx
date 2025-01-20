@@ -90,6 +90,7 @@ export default function FAQManager({setActiveBox,sectionsStatusHandle}) {
         setFaqData(result.data);
         setMessage(result.message);
         setActiveBox(13)
+        setApiStatus(true)
       } else {
         setMessage(result.message);
       }

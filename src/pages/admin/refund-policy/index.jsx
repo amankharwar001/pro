@@ -47,7 +47,7 @@ import SeoPage from '@/components/Admin/seo/SEO';
 import ClientSideCommonEditor from '@/components/Admin/common/ClientPageCommonEditor/Editor';
 
 const Index = () => {
-  const [activeBox, setActiveBox] = useState(2);
+  const [activeBox, setActiveBox] = useState(1);
   const [sectionsStatus, setSectionsStatus] = useState(Array(3).fill(false)); // Initialize for 3 sections
 
   const handleClick = (box) => {
@@ -78,11 +78,11 @@ const Index = () => {
   const tabs = [
     {
       label: 'Hero Banner Section',
-      component: <HeroSectionForm url="refund-policy-page/herosection" referencetype="herosection_refund_policy_page"  sectionsStatusHandle={(status) => sectionsStatusHandle(0, status)}/>,
+      component: <HeroSectionForm setActiveBox={setActiveBox}  url="refund-policy-page/herosection" referencetype="herosection_refund_policy_page"  sectionsStatusHandle={(status) => sectionsStatusHandle(0, status)}/>,
     },
     {
       label: 'Section2',
-      component: <ClientSideCommonEditor referenceType="refund_policy"  sectionsStatusHandle={(status) => sectionsStatusHandle(1, status)}/>,
+      component: <ClientSideCommonEditor sectionsStatus={sectionsStatus} setActiveBox={setActiveBox} referenceType="refund_policy"  sectionsStatusHandle={(status) => sectionsStatusHandle(1, status)}/>,
     },
     {
       label: 'Section3',

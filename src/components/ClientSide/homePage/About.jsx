@@ -7,7 +7,7 @@ const About = ({ apidata }) => {
 
     return (
         <div className='bg-[#003066] '>
-            <div className="container p-8 text-white py-24">
+            <div className="container overflow-hidden p-8 text-white py-24">
                 <div className='lg:grid grid-cols-4 gap-6'>
                     <div className='col-span-2'>
                         <Slide triggerOnce direction="left">

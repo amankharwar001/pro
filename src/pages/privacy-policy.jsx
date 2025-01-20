@@ -9,7 +9,7 @@ const PrivacyPolicy = ({ data, error, baseUrl }) => {
       <HeadTagSEO data={data} />
       <HeroSections heroSection={data?.heroSection} image={data?.heroSection?.images[0]?.filePath} alttext={data?.heroSection?.images[0]?.filePath} baseUrl={baseUrl} />
       <div
-        className="mt-8 blog-content-editor prose container"
+        className="mt-8 blog-content-editor prose container "
         dangerouslySetInnerHTML={{ __html: data?.content?.content || "no content available" }}
       />
       {/* <ContactInfo /> */}

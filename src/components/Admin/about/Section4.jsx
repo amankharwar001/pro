@@ -133,6 +133,18 @@ const AboutSection4Form = ({ setActiveBox,sectionsStatusHandle }) => {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [aboutSection4, setAboutSection4] = useState(null);
+   const [apiStatus, setApiStatus] = useState(false)
+    const [imageStatus, setImageStatus] = useState(false)
+    
+  
+   useEffect(() => {
+      if (apiStatus && imageStatus) {
+        sectionsStatusHandle(true);
+      }else{
+        sectionsStatusHandle(false);
+  
+      }
+    }, [apiStatus, imageStatus]); 
 
   useEffect(() => {
     const fetchSectionData = async () => {
@@ -148,7 +160,7 @@ const AboutSection4Form = ({ setActiveBox,sectionsStatusHandle }) => {
         } else {
           console.error('Failed to fetch data', await res.text());
         }
-        sectionsStatusHandle(true)
+        setApiStatus(true)
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
@@ -202,8 +214,8 @@ const AboutSection4Form = ({ setActiveBox,sectionsStatusHandle }) => {
       <div className="mb-3 border-blue-500 border p-4">
         <span className="text-sm font-medium">Main images</span>
         <div className="flex flex-wrap gap-10 items-center">
-          <ImageUploader referenceType={"about_section4_primaryImage"} width={660} height={440}/>
-          <ImageUploader referenceType={"about_section4_secondaryImage"} width={230} height={115}/>
+          <ImageUploader setImageStatus={setImageStatus} referenceType={"about_section4_primaryImage"} width={660} height={440}/>
+          <ImageUploader setImageStatus={setImageStatus} referenceType={"about_section4_secondaryImage"} width={230} height={115}/>
         </div>
       </div>
 
@@ -212,7 +224,7 @@ const AboutSection4Form = ({ setActiveBox,sectionsStatusHandle }) => {
           <label className="block font-medium mb-1 text-xs">Cards</label>
           {formData.card.map((card, index) => (
             <div key={index} className="mb-3 space-y-2">
-              <ImageUploader referenceType={"aboutpage_section_4"} referenceId={index + 1} width={25} height={25}/>
+              <ImageUploader setImageStatus={setImageStatus} referenceType={"aboutpage_section_4"} referenceId={index + 1} width={25} height={25}/>
               <input
                 type="text"
                 name="title"

@@ -8,9 +8,11 @@ const Test = ({setActiveBox,sectionsStatusHandle}) => {
   const [btnLink, setBtnLink] = useState('');
   const [btn, setBtn] = useState('');
   const [isUploading, setIsUploading] = useState(false);
+
+  // ------
   const [apiStatus, setApiStatus] = useState(false)
   const [imageStatus, setImageStatus] = useState(false)
-  console.log("image status show is here",imageStatus)
+  
 
  useEffect(() => {
     if (apiStatus && imageStatus) {
@@ -20,6 +22,7 @@ const Test = ({setActiveBox,sectionsStatusHandle}) => {
 
     }
   }, [apiStatus, imageStatus]); 
+  // -----------
 
   // Fetch existing data on component load
   useEffect(() => {
@@ -74,6 +77,7 @@ const Test = ({setActiveBox,sectionsStatusHandle}) => {
         alert(id ? 'Data updated successfully!' : 'Form submitted successfully!');
         setId(result.data.id); // Save ID after creation for future edits
         setActiveBox(2)
+        setApiStatus(true)
       } else {
         alert(`Error: ${result.message}`);
       }

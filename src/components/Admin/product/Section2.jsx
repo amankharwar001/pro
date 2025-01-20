@@ -7,6 +7,20 @@ const Section2Form = ({ productpage,setActiveBox,sectionsStatusHandle }) => {  /
   const [isLoading, setIsLoading] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false); // Track if data exists for editing
 
+   const [apiStatus, setApiStatus] = useState(false)
+    const [imageStatus, setImageStatus] = useState(false)
+    
+  
+   useEffect(() => {
+      if (apiStatus && imageStatus) {
+        sectionsStatusHandle(true);
+      }else{
+        sectionsStatusHandle(false);
+  
+      }
+    }, [apiStatus, imageStatus]); 
+
+
   // Fetch existing data on component load
   useEffect(() => {
     const fetchData = async () => {
@@ -17,8 +31,9 @@ const Section2Form = ({ productpage,setActiveBox,sectionsStatusHandle }) => {  /
           const data = await res.json();
           setTitle(data.title || "");
           setIsEditMode(true); // Enable edit mode if data exists
+          setApiStatus(true)
         }
-        sectionsStatusHandle(true)
+        
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -47,6 +62,7 @@ const Section2Form = ({ productpage,setActiveBox,sectionsStatusHandle }) => {  /
         const response = await res.json();
         alert(`Data ${isEditMode ? "updated" : "created"} successfully!`);
         setActiveBox(3)
+        setApiStatus(true)
       } else {
         const error = await res.json();
         alert(`Error: ${error.error}`);
@@ -71,6 +87,7 @@ const Section2Form = ({ productpage,setActiveBox,sectionsStatusHandle }) => {  /
             referenceType={productpage?.id}
             referenceId={index + 21}
             width={160} height={115}
+            setImageStatus={setImageStatus}
           />
         ))}
       </div>

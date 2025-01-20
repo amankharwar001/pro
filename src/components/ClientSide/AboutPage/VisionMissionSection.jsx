@@ -144,7 +144,7 @@ export default function VisionMissionSection({ data, baseUrl }) {
 
   return (
     <div className="py-16">
-      <div className="container mx-auto flex flex-col lg:flex-row items-center px-6 gap-8">
+      <div className="container overflow-hidden mx-auto flex flex-col lg:flex-row items-center px-6 gap-8">
         {/* Left Image Section */}
         <div className="flex-1">
           <div className="relative overflow-hidden">

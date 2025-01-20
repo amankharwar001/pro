@@ -17,7 +17,7 @@ const Testimonial = ({ apidata }) => {
           </Fade>
         </div>
         <Zoom triggerOnce>
-          <div className="container relative h-72 -mb-10 max-w-[1200px]">
+          <div className="container overflow-hidden relative h-72 -mb-10 max-w-[1200px]">
             {images?.map((image, index) => {
               const positions = [
                 { className: 'absolute right-2/4 translate-x-2/4 top-[45%] md:top-2/4 -translate-y-2/4', size: 'w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24' },

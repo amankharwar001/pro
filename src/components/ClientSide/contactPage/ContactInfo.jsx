@@ -96,7 +96,7 @@ function ContactInfo({ data = {}, baseUrl = '' }) {
 
   return (
     <div className="bg-gray-50 py-12">
-      <div className="container mx-auto text-center">
+      <div className="container overflow-hidden mx-auto text-center">
         <Fade triggerOnce delay={100}>
           <h2 className="font-bold mb-2">
             {data?.getInTouchData?.[0]?.heading || 'Contact Us'}

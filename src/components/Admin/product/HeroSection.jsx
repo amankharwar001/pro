@@ -15,6 +15,20 @@ const HeroSectionForm = ({ productpage, onSubmitId,setActiveBox,sectionsStatusHa
   const { edit } = router.query;
   const [isLoading, setIsLoading] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false); // Track if data already exists
+  const [apiStatus, setApiStatus] = useState(false)
+  const [imageStatus, setImageStatus] = useState(false)
+    
+  
+   useEffect(() => {
+      if (apiStatus && imageStatus) {
+        sectionsStatusHandle(true);
+      }else{
+        sectionsStatusHandle(false);
+  
+      }
+    }, [apiStatus, imageStatus]); 
+
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,8 +39,9 @@ const HeroSectionForm = ({ productpage, onSubmitId,setActiveBox,sectionsStatusHa
           const data = await res.json();
           setFormData(data); // Populate form with existing data
           setIsEditMode(true); // Enable edit mode
+          setApiStatus(true)
         }
-        sectionsStatusHandle(true)
+        
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -62,6 +77,7 @@ const HeroSectionForm = ({ productpage, onSubmitId,setActiveBox,sectionsStatusHa
         const response = await res.json();
         onSubmitId(response?.id)
         setActiveBox(2)
+        setApiStatus(true)
       } else {
         const error = await res.json();
         alert(`Error: ${error.error}`);
@@ -82,7 +98,7 @@ const HeroSectionForm = ({ productpage, onSubmitId,setActiveBox,sectionsStatusHa
         <div>
           <span className="font-bold text-xs">Hero Section Image</span>
           <div className="bg-slate-100 p-4 rounded-md mt-2">
-            <ImageUploader referenceType={productpage?.id} width={1920} height={750}/>
+            <ImageUploader referenceType={productpage?.id} width={1920} height={750} setImageStatus={setImageStatus}/>
           </div>
         </div>
         : ""

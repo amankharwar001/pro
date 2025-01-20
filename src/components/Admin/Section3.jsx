@@ -12,6 +12,20 @@ const Section3Form = ({ setActiveBox, sectionsStatusHandle }) => {
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false);
 
+    const [apiStatus, setApiStatus] = useState(false)
+    const [imageStatus, setImageStatus] = useState(false)
+
+
+    useEffect(() => {
+        if (apiStatus && imageStatus) {
+            sectionsStatusHandle(true);
+        } else {
+            sectionsStatusHandle(false);
+
+        }
+    }, [apiStatus, imageStatus]);
+
+
     // Fetch Section3 data on component mount
     useEffect(() => {
         const fetchData = async () => {
@@ -26,7 +40,7 @@ const Section3Form = ({ setActiveBox, sectionsStatusHandle }) => {
                     setAgentBrief(result.data.agentBrief);
                     setLeadNo(result.data.leadNo);
                     setLeadName(result.data.leadName);
-                    sectionsStatusHandle(true)
+                    setApiStatus(true)
                 } else {
                     setError('Section not found');
                 }
@@ -71,6 +85,7 @@ const Section3Form = ({ setActiveBox, sectionsStatusHandle }) => {
                 setError('');
                 alert('Section updated successfully!');
                 setActiveBox(4)
+                setApiStatus(true)
             } else {
                 setError(data.message || 'Error updating section');
             }
@@ -87,8 +102,8 @@ const Section3Form = ({ setActiveBox, sectionsStatusHandle }) => {
             {/* <h2 className="text-xl font-semibold mb-4"> Section 3</h2> */}
             <div className='md:flex block gap-5 items-center '>
                 <div className='flex gap-10 flex-wrap mb-5'>
-                    <ImageUploader referenceType={"home_section3_1"} width={350} height={700} />
-                    <ImageUploader referenceType={"home_section3_2"} width={250} height={410} />
+                    <ImageUploader referenceType={"home_section3_1"} width={350} height={700} setImageStatus={setImageStatus}/>
+                    <ImageUploader referenceType={"home_section3_2"} width={250} height={410} setImageStatus={setImageStatus}/>
                 </div>
                 <div className='border bg-slate-100  rounded-lg overflow-hidden max-w-full grow '>
                     <div className='p-5'>

@@ -10,6 +10,18 @@ export default function Section7Manager({setActiveBox,sectionsStatusHandle}) {
   });
   const [message, setMessage] = useState("");
   const [isEditMode, setIsEditMode] = useState(false); // Toggle between POST and PUT
+    const [apiStatus, setApiStatus] = useState(false)
+    const [imageStatus, setImageStatus] = useState(false)
+    
+  
+   useEffect(() => {
+      if (apiStatus && imageStatus) {
+        sectionsStatusHandle(true);
+      }else{
+        sectionsStatusHandle(false);
+  
+      }
+    }, [apiStatus, imageStatus]); 
 
   // Fetch Section7 data on component mount
   useEffect(() => {
@@ -21,7 +33,7 @@ export default function Section7Manager({setActiveBox,sectionsStatusHandle}) {
         if (result.success) {
           setForm(result.data); // Populate the form with fetched data
           setIsEditMode(true); // Enable PUT mode if data exists
-          sectionsStatusHandle(true)
+          setApiStatus(true)
         } else {
           setMessage(result.message);
           setIsEditMode(false); // Enable POST mode if no data
@@ -62,6 +74,7 @@ export default function Section7Manager({setActiveBox,sectionsStatusHandle}) {
         setMessage(result.message);
         setIsEditMode(true); // Switch to PUT mode after a successful POST
         setActiveBox(8)
+        setApiStatus(true)
       } else {
         setMessage(result.message);
       }
@@ -75,8 +88,8 @@ export default function Section7Manager({setActiveBox,sectionsStatusHandle}) {
     <div className="p-4">
       {message && <p className={`mb-4 ${message.includes("Failed") ? "text-red-500" : "text-green-500"}`}>{message}</p>}
       <div className="flex gap-5 items-center pb-5">
-        <ImageUploader referenceType={"homepage_section7_primary"} width={470} height={630} />
-        <ImageUploader referenceType={"homepage_section7_1"} width={365} height={245} />
+        <ImageUploader setImageStatus={setImageStatus} referenceType={"homepage_section7_primary"} width={470} height={630} />
+        <ImageUploader setImageStatus={setImageStatus} referenceType={"homepage_section7_1"} width={365} height={245} />
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">

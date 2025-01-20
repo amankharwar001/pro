@@ -19,6 +19,18 @@ const AdminSection6Panel = ({setActiveBox,sectionsStatusHandle}) => {
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [activeCardIndex, setActiveCardIndex] = useState(0); // Track active tab index
+   const [apiStatus, setApiStatus] = useState(false)
+    const [imageStatus, setImageStatus] = useState(false)
+    
+  
+   useEffect(() => {
+      if (apiStatus && imageStatus) {
+        sectionsStatusHandle(true);
+      }else{
+        sectionsStatusHandle(false);
+  
+      }
+    }, [apiStatus, imageStatus]); 
 
   useEffect(() => {
     const fetchSectionData = async () => {
@@ -31,7 +43,7 @@ const AdminSection6Panel = ({setActiveBox,sectionsStatusHandle}) => {
             ...result.data,
             card: result.data.card.slice(0, 3), // Ensure exactly 3 cards
           });
-          sectionsStatusHandle(true)
+          setApiStatus(true)
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -86,6 +98,7 @@ const AdminSection6Panel = ({setActiveBox,sectionsStatusHandle}) => {
       if (result.success) {
         setSuccessMessage("Section updated successfully!");
         setActiveBox(7)
+        setApiStatus(true)
       } else {
         setErrorMessage(result.message || "Failed to save Section6 data.");
       }
@@ -184,7 +197,7 @@ const AdminSection6Panel = ({setActiveBox,sectionsStatusHandle}) => {
                   <h4 className="text-md font-medium text-gray-700 mb-2">
                     Card {index + 1}
                   </h4>
-                  <ImageUploader referenceType={`homepage_section${index+1}`} width={421} height={260}  />
+                  <ImageUploader setImageStatus={setImageStatus} referenceType={`homepage_section${index+1}`} width={421} height={260}  />
                   <div className="space-y-2">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">

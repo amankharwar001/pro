@@ -15,6 +15,18 @@ const AboutSection3Form = ({ setActiveBox,sectionsStatusHandle }) => {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [isUpdate, setIsUpdate] = useState(false); // Track if the form is in update mode
+  const [apiStatus, setApiStatus] = useState(false)
+    const [imageStatus, setImageStatus] = useState(false)
+    
+  
+   useEffect(() => {
+      if (apiStatus && imageStatus) {
+        sectionsStatusHandle(true);
+      }else{
+        sectionsStatusHandle(false);
+  
+      }
+    }, [apiStatus, imageStatus]); 
 
   // Fetch data from the API when the component mounts
   useEffect(() => {
@@ -38,7 +50,7 @@ const AboutSection3Form = ({ setActiveBox,sectionsStatusHandle }) => {
             ],
           });
           setIsUpdate(true); // Set to update mode
-          sectionsStatusHandle(true)
+          setApiStatus(true)
         } else {
           console.error('Failed to fetch data from the server');
         }
@@ -103,7 +115,7 @@ const AboutSection3Form = ({ setActiveBox,sectionsStatusHandle }) => {
           <label className="block font-medium mb-1 text-xs">Cards</label>
           {Array.isArray(formData.card) && formData.card.map((card, index) => (
             <div key={index} className="mb-3 space-y-2">
-              <ImageUploader referenceType={"aboutpage_section_3"} referenceId={index + 1} width={30} height={30} />
+              <ImageUploader setImageStatus={setImageStatus} referenceType={"aboutpage_section_3"} referenceId={index + 1} width={30} height={30} />
               <input
                 type="text"
                 name="title"

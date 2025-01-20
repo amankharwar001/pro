@@ -12,6 +12,18 @@ const HeroSectionForm = ({ onSubmitId, url,referencetype,setActiveBox,sectionsSt
     btnLink: "",
   });
   const [isLoading, setIsLoading] = useState(false);
+   const [apiStatus, setApiStatus] = useState(false)
+    const [imageStatus, setImageStatus] = useState(false)
+    
+  
+   useEffect(() => {
+      if (apiStatus && imageStatus) {
+        sectionsStatusHandle(true);
+      }else{
+        sectionsStatusHandle(false);
+  
+      }
+    }, [apiStatus, imageStatus]); 
 
   // Fetch existing data on component load
   useEffect(() => {
@@ -23,7 +35,7 @@ const HeroSectionForm = ({ onSubmitId, url,referencetype,setActiveBox,sectionsSt
           if (response.data) {
             setFormData({ ...response.data, id: response.data._id });
           }
-          sectionsStatusHandle(true)
+          setApiStatus(true)
         } else {
           console.error("Failed to fetch data", await res.text());
         }
@@ -75,7 +87,7 @@ const HeroSectionForm = ({ onSubmitId, url,referencetype,setActiveBox,sectionsSt
       <div>
         <span className="font-bold text-xs">Hero Section Image</span>
         <div className="bg-slate-100 p-4 rounded-md mt-2">
-          <ImageUploader referenceType={referencetype} width={1920} height={750}/>
+          <ImageUploader referenceType={referencetype} width={1920} height={750} setImageStatus={setImageStatus}/>
         </div>
       </div>
       <form onSubmit={handleSubmit} className="space-y-4 w-full">

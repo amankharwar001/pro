@@ -13,6 +13,18 @@ const AboutSectionForm = ({ setActiveBox,sectionsStatusHandle }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [section, setSection] = useState(null);
   const [errorMessage, setErrorMessage] = useState('');
+   const [apiStatus, setApiStatus] = useState(false)
+    const [imageStatus, setImageStatus] = useState(false)
+    
+  
+   useEffect(() => {
+      if (apiStatus && imageStatus) {
+        sectionsStatusHandle(true);
+      }else{
+        sectionsStatusHandle(false);
+  
+      }
+    }, [apiStatus, imageStatus]); 
 
   // Fetch existing data if editing an existing section
   useEffect(() => {
@@ -30,7 +42,7 @@ const AboutSectionForm = ({ setActiveBox,sectionsStatusHandle }) => {
               text: data.text,
             });
           }
-          sectionsStatusHandle(true)
+          setApiStatus(true)
         } else {
           throw new Error('Failed to fetch section data');
         }
@@ -85,8 +97,8 @@ const AboutSectionForm = ({ setActiveBox,sectionsStatusHandle }) => {
   return (
     <div className="mx-auto ">
       <div className="flex flex-wrap gap-10 items-center mb-3">
-        <ImageUploader referenceType="about_section_primaryImage" width={616} height={580}/>
-        <ImageUploader referenceType="about_section_secondaryImage" width={240} height={210} />
+        <ImageUploader setImageStatus={setImageStatus} referenceType="about_section_primaryImage" width={616} height={580}/>
+        <ImageUploader setImageStatus={setImageStatus} referenceType="about_section_secondaryImage" width={240} height={210} />
       </div>
 
       {/* Display error message */}

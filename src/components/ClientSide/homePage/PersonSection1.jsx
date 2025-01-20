@@ -8,7 +8,7 @@ export default function PersonSection1({ apidata }) {
     const secondaryImage = apidata?.images?.find(img => img.referenceType === 'homepage_section7_1');
 
     return (
-        <div className="container m-auto grid lg:grid-cols-2 gap-5 -mt-10 md:mt-20 mb-10 md:mb-20">
+        <div className="container overflow-hidden m-auto grid lg:grid-cols-2 gap-5 -mt-10 md:mt-20 mb-10 md:mb-20">
             <div className="' order-last lg:order-none w-full mb-6 md:mb-0 relative md:pt-0 pt-5">
                 <div className="lg:max-w-[497px] w-full">
                     <Zoom triggerOnce delay={300}>

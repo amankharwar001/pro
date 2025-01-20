@@ -18,11 +18,11 @@ const Homecard = ({ apidata }) => {
 
     return (
         <div ref={ref}>
-            <div className="container text-center py-20">
+            <div className="container overflow-hidden text-center py-20">
                 <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold">{apidata?.heading}</h2>
                 <p className="mt-2 text-base md:text-xl">{apidata?.content}</p>
             </div>
-            <div className="flex flex-wrap justify-center mt-10 md:mt-28 container md:px-0 m-auto gap-y-36 lg:px-10">
+            <div className="flex flex-wrap justify-center mt-10 md:mt-28 container overflow-hidden md:px-0 m-auto gap-y-36 lg:px-10">
                 {apidata?.card.map((card, index) => (
                     <motion.div
                         key={index}

@@ -10,11 +10,24 @@ import { useRouter } from "next/router";
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 // Custom modules and handlers
-const ClientSideCommonEditor =({ referenceType, sectionsStatusHandle}) => {
-  
+const ClientSideCommonEditor = ({ referenceType, sectionsStatusHandle, setActiveBox }) => {
+
   const [editorContent, setEditorContent] = useState("");
   const [loading, setLoading] = useState(true);
   const [contentId, setContentId] = useState(null);
+  const [apiStatus, setApiStatus] = useState(false)
+
+
+
+  useEffect(() => {
+    if (apiStatus) {
+      sectionsStatusHandle(true);
+    } else {
+      sectionsStatusHandle(false);
+
+    }
+  }, [apiStatus]);
+
 
   // Use useMemo to optimize the modules object
   const modules = useMemo(() => ({
@@ -35,10 +48,10 @@ const ClientSideCommonEditor =({ referenceType, sectionsStatusHandle}) => {
           input.setAttribute("type", "file");
           input.setAttribute("accept", "image/*");
           input.click();
-      
+
           input.onchange = async () => {
             const file = input.files[0];
-      
+
             // Validate file type and size
             if (!file.type.startsWith("image/")) {
               alert("Only image files are allowed.");
@@ -48,31 +61,31 @@ const ClientSideCommonEditor =({ referenceType, sectionsStatusHandle}) => {
               alert("Image size should not exceed 5MB.");
               return;
             }
-      
+
             const altText = prompt("Enter alt text for the image:");
             const formData = new FormData();
             formData.append("image", file);
             formData.append("altText", altText);
             formData.append("referenceId", 1);
-      
+
             try {
               // Show loading indicator
               const range = this.quill.getSelection();
               const placeholder = "Uploading...";
               this.quill.insertText(range.index, placeholder, { italic: true });
-      
+
               // Upload image to API
               const response = await fetch(`/api/blogupload/${referenceType}`, {
                 method: "POST",
                 body: formData,
               });
-      
+
               const data = await response.json();
-      
+
               if (response.ok) {
                 // Remove placeholder text
                 this.quill.deleteText(range.index, placeholder.length);
-      
+
                 // Insert uploaded image
                 const imgTag = `<img src="${basePath}${data.image.filePath}" alt="${data.image.altText}" style="max-width: 100%; height: auto;" />`;
                 this.quill.clipboard.dangerouslyPasteHTML(range.index, imgTag);
@@ -83,7 +96,7 @@ const ClientSideCommonEditor =({ referenceType, sectionsStatusHandle}) => {
               }
             } catch (error) {
               console.error("Error uploading image:", error);
-      
+
               // Remove placeholder text on error
               this.quill.deleteText(range.index, placeholder.length);
               alert("Error uploading image. Please try again.");
@@ -91,7 +104,7 @@ const ClientSideCommonEditor =({ referenceType, sectionsStatusHandle}) => {
           };
         },
       },
-      
+
     },
   }), [referenceType]); // Empty dependency array ensures this is only calculated once on mount remove here reference type
 
@@ -103,8 +116,14 @@ const ClientSideCommonEditor =({ referenceType, sectionsStatusHandle}) => {
         if (response.ok) {
           const data = await response.json();
           setEditorContent(data.data.content); // Fetch full HTML content
+          console.log("data show is here privacy policy", data.data.content)
           setContentId(data.data.id); // Save the ID for future updates
-          sectionsStatusHandle(true)
+
+          const plainText = data.data.content.replace(/<[^>]*>/g, "").trim();
+          // Check if plain text contains at least one alphabet
+          if (/[a-zA-Z]/.test(plainText)) {
+            setApiStatus(true);
+          }
         } else {
           console.warn("No content found.");
         }
@@ -116,20 +135,34 @@ const ClientSideCommonEditor =({ referenceType, sectionsStatusHandle}) => {
     };
 
     fetchData();
-  }, [referenceType]);
+  }, [referenceType,setActiveBox]);
 
   // Handle form submission
   const handleSubmit = async (event) => {
     event.preventDefault()
-    
+    const countWords = (content) => {
+      // Remove HTML tags
+      const plainText = content.replace(/<[^>]*>/g, "").trim();
+      // Split by spaces and filter out empty strings
+      const words = plainText.split(/\s+/).filter((word) => word !== "");
+      return { count: words.length, plainText };
+    };
 
+    // Count words and get plain text
+    const { count, plainText } = countWords(editorContent);
+
+    // Validate word count and check for at least one alphabet
+    if (count < 5 || !/[a-zA-Z]/.test(plainText)) {
+      alert("Content must have at least 5 words and include alphabets.");
+      return;
+    }
     try {
       const endpoint = contentId ? `/api/common-term-policy-page/${contentId}` : `/api/common-term-policy-page/post`;
       const method = contentId ? "PUT" : "POST";
       const body = JSON.stringify(
         contentId
           ? { id: contentId, content: editorContent }
-          : { content: editorContent, referenceType: referenceType}
+          : { content: editorContent, referenceType: referenceType }
       );
 
       const response = await fetch(endpoint, {
@@ -140,9 +173,17 @@ const ClientSideCommonEditor =({ referenceType, sectionsStatusHandle}) => {
 
       const result = await response.json();
       if (response.ok) {
-        
+
         if (method === "POST") {
           setContentId(result.section.id);
+        }
+        setActiveBox(3)
+        // setApiStatus(true)
+        const plainText = editorContent.replace(/<[^>]*>/g, "").trim();
+        console.log("plainText editior show is here", plainText)
+        // Check if plain text contains at least one alphabet
+        if (/[a-zA-Z]/.test(plainText)) {
+          setApiStatus(true);
         }
       } else {
         alert(result.error || "Failed to save content.");
@@ -151,6 +192,8 @@ const ClientSideCommonEditor =({ referenceType, sectionsStatusHandle}) => {
       console.error("Error saving content:", error);
       alert("Failed to save content.");
     }
+
+
   };
 
   return (
