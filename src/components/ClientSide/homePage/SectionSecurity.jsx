@@ -9,7 +9,7 @@ const SectionSecurity = ({ apidata }) => {
   return (
     <div className="bg-[#003066] mt-5 relative">
       <div className="container overflow-hidden m-auto">
-        <div className="bg-primary text-primary-foreground p-6 text-center text-white py-24">
+        <div className="bg-primary text-primary-foreground p-6 text-center text-white py-14">
 
           {/* Animate Image */}
           {primaryImage && (
@@ -17,9 +17,10 @@ const SectionSecurity = ({ apidata }) => {
               <Image
                 src={`/${primaryImage.filePath}`}
                 alt={primaryImage.altText || "Section Image"}
-                className="w-24 m-auto mb-10"
-                width={80}
+                className="w-auto m-auto mb-10"
+                width={100}
                 height={20}
+                layout="intrinsic"
                 priority
               />
             </Fade>

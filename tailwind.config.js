@@ -9,23 +9,23 @@ module.exports = {
     container: {
       center: true,
       padding: {
-        DEFAULT: '1rem',    // Default padding on smaller screens
+        DEFAULT: '1rem',    // Default padding for all screens
         sm: '1.5rem',       // Small screens
-        md: '1rem',         // Medium screens
-        lg: '2.5rem',       // Large screens
-        // xl: '3rem',         // Extra-large screens
-        // '2xl': '4rem',      // 2XL screens
+        md: '2rem',         // Medium screens
+        lg: '3rem',         // Large screens
+        xl: '4rem',         // Extra-large screens
+        '2xl': '6rem',      // 2XL screens
       },
       screens: {
-        sm: '90%',
-        md: '768px',
-        lg: '960px',
-        // xl: '1100px',
-        'xl': '1280px',
-        '2xl': '1400px',
+        sm: '100%',         // Full width on small screens
+        md: '850px',        // Medium screens
+        lg: '1024px',       // Large screens
+        xl: '1280px',       // Extra-large screens
+        '2xl': '1440px',    // 2XL screens
       },
-      
     },
+    
+    
     extend: {
       colors: {
         background: "var(--background)",

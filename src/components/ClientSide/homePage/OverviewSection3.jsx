@@ -71,8 +71,9 @@ const OverviewSection3 = ({apidata1,apidata2}) => {
                         </div>
                     </Fade>
                     </div>
+                    {/* agen brief image section */}
                     <div className="md:absolute right-10 flex max-w-[360px] m-auto -mt-10 md:mt-0">
-                        <div className="bg-slate-100 m-auto w-[70%] md:w-[200px] rounded-xl md:p-5 py-2 px-10 pr-12 relative -bottom-28">
+                        <div className="bg-slate-100 m-auto w-[70%] md:w-[200px] rounded-xl md:p-5 py-2 px-10 pr-12 relative top-24 md:top-5 lg:top-5 xl:top-24 ">
                             <span className="font-semibold flex text-center text-xs md:text-base items-center ">{apidata1?.agentBrief}</span>
                             <div>
                                 <div className="relative h-10 my-5 w-full">

@@ -54,13 +54,13 @@ export default function App({ Component, pageProps, data }) {
         return (
           <>
             <Header apikey={process.env.API_KEY} img={data} />
-            <div className='mt-[72px]'> </div>
+            <div className='mt-[64px] md:mt-[70px] lg:mt-[80px] '> </div>
             
             <Component {...pageProps} />
             <FooterSection />
             {showScroll && (
               <span
-                className="fixed z-[9999] bottom-16 md:bottom-20 right-10 w-[8vw] text-[#013466] cursor-pointer"
+                className="fixed z-[9999] bottom-16 md:bottom-20 right-10 md:right-0 w-[8vw] text-[#013466] cursor-pointer"
                 onClick={scrollToTop}
               >
                 <FaArrowCircleUp

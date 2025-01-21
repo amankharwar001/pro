@@ -238,3 +238,20 @@ p {
 .brand-slider  .slick-slide {
   width: auto !important; /* Ensures the width is overridden */
 }
+
+.homepage-card-slider  .slick-slide {
+  min-width: 320px !important; /* Ensures the width is overridden */
+}
+
+.homepage-card-slider .slick-slider .slick-track, .slick-slider .slick-list {
+  padding-bottom: 25px !important;
+}
+
+
+/* Remove default styling (the down arrow) */
+select {
+  padding-right: 20px; /* Arrow ke right side me space ke liye */
+  appearance: none; /* Default arrow hatana */
+  background: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns%3D%22http%3A//www.w3.org/2000/svg%22 stroke%3D%22currentColor%22 fill%3D%22currentColor%22 stroke-width%3D%220%22 viewBox%3D%220 0 512 512%22 height%3D%22200px%22 width%3D%22200px%22%3E%3Cpath d%3D%22M256 294.1L383 167c9.4-9.4 24.6-9.4 33.9 0s9.3 24.6 0 34L273 345c-9.1 9.1-23.7 9.3-33.1.7L95 201.1c-4.7-4.7-7-10.9-7-17s2.3-12.3 7-17c9.4-9.4 24.6-9.4 33.9 0l127.1 127z%22%3E%3C/path%3E%3C/svg%3E') no-repeat right 12px center;
+  background-size: 12px; /* Arrow ka size adjust karna */
+}

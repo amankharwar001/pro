@@ -154,7 +154,7 @@ const Header = ({ data, apikey, img }) => {
   };
   const closeSidebar = () => {
     setIsOpen(false);
-};
+  };
 
   // Fetch admin settings on component mount
   useEffect(() => {
@@ -236,11 +236,11 @@ const Header = ({ data, apikey, img }) => {
   }, [lastScrollY]);
 
   return (
-    <header>
+    <header className='relative'>
       {/* Header Container */}
       <div
         className={`fixed top-0 left-0 w-full z-[999] transition-transform duration-300 ease-in-out ${isVisible ? 'translate-y-0' : '-translate-y-full'
-          } ${isScrolled ? 'bg-white shadow-md' : 'bg-[#F2F2F2] py-1'}`}
+          } ${isScrolled ? 'bg-[#F2F2F2] shadow-md py-1' : 'bg-[#F2F2F2] py-1'}`}
       >
         <div className="container">
           <Head>
@@ -255,38 +255,42 @@ const Header = ({ data, apikey, img }) => {
                   <Image
                     src={`${baseUrl}${logo?.filePath}`}
                     alt={logo?.altText || 'logo'}
-                    className="w-[7rem]"
-                    width={100}
-                    height={100}
+                    className="w-[6rem] md:w-[7rem] lg:w-[8rem] xl:w-[9rem]"
+                    width={400} // Original image ka size
+                    height={200}
+                    layout="intrinsic"
+                    priority
                   />
+
+
                 </Link>
               </div>
             </div>
 
             {/* Dropdown Menu for Desktop */}
-            <div className="hidden md:flex md:justify-end items-center justify-end gap-5 sm:justify-between ml-5 w-full evenly">
+            <div className="hidden lg:flex md:justify-end items-center justify-end gap-5 sm:justify-between ml-5 w-full evenly">
               <div className="z-[999]">
                 <DropDown data={productList} />
               </div>
             </div>
-              <div className='md:hidden'>
-                <button
-                  onClick={toggleSidebar}
-                  className="text-2xl p-2 m-2 text-[#003066]"
-                >
-                  <FaBars />
-                </button>
-              </div>
+            <div className='lg:hidden'>
+              <button
+                onClick={toggleSidebar}
+                className="text-2xl p-2 m-2 text-[#003066]"
+              >
+                <FaBars />
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Sidebar Container */}
-      <div className="block md:hidden">
+      <div className="block lg:hidden">
         <div
           className=" " // Separate the sidebar with a fixed position
         >
-          <Sidebar data={productList} isOpen={isOpen} closeSidebar={closeSidebar}/>
+          <Sidebar data={productList} isOpen={isOpen} closeSidebar={closeSidebar} />
         </div>
       </div>
     </header>

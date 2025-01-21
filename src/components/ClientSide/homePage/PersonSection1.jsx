@@ -25,12 +25,12 @@ export default function PersonSection1({ apidata }) {
                         </div>
                     </Zoom>
                 </div>
-                <div className="animate-left-right -pb-20 relative hidden lg:block w-[350px] lg:-right-[45%]">
+                <div className="animate-left-right -pb-20 relative hidden lg:block w-[350px] lg:-right-[45%] ">
                     {secondaryImage && (
                         <Image
                             width={550}
                             height={100}
-                            className="w-full absolute -top-28"
+                            className="w-full absolute -top-28 shadow-xl"
                             src={`/${secondaryImage.filePath}`}
                             alt={secondaryImage.altText || 'Secondary Image'}
                         />
