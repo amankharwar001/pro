@@ -277,7 +277,7 @@ const Homecard = ({ apidata }) => {
             <div className="container overflow-hidden">
                 <Slider {...settings} className="homepage-card-slider  ">
                     {apidata?.card.map((card, index) => (
-                        <div >
+                        <div key={index}>
                             <motion.div
                                 key={index}
                                 className={`${index === activeIndex ? 'bg-[#013466] text-white' : 'bg-white'} 
