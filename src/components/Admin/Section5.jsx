@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ImageUploader from './ImageUploader';
+import StatusManager from './status';
 
 const Section5Form = ({setActiveBox,sectionsStatusHandle}) => {
     const [heading, setHeading] = useState('');
@@ -92,6 +93,7 @@ const Section5Form = ({setActiveBox,sectionsStatusHandle}) => {
 
     return (
         <div className="shadow-inner bg-gray-50">
+            <StatusManager sectionName={"homepage_section5"}/>
             {/* <h2 className="text-2xl font-bold text-gray-800 mb-6">Edit Section 5</h2> */}
 
 

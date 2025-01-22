@@ -126,6 +126,7 @@
 
 import { useState, useEffect } from 'react';
 import ImageUploader from '../ImageUploader';
+import StatusManager from '../status';
 
 const AboutSection4Form = ({ setActiveBox,sectionsStatusHandle }) => {
   const [formData, setFormData] = useState({
@@ -211,6 +212,7 @@ const AboutSection4Form = ({ setActiveBox,sectionsStatusHandle }) => {
 
   return (
     <div className="mx-auto ">
+      <StatusManager sectionName={"about_section4"}/>
       <div className="mb-3 border-blue-500 border p-4">
         <span className="text-sm font-medium">Main images</span>
         <div className="flex flex-wrap gap-10 items-center">

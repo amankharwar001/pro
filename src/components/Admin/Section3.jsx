@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import ImageUploader from './ImageUploader';
 import CommonImageUpload from './CommonImageUpload';
+import StatusManager from './status';
 
 const Section3Form = ({ setActiveBox, sectionsStatusHandle }) => {
     const [sectionData, setSectionData] = useState(null);
@@ -99,6 +100,7 @@ const Section3Form = ({ setActiveBox, sectionsStatusHandle }) => {
 
     return (
         <div className="p-4 mx-auto bg-slate-50 shadow-inner rounded-lg">
+            <StatusManager sectionName={"homepage_section3"}/>
             {/* <h2 className="text-xl font-semibold mb-4"> Section 3</h2> */}
             <div className='md:flex block gap-5 items-center '>
                 <div className='flex gap-10 flex-wrap mb-5'>

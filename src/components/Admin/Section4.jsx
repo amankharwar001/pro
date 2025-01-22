@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ImageUploader from './ImageUploader';
 import CommonImageUpload from './CommonImageUpload';
+import StatusManager from './status';
 
 const Section4Form = ({ setActiveBox, sectionsStatusHandle }) => {
   const [heading, setHeading] = useState('');
@@ -98,6 +99,7 @@ const Section4Form = ({ setActiveBox, sectionsStatusHandle }) => {
 
   return (
     <div className="p-4 bg-slate-50 shadow-inner rounded-md space-y-4">
+      <StatusManager sectionName={"homepage_section4"}/>
       <div className='flex gap-5 items-center flex-wrap'>
         <div className=''>
           <ImageUploader referenceType={"homepage_section4"} referenceId={1} width={349} height={563} setImageStatus={setImageStatus} />

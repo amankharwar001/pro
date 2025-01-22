@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import ImageUploader from '../ImageUploader';
+import StatusManager from '../status';
 
 const AboutSection3Form = ({ setActiveBox,sectionsStatusHandle }) => {
   const [formData, setFormData] = useState({
@@ -99,6 +100,7 @@ const AboutSection3Form = ({ setActiveBox,sectionsStatusHandle }) => {
 
   return (
     <div className="mx-auto ">
+      <StatusManager sectionName={"about_section3"}/>
       <form onSubmit={handleSubmit} className="space-y-4 w-full">
         <div>
           <label className="block font-medium mb-1 text-xs">Heading</label>

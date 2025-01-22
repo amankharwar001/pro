@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import CommonImageUpload from "../CommonImageUpload";
 import ImageUploader from "../ImageUploader";
+import StatusManager from "../status";
 
 const Section2Form = ({ productpage,setActiveBox,sectionsStatusHandle }) => {  // Add productpage?.id as a prop
   const [title, setTitle] = useState("");
@@ -80,6 +81,7 @@ const Section2Form = ({ productpage,setActiveBox,sectionsStatusHandle }) => {  /
       <h1 className="text-xl font-bold mb-4">
         {isEditMode ? "Edit Section 2 Product" : "Create Section 2 Product"}
       </h1>
+      <StatusManager sectionName={`product_section2${productpage?.id}`}/>
       <div className="flex flex-wrap gap-5">
         {[...Array(4)].map((_, index) => (
           <ImageUploader

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import ImageUploader from "../ImageUploader";
+import StatusManager from "../status";
 
 export default function Section6Product({ productpage, setActiveBox,sectionsStatusHandle }) {
   const [formData, setFormData] = useState({
@@ -104,6 +105,7 @@ export default function Section6Product({ productpage, setActiveBox,sectionsStat
       {loading && <p>Loading...</p>}
       {error && <p className="text-red-500">{error}</p>}
       {success && <p className="text-green-500">{success}</p>}
+      <StatusManager sectionName={`product_section6${productpage?.id}`}/>
 
       <div className="mb-4">
         <label className="block font-medium mb-1">Heading:</label>

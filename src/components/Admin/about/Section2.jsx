@@ -3,6 +3,7 @@
 
 import { useState, useEffect } from 'react';
 import ImageUploader from '../ImageUploader';
+import StatusManager from '../status';
 
 const AboutSectionForm = ({ setActiveBox,sectionsStatusHandle }) => {
   const [formData, setFormData] = useState({
@@ -96,6 +97,7 @@ const AboutSectionForm = ({ setActiveBox,sectionsStatusHandle }) => {
 
   return (
     <div className="mx-auto ">
+      <StatusManager sectionName={"about_section2"}/>
       <div className="flex flex-wrap gap-10 items-center mb-3">
         <ImageUploader setImageStatus={setImageStatus} referenceType="about_section_primaryImage" width={616} height={580}/>
         <ImageUploader setImageStatus={setImageStatus} referenceType="about_section_secondaryImage" width={240} height={210} />

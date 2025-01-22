@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import ImageUploader from "./ImageUploader";
+import StatusManager from "./status";
 
 export default function Section7Manager({setActiveBox,sectionsStatusHandle}) {
   const [form, setForm] = useState({
@@ -86,6 +87,7 @@ export default function Section7Manager({setActiveBox,sectionsStatusHandle}) {
 
   return (
     <div className="p-4">
+      <StatusManager sectionName={"homepage_section7"}/>
       {message && <p className={`mb-4 ${message.includes("Failed") ? "text-red-500" : "text-green-500"}`}>{message}</p>}
       <div className="flex gap-5 items-center pb-5">
         <ImageUploader setImageStatus={setImageStatus} referenceType={"homepage_section7_primary"} width={470} height={630} />

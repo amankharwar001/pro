@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic';
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 import 'react-quill/dist/quill.snow.css';
 import CommonImageUpload from './CommonImageUpload';
+import StatusManager from './status';
 
 const modules = {
   toolbar: [
@@ -95,6 +96,7 @@ const Section2 = ({setActiveBox,sectionsStatusHandle}) => {
 
   return (
     <div className=" mx-auto p-4 bg-slate-50 shadow-inner rounded-lg">
+      <StatusManager sectionName={"homepage_section2"}/>
       
       {loading ? (
         <p>Loading editor...</p>

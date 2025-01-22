@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import StatusManager from '../status';
 
 const AboutSection5Form = ({setActiveBox,sectionsStatusHandle}) => {
     const [formData, setFormData] = useState([
@@ -65,31 +66,34 @@ const AboutSection5Form = ({setActiveBox,sectionsStatusHandle}) => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="space-y-4">
-            {formData.map((item, index) => (
-                <div key={index} className="flex space-x-4 items-center">
-                    <input
-                        type="text"
-                        value={item.counting}
-                        onChange={(e) => handleChange(index, 'counting', e.target.value)}
-                        placeholder="Counting"
-                        required
-                        className="border p-2 rounded"
-                    />
-                    <input
-                        type="text"
-                        value={item.text}
-                        onChange={(e) => handleChange(index, 'text', e.target.value)}
-                        placeholder="Text"
-                        required
-                        className="border p-2 rounded"
-                    />
-                </div>
-            ))}
-            <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
-                {isUpdate ? 'Update' : 'Submit'}
-            </button>
-        </form>
+        <div>
+            <StatusManager sectionName={"about_section5"}/>
+            <form onSubmit={handleSubmit} className="space-y-4">
+                {formData.map((item, index) => (
+                    <div key={index} className="flex space-x-4 items-center">
+                        <input
+                            type="text"
+                            value={item.counting}
+                            onChange={(e) => handleChange(index, 'counting', e.target.value)}
+                            placeholder="Counting"
+                            required
+                            className="border p-2 rounded"
+                        />
+                        <input
+                            type="text"
+                            value={item.text}
+                            onChange={(e) => handleChange(index, 'text', e.target.value)}
+                            placeholder="Text"
+                            required
+                            className="border p-2 rounded"
+                        />
+                    </div>
+                ))}
+                <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
+                    {isUpdate ? 'Update' : 'Submit'}
+                </button>
+            </form>
+        </div>
     );
 };
 

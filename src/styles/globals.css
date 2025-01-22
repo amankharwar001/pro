@@ -240,7 +240,7 @@ p {
 }
 
 .homepage-card-slider  .slick-slide {
-  min-width: 320px !important; /* Ensures the width is overridden */
+  min-width: 420px !important; /* Ensures the width is overridden */
 }
 
 .homepage-card-slider .slick-slider .slick-track, .slick-slider .slick-list {

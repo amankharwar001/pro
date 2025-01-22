@@ -69,6 +69,8 @@ import FooterScript from '../models/Script/FooterScript.js';
 // lead reciveing email
 import LeadFormEmail from '../models/formEmail/Email.js';
 
+// hide unhide all status
+import HideUnhideStatus from '../models/hideUnhide/index.js';
 
  async function syncDatabase() {
   try {

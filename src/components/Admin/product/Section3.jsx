@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from "react";
 import ImageUploader from "../ImageUploader";
+import StatusManager from "../status";
 
 const Section3Form = ({ productpage, setActiveBox, sectionsStatusHandle }) => {
   const [heading, setHeading] = useState("");
@@ -45,7 +46,7 @@ const Section3Form = ({ productpage, setActiveBox, sectionsStatusHandle }) => {
     };
 
     fetchData();
-  }, [productpage, info]); // Re-run on productpage change
+  }, [productpage]); // Re-run on productpage change
 
   // Handle form submission for creating or updating data
   const handleSubmit = async (e) => {
@@ -89,6 +90,7 @@ const Section3Form = ({ productpage, setActiveBox, sectionsStatusHandle }) => {
       <h1 className="text-xl font-bold mb-4">
         {isEditMode ? "Edit Section 3 Product" : "Create Section 3 Product"}
       </h1>
+      <StatusManager sectionName={`product_section3${productpage?.id}`}/>
       <ImageUploader referenceType={productpage?.id} referenceId={3} width={550} height={300} setImageStatus={setImageStatus}/>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">

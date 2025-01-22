@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import ImageUploader from "../ImageUploader";
+import StatusManager from "../status";
 
 const HeroSectionForm = ({ productpage, onSubmitId,setActiveBox,sectionsStatusHandle }) => {
   const [formData, setFormData] = useState({
@@ -91,6 +92,7 @@ const HeroSectionForm = ({ productpage, onSubmitId,setActiveBox,sectionsStatusHa
 
   return (
     <div className=" mx-auto p-4 bg-white shadow-md rounded  md:flex flex-row-reverse gap-10 items-center">
+      <StatusManager sectionName={`product_section1${productpage?.id}`}/>
       {/* <h1 className="text-xl font-bold mb-4">
         {isEditMode ? "Edit Hero Section" : "Create Hero Section"}
       </h1> */}

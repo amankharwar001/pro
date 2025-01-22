@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ImageUploader from './ImageUploader';
+import StatusManager from './status';
 
 const Test = ({setActiveBox,sectionsStatusHandle}) => {
   const [id, setId] = useState(null); // Store ID for editing
@@ -91,6 +92,7 @@ const Test = ({setActiveBox,sectionsStatusHandle}) => {
 
   return (
     <div className=" mx-auto p-4 bg-slate-100 shadow-inner rounded-lg space-y-4">
+      <StatusManager sectionName={"homepage_section1"}/>
       <ImageUploader referenceType={"hero_section"} width={1920} height={750} setImageStatus={setImageStatus}/>
       <div className="flex flex-col space-y-1">
         <label className="text-sm font-medium text-gray-700">Heading</label>

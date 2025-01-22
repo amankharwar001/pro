@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import ImageUploader from "./ImageUploader";
 import CommonImageUpload from "./CommonImageUpload";
+import StatusManager from "./status";
 
 const Section8Page = ({ setActiveBox, sectionsStatusHandle }) => {
   const [sectionData, setSectionData] = useState({
@@ -104,6 +105,7 @@ const Section8Page = ({ setActiveBox, sectionsStatusHandle }) => {
   return (
     <div className="p-4">
       {/* <h1 className="text-3xl font-semibold text-center text-gray-800 mb-6">Manage Section 8</h1> */}
+      <StatusManager sectionName={"homepage_section8"}/>
       <div className="flex flex-wrap gap-5 items-center">
         <ImageUploader referenceType={"homepage_section_8_primary"} width={497} height={642} setImageStatus={setImageStatus} />
         <div className="grow">

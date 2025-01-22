@@ -698,6 +698,7 @@ import dynamic from 'next/dynamic';
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 import 'react-quill/dist/quill.snow.css';
 import ImageUploader from "./ImageUploader";
+import StatusManager from "./status";
 
 const AdminSection6Panel = ({ setActiveBox, sectionsStatusHandle }) => {
   const [formData, setFormData] = useState({
@@ -812,6 +813,7 @@ const AdminSection6Panel = ({ setActiveBox, sectionsStatusHandle }) => {
 
   return (
     <div className="p-4 shadow-inner bg-gray-50 rounded-lg space-y-6">
+      <StatusManager sectionName={"homepage_section6"}/>
       {isLoading && <p className="text-blue-600">Loading...</p>}
       {errorMessage && <p className="text-red-600">{errorMessage}</p>}
       {successMessage && <p className="text-green-600">{successMessage}</p>}

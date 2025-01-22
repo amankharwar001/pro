@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from "react";
 import ImageUploader from './ImageUploader';
+import StatusManager from "./status";
 
 export default function Section11Manager({ setActiveBox, sectionsStatusHandle }) {
   const [sectionData, setSectionData] = useState(null);
@@ -91,6 +92,7 @@ export default function Section11Manager({ setActiveBox, sectionsStatusHandle })
   return (
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">Section 11 Manager</h1>
+      <StatusManager sectionName={"homepage_section11"}/>
 
       {/* ImageUploader will be shown only if sectionData is loaded */}
 

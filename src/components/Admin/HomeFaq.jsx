@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
+import StatusManager from "./status";
 
 // Dynamically import React-Quill
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
@@ -103,6 +104,7 @@ export default function FAQManager({setActiveBox,sectionsStatusHandle}) {
   return (
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">FAQ Manager</h1>
+      <StatusManager sectionName={"homepage_section12"}/>
 
       {message && <p className="text-red-500 mb-4">{message}</p>}
 
