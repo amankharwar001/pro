@@ -8,21 +8,22 @@ module.exports = {
   theme: {
     container: {
       center: true,
-      padding: {
-        DEFAULT: '1rem',    // Default padding for all screens
-        sm: '1.5rem',       // Small screens
-        md: '2rem',         // Medium screens
-        lg: '3rem',         // Large screens
-        xl: '4rem',         // Extra-large screens
-        '2xl': '6rem',      // 2XL screens
-      },
-      screens: {
-        sm: '100%',         // Full width on small screens
-        md: '850px',        // Medium screens
-        lg: '1024px',       // Large screens
-        xl: '1280px',       // Extra-large screens
-        '2xl': '1440px',    // 2XL screens
-      },
+      // padding: {
+      //   DEFAULT: '1rem',    // Default padding for all screens
+      //   sm: '1.5rem',       // Small screens
+      //   md: '2rem',         // Medium screens
+      //   lg: '3rem',         // Large screens
+      //   xl: '4rem',         // Extra-large screens
+      //   '2xl': '6rem',      // 2XL screens
+      // },
+      // screens: {
+      //   sm: '100%',         // Full width on small screens
+      //   md: '850px',        // Medium screens
+      //   lg: '1024px',       // Large screens
+      //   xl: '1280px',       // Extra-large screens
+      //   '2xl': '1440px',    // 2XL screens
+      // },
+      
     },
     
     

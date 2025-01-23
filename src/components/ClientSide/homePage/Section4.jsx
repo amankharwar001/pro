@@ -3,9 +3,9 @@ import Image from 'next/image';
 import { Fade, Zoom } from 'react-awesome-reveal';
 
 const BoxCard = ({ box, image }) => (
-  <Zoom triggerOnce delay={300}>
-    <div className="bg-card bg-white p-6 rounded-lg shadow-md hover:shadow-xl flex gap-2">
-      <div className="w-28">
+  <Zoom triggerOnce delay={300} className="min-w-[360px] md:max-w-full grow ">
+    <div className="bg-card bg-white  p-6 rounded-lg shadow-md hover:shadow-xl flex gap-2">
+      <div className="">
         {/* Image for Box */}
         {image ? (
           <div className="bg-black rounded-full p-1 w-10 h-10 flex items-center justify-center">
@@ -64,7 +64,7 @@ const Section4 = ({ apidata }) => {
         </div>
 
         {/* Grid with Card Animations */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+        <div className="flex flex-wrap justify-between  gap-6 mt-10">
           {/* Rendering Boxes */}
           {apidata?.boxes?.map((box, index) => (
             <BoxCard

@@ -1,5 +1,4 @@
 import HeroSection from '@/models/homePage/HeroSection.js'; // Ensure the path is correct
-import SingleImage from '@/models/homePage/ImagesData';
 
 export default async function handler(req, res) {
   try {
@@ -7,10 +6,10 @@ export default async function handler(req, res) {
       const { heading, text, btn, btnLink } = req.body;
 
       // Validate required fields
-      if (!heading || !text || !btn || !btnLink) {
+      if (!heading || !text ) {
         return res.status(400).json({
           success: false,
-          message: 'All fields (heading, text, btn, btnLink) are required.',
+          message: ' (heading, text,) are required.',
         });
       }
 
@@ -41,7 +40,7 @@ export default async function handler(req, res) {
       const { id, heading, text, btn, btnLink } = req.body;
 
       // Ensure required fields are present
-      if (!id || !heading || !text || !btn || !btnLink) {
+      if (!id || !heading || !text  ) {
         return res.status(400).json({
           success: false,
           message: 'All fields (id, heading, text, btn, btnLink) are required.',

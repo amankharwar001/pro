@@ -132,7 +132,7 @@ const HeroSectionForm = ({ onSubmitId, url,referencetype,setActiveBox,sectionsSt
             value={formData.btn}
             onChange={handleChange}
             className="w-full border p-1 px-2 rounded"
-            required
+            
           />
         </div>
         <div>
@@ -143,7 +143,7 @@ const HeroSectionForm = ({ onSubmitId, url,referencetype,setActiveBox,sectionsSt
             value={formData.btnLink}
             onChange={handleChange}
             className="w-full border p-1 px-2 rounded"
-            required
+            
           />
         </div>
         <button

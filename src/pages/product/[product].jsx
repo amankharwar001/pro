@@ -35,13 +35,63 @@ const ProductPage = ({ data, error, baseUrl }) => {
         <meta name="robots" content="index, follow" />
       </Head>
 
-      <HeroSections heroSection={data.heroSection.heroSectionData} image={data.heroSection?.Images[0]?.filePath} baseUrl={baseUrl} />
+      {/* <HeroSections heroSection={data.heroSection.heroSectionData} image={data.heroSection?.Images[0]?.filePath} baseUrl={baseUrl} />
       <Brand section2={data.section2} baseUrl={baseUrl} />
       <CardSection1 section3={data.section3} baseUrl={baseUrl} />
       <CardSection2 section4={data.section4} baseUrl={baseUrl} />
       <PaymentOptions section5={data.section5} baseUrl={baseUrl} />
       <WeWorkSection section6={data.section6} baseUrl={baseUrl} />
-      <WeChooseSection section7={data.section7} baseUrl={baseUrl} />
+      <WeChooseSection section7={data.section7} baseUrl={baseUrl} /> */}
+      {data.heroSection?.heroSectionData && (
+        <HeroSections
+          heroSection={data.heroSection.heroSectionData}
+          image={data.heroSection?.Images[0]?.filePath}
+          baseUrl={baseUrl}
+        />
+      )}
+
+      {data.section2 && (
+        <Brand
+          section2={data.section2}
+          baseUrl={baseUrl}
+        />
+      )}
+
+      {data.section3 && (
+        <CardSection1
+          section3={data.section3}
+          baseUrl={baseUrl}
+        />
+      )}
+
+      {data.section4 && (
+        <CardSection2
+          section4={data.section4}
+          baseUrl={baseUrl}
+        />
+      )}
+
+      {data.section5 && (
+        <PaymentOptions
+          section5={data.section5}
+          baseUrl={baseUrl}
+        />
+      )}
+
+      {data.section6 && (
+        <WeWorkSection
+          section6={data.section6}
+          baseUrl={baseUrl}
+        />
+      )}
+
+      {data.section7 && (
+        <WeChooseSection
+          section7={data.section7}
+          baseUrl={baseUrl}
+        />
+      )}
+
     </div>
   );
 };
@@ -56,7 +106,7 @@ export async function getServerSideProps(context) {
   }
 
   try {
-    const response = await fetch(`${baseUrl}/api/product/${product}`,{
+    const response = await fetch(`${baseUrl}/api/product/${product}`, {
       headers: {
         'api-key': process.env.API_KEY, // Send the API key in the request header
       },

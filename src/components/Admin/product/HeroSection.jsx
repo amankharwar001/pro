@@ -23,9 +23,6 @@ const HeroSectionForm = ({ productpage, onSubmitId,setActiveBox,sectionsStatusHa
    useEffect(() => {
       if (apiStatus && imageStatus) {
         sectionsStatusHandle(true);
-      }else{
-        sectionsStatusHandle(false);
-  
       }
     }, [apiStatus, imageStatus]); 
 

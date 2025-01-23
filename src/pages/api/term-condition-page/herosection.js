@@ -7,10 +7,10 @@ export default async function handler(req, res) {
       const { title, heading, text, btn, btnLink } = req.body;
 
       // Validate required fields
-      if (!title || !heading || !text || !btn || !btnLink) {
+      if (!title || !heading || !text ) {
         return res.status(400).json({
           success: false,
-          message: 'All fields (title, heading, text, btn, btnLink) are required.',
+          message: ' (title, heading, text) are required.',
         });
       }
 

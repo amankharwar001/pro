@@ -26,7 +26,7 @@ const Index = ({ data, error }) => {
   return (
     <div>
       <HeadTagSEO data={data} />
-      <HeroSections apidata={data?.heroSection} />
+      {/* <HeroSections apidata={data?.heroSection} />
       <BrandSection apidata={data?.section2} />
       <OverviewSection3 apidata1={data?.section3} apidata2={data?.section4} />
       <Section4 apidata={data?.section5} />
@@ -36,7 +36,20 @@ const Index = ({ data, error }) => {
       <About apidata={data?.section9} /> 
       <Testomonial apidata={data?.testimonials} />
       <SectionSecurity apidata={data?.section11} />
-      <FaqSection apidata={data?.faq} />
+      <FaqSection apidata={data?.faq} /> */}
+      {data?.heroSection ? <HeroSections apidata={data.heroSection} /> : null}
+      {data?.section2 ? <BrandSection apidata={data.section2} /> : null}
+      {data?.section3 || data?.section4 ? (
+        <OverviewSection3 apidata1={data?.section3} apidata2={data?.section4} />
+      ) : null}
+      {data?.section5 ? <Section4 apidata={data.section5} /> : null}
+      {data?.section6 ? <Homecard apidata={data.section6} /> : null}
+      {data?.section7 ? <PersonSection1 apidata={data.section7} /> : null}
+      {data?.section8 ? <PersonSection2 apidata={data.section8} /> : null}
+      {data?.section9 ? <About apidata={data.section9} /> : null}
+      {data?.testimonials ? <Testomonial apidata={data.testimonials} /> : null}
+      {data?.section11 ? <SectionSecurity apidata={data.section11} /> : null}
+      {data?.faq ? <FaqSection apidata={data.faq} /> : null}
       
     </div>
   );

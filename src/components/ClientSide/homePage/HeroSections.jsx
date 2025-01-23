@@ -158,19 +158,21 @@ const HeroSections = ({ apidata }) => {
               >
                 {text}
               </motion.p>
+              {btn && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                  className="mt-5"
+                >
+                  <Link href={btnLink}>
+                    <button className="bg-[#013466] hover:bg-red-600 rounded-full text-white text-sm sm:text-base lg:text-lg px-4 sm:px-6 py-2 sm:py-3">
+                      {btn}
+                    </button>
+                  </Link>
+                </motion.div>
+              )}
 
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="mt-5"
-              >
-                <Link href={btnLink}>
-                  <button className="bg-[#013466] hover:bg-red-600 rounded-full text-white text-sm sm:text-base lg:text-lg px-4 sm:px-6 py-2 sm:py-3">
-                    {btn}
-                  </button>
-                </Link>
-              </motion.div>
             </div>
           </div>
         </div>

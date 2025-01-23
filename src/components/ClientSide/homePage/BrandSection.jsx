@@ -302,7 +302,7 @@ const BrandSection = ({ apidata }) => {
   };
 
   return (
-    <div className="mt-10 px-5 md:px-10">
+    <div className="mt-20 px-5 md:px-10">
       <div className="container  mx-auto py-4 flex flex-col overflow-hidden">
         <div className="flex gap-5  items-center flex-col lg:flex-row">
           {/* Heading */}

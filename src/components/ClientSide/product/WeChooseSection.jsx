@@ -62,8 +62,8 @@ import { Fade, Zoom } from 'react-awesome-reveal';
 
 const WeChooseSection = ({ section7 }) => {
     return (
-        <div>
-            <div className="container mx-auto py-16 lg:grid grid-cols-2 gap-5 place-items-center">
+        <div className='py-16'>
+            <div className="container mx-auto   lg:grid grid-cols-2 gap-5 place-items-center">
                 {/* Section Heading and Button */}
                 <div className="text-center md:text-start">
                     <Fade triggerOnce delay={100}>
