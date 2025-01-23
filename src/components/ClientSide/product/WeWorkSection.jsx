@@ -12,8 +12,8 @@ const WeWorkSection = ({section6,baseUrl}) => {
         (image) => image.referenceId === 63
       );
     return (
-        <div className='bg-[#003066]  text-white overflow-hidden'>
-            <div className="container bg-background py-16">
+        <div className='bg-[#003066]  text-white overflow-hidden py-16'>
+            <div className="container bg-background ">
                 <div className="text-center mb-8">
                     <Fade triggerOnce delay={100} >
                         <h2 className=" font-bold text-primary">{section6.section6Data.heading}</h2>

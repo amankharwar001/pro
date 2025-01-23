@@ -151,7 +151,7 @@ const homepagePublic = async (req, res) => {
         };
 
         // Fetch sections only if their status is active
-        const heroSection = isSectionActive('homepage_section1') ? await fetchDataSafely(() => HomeHeroSection.findAll(), []) : [];
+        const heroSection =  await fetchDataSafely(() => HomeHeroSection.findAll(), []) ;
         const section11 = isSectionActive('homepage_section11') ? await fetchDataSafely(() => Section11.findAll(), []) : [];
         const section2 = isSectionActive('homepage_section2') ? await fetchDataSafely(() => Section2.findAll(), []) : [];
         const section3 = isSectionActive('homepage_section3') ? await fetchDataSafely(() => Section3.findAll(), []) : [];
@@ -166,7 +166,7 @@ const homepagePublic = async (req, res) => {
         const seoData = await fetchDataSafely(() => CommonSEO.findOne({ where: { pageType: "home" }}), []);
 
         // Fetch images for each section
-        const heroSectionImages = isSectionActive('homepage_section1') ? await fetchDataSafely(() => ImagesData.findAll({ where: { referenceType: ['hero_section'] } }), []) : [];
+        const heroSectionImages =  await fetchDataSafely(() => ImagesData.findAll({ where: { referenceType: ['hero_section'] } }), []);
         const section2Images = isSectionActive('homepage_section2') ? await fetchDataSafely(() => ImagesData.findAll({ where: { referenceType: ['homepage_section_2'] } }), []) : [];
         const section3Images = isSectionActive('homepage_section3') ? await fetchDataSafely(() => ImagesData.findAll({ where: { referenceType: ['home_section3_1', 'home_section3_2', 'homepage_section_3'] } }), []) : [];
         const section4Images = isSectionActive('homepage_section4') ? await fetchDataSafely(() => ImagesData.findAll({ where: { referenceType: ['homepage_section4', 'homepage_section_4'] } }), []) : [];
