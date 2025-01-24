@@ -16,17 +16,25 @@ export default function Section5Product({ productpage, setActiveBox, sectionsSta
   const [error, setError] = useState(null);
   const [isEditing, setIsEditing] = useState(false); // To check if data exists for editing
   const [apiStatus, setApiStatus] = useState(false)
-  const [imageStatus, setImageStatus] = useState(false)
+  const [imageStatuses, setImageStatuses] = useState({});
+  const handleImageStatusChange = (id, status) => {
+    setImageStatuses((prevStatuses) => ({
+      ...prevStatuses,
+      [id]: status,
+    }));
+  };
 
 
   useEffect(() => {
-    if (apiStatus && imageStatus) {
+    const allUploaded = Object.values(imageStatuses).every((status) => status === true);
+
+    if (apiStatus && allUploaded) {
       sectionsStatusHandle(true);
     } else {
       sectionsStatusHandle(false);
 
     }
-  }, [apiStatus, imageStatus]);
+  }, [apiStatus, imageStatuses]);
   // Fetch data on component mount using productpage.id
   useEffect(() => {
     const fetchData = async () => {
@@ -118,8 +126,8 @@ export default function Section5Product({ productpage, setActiveBox, sectionsSta
       <h1 className="text-2xl font-bold mb-4">Section 5 Product</h1>
       {loading && <p>Loading...</p>}
       {error && <p className="text-red-500">{error}</p>}
-      <StatusManager sectionName={`product_section5${productpage?.id}`}/>
-      <ImageUploader referenceType={productpage?.id} referenceId={5} width={450} height={610} setImageStatus={setImageStatus} />
+      <StatusManager sectionName={`product_section5${productpage?.id}`} />
+      <ImageUploader referenceType={productpage?.id} referenceId={5} width={450} height={610} setImageStatus={(status) => handleImageStatusChange(5, status)} />
 
       {!loading && (
         <form className="space-y-4">
@@ -148,7 +156,13 @@ export default function Section5Product({ productpage, setActiveBox, sectionsSta
             {data?.info?.map((item, index) => (
               <div key={index} className="border p-4 rounded mb-4">
                 <div>
-                  <ImageUploader referenceType={productpage?.id} referenceId={index + 51} width={50} height={50} setImageStatus={setImageStatus} />
+                  <ImageUploader
+                    referenceType={productpage?.id}
+                    referenceId={index + 51} // Unique reference ID for each dynamic image
+                    width={50}
+                    height={50}
+                    setImageStatus={(status) => handleImageStatusChange(index + 51, status)} // Track each image's status
+                  />
                   <label className="block font-medium">Title {index + 1}</label>
                   <input
                     type="text"

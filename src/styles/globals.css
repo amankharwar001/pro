@@ -244,9 +244,9 @@ p {
   gap: 5.3rem;
 }
 
-.homepage-card-slider .slick-slider .slick-track, .slick-slider .slick-list {
-  padding-bottom: 25px !important;
-}
+/* .homepage-card-slider .slick-slider .slick-track, .slick-slider .slick-list {
+  padding-bottom: 25px;
+} */
 
 
 /* Remove default styling (the down arrow) */

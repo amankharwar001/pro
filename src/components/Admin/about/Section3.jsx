@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import ImageUploader from '../ImageUploader';
 import StatusManager from '../status';
 
-const AboutSection3Form = ({ setActiveBox,sectionsStatusHandle }) => {
+const AboutSection3Form = ({ setActiveBox, sectionsStatusHandle }) => {
   const [formData, setFormData] = useState({
     heading: '',
     card: [
@@ -17,17 +17,26 @@ const AboutSection3Form = ({ setActiveBox,sectionsStatusHandle }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isUpdate, setIsUpdate] = useState(false); // Track if the form is in update mode
   const [apiStatus, setApiStatus] = useState(false)
-    const [imageStatus, setImageStatus] = useState(false)
-    
-  
-   useEffect(() => {
-      if (apiStatus && imageStatus) {
-        sectionsStatusHandle(true);
-      }else{
-        sectionsStatusHandle(false);
-  
-      }
-    }, [apiStatus, imageStatus]); 
+  const [imageStatus, setImageStatus] = useState({});
+
+  // Update image status dynamically based on section and index
+  const updateImageStatus = (section, index, status) => {
+    setImageStatus((prevStatus) => ({
+      ...prevStatus,
+      [`${section}_${index}`]: status,
+    }));
+  };
+
+  useEffect(() => {
+    const allImagesUploaded = Object.values(imageStatus).every(status => status === true);
+
+    if (apiStatus && allImagesUploaded) {
+      sectionsStatusHandle(true);
+    } else {
+      sectionsStatusHandle(false);
+
+    }
+  }, [apiStatus, imageStatus]);
 
   // Fetch data from the API when the component mounts
   useEffect(() => {
@@ -100,7 +109,7 @@ const AboutSection3Form = ({ setActiveBox,sectionsStatusHandle }) => {
 
   return (
     <div className="mx-auto ">
-      <StatusManager sectionName={"about_section3"}/>
+      <StatusManager sectionName={"about_section3"} />
       <form onSubmit={handleSubmit} className="space-y-4 w-full">
         <div>
           <label className="block font-medium mb-1 text-xs">Heading</label>
@@ -117,7 +126,14 @@ const AboutSection3Form = ({ setActiveBox,sectionsStatusHandle }) => {
           <label className="block font-medium mb-1 text-xs">Cards</label>
           {Array.isArray(formData.card) && formData.card.map((card, index) => (
             <div key={index} className="mb-3 space-y-2">
-              <ImageUploader setImageStatus={setImageStatus} referenceType={"aboutpage_section_3"} referenceId={index + 1} width={30} height={30} />
+              {/* <ImageUploader setImageStatus={setImageStatus} referenceType={"aboutpage_section_3"} referenceId={index + 1} width={30} height={30} /> */}
+              <ImageUploader
+                setImageStatus={(status) => updateImageStatus("aboutpage_section_3", index + 1, status)}  // dynamically set status based on section and index
+                referenceType={"aboutpage_section_3"}
+                referenceId={index + 1}
+                width={30}
+                height={30}
+              />
               <input
                 type="text"
                 name="title"

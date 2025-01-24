@@ -10,7 +10,7 @@ const HeroSections = ({
   alttext = "Default Alt Text",
 }) => {
   return (
-    <div className="bg-[#F2F2F2] w-full">
+    <div className="bg-[#F2F2F2] w-full pb-5 pt-2">
       <div className="container min-w-[360px] overflow-hidden mx-auto pb-5">
         {/* Hero Section Wrapper */}
         <div className="relative bg-zinc-100 rounded-2xl overflow-hidden min-h-[45vh] flex flex-col justify-center">

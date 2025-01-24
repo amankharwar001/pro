@@ -14,17 +14,23 @@ const Section3Form = ({ setActiveBox, sectionsStatusHandle }) => {
     const [isLoading, setIsLoading] = useState(false);
 
     const [apiStatus, setApiStatus] = useState(false)
-    const [imageStatus, setImageStatus] = useState(false)
-
+    // const [imageStatus, setImageStatus] = useState(false)
+    const [imageStatus, setImageStatus] = useState({}); // To track status of both images
+    const [multiImageStatus, setMultiImageStatus] = useState(false)
+    console.log("Image Status: ", imageStatus);
 
     useEffect(() => {
-        if (apiStatus && imageStatus) {
+        const allImagesUploaded =
+            imageStatus.home_section3_1 === true && imageStatus.home_section3_2 === true;
+
+        if (apiStatus && allImagesUploaded && multiImageStatus) {
+            console.log("All conditions met: API and images are complete.");
             sectionsStatusHandle(true);
         } else {
+            console.log("Conditions not met: Updating sections status to false.");
             sectionsStatusHandle(false);
-
         }
-    }, [apiStatus, imageStatus]);
+    }, [apiStatus, imageStatus,multiImageStatus]);
 
 
     // Fetch Section3 data on component mount
@@ -100,17 +106,17 @@ const Section3Form = ({ setActiveBox, sectionsStatusHandle }) => {
 
     return (
         <div className="p-4 mx-auto bg-slate-50 shadow-inner rounded-lg">
-            <StatusManager sectionName={"homepage_section3"}/>
+            <StatusManager sectionName={"homepage_section3"} />
             {/* <h2 className="text-xl font-semibold mb-4"> Section 3</h2> */}
             <div className='md:flex block gap-5 items-center '>
                 <div className='flex gap-10 flex-wrap mb-5'>
-                    <ImageUploader referenceType={"home_section3_1"} width={350} height={700} setImageStatus={setImageStatus}/>
-                    <ImageUploader referenceType={"home_section3_2"} width={250} height={410} setImageStatus={setImageStatus}/>
+                    <ImageUploader referenceType={"home_section3_1"} width={350} height={700} setImageStatus={(status) => setImageStatus(prevState => ({ ...prevState, home_section3_1: status }))} />
+                    <ImageUploader referenceType={"home_section3_2"} width={250} height={410} setImageStatus={(status) => setImageStatus(prevState => ({ ...prevState, home_section3_2: status }))} />
                 </div>
                 <div className='border bg-slate-100  rounded-lg overflow-hidden max-w-full grow '>
                     <div className='p-5'>
                         <span className='font-semibold opacity-40'> Agent Brief Images</span>
-                        <CommonImageUpload referenceType={"homepage_section_3"} imageCount={4} />
+                        <CommonImageUpload referenceType={"homepage_section_3"} imageCount={4} setMultiImageStatus={setMultiImageStatus}/>
                     </div>
                 </div>
             </div>

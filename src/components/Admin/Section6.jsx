@@ -21,14 +21,14 @@
 //   const [activeCardIndex, setActiveCardIndex] = useState(0); // Track active tab index
 //    const [apiStatus, setApiStatus] = useState(false)
 //     const [imageStatus, setImageStatus] = useState(false)
-    
-  
+
+
 //    useEffect(() => {
 //       if (apiStatus && imageStatus) {
 //         sectionsStatusHandle(true);
 //       }else{
 //         sectionsStatusHandle(false);
-  
+
 //       }
 //     }, [apiStatus, imageStatus]); 
 
@@ -63,14 +63,14 @@
 //     // Create a copy of the current cards
 //     const updatedCards = [...formData.card];
 //     updatedCards[index] = { ...updatedCards[index], [field]: value };
-  
+
 //     // Only update the state if the new value differs from the previous one
 //     if (JSON.stringify(updatedCards) !== JSON.stringify(formData.card)) {
 //       setFormData({ ...formData, card: updatedCards });
 //     }
 //   };
-  
-  
+
+
 
 //   const handleTabClick = (index) => {
 //     setActiveCardIndex(index); // Set active card index on tab click
@@ -411,14 +411,14 @@
 //   const [activeCardIndex, setActiveCardIndex] = useState(0); // Track active tab index
 //    const [apiStatus, setApiStatus] = useState(false)
 //     const [imageStatus, setImageStatus] = useState(false)
-    
-  
+
+
 //    useEffect(() => {
 //       if (apiStatus && imageStatus) {
 //         sectionsStatusHandle(true);
 //       }else{
 //         sectionsStatusHandle(false);
-  
+
 //       }
 //     }, [apiStatus, imageStatus]); 
 
@@ -453,14 +453,14 @@
 //     // Create a copy of the current cards
 //     const updatedCards = [...formData.card];
 //     updatedCards[index] = { ...updatedCards[index], [field]: value };
-  
+
 //     // Only update the state if the new value differs from the previous one
 //     if (JSON.stringify(updatedCards) !== JSON.stringify(formData.card)) {
 //       setFormData({ ...formData, card: updatedCards });
 //     }
 //   };
-  
-  
+
+
 
 //   const handleTabClick = (index) => {
 //     setActiveCardIndex(index); // Set active card index on tab click
@@ -713,10 +713,17 @@ const AdminSection6Panel = ({ setActiveBox, sectionsStatusHandle }) => {
   const [errorMessage, setErrorMessage] = useState("");
   const [activeCardIndex, setActiveCardIndex] = useState(0);
   const [apiStatus, setApiStatus] = useState(false);
-  const [imageStatus, setImageStatus] = useState(false);
+  const [imageStatus, setImageStatus] = useState({});
 
+  const updateImageStatus = (index, status) => {
+    setImageStatus((prevStatus) => ({
+      ...prevStatus,
+      [`card_${index}`]: status,
+    }));
+  };
   useEffect(() => {
-    if (apiStatus && imageStatus) {
+    const allImagesUploaded = Object.values(imageStatus).every(status => status === true);
+    if (apiStatus && allImagesUploaded) {
       sectionsStatusHandle(true);
     } else {
       sectionsStatusHandle(false);
@@ -813,7 +820,7 @@ const AdminSection6Panel = ({ setActiveBox, sectionsStatusHandle }) => {
 
   return (
     <div className="p-4 shadow-inner bg-gray-50 rounded-lg space-y-6">
-      <StatusManager sectionName={"homepage_section6"}/>
+      <StatusManager sectionName={"homepage_section6"} />
       {isLoading && <p className="text-blue-600">Loading...</p>}
       {errorMessage && <p className="text-red-600">{errorMessage}</p>}
       {successMessage && <p className="text-green-600">{successMessage}</p>}
@@ -870,17 +877,15 @@ const AdminSection6Panel = ({ setActiveBox, sectionsStatusHandle }) => {
                 key={index}
                 type="button"
                 onClick={() => handleTabClick(index)}
-                className={`py-2 px-4 rounded-md font-semibold flex items-center ${
-                  activeCardIndex === index
+                className={`py-2 px-4 rounded-md font-semibold flex items-center ${activeCardIndex === index
                     ? "bg-black text-white"
                     : "bg-gray-200 text-gray-700"
-                }`}
+                  }`}
               >
                 <span>Card {index + 1}</span>
                 <span
-                  className={`ml-2 w-2.5 h-2.5 rounded-full ${
-                    hasCardData(card) ? "bg-green-500" : "bg-red-500"
-                  }`}
+                  className={`ml-2 w-2.5 h-2.5 rounded-full ${hasCardData(card) ? "bg-green-500" : "bg-red-500"
+                    }`}
                 />
               </button>
             ))}
@@ -904,7 +909,7 @@ const AdminSection6Panel = ({ setActiveBox, sectionsStatusHandle }) => {
                   <h4 className="text-md font-medium text-gray-700 mb-2">
                     Card {index + 1}
                   </h4>
-                  <ImageUploader setImageStatus={setImageStatus} referenceType={`homepage_section${index + 1}`} width={421} height={260} />
+                  <ImageUploader setImageStatus={(status) => updateImageStatus(index, status)} referenceType={`homepage_section${index + 1}`} width={421} height={260} />
                   <div className="space-y-2">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">

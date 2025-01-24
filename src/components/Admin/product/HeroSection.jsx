@@ -18,6 +18,7 @@ const HeroSectionForm = ({ productpage, onSubmitId,setActiveBox,sectionsStatusHa
   const [isEditMode, setIsEditMode] = useState(false); // Track if data already exists
   const [apiStatus, setApiStatus] = useState(false)
   const [imageStatus, setImageStatus] = useState(false)
+  console.log(  "Image Status: ", imageStatus);
     
   
    useEffect(() => {

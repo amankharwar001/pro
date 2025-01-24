@@ -13,17 +13,26 @@ const Section3Form = ({ productpage, setActiveBox, sectionsStatusHandle }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
   const [apiStatus, setApiStatus] = useState(false)
-  const [imageStatus, setImageStatus] = useState(false)
+  const [imageStatuses, setImageStatuses] = useState({}); // Track statuses for all images
 
+  // Update the status for a specific image
+  const handleImageStatusChange = (id, status) => {
+    setImageStatuses((prevStatuses) => ({
+      ...prevStatuses,
+      [id]: status,
+    }));
+  };
 
   useEffect(() => {
-    if (apiStatus && imageStatus) {
+    const allUploaded = Object.values(imageStatuses).every((status) => status === true);
+
+    if (apiStatus && allUploaded) {
       sectionsStatusHandle(true);
     } else {
       sectionsStatusHandle(false);
 
     }
-  }, [apiStatus, imageStatus]);
+  }, [apiStatus, imageStatuses]);
 
   // Fetch existing data based on productpage?.id
   useEffect(() => {
@@ -91,7 +100,7 @@ const Section3Form = ({ productpage, setActiveBox, sectionsStatusHandle }) => {
         {isEditMode ? "Edit Section 3 Product" : "Create Section 3 Product"}
       </h1>
       <StatusManager sectionName={`product_section3${productpage?.id}`}/>
-      <ImageUploader referenceType={productpage?.id} referenceId={3} width={550} height={300} setImageStatus={setImageStatus}/>
+      <ImageUploader referenceType={productpage?.id} referenceId={3} width={550} height={300} setImageStatus={(status) => handleImageStatusChange(3, status)}/>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block font-medium mb-2">Heading</label>
@@ -118,12 +127,12 @@ const Section3Form = ({ productpage, setActiveBox, sectionsStatusHandle }) => {
         {info.map((item, index) => (
           <div key={index} className="mb-4">
             <ImageUploader
-              key={index}
-              referenceType={productpage?.id}
-              referenceId={index + 31}
-              width={25} height={25}
-
-            />
+            referenceType={productpage?.id}
+            referenceId={index + 31} // Unique reference ID for each dynamic image
+            width={25}
+            height={25}
+            setImageStatus={(status) => handleImageStatusChange(index + 31, status)} 
+          />
             <label className="block font-medium mb-2">Info {index + 1}</label>
             <input
               type="text"

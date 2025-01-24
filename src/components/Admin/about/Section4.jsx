@@ -135,11 +135,22 @@ const AboutSection4Form = ({ setActiveBox,sectionsStatusHandle }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [aboutSection4, setAboutSection4] = useState(null);
    const [apiStatus, setApiStatus] = useState(false)
-    const [imageStatus, setImageStatus] = useState(false)
+   const [imageStatus, setImageStatus] = useState({});
+
+   // Function to update the image status dynamically
+   const updateImageStatus = (referenceType, referenceId, status) => {
+     const key = `${referenceType}_${referenceId}`;
+     setImageStatus((prevStatus) => ({
+       ...prevStatus,
+       [key]: status,
+     }));
+   };
     
   
    useEffect(() => {
-      if (apiStatus && imageStatus) {
+    const allImagesUploaded = Object.values(imageStatus).every(status => status === true);
+
+      if (apiStatus && allImagesUploaded) {
         sectionsStatusHandle(true);
       }else{
         sectionsStatusHandle(false);
@@ -216,8 +227,8 @@ const AboutSection4Form = ({ setActiveBox,sectionsStatusHandle }) => {
       <div className="mb-3 border-blue-500 border p-4">
         <span className="text-sm font-medium">Main images</span>
         <div className="flex flex-wrap gap-10 items-center">
-          <ImageUploader setImageStatus={setImageStatus} referenceType={"about_section4_primaryImage"} width={660} height={440}/>
-          <ImageUploader setImageStatus={setImageStatus} referenceType={"about_section4_secondaryImage"} width={230} height={115}/>
+          <ImageUploader setImageStatus={(status) => updateImageStatus("about_section4_primaryImage", 1, status)} referenceType={"about_section4_primaryImage"} width={660} height={440}/>
+          <ImageUploader setImageStatus={(status) => updateImageStatus("about_section4_secondaryImage", 2, status)} referenceType={"about_section4_secondaryImage"} width={230} height={115}/>
         </div>
       </div>
 
@@ -226,7 +237,7 @@ const AboutSection4Form = ({ setActiveBox,sectionsStatusHandle }) => {
           <label className="block font-medium mb-1 text-xs">Cards</label>
           {formData.card.map((card, index) => (
             <div key={index} className="mb-3 space-y-2">
-              <ImageUploader setImageStatus={setImageStatus} referenceType={"aboutpage_section_4"} referenceId={index + 1} width={25} height={25}/>
+              <ImageUploader setImageStatus={(status) => updateImageStatus("aboutpage_section_4", index + 1, status)} referenceType={"aboutpage_section_4"} referenceId={index + 1} width={25} height={25}/>
               <input
                 type="text"
                 name="title"

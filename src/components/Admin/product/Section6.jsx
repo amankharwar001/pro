@@ -17,17 +17,26 @@ export default function Section6Product({ productpage, setActiveBox,sectionsStat
   const [success, setSuccess] = useState("");
   const [isEditing, setIsEditing] = useState(false); // Track if data is fetched
   const [apiStatus, setApiStatus] = useState(false)
-    const [imageStatus, setImageStatus] = useState(false)
-    
+  const [imageStatuses, setImageStatuses] = useState({}); // Track statuses for all images
+
+  // Function to handle status changes
+  const handleImageStatusChange = (id, status) => {
+    setImageStatuses((prevStatuses) => ({
+      ...prevStatuses,
+      [id]: status,
+    }));
+  };
   
    useEffect(() => {
-      if (apiStatus && imageStatus) {
+    const allUploaded = Object.values(imageStatuses).every((status) => status === true);
+
+      if (apiStatus && allUploaded) {
         sectionsStatusHandle(true);
       }else{
         sectionsStatusHandle(false);
   
       }
-    }, [apiStatus, imageStatus]); 
+    }, [apiStatus, imageStatuses]); 
   // Fetch existing data on component mount
   useEffect(() => {
     async function fetchData() {
@@ -128,7 +137,13 @@ export default function Section6Product({ productpage, setActiveBox,sectionsStat
 
       {formData.info.map((item, index) => (
         <div key={index} className="mb-4">
-          <ImageUploader referenceType={productpage?.id} referenceId={index + 61}  width={80} height={80} setImageStatus={setImageStatus}/>
+          <ImageUploader
+            referenceType={productpage?.id}
+            referenceId={index + 61} // Unique referenceId for each ImageUploader
+            width={80}
+            height={80}
+            setImageStatus={(status) => handleImageStatusChange(index + 61, status)} // Track status dynamically
+          />
           <h3 className="font-medium">Info {index + 1}</h3>
           <div className="mb-2">
             <label className="block text-sm">Title:</label>

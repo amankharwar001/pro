@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ImageUploader from './ImageUploader';
 import StatusManager from './status';
 
-const Section5Form = ({setActiveBox,sectionsStatusHandle}) => {
+const Section5Form = ({ setActiveBox, sectionsStatusHandle }) => {
     const [heading, setHeading] = useState('');
     const [content, setContent] = useState('');
     const [boxes, setBoxes] = useState([
@@ -12,17 +12,21 @@ const Section5Form = ({setActiveBox,sectionsStatusHandle}) => {
     ]);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [apiStatus, setApiStatus] = useState(false)
-      const [imageStatus, setImageStatus] = useState(false)
-      
-    
-     useEffect(() => {
-        if (apiStatus && imageStatus) {
-          sectionsStatusHandle(true);
-        }else{
-          sectionsStatusHandle(false);
-    
+    const [imageStatus, setImageStatus] = useState({});
+    console.log("Image Status: ", imageStatus);
+
+
+    useEffect(() => {
+        const allImagesUploaded = imageStatus.homepage_section5_1=== true && imageStatus.homepage_section5_2=== true  && imageStatus.homepage_section5_3;
+
+        if (apiStatus && allImagesUploaded ) {
+            console.log("All conditions met: API and images are complete.");
+            sectionsStatusHandle(true);
+        } else {
+            console.log("Conditions not met: Updating sections status to false.");
+            sectionsStatusHandle(false);
         }
-      }, [apiStatus, imageStatus]); 
+    }, [apiStatus, imageStatus]);
 
     useEffect(() => {
         const fetchSectionData = async () => {
@@ -93,7 +97,7 @@ const Section5Form = ({setActiveBox,sectionsStatusHandle}) => {
 
     return (
         <div className="shadow-inner bg-gray-50">
-            <StatusManager sectionName={"homepage_section5"}/>
+            <StatusManager sectionName={"homepage_section5"} />
             {/* <h2 className="text-2xl font-bold text-gray-800 mb-6">Edit Section 5</h2> */}
 
 
@@ -132,7 +136,14 @@ const Section5Form = ({setActiveBox,sectionsStatusHandle}) => {
                                 <h4 className="text-md font-medium text-gray-700 mb-2">Box {index + 1}</h4>
                                 <div>
 
-                                    <ImageUploader referenceType={`homepage_section5_${index+1}`} width={200} height={100} setImageStatus={setImageStatus} />
+                                    <ImageUploader referenceType={`homepage_section5_${index + 1}`} width={200} height={100}
+                                        setImageStatus={(status) =>
+                                            setImageStatus(prevState => ({
+                                                ...prevState,
+                                                [`homepage_section5_${index + 1}`]: status 
+                                            }))
+                                        }
+                                    />
                                     <div className="">
                                         <div>
                                             <label className="block text-sm font-medium text-gray-700 mb-1">Box Heading</label>

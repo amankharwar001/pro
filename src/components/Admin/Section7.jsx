@@ -12,11 +12,13 @@ export default function Section7Manager({setActiveBox,sectionsStatusHandle}) {
   const [message, setMessage] = useState("");
   const [isEditMode, setIsEditMode] = useState(false); // Toggle between POST and PUT
     const [apiStatus, setApiStatus] = useState(false)
-    const [imageStatus, setImageStatus] = useState(false)
+    const [imageStatus, setImageStatus] = useState({}); 
     
   
    useEffect(() => {
-      if (apiStatus && imageStatus) {
+    const allImagesUploaded =
+            imageStatus.homepage_section7_primary === true && imageStatus.homepage_section7_1 === true;
+      if (apiStatus && allImagesUploaded) {
         sectionsStatusHandle(true);
       }else{
         sectionsStatusHandle(false);
@@ -90,8 +92,8 @@ export default function Section7Manager({setActiveBox,sectionsStatusHandle}) {
       <StatusManager sectionName={"homepage_section7"}/>
       {message && <p className={`mb-4 ${message.includes("Failed") ? "text-red-500" : "text-green-500"}`}>{message}</p>}
       <div className="flex gap-5 items-center pb-5">
-        <ImageUploader setImageStatus={setImageStatus} referenceType={"homepage_section7_primary"} width={470} height={630} />
-        <ImageUploader setImageStatus={setImageStatus} referenceType={"homepage_section7_1"} width={365} height={245} />
+        <ImageUploader setImageStatus={(status) => setImageStatus(prevState => ({ ...prevState, homepage_section7_primary: status }))} referenceType={"homepage_section7_primary"} width={470} height={630} />
+        <ImageUploader setImageStatus={(status) => setImageStatus(prevState => ({ ...prevState, homepage_section7_1: status }))} referenceType={"homepage_section7_1"} width={365} height={245} />
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">

@@ -9,17 +9,26 @@ const Section2Form = ({ productpage,setActiveBox,sectionsStatusHandle }) => {  /
   const [isEditMode, setIsEditMode] = useState(false); // Track if data exists for editing
 
    const [apiStatus, setApiStatus] = useState(false)
-    const [imageStatus, setImageStatus] = useState(false)
-    
+   const [imageStatuses, setImageStatuses] = useState({}); // Track statuses for all images
+
+   // Update the status for a specific image
+   const handleImageStatusChange = (id, status) => {
+     setImageStatuses((prevStatuses) => ({
+       ...prevStatuses,
+       [id]: status,
+     }));
+   };
   
    useEffect(() => {
-      if (apiStatus && imageStatus) {
+    const allUploaded = Object.values(imageStatuses).every((status) => status === true);
+
+      if (apiStatus && allUploaded) {
         sectionsStatusHandle(true);
       }else{
         sectionsStatusHandle(false);
   
       }
-    }, [apiStatus, imageStatus]); 
+    }, [apiStatus, imageStatuses]); 
 
 
   // Fetch existing data on component load
@@ -85,12 +94,13 @@ const Section2Form = ({ productpage,setActiveBox,sectionsStatusHandle }) => {  /
       <div className="flex flex-wrap gap-5">
         {[...Array(4)].map((_, index) => (
           <ImageUploader
-            key={index}
-            referenceType={productpage?.id}
-            referenceId={index + 21}
-            width={160} height={115}
-            setImageStatus={setImageStatus}
-          />
+          key={index}
+          referenceType={productpage?.id} // Unique reference for the product
+          referenceId={index + 21} // Dynamic reference ID
+          width={160}
+          height={115}
+          setImageStatus={(status) => handleImageStatusChange(index + 21, status)} // Update status for the specific image
+        />
         ))}
       </div>
       {/* <ImageUploader referenceType={productpage?.id} referenceId={3} /> */}

@@ -304,7 +304,7 @@ const BrandSection = ({ apidata }) => {
   return (
     <div className="mt-20 px-5 md:px-10">
       <div className="container  mx-auto py-4 flex flex-col overflow-hidden">
-        <div className="flex gap-5  items-center flex-col lg:flex-row">
+        <div className="flex gap-5  items-center flex-col lg:flex-row justify-center">
           {/* Heading */}
           <div className="w-full lg:w-[35%] mb-4 lg:mb-0">
             <div className="relative text-center lg:text-left">
@@ -335,7 +335,7 @@ const BrandSection = ({ apidata }) => {
             </div>
             <div className="hidden lg:block">
 
-            <Slider {...reversesettings} className="mb-2 ">
+            <Slider {...reversesettings} className="mb-5 ">
               {apidata?.images?.map((logo, index) => (
                 <div key={index} className="flex-shrink-0 w-36  md:w-48 md:h-20 justify-end flex item-center h-auto gap-5 ">
                   <Image
