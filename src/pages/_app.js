@@ -54,7 +54,7 @@ export default function App({ Component, pageProps, data }) {
         return (
           <>
             <Header apikey={process.env.API_KEY} img={data} />
-            <div className='mt-[64px] md:mt-[70px] lg:mt-[80px] '> </div>
+            <div className='mt-[78px] md:pt-[4px] lg:mt-[74px] xl:mt-[83px] '> </div>
             
             <Component {...pageProps} />
             <FooterSection />

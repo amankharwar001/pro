@@ -240,7 +240,7 @@ const Header = ({ data, apikey, img }) => {
       {/* Header Container */}
       <div
         className={`fixed top-0 left-0 w-full z-[999] transition-transform duration-300 ease-in-out ${isVisible ? 'translate-y-0' : '-translate-y-full'
-          } ${isScrolled ? 'bg-[#F2F2F2] shadow-md py-1' : 'bg-[#F2F2F2] py-1'}`}
+          } ${isScrolled ? 'bg-[#F2F2F2] shadow-md py-2' : 'bg-[#F2F2F2] py-2'}`}
       >
         <div className="container">
           <Head>
@@ -255,7 +255,7 @@ const Header = ({ data, apikey, img }) => {
                   <Image
                     src={`${baseUrl}${logo?.filePath}`}
                     alt={logo?.altText || 'logo'}
-                    className="w-[6rem] md:w-[7rem] lg:w-[8rem] xl:w-[9rem]"
+                    className="w-[7rem] md:w-[7.5rem] lg:w-[8rem] xl:w-[9rem]"
                     width={400} // Original image ka size
                     height={200}
                     layout="intrinsic"

@@ -66,43 +66,46 @@ const CountingSection = ({ data }) => {
   }
 
   return (
-    <div className="container overflow-hidden mx-auto py-16">
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 place-items-center">
+    <div className='pb-16'>
+      <div className="container overflow-hidden mx-auto  ">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 place-items-center">
 
-        {/* Total Customers */}
-        <Fade triggerOnce direction="left">
-          <div className="flex flex-col items-center gap-2 text-center max-w-56">
-            <h2 className="sm:text-5xl xl:text-6xl font-bold text-primary">{data.card[0].counting || 'N/A'}</h2>
-            <p className="text-muted-foreground text-sm sm:text-base lg:text-xl font-bold">{data.card[0].text || 'N/A'}</p>
-          </div>
-        </Fade>
+          {/* Total Customers */}
+          <Fade triggerOnce direction="left">
+            <div className="flex flex-col items-center gap-2 text-center max-w-56">
+              <h2 className="sm:text-5xl xl:text-6xl font-bold text-primary">{data.card[0].counting || 'N/A'}</h2>
+              <p className="text-muted-foreground text-sm sm:text-base lg:text-xl font-bold">{data.card[0].text || 'N/A'}</p>
+            </div>
+          </Fade>
 
-        {/* Countries Served */}
-        <Fade triggerOnce direction="bottom">
-          <div className="flex flex-col items-center gap-2 text-center max-w-56">
-            <h2 className="sm:text-5xl xl:text-6xl font-bold text-primary">{data.card[1].counting || 'N/A'}</h2>
-            <p className="text-muted-foreground text-sm sm:text-base lg:text-xl font-bold">{data.card[1].text || 'N/A'}</p>
-          </div>
-        </Fade>
+          {/* Countries Served */}
+          <Fade triggerOnce direction="bottom">
+            <div className="flex flex-col items-center gap-2 text-center max-w-56">
+              <h2 className="sm:text-5xl xl:text-6xl font-bold text-primary">{data.card[1].counting || 'N/A'}</h2>
+              <p className="text-muted-foreground text-sm sm:text-base lg:text-xl font-bold">{data.card[1].text || 'N/A'}</p>
+            </div>
+          </Fade>
 
-        {/* Total Funding */}
-        <Zoom triggerOnce>
-          <div className="flex flex-col items-center gap-2 text-center max-w-56">
-            <h2 className="sm:text-5xl xl:text-6xl font-bold text-primary">{data.card[2].counting || 'N/A'}</h2>
-            <p className="text-muted-foreground text-sm sm:text-base lg:text-xl font-bold">{data.card[2].text || 'N/A'}</p>
-          </div>
-        </Zoom>
+          {/* Total Funding */}
+          <Zoom triggerOnce>
+            <div className="flex flex-col items-center gap-2 text-center max-w-56">
+              <h2 className="sm:text-5xl xl:text-6xl font-bold text-primary">{data.card[2].counting || 'N/A'}</h2>
+              <p className="text-muted-foreground text-sm sm:text-base lg:text-xl font-bold">{data.card[2].text || 'N/A'}</p>
+            </div>
+          </Zoom>
 
-        {/* Years of Experience */}
-        <Zoom triggerOnce>
-          <div className="flex flex-col items-center gap-2 text-center max-w-56">
-            <h2 className="sm:text-5xl xl:text-6xl font-bold text-primary">{data.card[3].counting || 'N/A'}</h2>
-            <p className="text-muted-foreground text-sm sm:text-base lg:text-xl font-bold">{data.card[3].text || 'N/A'}</p>
-          </div>
-        </Zoom>
+          {/* Years of Experience */}
+          <Zoom triggerOnce>
+            <div className="flex flex-col items-center gap-2 text-center max-w-56">
+              <h2 className="sm:text-5xl xl:text-6xl font-bold text-primary">{data.card[3].counting || 'N/A'}</h2>
+              <p className="text-muted-foreground text-sm sm:text-base lg:text-xl font-bold">{data.card[3].text || 'N/A'}</p>
+            </div>
+          </Zoom>
 
+        </div>
       </div>
     </div>
+      
   );
 };
 

@@ -12,12 +12,25 @@ const about = ({ data, error, baseUrl }) => {
 
   return (
     <div>
-        <HeadTagSEO data={data} />
-        <HeroSections heroSection={data?.heroSection} image={data?.heroSection?.images[0]?.filePath} baseUrl={baseUrl}/>
+      <HeadTagSEO data={data} />
+      {/* <HeroSections heroSection={data?.heroSection} image={data?.heroSection?.images[0]?.filePath} baseUrl={baseUrl}/>
         <AboutUs data={data?.section2} baseUrl={baseUrl}/>
         <FeatureGrid data={data?.section3} baseUrl={baseUrl}/>
         <VisionMissionSection data={data?.section4} baseUrl={baseUrl}/>
-        <CountingSection data={data?.section5} />
+        <CountingSection data={data?.section5} /> */}
+      {data?.heroSection && (
+        <HeroSections
+          heroSection={data.heroSection}
+          image={data.heroSection?.images[0]?.filePath}
+          baseUrl={baseUrl}
+        />
+      )}
+      {data?.section2 && <AboutUs data={data.section2} baseUrl={baseUrl} />}
+      {data?.section3 && <FeatureGrid data={data.section3} baseUrl={baseUrl} />}
+      {data?.section4 && (
+        <VisionMissionSection data={data.section4} baseUrl={baseUrl} />
+      )}
+      {data?.section5 && <CountingSection data={data.section5} />}
     </div>
   )
 }
@@ -26,7 +39,7 @@ export async function getServerSideProps(context) {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_PATH;
 
   try {
-    const response = await fetch(`${baseUrl}/api/public/about`,{
+    const response = await fetch(`${baseUrl}/api/public/about`, {
       headers: {
         'api-key': process.env.API_KEY, // Send the API key in the request header
       },
@@ -35,8 +48,8 @@ export async function getServerSideProps(context) {
       return { props: { error: "Product not found", data: null, baseUrl } };
     }
     const data = await response.json();
-    
-    return { props: { data:data.data, error: null, baseUrl } };
+
+    return { props: { data: data.data, error: null, baseUrl } };
   } catch (err) {
     console.error("Failed to fetch product:", err);
     return { props: { error: err.message, data: null, baseUrl } };

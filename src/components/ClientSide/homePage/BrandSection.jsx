@@ -335,7 +335,7 @@ const BrandSection = ({ apidata }) => {
             </div>
             <div className="hidden lg:block">
 
-            <Slider {...reversesettings} className="mb-5 ">
+            <Slider {...reversesettings} className="mb-2 ">
               {apidata?.images?.map((logo, index) => (
                 <div key={index} className="flex-shrink-0 w-36  md:w-48 md:h-20 justify-end flex item-center h-auto gap-5 ">
                   <Image
