@@ -2,6 +2,7 @@ import ChangeCredentials from '@/components/Admin/adminSetting';
 import ScriptAndEmail from '@/components/Admin/adminSetting/ScriptAndEmail';
 import UpdateEmailForm from '@/components/Admin/adminSetting/UpdateEmail';
 import Layout from '@/components/Admin/common/Layout';
+import FooterAdminPanel from '@/components/Admin/footer';
 import ImageUploader from '@/components/Admin/ImageUploader';
 import React, { useState, useEffect } from 'react';
 
@@ -85,6 +86,7 @@ const Index = () => {
   return (
     <>
       <div>
+      <FooterAdminPanel />
         <h1 className="text-xl font-bold mb-4">Setting</h1>
       </div>
       <div className="flex flex-wrap gap-5 justify-between bg-white p-4 rounded">

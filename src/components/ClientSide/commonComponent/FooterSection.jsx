@@ -8,12 +8,31 @@ import Link from 'next/link';
 import { FaTwitter } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
-import { FaPinterestP } from "react-icons/fa";
+import { FaPinterestP,FaInstagram } from "react-icons/fa";
 
 
 export default function FooterSection() {
   const [productList, setProductList] = useState(null); // State to store API data
   const baseUrl = process.env.NEXT_PUBLIC_BASE_PATH;
+  const [footerData, setFooterData] = useState(null);
+  console.log("footer data show is here", footerData)
+
+
+  useEffect(() => {
+    const fetchFooterData = async () => {
+      try {
+        const response = await fetch(`${baseUrl}/api/public/footer`);
+        if (response.ok) {
+          const data = await response.json();
+          setFooterData(data); // Save footer data to state
+        }
+      } catch (err) {
+        console.error('Error fetching footer data:', err);
+      }
+    };
+
+    fetchFooterData(); // Call function to fetch footer data
+  }, [baseUrl]);
 
 
   useEffect(() => {
@@ -38,7 +57,7 @@ export default function FooterSection() {
   const [logo, setlogo] = useState(); // State to store admin settings
   const [feviconIcon, setfeviconIcon] = useState(); // State to store avatar images
 
-  console.log("logo show is here",logo)
+  console.log("logo show is here", logo)
 
 
   useEffect(() => {
@@ -48,7 +67,7 @@ export default function FooterSection() {
         const response = await fetch('/api/public/logo');
         if (response.ok) {
           const data = await response.json();
-          setlogo(data.logo ||{} ); // Set admin settings or empty object
+          setlogo(data.logo || {}); // Set admin settings or empty object
           setfeviconIcon(data.fevicon || []); // Set avatar images or empty array
         } else {
           setlogo({});
@@ -72,19 +91,19 @@ export default function FooterSection() {
         <div className="container m-auto  md:place-content-start  md:text-start grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-10">
           <Slide triggerOnce direction="left">
             <div className="mt-4">
-            <Link href={baseUrl} className=''>
-              <Image
-                src={`${baseUrl}${logo?.filePath}`}
-                alt={logo?.altText || 'logo'}
-                className="w-[10rem] "
-                width={100}
-                height={100}
-              />
-            </Link>
-              <p className="text-base mt-5">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto odio cupiditate corrupti nemo blanditiis veniam
-                voluptates, sunt quaerat possimus quo eligendi reiciendis magnam dicta quos enim quas magni voluptatum nam reprehenderit dignissimos!
-              </p>
+              <Link href={baseUrl} className=''>
+                <Image
+                  src={`${baseUrl}${logo?.filePath}`}
+                  alt={logo?.altText || 'logo'}
+                  className="w-[10rem] "
+                  width={100}
+                  height={100}
+                />
+              </Link>
+              <div
+                className="footer-content mt-2"
+                dangerouslySetInnerHTML={{ __html: footerData?.content }}
+              ></div>
             </div>
           </Slide>
 
@@ -103,12 +122,14 @@ export default function FooterSection() {
 
           <Fade triggerOnce delay={400}>
             <div className="mt-4">
-              <h3 className="text-lg font-semibold">Solutions</h3>
+              <h3 className="text-lg font-semibold">{footerData?.heading}</h3>
               <ul className="text-muted-foreground flex flex-col gap-5 mt-5">
-                <li>Compliance Publications</li>
-                <li>Annual Reports</li>
-                <li>CSR Reports</li>
-                <li>Financial documentation</li>
+                {footerData?.buttons?.map((item, index) => (
+                  <li key={index}>
+                    <Link href={item.btnlink || '/'}>{item.btnname}</Link>
+                  </li>
+                ))
+                }
               </ul>
             </div>
           </Fade>
@@ -138,38 +159,59 @@ export default function FooterSection() {
           <hr />
           <div className="md:flex justify-between items-center mt-5">
             <Fade triggerOnce delay={800}>
-              <p className="text-sm md:text-start text-center">Copyright @2024 Paramotordt. All rights reserved.</p>
+              <p className="text-sm md:text-start text-center">{footerData?.copyright}</p>
             </Fade>
 
             <div className="flex space-x-4 justify-center mt-3 md:mt-0">
-              <Fade triggerOnce delay={1000}>
-                <div className="border border-slate-700 group  hover:border-red-600  rounded-full p-2 flex items-center justify-center w-8 h-8">
-                  <a href="#" target="_blank" rel="noopener noreferrer" className=''>
-                    <FaTwitter  size={18} className='text-[#334155] group-hover:text-red-600'/>
-                  </a>
-                </div>
-              </Fade>
-              <Fade triggerOnce delay={1100}>
-                <div className="border border-slate-700 group hover:border-red-600 rounded-full p-2 flex items-center justify-center w-8 h-8">
-                  <a href="#" target="_blank" rel="noopener noreferrer">
-                    <FaFacebookF  size={18} className='text-[#334155] group-hover:text-red-600' />
-                  </a>
-                </div>
-              </Fade>
-              <Fade triggerOnce delay={1200}>
-                <div className="border border-slate-700 group hover:border-red-600 rounded-full p-2 flex items-center justify-center w-8 h-8">
-                  <a href="#" target="_blank" rel="noopener noreferrer">
-                    <FaLinkedinIn size={18} className='text-[#334155] group-hover:text-red-600'/>
-                  </a>
-                </div>
-              </Fade>
-              <Fade triggerOnce delay={1300}>
-                <div className="border border-slate-700 group hover:border-red-600 rounded-full p-2 flex items-center justify-center w-8 h-8">
-                  <a href="#" target="_blank" rel="noopener noreferrer">
-                    <FaPinterestP size={18} className='text-[#334155] group-hover:text-red-600' />
-                  </a>
-                </div>
-              </Fade>
+              {footerData?.socialLinks.twitter && (
+                <Fade triggerOnce delay={1000}>
+                  <div className="border border-slate-700 group hover:border-red-600 rounded-full p-2 flex items-center justify-center w-8 h-8">
+                    <a href={footerData?.socialLinks.twitter} target="_blank" rel="noopener noreferrer">
+                      <FaTwitter size={18} className="text-[#334155] group-hover:text-red-600" />
+                    </a>
+                  </div>
+                </Fade>
+              )}
+
+              {footerData?.socialLinks.facebook && (
+                <Fade triggerOnce delay={1100}>
+                  <div className="border border-slate-700 group hover:border-red-600 rounded-full p-2 flex items-center justify-center w-8 h-8">
+                    <a href={footerData?.socialLinks.facebook} target="_blank" rel="noopener noreferrer">
+                      <FaFacebookF size={18} className="text-[#334155] group-hover:text-red-600" />
+                    </a>
+                  </div>
+                </Fade>
+              )}
+
+              {footerData?.socialLinks.linkedin && (
+                <Fade triggerOnce delay={1200}>
+                  <div className="border border-slate-700 group hover:border-red-600 rounded-full p-2 flex items-center justify-center w-8 h-8">
+                    <a href={footerData?.socialLinks.linkedin} target="_blank" rel="noopener noreferrer">
+                      <FaLinkedinIn size={18} className="text-[#334155] group-hover:text-red-600" />
+                    </a>
+                  </div>
+                </Fade>
+              )}
+
+              {footerData?.socialLinks.instagram && (
+                <Fade triggerOnce delay={1300}>
+                  <div className="border border-slate-700 group hover:border-red-600 rounded-full p-2 flex items-center justify-center w-8 h-8">
+                    <a href={footerData?.socialLinks.instagram} target="_blank" rel="noopener noreferrer">
+                      <FaInstagram size={18} className="text-[#334155] group-hover:text-red-600" />
+                    </a>
+                  </div>
+                </Fade>
+              )}
+
+              {footerData?.socialLinks.pinterest && (
+                <Fade triggerOnce delay={1400}>
+                  <div className="border border-slate-700 group hover:border-red-600 rounded-full p-2 flex items-center justify-center w-8 h-8">
+                    <a href={footerData?.socialLinks.pinterest} target="_blank" rel="noopener noreferrer">
+                      <FaPinterestP size={18} className="text-[#334155] group-hover:text-red-600" />
+                    </a>
+                  </div>
+                </Fade>
+              )}
             </div>
           </div>
         </div>
@@ -177,7 +219,6 @@ export default function FooterSection() {
     </div>
   );
 }
-
 
 
 

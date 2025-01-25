@@ -264,3 +264,7 @@ select {
   /* margin: 0 auto;           */
   padding: 0 2vw;          /* Horizontal padding of 6rem */
 }
+
+.footer-content p{
+  font-size: inherit;
+}

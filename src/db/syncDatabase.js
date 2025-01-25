@@ -45,6 +45,7 @@ import Category from '../models/blogPage/Category.js';
 import CommonBlogContent from '../models/blogPage/CommonBlogContent.js';
 import SEOBlogPage from '../models/blogPage/SEO.js';
 import BlogStatus from '../models/blogPage/BlogStatus.js';
+import BlogPageHeading from '../models/blogPage/Main.js';
 // partner page
 import HeroSectionPatnerPage from '../models/partnerPage/HeroSection.js';
 import PartnerContactForm from '../models/partnerPage/PartnerContactForm.js';
@@ -71,6 +72,11 @@ import LeadFormEmail from '../models/formEmail/Email.js';
 
 // hide unhide all status
 import HideUnhideStatus from '../models/hideUnhide/index.js';
+
+//AdminFooterSetting
+import AdminFooterSetting from '../models/adminSetting/footer.js';
+
+
 
  async function syncDatabase() {
   try {
