@@ -102,8 +102,9 @@ export default function Section9Manager({setActiveBox,sectionsStatusHandle}) {
 
     return (
         <div className="p-4">
-            <h1 className="text-2xl font-bold mb-4">Section 12 Manager</h1>
-            <StatusManager sectionName={"homepage_section9"}/>
+            <div className='flex justify-end pb-5'>
+                <StatusManager sectionName={"homepage_section9"}/>
+            </div>
 
             {message && <p className={`mb-4 ${message.includes("Failed") ? "text-red-500" : "text-green-500"}`}>{message}</p>}
             <CommonImageUpload referenceType={"homepage_section_9"} imageCount={4} setMultiImageStatus={setMultiImageStatus}/>

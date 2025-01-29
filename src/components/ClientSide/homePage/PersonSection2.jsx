@@ -18,7 +18,7 @@ export default function PersonSection2({ apidata }) {
 
                     {/* Fade In Animation for Paragraph */}
                     <Fade triggerOnce direction="up" delay={300}>
-                        <p className="mb-6">{apidata?.content}</p>
+                        <p className="mb-6 text-slate-900">{apidata?.content}</p>
                     </Fade>
 
                     {/* Slide In Animation for Button */}

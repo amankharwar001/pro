@@ -91,8 +91,9 @@ export default function Section11Manager({ setActiveBox, sectionsStatusHandle })
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Section 11 Manager</h1>
-      <StatusManager sectionName={"homepage_section11"}/>
+      <div className='flex justify-end '>
+        <StatusManager sectionName={"homepage_section11"}/>
+      </div>
 
       {/* ImageUploader will be shown only if sectionData is loaded */}
 

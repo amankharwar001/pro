@@ -96,12 +96,14 @@ const Section2 = ({setActiveBox,sectionsStatusHandle}) => {
 
   return (
     <div className=" mx-auto p-4 bg-slate-50 shadow-inner rounded-lg">
-      <StatusManager sectionName={"homepage_section2"}/>
+      <div className='flex justify-end'>
+        <StatusManager sectionName={"homepage_section2"}/>
+      </div>
       
       {loading ? (
         <p>Loading editor...</p>
       ) : (
-        <form onSubmit={handleSubmit} className='mb-5'>
+        <form onSubmit={handleSubmit} className='mb-5 mt-3'>
           <ReactQuill
             value={editorContent}
             onChange={setEditorContent}
@@ -111,7 +113,7 @@ const Section2 = ({setActiveBox,sectionsStatusHandle}) => {
           />
           <button
             type="submit"
-            className="mt-2 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700"
+            className="mt-2 px-4 py-2 bg-black hover:bg-gray-800 text-white rounded-md "
           >
             {contentId ? 'Update Content' : 'Create Content'}
           </button>

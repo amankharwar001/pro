@@ -86,11 +86,13 @@ const Section2Form = ({ productpage,setActiveBox,sectionsStatusHandle }) => {  /
   };
 
   return (
-    <div className="p-4 bg-white shadow-md rounded">
+    <div className="p-4 border bg-gray-50 shadow-inner rounded">
       <h1 className="text-xl font-bold mb-4">
         {isEditMode ? "Edit Section 2 Product" : "Create Section 2 Product"}
       </h1>
-      <StatusManager sectionName={`product_section2${productpage?.id}`}/>
+      <div className="flex justify-end">
+        <StatusManager sectionName={`product_section2${productpage?.id}`}/>
+      </div>
       <div className="flex flex-wrap gap-5">
         {[...Array(4)].map((_, index) => (
           <ImageUploader

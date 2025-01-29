@@ -66,8 +66,10 @@ const AboutSection5Form = ({setActiveBox,sectionsStatusHandle}) => {
     };
 
     return (
-        <div>
-            <StatusManager sectionName={"about_section5"}/>
+        <div className='p-4'>
+            <div className='flex justify-end'>
+                <StatusManager sectionName={"about_section5"}/>
+            </div>
             <form onSubmit={handleSubmit} className="space-y-4">
                 {formData.map((item, index) => (
                     <div key={index} className="flex space-x-4 items-center">

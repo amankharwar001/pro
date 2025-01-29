@@ -97,7 +97,9 @@ const Section5Form = ({ setActiveBox, sectionsStatusHandle }) => {
 
     return (
         <div className="shadow-inner bg-gray-50">
-            <StatusManager sectionName={"homepage_section5"} />
+            <div className='flex justify-end pt-5 px-5'>
+                <StatusManager sectionName={"homepage_section5"} />
+            </div>
             {/* <h2 className="text-2xl font-bold text-gray-800 mb-6">Edit Section 5</h2> */}
 
 

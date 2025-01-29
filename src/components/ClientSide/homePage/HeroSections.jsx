@@ -118,17 +118,17 @@ const HeroSections = ({ apidata }) => {
         </div>
       </div> */}
       <div className="">
-        <div className="container   min-w-[360px] overflow-hidden mx-auto pb-5">
+        <div className="container  min-w-[360px] overflow-hidden mx-auto pb-5">
           {/* <Header /> */}
 
           {/* Hero Section Wrapper */}
-          <div className="relative bg-zinc-100 rounded-2xl overflow-hidden  min-h-[45vh] flex flex-col justify-center">
+          <div className="relative bg-zinc-100 rounded-2xl overflow-hidden  min-h-[45vh] lg:min-h-[80vh] flex flex-col justify-center">
             {/* Hero Image */}
             {image && (
               <motion.img
                 src={image.filePath}
                 alt={image.altText}
-                className="w-full object-cover h-[45vh] sm:h-[50vh] lg:h-auto rounded-2xl"
+                className="w-full object-cover h-[45vh] lg:min-h-[80vh] sm:h-[50vh] lg:h-auto rounded-2xl"
                 initial={{ scale: 1.1 }}
                 animate={{ scale: 1 }}
                 transition={{ duration: 1 }}
@@ -140,15 +140,17 @@ const HeroSections = ({ apidata }) => {
 
             {/* Hero Content */}
             {/* <div className="absolute inset-0 z-10 flex flex-col justify-center items-start text-white px-6 sm:px-10"> */}
-            <div className="absolute z-10 top-20 md:top-1/4 flex md:max-w-2xl flex-col md:pl-20 md:items-start text-white px-7">
-              <motion.h1
+            <div className="absolute z-10 top-2/4 -translate-y-2/4 flex md:max-w-2xl flex-col md:pl-20 md:items-start text-white px-7">
+              <motion
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="text-3xl sm:text-4xl lg:text-5xl font-bold"
+               
               >
-                {heading}
-              </motion.h1>
+                <h1 className="heading-text ">{heading}</h1>
+
+                
+              </motion>
 
               <motion.p
                 initial={{ opacity: 0, y: 20 }}

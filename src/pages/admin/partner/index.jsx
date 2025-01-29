@@ -89,7 +89,7 @@ const Index = () => {
   };
 
   return (
-    <div className="bg-white shadow-lg rounded-lg pb-4">
+    <div className={`bg-white shadow-lg rounded-lg pb-4 ${activeBox === 1 ? "mb-20" : ""}`}>
       {/* // ye template ha */}
 
       <div>

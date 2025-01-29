@@ -86,7 +86,7 @@ const Index = () => {
   return (
     <>
       <div>
-      <FooterAdminPanel />
+      
         <h1 className="text-xl font-bold mb-4">Setting</h1>
       </div>
       <div className="flex flex-wrap gap-5 justify-between bg-white p-4 rounded">
@@ -131,16 +131,18 @@ const Index = () => {
             </div>
           </div>
         </div>
-        <div className='grow'>
+        <div className='grow bg-gray-200 border p-4 rounded-lg'>
           <div className='flex gap-3 justify-center'>
             <span className={getTabClass(1)} onClick={() => handleClick(1)}>Update Username/Password</span>
             <span className={getTabClass(2)} onClick={() => handleClick(2)}>Update Email</span>
           </div>
-          {activeBox === 1 && <div><ChangeCredentials /></div>}
+          {activeBox === 1 && <div className=''><ChangeCredentials /></div>}
           {activeBox === 2 && <div><UpdateEmailForm /></div>}          
         </div>
       </div>
       <ScriptAndEmail/>
+      <FooterAdminPanel />
+      <div className='h-[300px] w-full'></div>
       
     </>
   );

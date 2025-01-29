@@ -222,8 +222,10 @@ const AboutSection4Form = ({ setActiveBox,sectionsStatusHandle }) => {
   };
 
   return (
-    <div className="mx-auto ">
-      <StatusManager sectionName={"about_section4"}/>
+    <div className="mx-auto p-4">
+      <div className='flex justify-end'>
+        <StatusManager sectionName={"about_section4"}/>
+      </div>
       <div className="mb-3 border-blue-500 border p-4">
         <span className="text-sm font-medium">Main images</span>
         <div className="flex flex-wrap gap-10 items-center">

@@ -135,7 +135,7 @@ const Index = () => {
   };
 
   return (
-    <div className="bg-white shadow-lg rounded-lg pb-4">
+    <div className={`bg-white shadow-lg rounded-lg pb-4 ${activeBox === 5 || activeBox === 6 ? "" : "mb-20"}`}>
       {/* Tab Components */}
       <div>
         {tabs.map((tab, index) => (

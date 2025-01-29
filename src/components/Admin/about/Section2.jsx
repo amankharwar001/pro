@@ -98,8 +98,10 @@ const AboutSectionForm = ({ setActiveBox, sectionsStatusHandle }) => {
   };
 
   return (
-    <div className="mx-auto ">
-      <StatusManager sectionName={"about_section2"} />
+    <div className="mx-auto p-4 ">
+      <div className='flex justify-end '>
+        <StatusManager sectionName={"about_section2"} />
+      </div>
       <div className="flex flex-wrap gap-10 items-center mb-3">
         <ImageUploader setImageStatus={(status) => setImageStatus(prevState => ({ ...prevState, about_section_primaryImage: status }))} referenceType="about_section_primaryImage" width={616} height={580} />
         <ImageUploader setImageStatus={(status) => setImageStatus(prevState => ({ ...prevState, about_section_secondaryImage: status }))} referenceType="about_section_secondaryImage" width={240} height={210} />

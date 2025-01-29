@@ -106,7 +106,9 @@ const Section3Form = ({ setActiveBox, sectionsStatusHandle }) => {
 
     return (
         <div className="p-4 mx-auto bg-slate-50 shadow-inner rounded-lg">
-            <StatusManager sectionName={"homepage_section3"} />
+            <div className='flex justify-end pb-5'>
+                <StatusManager sectionName={"homepage_section3"} />
+            </div>
             {/* <h2 className="text-xl font-semibold mb-4"> Section 3</h2> */}
             <div className='md:flex block gap-5 items-center '>
                 <div className='flex gap-10 flex-wrap mb-5'>
@@ -194,7 +196,7 @@ const Section3Form = ({ setActiveBox, sectionsStatusHandle }) => {
 
                 <button
                     type="submit"
-                    className="w-full bg-blue-500 text-white px-4 py-2 rounded-md"
+                    className="w-full bg-black hover:bg-gray-800 text-white px-4 py-2 rounded-md"
                 >
                     Update Section 3
                 </button>

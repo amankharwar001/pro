@@ -8,7 +8,7 @@ export default function PersonSection1({ apidata }) {
     const secondaryImage = apidata?.images?.find(img => img.referenceType === 'homepage_section7_1');
 
     return (
-        <div className="container overflow-hidden m-auto grid lg:grid-cols-2 gap-5 -mt-10 md:mt-20 mb-10 md:mb-20">
+        <div className="container m-auto grid lg:grid-cols-2 gap-5 -mt-10 md:mt-20 mb-10 md:mb-20">
             <div className="' order-last lg:order-none w-full mb-6 md:mb-0 relative md:pt-0 pt-5">
                 <div className="lg:max-w-[497px] w-full">
                     <Zoom triggerOnce delay={300}>
@@ -42,7 +42,7 @@ export default function PersonSection1({ apidata }) {
                     <h2 className="font-bold text-primary">{apidata?.heading}</h2>
                 </Fade>
                 <Fade triggerOnce>
-                    <p className="mt-4">{apidata?.content}</p>
+                    <p className="mt-4 text-slate-700">{apidata?.content}</p>
                     <div className="mt-6">
                         <button
                             onClick={() => {

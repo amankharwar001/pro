@@ -95,11 +95,13 @@ const Section3Form = ({ productpage, setActiveBox, sectionsStatusHandle }) => {
   };
 
   return (
-    <div className="p-4 bg-white shadow-md rounded">
+    <div className="p-4 border bg-gray-50 shadow-inner rounded">
       <h1 className="text-xl font-bold mb-4">
         {isEditMode ? "Edit Section 3 Product" : "Create Section 3 Product"}
       </h1>
-      <StatusManager sectionName={`product_section3${productpage?.id}`}/>
+      <div className="flex justify-end">
+        <StatusManager sectionName={`product_section3${productpage?.id}`}/>
+      </div>
       <ImageUploader referenceType={productpage?.id} referenceId={3} width={550} height={300} setImageStatus={(status) => handleImageStatusChange(3, status)}/>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">

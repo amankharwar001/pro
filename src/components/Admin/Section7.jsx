@@ -89,7 +89,9 @@ export default function Section7Manager({setActiveBox,sectionsStatusHandle}) {
 
   return (
     <div className="p-4">
-      <StatusManager sectionName={"homepage_section7"}/>
+      <div className='flex justify-end '>
+        <StatusManager sectionName={"homepage_section7"}/>
+      </div>
       {message && <p className={`mb-4 ${message.includes("Failed") ? "text-red-500" : "text-green-500"}`}>{message}</p>}
       <div className="flex gap-5 items-center pb-5">
         <ImageUploader setImageStatus={(status) => setImageStatus(prevState => ({ ...prevState, homepage_section7_primary: status }))} referenceType={"homepage_section7_primary"} width={470} height={630} />

@@ -304,7 +304,7 @@ const BrandSection = ({ apidata }) => {
   return (
     <div className="mt-20 px-5 md:px-10">
       <div className="container  mx-auto py-4 flex flex-col overflow-hidden">
-        <div className="flex gap-5  items-center flex-col lg:flex-row justify-center">
+        <div className="flex gap-5  items-center flex-col lg:flex-row justify-center lg:justify-between">
           {/* Heading */}
           <div className="w-full lg:w-[35%] mb-4 lg:mb-0">
             <div className="relative text-center lg:text-left">
@@ -319,9 +319,9 @@ const BrandSection = ({ apidata }) => {
           <div className="w-full lg:w-[60%] ">
             {/* Top Row Slider */}
             <div className="lg:hidden">
-              <Slider {...reversesettings} className="mb-5 brand-slider ">
+              <Slider {...reversesettings} className=" brand-slider ">
                 {apidata?.images?.map((logo, index) => (
-                  <div key={index} className="flex-shrink-0 w-36  md:w-48 md:h-20 justify-end flex item-center h-auto gap-5 ">
+                  <div key={index} className="flex-shrink-0 w-40  md:w-52 md:h-20 justify-end flex item-center h-auto gap-5 ">
                     <Image
                       src={logo?.filePath}
                       alt={logo?.altText}
@@ -335,13 +335,13 @@ const BrandSection = ({ apidata }) => {
             </div>
             <div className="hidden lg:block">
 
-            <Slider {...reversesettings} className="mb-5 ">
+            <Slider {...reversesettings} className=" ">
               {apidata?.images?.map((logo, index) => (
-                <div key={index} className="flex-shrink-0 w-36  md:w-48 md:h-20 justify-end flex item-center h-auto gap-5 ">
+                <div key={index} className="flex-shrink-0 w-40  md:w-52 md:h-20 justify-end flex item-center h-auto gap-5 ">
                   <Image
                     src={logo?.filePath}
                     alt={logo?.altText}
-                    width={160}
+                    width={180}
                     height={80}
                     className="object-contain"
                   />
@@ -354,7 +354,7 @@ const BrandSection = ({ apidata }) => {
             <div className="lg:hidden">
               <Slider {...settings} className=" brand-slider">
                 {apidata?.images?.map((logo, index) => (
-                  <div key={`bottom-row-${index}`} className="flex-shrink-0 w-36 md:w-48 md:h-20 justify-end flex h-auto item-center">
+                  <div key={`bottom-row-${index}`} className="flex-shrink-0 w-40 md:w-52 md:h-20 justify-end flex h-auto item-center">
                     <Image
                       src={logo?.filePath}
                       alt={logo?.altText}
@@ -369,11 +369,11 @@ const BrandSection = ({ apidata }) => {
             <div className="hidden lg:block">
               <Slider {...settings}>
                 {apidata?.images?.map((logo, index) => (
-                  <div key={`bottom-row-${index}`} className="flex-shrink-0 w-36 md:w-48 md:h-20 justify-end flex h-auto item-center">
+                  <div key={`bottom-row-${index}`} className="flex-shrink-0 w-40  md:w-52 md:h-20 justify-end flex item-center h-auto gap-5 ">
                     <Image
                       src={logo?.filePath}
                       alt={logo?.altText}
-                      width={160}
+                      width={180}
                       height={80}
                       className="object-contain"
                     />

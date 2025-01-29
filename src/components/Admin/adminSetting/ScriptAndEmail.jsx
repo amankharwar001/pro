@@ -15,18 +15,21 @@ const ScriptAndEmail = () => {
      ${activeBox === id ? 'bg-gradient-to-r from-black to-gray-700 text-white' : 'bg-gray-100 text-gray-700 hover:bg-black hover:text-white'}`;
 
   return (
-    <div className='mt-5 bg-white'>
-      <div className='bg-white flex gap-3 p-5'>
-        <span className={getTabClass(1)} onClick={() => handleClick(1)}>Script</span>
-        <span className={getTabClass(2)} onClick={() => handleClick(2)}>Form Emails Update</span>
-      </div>
-      <div className='  p-3'>
-        {activeBox === 1 && <div className='w-full'><ScriptManager /></div>}
-        {activeBox === 2 && <div  className='w-full'><LeadFormEmailComponent /></div>}
-      </div>
+    <div className='my-5'>
 
-      
-      
+      <div className='mt-5 bg-white border rounded-lg  p-4'>
+        <div className='bg-white flex gap-3 p-5'>
+          <span className={getTabClass(1)} onClick={() => handleClick(1)}>Script</span>
+          <span className={getTabClass(2)} onClick={() => handleClick(2)}>Form Emails Update</span>
+        </div>
+        <div className='  p-3'>
+          {activeBox === 1 && <div className='w-full'><ScriptManager /></div>}
+          {activeBox === 2 && <div  className='w-full'><LeadFormEmailComponent /></div>}
+        </div>
+
+        
+        
+      </div>
     </div>
   )
 }

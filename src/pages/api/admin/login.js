@@ -33,7 +33,7 @@ export default async function handler(req, res) {
     res.setHeader(
       'Set-Cookie',
       // `token=${token}; HttpOnly; Path=/; Max-Age=3600; SameSite=Strict; ${isProduction ? 'Secure;' : ''}`
-      `token=${token}; HttpOnly; Path=/; Max-Age=3600; SameSite=lax;`
+      `token=${token}; HttpOnly; Path=/; Max-Age=86400; SameSite=lax;`
     );
 
     res.status(200).json({ message: 'Login successful', token });

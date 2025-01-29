@@ -275,7 +275,7 @@ const Index = () => {
       fetchData();
     }
   }, [index, queryActiveBox]);
-
+// dsaf
   useEffect(() => {
     // Simulate API trigger for all sections
     tabs.forEach((tab) => {
@@ -291,10 +291,10 @@ const Index = () => {
   return (
     <div>
       <div className="pt-4 md:p-4 bg-white rounded-lg">
-        <div className="flex justify-end px-2">
+        <div className="flex justify-end px-2 mb-4">
           <StatusSelector productId={index} />
         </div>
-        <div className="sticky top-16 border-b shadow-md z-10 flex gap-2 bg-white p-4 overflow-x-auto">
+        <div className="sticky top-16 border-b shadow-md z-10 flex gap-2 bg-white p-4 overflow-x-auto border ">
           {tabs.map((tab, index) => {
             const isActive = activeBox === tab.id;
             const isCompleted = sectionsStatus[index];
@@ -312,7 +312,7 @@ const Index = () => {
             );
           })}
         </div>
-        <div className="mt-5">
+        <div className="mt-5 border bg-gray-50  rounded-lg shadow-inner">
           <div className="hidden">
             {tabs.map((tab, index) => (
               <div key={index}>{tab.component}</div>

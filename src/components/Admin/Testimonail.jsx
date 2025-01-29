@@ -86,8 +86,9 @@ const TestimonialManager = ({setActiveBox,sectionsStatusHandle}) => {
 
   return (
     <div className="p-4  mx-auto">
-      <h1 className="text-2xl font-bold mb-4">Testimonial Manager</h1>
-      <StatusManager sectionName={"homepage_section10"}/>
+      <div className='flex justify-end pb-5'>
+        <StatusManager sectionName={"homepage_section10"}/>
+      </div>
       <CommonImageUpload referenceType={"homepage_testimonial"} imageCount={9} setMultiImageStatus={setMultiImageStatus}/>
       {message && (
         <div className="mb-4 p-2 bg-gray-100 border rounded">

@@ -301,7 +301,7 @@ const SeoPage = ({ page,sectionsStatusHandle }) => {
   };
 
   return (
-    <div className="p-4">
+    <div className="p-4 border bg-gray-50 shadow-inner rounded">
       <form onSubmit={handleSubmitSeoField}>
         {/* Title */}
         <div className="flex flex-col mb-2">

@@ -103,10 +103,11 @@ export default function FAQManager({setActiveBox,sectionsStatusHandle}) {
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">FAQ Manager</h1>
-      <StatusManager sectionName={"homepage_section12"}/>
+      <div className='flex justify-end '>
+        <StatusManager sectionName={"homepage_section12"}/>
+      </div>
 
-      {message && <p className="text-red-500 mb-4">{message}</p>}
+      {/* {message && <p className="text-red-500 mb-4">{message}</p>} */}
 
       
 

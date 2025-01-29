@@ -108,13 +108,15 @@ export default function Section6Product({ productpage, setActiveBox,sectionsStat
   };
 
   return (
-    <div className="p-4 bg-white rounded-md">
+    <div className="p-4 border bg-gray-50 shadow-inner rounded">
       <h1 className="text-xl font-bold mb-4">Section 6 Product</h1>
 
       {loading && <p>Loading...</p>}
       {error && <p className="text-red-500">{error}</p>}
       {success && <p className="text-green-500">{success}</p>}
-      <StatusManager sectionName={`product_section6${productpage?.id}`}/>
+      <div className="flex justify-end">
+        <StatusManager sectionName={`product_section6${productpage?.id}`}/>
+      </div>
 
       <div className="mb-4">
         <label className="block font-medium mb-1">Heading:</label>

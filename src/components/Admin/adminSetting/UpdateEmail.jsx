@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"; // Import eye icons
+import { HiEye, HiEyeOff } from 'react-icons/hi'; // Import eye icons
 
 const UpdateEmailForm = () => {
   const [currentPassword, setCurrentPassword] = useState("");
@@ -52,7 +53,7 @@ const UpdateEmailForm = () => {
 
   return (
     <div className="flex justify-center  mt-5">
-      <div className="w-full max-w-md bg-gray-50 p-8 rounded-lg shadow-inner border  ">
+      <div className="w-full max-w-md bg-gray-50 p-6 rounded-lg shadow-inner border  ">
         <h2 className="text-2xl font-bold text-center text-black mb-6">
           Update Admin Email
         </h2>
@@ -88,13 +89,13 @@ const UpdateEmailForm = () => {
               />
               <button
                 type="button"
-                className="absolute right-3 top-3"
+                className="absolute right-3 top-7 -translate-y-1/2"
                 onClick={() => setShowPassword(!showPassword)} // Toggle the showPassword state
               >
                 {showPassword ? (
-                  <AiOutlineEyeInvisible className="text-gray-600" />
+                  <AiOutlineEyeInvisible className="text-gray-500 w-5 h-5" />
                 ) : (
-                  <AiOutlineEye className="text-gray-600" />
+                  <HiEyeOff className="text-gray-500 w-5 h-5" />
                 )}
               </button>
             </div>

@@ -1,5 +1,6 @@
 
 
+import Link from 'next/link';
 import { useState } from 'react';
 import { HiEye, HiEyeOff } from 'react-icons/hi'; // Import eye icons
 
@@ -103,119 +104,124 @@ const handleSubmit = async (e) => {
   
 
   return (
-    <div className="max-w-md mx-auto mt-5 p-6 border rounded-lg shadow-inner bg-gray-50">
-      <h2 className="text-2xl font-bold mb-6 text-center">Change {isUsername ? 'Username' : 'Password'}</h2>
+    <div>
 
-      {error && <p className="text-red-500 mb-4">{error}</p>}
-      {success && <p className="text-green-500 mb-4">{success}</p>}
-      {passwordError && <p className="text-red-500 mb-4">{passwordError}</p>}
+      <div className="max-w-md mx-auto mt-5 p-6 border rounded-lg shadow-inner bg-gray-50">
+        <h2 className="text-2xl font-bold mb-6 text-center">Change {isUsername ? 'Username' : 'Password'}</h2>
 
-      <form onSubmit={handleSubmit}>
-        <div className="mb-4">
+        {error && <p className="text-red-500 mb-4">{error}</p>}
+        {success && <p className="text-green-500 mb-4">{success}</p>}
+        {passwordError && <p className="text-red-500 mb-4">{passwordError}</p>}
+
+        <form onSubmit={handleSubmit}>
+          <div className="mb-4">
+            {isUsername ? (
+              <>
+                <label className="block text-sm font-medium text-gray-700">Current Username</label>
+                <input
+                  type="text"
+                  className="mt-1 block w-full p-2 border rounded-md"
+                  value={currentUsername}
+                  onChange={(e) => setCurrentUsername(e.target.value)}
+                  required
+                />
+              </>
+            ) : (
+              <>
+                <label className="block text-sm font-medium text-gray-700">Current Password</label>
+                <div className="relative">
+                  <input
+                    type={showCurrentPassword ? 'text' : 'password'}
+                    className="mt-1 block w-full p-2 border rounded-md pr-10"
+                    value={currentPassword}
+                    onChange={(e) => setCurrentPassword(e.target.value)}
+                    required
+                  />
+                  <button
+                    type="button"
+                    className="absolute inset-y-0 right-0 flex items-center pr-3"
+                    onClick={() => setShowCurrentPassword(!showCurrentPassword)}
+                  >
+                    {showCurrentPassword ? <HiEyeOff className="w-5 h-5 text-gray-500" /> : <HiEye className="w-5 h-5 text-gray-500" />}
+                  </button>
+                </div>
+              </>
+            )}
+          </div>
+
           {isUsername ? (
             <>
-              <label className="block text-sm font-medium text-gray-700">Current Username</label>
-              <input
-                type="text"
-                className="mt-1 block w-full p-2 border rounded-md"
-                value={currentUsername}
-                onChange={(e) => setCurrentUsername(e.target.value)}
-                required
-              />
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700">New Username</label>
+                <input
+                  type="text"
+                  className="mt-1 block w-full p-2 border rounded-md"
+                  value={newUsername}
+                  onChange={(e) => setNewUsername(e.target.value)}
+                  required
+                />
+              </div>
             </>
           ) : (
             <>
-              <label className="block text-sm font-medium text-gray-700">Current Password</label>
-              <div className="relative">
-                <input
-                  type={showCurrentPassword ? 'text' : 'password'}
-                  className="mt-1 block w-full p-2 border rounded-md pr-10"
-                  value={currentPassword}
-                  onChange={(e) => setCurrentPassword(e.target.value)}
-                  required
-                />
-                <button
-                  type="button"
-                  className="absolute inset-y-0 right-0 flex items-center pr-3"
-                  onClick={() => setShowCurrentPassword(!showCurrentPassword)}
-                >
-                  {showCurrentPassword ? <HiEyeOff className="w-5 h-5 text-gray-500" /> : <HiEye className="w-5 h-5 text-gray-500" />}
-                </button>
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700">New Password</label>
+                <div className="relative">
+                  <input
+                    type={showNewPassword ? 'text' : 'password'}
+                    className="mt-1 block w-full p-2 border rounded-md pr-10"
+                    value={newPassword}
+                    onChange={(e) => setNewPassword(e.target.value)}
+                    required
+                  />
+                  <button
+                    type="button"
+                    className="absolute inset-y-0 right-0 flex items-center pr-3"
+                    onClick={() => setShowNewPassword(!showNewPassword)}
+                  >
+                    {showNewPassword ? <HiEyeOff className="w-5 h-5 text-gray-500" /> : <HiEye className="w-5 h-5 text-gray-500" />}
+                  </button>
+                </div>
+              </div>
+
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700">Confirm New Password</label>
+                <div className="relative">
+                  <input
+                    type={showConfirmPassword ? 'text' : 'password'}
+                    className="mt-1 block w-full p-2 border rounded-md pr-10"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    required
+                  />
+                  <button
+                    type="button"
+                    className="absolute inset-y-0 right-0 flex items-center pr-3"
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  >
+                    {showConfirmPassword ? <HiEyeOff className="w-5 h-5 text-gray-500" /> : <HiEye className="w-5 h-5 text-gray-500" />}
+                  </button>
+                </div>
               </div>
             </>
           )}
+          <Link href="/admin/account/forgot-password">
+          <span className='text-sm text-blue-500  hover:text-blue-600'>Forgot Password?</span></Link>
+
+          <button type="submit" className="w-full mt-4 py-2 px-4 bg-blue-500 text-white rounded-md hover:bg-blue-600">
+            Change {isUsername ? 'Username' : 'Password'}
+          </button>
+        </form>
+
+        <div className="mt-4 text-center">
+          <button
+            type="button"
+            onClick={() => setIsUsername(!isUsername)}
+            className="text-blue-500 hover:underline"
+          >
+            {isUsername ? 'Change Password' : 'Change Username'}
+          </button>
         </div>
-
-        {isUsername ? (
-          <>
-            <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700">New Username</label>
-              <input
-                type="text"
-                className="mt-1 block w-full p-2 border rounded-md"
-                value={newUsername}
-                onChange={(e) => setNewUsername(e.target.value)}
-                required
-              />
-            </div>
-          </>
-        ) : (
-          <>
-            <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700">New Password</label>
-              <div className="relative">
-                <input
-                  type={showNewPassword ? 'text' : 'password'}
-                  className="mt-1 block w-full p-2 border rounded-md pr-10"
-                  value={newPassword}
-                  onChange={(e) => setNewPassword(e.target.value)}
-                  required
-                />
-                <button
-                  type="button"
-                  className="absolute inset-y-0 right-0 flex items-center pr-3"
-                  onClick={() => setShowNewPassword(!showNewPassword)}
-                >
-                  {showNewPassword ? <HiEyeOff className="w-5 h-5 text-gray-500" /> : <HiEye className="w-5 h-5 text-gray-500" />}
-                </button>
-              </div>
-            </div>
-
-            <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700">Confirm New Password</label>
-              <div className="relative">
-                <input
-                  type={showConfirmPassword ? 'text' : 'password'}
-                  className="mt-1 block w-full p-2 border rounded-md pr-10"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  required
-                />
-                <button
-                  type="button"
-                  className="absolute inset-y-0 right-0 flex items-center pr-3"
-                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                >
-                  {showConfirmPassword ? <HiEyeOff className="w-5 h-5 text-gray-500" /> : <HiEye className="w-5 h-5 text-gray-500" />}
-                </button>
-              </div>
-            </div>
-          </>
-        )}
-
-        <button type="submit" className="w-full py-2 px-4 bg-blue-500 text-white rounded-md hover:bg-blue-600">
-          Change {isUsername ? 'Username' : 'Password'}
-        </button>
-      </form>
-
-      <div className="mt-4 text-center">
-        <button
-          type="button"
-          onClick={() => setIsUsername(!isUsername)}
-          className="text-blue-500 hover:underline"
-        >
-          {isUsername ? 'Change Password' : 'Change Username'}
-        </button>
       </div>
     </div>
   );

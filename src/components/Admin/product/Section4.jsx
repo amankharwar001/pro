@@ -99,11 +99,13 @@ export default function Section4Product({ productpage, setActiveBox, sectionsSta
   };
 
   return (
-    <div className="p-4 bg-white rounded-md">
+    <div className="p-4 border bg-gray-50 shadow-inner rounded">
       <h1 className="text-2xl font-bold mb-4">Section 4 Product</h1>
       {loading && <p>Loading...</p>}
       {error && <p className="text-red-500">{error}</p>}
-      <StatusManager sectionName={`product_section4${productpage?.id}`}/>
+      <div className="flex justify-end">
+        <StatusManager sectionName={`product_section4${productpage?.id}`}/>
+      </div>
       <ImageUploader referenceType={productpage?.id} referenceId={4} width={550} height={300} setImageStatus={setImageStatus}/>
 
       {!loading && (

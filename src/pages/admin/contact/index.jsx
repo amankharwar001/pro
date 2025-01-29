@@ -137,7 +137,7 @@ const Index = () => {
 
   return (
     <>
-      <div className="bg-white shadow-lg rounded-lg p-4">
+      <div className={`bg-white shadow-lg rounded-lg  ${activeBox === 1 || activeBox === 2 ? "mb-20" : ""}`}>
         <div>
           {tabs.map((tab, index) => (
             <div key={index} className="hidden">
@@ -147,7 +147,7 @@ const Index = () => {
         </div>
         
         {/* Tabs Navigation */}
-        <div className="sticky top-16 z-10 flex gap-2 overflow-x-auto">
+        <div className="sticky bg-white top-16 z-10 flex gap-2 overflow-x-auto py-5 shadow-md px-4">
           {tabs.map((tab) => {
             const isActive = activeBox === tab.id;
             const isCompleted = sectionsStatus[tab.id - 1]; // Access correct index based on tab.id
@@ -167,8 +167,11 @@ const Index = () => {
         </div>
 
         {/* Render Active Component */}
-        <div className="mt-5 border bg-gray-50 rounded-lg shadow-inner">
-          {tabs.find((tab) => tab.id === activeBox)?.component}
+        <div className='p-4'>
+
+          <div className="mt-5 border bg-gray-50 rounded-lg shadow-inner ">
+            {tabs.find((tab) => tab.id === activeBox)?.component}
+          </div>
         </div>
       </div>
     </>

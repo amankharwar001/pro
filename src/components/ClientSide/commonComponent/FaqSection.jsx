@@ -74,7 +74,7 @@ const FaqSection = ({apidata}) => {
                   // className="px-4 "
                  
                 >
-                  <div className='text-sm'  dangerouslySetInnerHTML={{ __html: faq.answer }}></div>
+                  <div className='text-sm text-slate-700'  dangerouslySetInnerHTML={{ __html: faq.answer }}></div>
                 </motion.div>
               )}
             </motion.div>

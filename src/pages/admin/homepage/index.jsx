@@ -365,7 +365,7 @@ const Index = () => {
   
 
   return (
-    <div className="bg-white shadow-lg rounded-lg pb-4">
+    <div className={`bg-white shadow-lg rounded-lg pb-4 ${activeBox === 2 || activeBox === 12 ? "" : "mb-20"}`}>
       <div>
       {tabs.map((tab, index) => (
         <div key={index} className="hidden">
@@ -382,7 +382,7 @@ const Index = () => {
           return (
             <div
               key={tab.id}
-              className={`cursor-pointer px-4 py-2 text-xs transition-all duration-300 ease-in-out rounded-md border ${getTabClass(
+              className={`cursor-pointer  px-4 py-2 text-xs transition-all duration-300 ease-in-out rounded-md border ${getTabClass(
                 isActive,
                 isCompleted
               )}`}
@@ -395,8 +395,8 @@ const Index = () => {
           );
         })}
       </div>
-      <div className="px-4">
-        <div className="mt-5 border bg-gray-50 rounded-lg shadow-inner">
+      <div className="px-4 ">
+        <div className={`mt-5 border bg-gray-50 rounded-lg shadow-inner `}>
           {/* Render the active tab's component */}
           {tabs.find((tab) => tab.id === activeBox)?.component}
         </div>

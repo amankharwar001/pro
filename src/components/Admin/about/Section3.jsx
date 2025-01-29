@@ -108,8 +108,10 @@ const AboutSection3Form = ({ setActiveBox, sectionsStatusHandle }) => {
   };
 
   return (
-    <div className="mx-auto ">
+    <div className="mx-auto p-4">
+      <div className='flex justify-end'>
       <StatusManager sectionName={"about_section3"} />
+      </div>
       <form onSubmit={handleSubmit} className="space-y-4 w-full">
         <div>
           <label className="block font-medium mb-1 text-xs">Heading</label>
