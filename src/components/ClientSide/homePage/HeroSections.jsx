@@ -140,7 +140,7 @@ const HeroSections = ({ apidata }) => {
 
             {/* Hero Content */}
             {/* <div className="absolute inset-0 z-10 flex flex-col justify-center items-start text-white px-6 sm:px-10"> */}
-            <div className="absolute z-10 top-2/4 -translate-y-2/4 flex md:max-w-2xl flex-col md:pl-20 md:items-start text-white px-7">
+            <div className="absolute z-10 top-2/4 -translate-y-2/4 flex md:max-w-3xl flex-col md:pl-20 md:items-start text-white px-7">
               <motion
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}

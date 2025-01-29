@@ -13,7 +13,7 @@ export default function PersonSection2({ apidata }) {
                 <div className="order-last lg:order-none">
                     {/* Fade In Animation for Heading */}
                     <Fade triggerOnce direction="up">
-                        <h2 className="font-bold mb-4">{apidata?.heading}</h2>
+                        <h2 className="font-bold mb-4 heading-text">{apidata?.heading}</h2>
                     </Fade>
 
                     {/* Fade In Animation for Paragraph */}

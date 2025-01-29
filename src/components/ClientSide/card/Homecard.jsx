@@ -73,8 +73,8 @@ const Homecard = ({ apidata }) => {
     return (
         <div ref={ref} className="pt-20 ">
             <div className="container text-center ">
-                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold">{apidata?.heading}</h2>
-                <p className="mt-2 text-base md:text-xl">{apidata?.content}</p>
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold ">{apidata?.heading}</h2>
+                <p className="mt-2 text-base md:text-xl text-slate-700">{apidata?.content}</p>
             </div>
             <div className="container overflow-hidden mt-10">
                 <Slider {...settings} className="md:homepage-card-slider flex ">
@@ -106,14 +106,14 @@ const Homecard = ({ apidata }) => {
                                         </div>
                                     </div>
                                     <div className="px-6 ">
-                                        <h2 className="text-2xl font-bold text-center text-primary">{card.title }</h2>
+                                        <h2 className="text-[1.7rem] font-bold text-center ">{card.title }</h2>
                                         <div
                                             className="text-muted-foreground text-center mt-2"
                                             dangerouslySetInnerHTML={{ __html: card.content }}
                                         ></div>
                                         <hr className="my-4 border-border" />
                                         <div
-                                            className="text-center text-muted"
+                                            className="text-center text-muted "
                                             dangerouslySetInnerHTML={{ __html: card.info }}
                                         ></div>
                                         <div className="w-full absolute right-2/4 translate-x-2/4 -bottom-5">

@@ -10,7 +10,7 @@ const Testimonial = ({ apidata }) => {
       <div className="text-center p-8 bg-background mt-10">
         <div>
           <Fade triggerOnce>
-            <h2 className="text-3xl font-bold mb-4">{heading || 'Testimonials'}</h2>
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">{heading || 'Testimonials'}</h1>
           </Fade>
           <Fade triggerOnce direction="down" delay={200}>
             <p className="text-slate-700 mb-8">{content || 'What our users say about us'}</p>

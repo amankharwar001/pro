@@ -303,13 +303,13 @@ const BrandSection = ({ apidata }) => {
 
   return (
     <div className="mt-20 px-5 md:px-10">
-      <div className="container  mx-auto py-4 flex flex-col overflow-hidden">
+      <div className="container  mx-auto py-4 flex flex-col ">
         <div className="flex gap-5  items-center flex-col lg:flex-row justify-center lg:justify-between">
           {/* Heading */}
           <div className="w-full lg:w-[35%] mb-4 lg:mb-0">
             <div className="relative text-center lg:text-left">
               <div
-                className="mb-4 font-bold text-center lg:text-start"
+                className="mb-4 font-bold text-center  lg:text-start heading-text "
                 dangerouslySetInnerHTML={{ __html: apidata?.heading }}
               />
               <span className="absolute w-20 md:w-32 h-[3px] bg-blue-900 hidden lg:block"></span>

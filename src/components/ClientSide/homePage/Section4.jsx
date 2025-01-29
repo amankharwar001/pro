@@ -121,7 +121,7 @@ const Section4 = ({ apidata }) => {
       <div className="container mx-auto px-4">
         <div className="md:flex items-center gap-8">
           <Fade triggerOnce direction="up">
-            <h2 className="font-bold text-center md:text-start w-full">{apidata?.heading}</h2>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl mb-4 lg:mb-0  text-center md:text-start w-full ">{apidata?.heading}</h2>
           </Fade>
           <div className="relative">
             <Fade triggerOnce direction="up" delay={200}>

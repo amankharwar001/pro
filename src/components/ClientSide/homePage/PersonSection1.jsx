@@ -39,7 +39,7 @@ export default function PersonSection1({ apidata }) {
             </div>
             <div className="mt-28">
                 <Fade triggerOnce direction="up">
-                    <h2 className="font-bold text-primary">{apidata?.heading}</h2>
+                    <h2 className="font-bold heading-text">{apidata?.heading}</h2>
                 </Fade>
                 <Fade triggerOnce>
                     <p className="mt-4 text-slate-700">{apidata?.content}</p>

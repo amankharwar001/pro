@@ -11,10 +11,10 @@ const About = ({ apidata }) => {
                 <div className='lg:grid grid-cols-4 gap-6'>
                     <div className='col-span-2'>
                         <Slide triggerOnce direction="left">
-                            <h5 className="font-bold mb-4">{apidata?.heading}</h5>
+                            <h5 className="font-bold mb-4 ">{apidata?.heading}</h5>
                         </Slide>
                         <Fade triggerOnce direction="left" delay={300}>
-                            <h2 className="font-bold mb-6">{apidata?.content}</h2>
+                            <h1 className="font-bold mb-6 about-heading">{apidata?.content}</h1>
                         </Fade>
                         <Fade triggerOnce delay={600} className='flex'>
                             <a
@@ -35,7 +35,7 @@ const About = ({ apidata }) => {
                                         <path d="M20 6L9 17l-5-5"></path>
                                     </svg>
                                     <div>
-                                        <h6 className="font-semibold">{item.heading}</h6>
+                                        <h6 className="font-semibold pb-2">{item.heading}</h6>
                                         <p className='text-sm md:text-base'>{item.content}</p>
                                     </div>
                                 </div>

@@ -236,7 +236,7 @@ const OverviewSection3 = ({apidata1,apidata2}) => {
                         </div>
                         <div>
                             <div className="px-6 rounded-lg">
-                                <h2 className="text-center md:text-start mt-10 md:mt-0 font-bold mb-4 text-white">{apidata2?.heading}</h2>
+                                <h2 className="text-2xl md:text-3xl lg:text-4xl text-center md:text-start mt-10 md:mt-0 font-bold mb-4 text-white">{apidata2?.heading}</h2>
                                 <p className="text-base text-center md:text-start md:text-xl mb-6 text-white">
                                     {apidata2?.content}
                                 </p>
