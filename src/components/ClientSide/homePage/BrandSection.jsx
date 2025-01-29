@@ -309,7 +309,7 @@ const BrandSection = ({ apidata }) => {
           <div className="w-full lg:w-[35%] mb-4 lg:mb-0">
             <div className="relative text-center lg:text-left">
               <div
-                className="mb-4 font-bold text-center  lg:text-start heading-text "
+                className="mb-4 font-bold text-center  lg:text-start  "
                 dangerouslySetInnerHTML={{ __html: apidata?.heading }}
               />
               <span className="absolute w-20 md:w-32 h-[3px] bg-blue-900 hidden lg:block"></span>

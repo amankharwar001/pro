@@ -107,7 +107,7 @@ const HeroSections = ({ apidata }) => {
   if (!apidata) return <div></div>;
 
   return (
-    <div className="bg-[#F2F2F2]  pb-5 pt-2">
+    <div className="bg-[#F2F2F2]  pb-5 ">
       {/* <div class="p-4 flex flex-col items-center justify-center">
         <div class="cursor-pointer">
           <button class="relative inline-flex items-center justify-center bg-[#013466] px-6 py-3 overflow-hidden font-medium text-teal-600 transition duration-300 ease-out rounded-md shadow-md group">
