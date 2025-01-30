@@ -911,7 +911,7 @@ const AdminSection6Panel = ({ setActiveBox, sectionsStatusHandle }) => {
                   <h4 className="text-md font-medium text-gray-700 mb-2">
                     Card {index + 1}
                   </h4>
-                  <ImageUploader setImageStatus={(status) => updateImageStatus(index, status)} referenceType={`homepage_section${index + 1}`} width={421} height={260} />
+                  <ImageUploader setImageStatus={(status) => updateImageStatus(index, status)} referenceType={`homepage_section6_${index + 1}`} width={421} height={260} />
                   <div className="space-y-2">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">
