@@ -123,7 +123,7 @@ const Section3Form = ({ setActiveBox, sectionsStatusHandle }) => {
                 </div>
             </div>
 
-            {error && <div className="text-red-500 mb-4">{error}</div>}
+            
 
             <form onSubmit={handleSubmit} className='pt-5'>
                 <div className="mb-4">

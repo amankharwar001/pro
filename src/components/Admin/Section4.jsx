@@ -91,7 +91,7 @@ const Section4Form = ({ setActiveBox, sectionsStatusHandle }) => {
       }
     } catch (error) {
       console.error('Error submitting form:', error);
-      alert('An error occurred while submitting the form');
+      console.error('An error occurred while submitting the form');
     } finally {
       setIsSubmitting(false);
     }

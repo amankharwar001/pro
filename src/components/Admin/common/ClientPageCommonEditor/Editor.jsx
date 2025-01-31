@@ -212,7 +212,7 @@ const ClientSideCommonEditor = ({ referenceType, sectionsStatusHandle, setActive
           />
           <button
             type="submit"
-            className="mt-2 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700"
+            className="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-gray-800 transition duration-300 mt-2"
           >
             {contentId ? "Update Content" : "Create Content"}
           </button>

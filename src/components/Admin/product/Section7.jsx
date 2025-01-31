@@ -108,7 +108,7 @@ export default function Section7Product({ productpage, setActiveBox,sectionsStat
           type="text"
           value={formData.heading}
           onChange={(e) => handleChange("heading", e.target.value)}
-          className="w-full border px-2 py-1"
+          className="w-full border px-2 py-1 rounded-md"
         />
       </div>
 
@@ -117,7 +117,7 @@ export default function Section7Product({ productpage, setActiveBox,sectionsStat
         <textarea
           value={formData.text}
           onChange={(e) => handleChange("text", e.target.value)}
-          className="w-full border px-2 py-1"
+          className="w-full border px-2 py-1 rounded-md"
         />
       </div>
 
@@ -127,7 +127,7 @@ export default function Section7Product({ productpage, setActiveBox,sectionsStat
           type="text"
           value={formData.btn}
           onChange={(e) => handleChange("btn", e.target.value)}
-          className="w-full border px-2 py-1"
+          className="w-full border px-2 py-1 rounded-md"
         />
       </div>
 
@@ -137,20 +137,20 @@ export default function Section7Product({ productpage, setActiveBox,sectionsStat
           type="text"
           value={formData.btnLink}
           onChange={(e) => handleChange("btnLink", e.target.value)}
-          className="w-full border px-2 py-1"
+          className="w-full border px-2 py-1 rounded-md"
         />
       </div>
 
       {formData.info.map((item, index) => (
-        <div key={index} className="mb-4">
-          <h3 className="font-medium">Info {index + 1}</h3>
+        <div key={index} className="mb-4 rounded bg-white border shadow-md p-4">
+          <h3 className="text-sm underline  font-semibold">Info {index + 1}</h3>
           <div className="mb-2">
             <label className="block text-sm">Title:</label>
             <input
               type="text"
               value={item.title}
               onChange={(e) => handleChange("title", e.target.value, index)}
-              className="w-full border px-2 py-1"
+              className="w-full border px-2 py-1 rounded-md"
             />
           </div>
           <div>
@@ -159,7 +159,7 @@ export default function Section7Product({ productpage, setActiveBox,sectionsStat
               type="text"
               value={item.content}
               onChange={(e) => handleChange("content", e.target.value, index)}
-              className="w-full border px-2 py-1"
+              className="w-full border px-2 py-1 rounded-md"
             />
           </div>
         </div>
@@ -168,7 +168,7 @@ export default function Section7Product({ productpage, setActiveBox,sectionsStat
       <div className="flex gap-2 mt-4">
         <button
           onClick={() => handleSubmit(isEditing ? "PUT" : "POST")}
-          className={`bg-${isEditing ? "green" : "blue"}-500 text-white px-4 py-2 rounded`}
+           className="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-gray-800 transition duration-300"
         >
           {isEditing ? "Update" : "Create"}
         </button>

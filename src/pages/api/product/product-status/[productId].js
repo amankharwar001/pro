@@ -21,19 +21,19 @@ export default async function handler(req, res) {
 
         try {
             // Check if the productId exists in all required models
-            const heroExists = await heroSectionProductPage.findOne({ where: { id: productId } });
-            const section2Exists = await section2Product.findOne({ where: { heroSectionId: productId } });
-            const section3Exists = await section3Product.findOne({ where: { heroSectionId: productId } });
-            const section4Exists = await section4Product.findOne({ where: { heroSectionId: productId } });
-            const section5Exists = await section5Product.findOne({ where: { heroSectionId: productId } });
-            const section6Exists = await section6Product.findOne({ where: { heroSectionId: productId } });
-            const section7Exists = await section7Product.findOne({ where: { heroSectionId: productId } });
+            // const heroExists = await heroSectionProductPage.findOne({ where: { id: productId } });
+            // const section2Exists = await section2Product.findOne({ where: { heroSectionId: productId } });
+            // const section3Exists = await section3Product.findOne({ where: { heroSectionId: productId } });
+            // const section4Exists = await section4Product.findOne({ where: { heroSectionId: productId } });
+            // const section5Exists = await section5Product.findOne({ where: { heroSectionId: productId } });
+            // const section6Exists = await section6Product.findOne({ where: { heroSectionId: productId } });
+            // const section7Exists = await section7Product.findOne({ where: { heroSectionId: productId } });
 
-            if (!heroExists || !section2Exists || !section3Exists || !section4Exists || !section5Exists || !section6Exists || !section7Exists) {
-                return res.status(400).json({
-                    error: 'Product is missing in one or more sections. Please fill all sections before activating.',
-                });
-            }
+            // if (!heroExists || !section2Exists || !section3Exists || !section4Exists || !section5Exists || !section6Exists || !section7Exists) {
+            //     return res.status(400).json({
+            //         error: 'Product is missing in one or more sections. Please fill all sections before activating.',
+            //     });
+            // }
 
             // Check if productstatus already exists for the provided productId
             const existingStatus = await ProductPageStatus.findOne({ where: { productId:productId } });

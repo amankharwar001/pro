@@ -60,7 +60,7 @@ export default function App({ Component, pageProps, data }) {
             <FooterSection />
             {showScroll && (
               <span
-                className="fixed z-[9999] bottom-16 md:bottom-20 right-10 md:right-0 w-[8vw] text-[#013466] cursor-pointer"
+                className="fixed z-[999] bottom-16 md:bottom-20 right-10 md:right-0 w-[8vw] text-[#013466] cursor-pointer"
                 onClick={scrollToTop}
               >
                 <FaArrowCircleUp

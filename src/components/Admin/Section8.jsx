@@ -190,7 +190,7 @@ const Section8Page = ({ setActiveBox, sectionsStatusHandle }) => {
           <button
             type="submit"
             disabled={loading}
-            className="px-6 py-2 bg-blue-600 text-white rounded-md disabled:bg-gray-400"
+             className="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-gray-800 transition duration-300"
           >
             {loading ? "Saving..." : sectionData.id ? "Update Section" : "Create Section"}
           </button>

@@ -699,6 +699,8 @@ const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 import 'react-quill/dist/quill.snow.css';
 import ImageUploader from "./ImageUploader";
 import StatusManager from "./status";
+import { IoMdAdd } from "react-icons/io";
+
 
 const AdminSection6Panel = ({ setActiveBox, sectionsStatusHandle }) => {
   const [formData, setFormData] = useState({
@@ -873,113 +875,117 @@ const AdminSection6Panel = ({ setActiveBox, sectionsStatusHandle }) => {
         {/* Cards Tabs */}
         <div className="space-y-6">
           <h3 className="text-lg font-semibold text-gray-800 mb-4">Cards</h3>
-          <div className="flex space-x-4 items-center">
-            {formData.card.map((card, index) => (
-              <button
-                key={index}
-                type="button"
-                onClick={() => handleTabClick(index)}
-                className={`py-2 px-4 rounded-md font-semibold flex items-center ${activeCardIndex === index
-                    ? "bg-black text-white"
-                    : "bg-gray-200 text-gray-700"
-                  }`}
-              >
-                <span>Card {index + 1}</span>
-                <span
-                  className={`ml-2 w-2.5 h-2.5 rounded-full ${hasCardData(card) ? "bg-green-500" : "bg-red-500"
-                    }`}
-                />
-              </button>
-            ))}
-            <button
-              type="button"
-              onClick={handleAddCard}
-              className="py-2 px-4 rounded-md bg-blue-500 text-white font-semibold"
-            >
-              Add New Card
-            </button>
-          </div>
+          <div className="relative">
 
-          {/* Card Content */}
-          <div className="mt-6">
-            {formData.card.map((card, index) =>
-              activeCardIndex === index ? (
-                <div
+            <div className="flex space-x-4 items-center sticky top-[130px] bg-gray-50 z-20 pl-5 py-2">
+              {formData.card.map((card, index) => (
+                <button
                   key={index}
-                  className="p-4 bg-white rounded-md shadow-sm border border-gray-200 space-y-4"
+                  type="button"
+                  onClick={() => handleTabClick(index)}
+                  className={`py-2 px-4 rounded-md font-semibold flex items-center border border-gray-500  ${activeCardIndex === index
+                      ? "bg-black text-white"
+                      : "bg-gray-200 text-gray-700"
+                    }`}
                 >
-                  <h4 className="text-md font-medium text-gray-700 mb-2">
-                    Card {index + 1}
-                  </h4>
-                  <ImageUploader setImageStatus={(status) => updateImageStatus(index, status)} referenceType={`homepage_section6_${index + 1}`} width={421} height={260} />
-                  <div className="space-y-2">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Title
-                      </label>
-                      <input
-                        type="text"
-                        value={card.title}
-                        onChange={(e) => handleCardChange(index, "title", e.target.value)}
-                        className="w-full p-3 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
-                        placeholder={`Enter title for Card ${index + 1}`}
-                      />
+                  <span className="text-xs">Card {index + 1}</span>
+                  <span
+                    className={`ml-2 w-2.5 h-2.5 rounded-full ${hasCardData(card) ? "bg-green-500" : "bg-red-500"
+                      }`}
+                  />
+                </button>
+              ))}
+              <button
+                type="button"
+                onClick={handleAddCard}
+                className="py-2 px-4 rounded-md bg-gray-500 hover:bg-red-700 text-white font-semibold"
+              >
+                <span className="text-xs flex items-center gap-1 "><IoMdAdd/> Card</span>
+                
+              </button>
+            </div>
+
+            {/* Card Content */}
+            <div className="mt-6 px-5">
+              {formData.card.map((card, index) =>
+                activeCardIndex === index ? (
+                  <div
+                    key={index}
+                    className="p-4 bg-white rounded-md shadow-sm border border-gray-200 space-y-4"
+                  >
+                    <h4 className="text-md font-medium text-gray-700 mb-2">
+                      Card {index + 1}
+                    </h4>
+                    <ImageUploader setImageStatus={(status) => updateImageStatus(index, status)} referenceType={`homepage_section6_${index + 1}`} width={421} height={260} />
+                    <div className="space-y-2">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                          Title
+                        </label>
+                        <input
+                          type="text"
+                          value={card.title}
+                          onChange={(e) => handleCardChange(index, "title", e.target.value)}
+                          className="w-full p-3 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                          placeholder={`Enter title for Card ${index + 1}`}
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                          Content
+                        </label>
+                        <ReactQuill
+                          value={card.content}
+                          onChange={(value) => handleCardChange(index, "content", value)}
+                          className="bg-white rounded-md shadow-sm"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                          Info
+                        </label>
+                        <ReactQuill
+                          value={card.info}
+                          onChange={(value) => handleCardChange(index, "info", value)}
+                          className="bg-white rounded-md shadow-sm"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                          Button Name
+                        </label>
+                        <input
+                          type="text"
+                          value={card.btnname}
+                          onChange={(e) => handleCardChange(index, "btnname", e.target.value)}
+                          className="w-full p-3 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                          placeholder={`Enter button name for Card ${index + 1}`}
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                          Button Link
+                        </label>
+                        <input
+                          type="text"
+                          value={card.btnlink}
+                          onChange={(e) => handleCardChange(index, "btnlink", e.target.value)}
+                          className="w-full p-3 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                          placeholder={`Enter button link for Card ${index + 1}`}
+                        />
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => handleDeleteCard(index)}
+                        className="mt-2 text-red-500"
+                      >
+                        Delete Card
+                      </button>
                     </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Content
-                      </label>
-                      <ReactQuill
-                        value={card.content}
-                        onChange={(value) => handleCardChange(index, "content", value)}
-                        className="bg-white rounded-md shadow-sm"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Info
-                      </label>
-                      <ReactQuill
-                        value={card.info}
-                        onChange={(value) => handleCardChange(index, "info", value)}
-                        className="bg-white rounded-md shadow-sm"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Button Name
-                      </label>
-                      <input
-                        type="text"
-                        value={card.btnname}
-                        onChange={(e) => handleCardChange(index, "btnname", e.target.value)}
-                        className="w-full p-3 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
-                        placeholder={`Enter button name for Card ${index + 1}`}
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Button Link
-                      </label>
-                      <input
-                        type="text"
-                        value={card.btnlink}
-                        onChange={(e) => handleCardChange(index, "btnlink", e.target.value)}
-                        className="w-full p-3 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
-                        placeholder={`Enter button link for Card ${index + 1}`}
-                      />
-                    </div>
-                    <button
-                      type="button"
-                      onClick={() => handleDeleteCard(index)}
-                      className="mt-2 text-red-500"
-                    >
-                      Delete Card
-                    </button>
                   </div>
-                </div>
-              ) : null
-            )}
+                ) : null
+              )}
+            </div>
           </div>
         </div>
 
@@ -988,7 +994,7 @@ const AdminSection6Panel = ({ setActiveBox, sectionsStatusHandle }) => {
           <button
             type="submit"
             disabled={isLoading}
-            className="bg-blue-600 text-white py-2 px-6 rounded-md disabled:bg-gray-400"
+             className="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-gray-800 transition duration-300"
           >
             {isLoading ? "Saving..." : "Save Section"}
           </button>

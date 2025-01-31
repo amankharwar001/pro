@@ -95,9 +95,7 @@ export default async function handler(req, res) {
     };
 
     // Fetch main entry if active
-    const heroSectionData = isSectionActive(`product_section1${id}`)
-      ? await HeroSectionProductPage.findOne({ where: { id } })
-      : null;
+    const heroSectionData =await HeroSectionProductPage.findOne({ where: { id } });
 
     if (!heroSectionData) {
       return res.status(404).json({ error: 'Main data not found or inactive' });
@@ -131,9 +129,7 @@ export default async function handler(req, res) {
     const seoData = await SEOProductPage.findOne({ where: { heroSectionId: id } });
 
     // Fetch images for active sections
-    const heroSectionImages = isSectionActive(`product_section1${id}`)
-      ? await ImagesData.findAll({ where: { referenceType: id, referenceId: [1] } })
-      : [];
+    const heroSectionImages = await ImagesData.findAll({ where: { referenceType: id, referenceId: [1] } });
 
     const section2Images = isSectionActive(`product_section2${id}`)
       ? await ImagesData.findAll({ where: { referenceType: id, referenceId: [21, 22, 23, 24] } })

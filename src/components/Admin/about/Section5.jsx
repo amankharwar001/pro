@@ -91,7 +91,7 @@ const AboutSection5Form = ({setActiveBox,sectionsStatusHandle}) => {
                         />
                     </div>
                 ))}
-                <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
+                <button type="submit"  className="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-gray-800 transition duration-300">
                     {isUpdate ? 'Update' : 'Submit'}
                 </button>
             </form>

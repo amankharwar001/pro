@@ -152,7 +152,7 @@ export default function Section11Manager({ setActiveBox, sectionsStatusHandle })
         </div>
         <button
           type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded"
+           className="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-gray-800 transition duration-300"
         >
           {isEditing ? "Update Section" : "Create Section"}
         </button>

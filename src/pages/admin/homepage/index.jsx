@@ -333,18 +333,18 @@ const Index = () => {
   
   
   const tabs = [
-    { id: 1, label: "Hero Section", component: <Test sectionsStatusHandle={(status) => sectionsStatusHandle(0, status)} /> },
-    { id: 2, label: "Section2", component: <Section2 sectionsStatusHandle={(status) => sectionsStatusHandle(1, status)} /> },
-    { id: 3, label: "Section3", component: <Section3Form sectionsStatusHandle={(status) => sectionsStatusHandle(2, status)} /> },
-    { id: 4, label: "Section4", component: <Section4Page sectionsStatusHandle={(status) => sectionsStatusHandle(3, status)} /> },
-    { id: 5, label: "Section5", component: <Section5Form sectionsStatusHandle={(status) => sectionsStatusHandle(4, status)} /> },
-    { id: 6, label: "Card Product", component: <Section6Component sectionsStatusHandle={(status) => sectionsStatusHandle(5, status)} /> },
-    { id: 7, label: "Section7", component: <Section7AdminPanel sectionsStatusHandle={(status) => sectionsStatusHandle(6, status)} /> },
-    { id: 8, label: "Section8", component: <Section8Page sectionsStatusHandle={(status) => sectionsStatusHandle(7, status)} /> },
-    { id: 9, label: "Section9", component: <Section9Manager sectionsStatusHandle={(status) => sectionsStatusHandle(8, status)} /> },
-    { id: 10, label: "Testimonial", component: <TestimonialManager sectionsStatusHandle={(status) => sectionsStatusHandle(9, status)} /> },
-    { id: 11, label: "Section11", component: <Section11AdminPanel sectionsStatusHandle={(status) => sectionsStatusHandle(10, status)} /> },
-    { id: 12, label: "FAQ", component: <FAQManager sectionsStatusHandle={(status) => sectionsStatusHandle(11, status)} /> },
+    { id: 1, label: "Hero Section", component: <Test sectionsStatusHandle={(status) => sectionsStatusHandle(0, status)} setActiveBox={setActiveBox}/> },
+    { id: 2, label: "Section2", component: <Section2 sectionsStatusHandle={(status) => sectionsStatusHandle(1, status)} setActiveBox={setActiveBox}/> },
+    { id: 3, label: "Section3", component: <Section3Form sectionsStatusHandle={(status) => sectionsStatusHandle(2, status)} setActiveBox={setActiveBox}/> },
+    { id: 4, label: "Section4", component: <Section4Page sectionsStatusHandle={(status) => sectionsStatusHandle(3, status)} setActiveBox={setActiveBox}/> },
+    { id: 5, label: "Section5", component: <Section5Form sectionsStatusHandle={(status) => sectionsStatusHandle(4, status)} setActiveBox={setActiveBox}/> },
+    { id: 6, label: "Card Product", component: <Section6Component sectionsStatusHandle={(status) => sectionsStatusHandle(5, status)} setActiveBox={setActiveBox}/> },
+    { id: 7, label: "Section7", component: <Section7AdminPanel sectionsStatusHandle={(status) => sectionsStatusHandle(6, status)} setActiveBox={setActiveBox}/> },
+    { id: 8, label: "Section8", component: <Section8Page sectionsStatusHandle={(status) => sectionsStatusHandle(7, status)} setActiveBox={setActiveBox}/> },
+    { id: 9, label: "Section9", component: <Section9Manager sectionsStatusHandle={(status) => sectionsStatusHandle(8, status)} setActiveBox={setActiveBox}/> },
+    { id: 10, label: "Testimonial", component: <TestimonialManager sectionsStatusHandle={(status) => sectionsStatusHandle(9, status)} setActiveBox={setActiveBox}/> },
+    { id: 11, label: "Section11", component: <Section11AdminPanel sectionsStatusHandle={(status) => sectionsStatusHandle(10, status)} setActiveBox={setActiveBox}/> },
+    { id: 12, label: "FAQ", component: <FAQManager sectionsStatusHandle={(status) => sectionsStatusHandle(11, status)} setActiveBox={setActiveBox}/> },
     { id: 13, label: "SEO", component: <SeoPage page="home" sectionsStatusHandle={(status) => sectionsStatusHandle(12, status)}/> },
   ];
   useEffect(() => {

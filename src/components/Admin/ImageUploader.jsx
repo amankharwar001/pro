@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { FaInfo } from "react-icons/fa";
 
-const ImageUploader = ({ referenceType, referenceId: propReferenceId, width, height,setImageStatus }) => {
+const ImageUploader = ({ referenceType, referenceId: propReferenceId, width, height,setImageStatus,setActiveProductBox }) => {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
   const [image, setImage] = useState(null);
   const [altText, setAltText] = useState('');
@@ -71,6 +71,7 @@ const ImageUploader = ({ referenceType, referenceId: propReferenceId, width, hei
         }
         setImage(null);
         setAltText('');
+        setActiveProductBox(2)
         setImageStatus(true)
       } else {
         setUploadStatus('Failed to upload image.');
@@ -134,6 +135,7 @@ const ImageUploader = ({ referenceType, referenceId: propReferenceId, width, hei
               : img
           )
         );
+        setActiveProductBox(2)
         setEditImageId(null);
         setAltText('');
         setImage(null);
@@ -219,8 +221,7 @@ const ImageUploader = ({ referenceType, referenceId: propReferenceId, width, hei
             <button
               type="button"
               onClick={editImageId ? handleUpdate : handleUpload}
-              className="w-full py-1 bg-gray-800 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
+              className="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-gray-800 transition duration-300">
               {editImageId ? 'Update' : 'Upload'}
             </button>
           </div>

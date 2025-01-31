@@ -156,7 +156,7 @@ export default function Section5Product({ productpage, setActiveBox, sectionsSta
           <div>
             <h2 className="text-lg font-medium">Info</h2>
             {data?.info?.map((item, index) => (
-              <div key={index} className="border p-4 rounded mb-4">
+              <div key={index} className="border p-4 rounded mb-4 shadow-md bg-white">
                 <div>
                   <ImageUploader
                     referenceType={productpage?.id}
@@ -189,7 +189,7 @@ export default function Section5Product({ productpage, setActiveBox, sectionsSta
             <button
               type="button"
               onClick={isEditing ? handleSave : handleCreate}
-              className={`bg-${isEditing ? "blue" : "green"}-500 text-white px-4 py-2 rounded`}
+               className="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-gray-800 transition duration-300"
             >
               {isEditing ? "Update" : "Create"}
             </button>

@@ -167,9 +167,9 @@ export default function Section9Manager({setActiveBox,sectionsStatusHandle}) {
 
                 {/* Info Fields */}
                 <div>
-                    <label className="block font-medium">Info Fields</label>
+                    <label className="block underline font-bold">Info Fields</label>
                     {form.info.map((info, index) => (
-                        <div key={index} className="space-y-2 mb-4">
+                        <div key={index} className="space-y-2 mb-4 rounded-md border bg-white p-4 shadow-md">
                             <div>
                                 <label htmlFor={`infoheading${index}`} className="block font-medium">{`heading ${index+1}`}</label>
                                 <input
@@ -199,7 +199,7 @@ export default function Section9Manager({setActiveBox,sectionsStatusHandle}) {
 
                 {/* Bottom Text */}
                 <div>
-                    <label htmlFor="bottomtext" className="block font-medium">Bottom Text</label>
+                    <label htmlFor="bottomtext" className="block underline font-bold">Bottom Text</label>
                     <textarea
                         id="bottomtext"
                         name="bottomtext"
@@ -213,7 +213,7 @@ export default function Section9Manager({setActiveBox,sectionsStatusHandle}) {
                 {/* Submit Button */}
                 <button
                     type="submit"
-                    className="bg-blue-500 text-white px-4 py-2 rounded"
+                     className="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-gray-800 transition duration-300"
                 >
                     Update Section 12
                 </button>

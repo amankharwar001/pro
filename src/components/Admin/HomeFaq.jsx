@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
 import StatusManager from "./status";
+import { MdDelete } from "react-icons/md";
 
 // Dynamically import React-Quill
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
@@ -120,7 +121,7 @@ export default function FAQManager({setActiveBox,sectionsStatusHandle}) {
             name="heading"
             value={form.heading}
             onChange={handleInputChange}
-            className="border p-2 w-full"
+            className="border p-2 w-full rounded-md"
             required
           />
         </div>
@@ -135,13 +136,13 @@ export default function FAQManager({setActiveBox,sectionsStatusHandle}) {
         <div>
           <label className="block font-medium">Questions</label>
           {form.questions.map((q, index) => (
-            <div key={index} className="space-y-2 mb-4">
+            <div key={index} className=" space-y-2 mb-4 rounded-lg shadow-md p-4 border bg-white">
               <input
                 type="text"
                 placeholder="Question"
                 value={q.question}
                 onChange={(e) => handleQuestionChange(index, "question", e.target.value)}
-                className="border p-2 w-full"
+                className="border p-2 w-full rounded-md"
                 required
               />
               <ReactQuill
@@ -152,23 +153,24 @@ export default function FAQManager({setActiveBox,sectionsStatusHandle}) {
               <button
                 type="button"
                 onClick={() => removeQuestion(index)}
-                className="text-red-500"
+                className="hover:text-red-500 text-black"
               >
-                Remove
+                <span className="flex items-center gap-2"><MdDelete size={20}/> Remove</span>
+                
               </button>
             </div>
           ))}
           <button
             type="button"
             onClick={addQuestion}
-            className="bg-green-500 text-white px-4 py-2 rounded"
+            className="bg-gray-500 hover:bg-green-500 text-white px-4 py-2 rounded"
           >
             Add Question
           </button>
         </div>
         <button
           type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded"
+           className="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-gray-800 transition duration-300"
         >
           Update FAQ
         </button>

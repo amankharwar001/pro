@@ -427,7 +427,7 @@ const CommonImageUpload = ({ referenceType, imageCount,setMultiImageStatus }) =>
           <button
             type="button"
             onClick={editImageId ? handleUpdate : handleUpload}
-            className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+            className="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-gray-800 transition duration-300"
             disabled={images.length >= imageCount && !editImageId}
           >
             {editImageId ? "Image Update" : "Image Upload"}

@@ -134,7 +134,7 @@ const FaqSection = ({ apidata }) => {
                 aria-expanded={activeIndex === index}
                 aria-controls={`faq-answer-${index}`}
               >
-                <span className="text-lg font-semibold text-black">
+                <span className="text-lg text-start font-semibold text-black">
                   {faq.question}
                 </span>
                 <span
@@ -181,10 +181,10 @@ const FaqSection = ({ apidata }) => {
                 initial={{ opacity: 0, height: 0 }}
                 animate={activeIndex === index ? { opacity: 1, height: "auto" } : { opacity: 0, height: 0 }}
                 transition={{ duration: 0.3 }}
-                className="sm:px-6 px-4"
+                className="sm:px-6 px-4 bg-white"
               >
                 <div
-                  className="text-sm text-slate-700"
+                  className="text-sm text-start text-slate-700 bg-white"
                   dangerouslySetInnerHTML={{ __html: faq.answer }}
                 ></div>
               </motion.div>

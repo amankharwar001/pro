@@ -17,6 +17,7 @@ const Test = ({setActiveBox,sectionsStatusHandle}) => {
  useEffect(() => {
     if (apiStatus && imageStatus) {
       sectionsStatusHandle(true);
+      
     }else{
       sectionsStatusHandle(false);
 

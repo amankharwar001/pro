@@ -127,7 +127,7 @@ export default function Section5Product({setActiveBox,sectionsStatusHandle}) {
           <div>
             <h2 className="text-lg font-medium">Info</h2>
             {data?.card?.map((item, index) => (
-              <div key={index} className="border p-4 rounded mb-4">
+              <div key={index} className="border p-4 rounded mb-4 bg-white shadow-md">
                 <div>
                   <ImageUploader
                     referenceType={"get_in_touch"}
@@ -166,7 +166,7 @@ export default function Section5Product({setActiveBox,sectionsStatusHandle}) {
               <button
                 type="button"
                 onClick={handleCreate}
-                className="bg-green-500 text-white px-4 py-2 rounded"
+                 className="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-gray-800 transition duration-300"
               >
                 Create
               </button>
@@ -174,7 +174,7 @@ export default function Section5Product({setActiveBox,sectionsStatusHandle}) {
               <button
                 type="button"
                 onClick={handleCreate}
-                className="bg-blue-500 text-white px-4 py-2 rounded"
+                 className="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-gray-800 transition duration-300"
               >
                 Update
               </button>

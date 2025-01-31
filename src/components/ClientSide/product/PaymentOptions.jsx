@@ -37,14 +37,14 @@ const PaymentOptions = ({ section5, baseUrl }) => {
           <Image 
             src={`${baseUrl}${primaryImage?.filePath}`}
             alt={primaryImage?.altText}
-            className="relative z-10 max-w-[180px] sm:max-w-[280px] md:max-w-[320px] lg:max-w-[380px] xl:max-w-[450px] m-auto"
+            className="relative z-10 max-w-[180px] sm:max-w-[380px] md:max-w-[320px] lg:max-w-[380px] xl:max-w-[450px] m-auto"
             width={550}
             height={20}
           />
         </div>
 
         {/* Right Side - Text & Cards Section */}
-        <div className="text-center lg:text-left space-y-6 p-4">
+        <div className="text-center lg:text-left space-y-6 md:p-4">
           <Fade triggerOnce delay={100}>
             <h1 className="font-bold text-2xl lg:text-3xl">{section5.section5Data.heading}</h1>
           </Fade>

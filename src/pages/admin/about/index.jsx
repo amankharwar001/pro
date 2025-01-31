@@ -93,27 +93,27 @@ const Index = () => {
     {
       id: 1,
       label: 'Hero Banner Section',
-      component: <HeroSectionForm sectionsStatusHandle={(status) => sectionsStatusHandle(0, status)} url={"aboutpage/herosection"} referencetype={"aboutpage_herosection"} />
+      component: <HeroSectionForm sectionsStatusHandle={(status) => sectionsStatusHandle(0, status)} url={"aboutpage/herosection"} referencetype={"aboutpage_herosection"} setActiveBox={setActiveBox}/>
     },
     {
       id: 2,
       label: 'Section2',
-      component: <AboutSectionForm sectionsStatusHandle={(status) => sectionsStatusHandle(1, status)} />
+      component: <AboutSectionForm sectionsStatusHandle={(status) => sectionsStatusHandle(1, status)} setActiveBox={setActiveBox}/>
     },
     {
       id: 3,
       label: 'Section3',
-      component: <AboutSection3Form sectionsStatusHandle={(status) => sectionsStatusHandle(2, status)} />
+      component: <AboutSection3Form sectionsStatusHandle={(status) => sectionsStatusHandle(2, status)} setActiveBox={setActiveBox}/>
     },
     {
       id: 4,
       label: 'Section4',
-      component: <AboutSection4Form sectionsStatusHandle={(status) => sectionsStatusHandle(3, status)} />
+      component: <AboutSection4Form sectionsStatusHandle={(status) => sectionsStatusHandle(3, status)} setActiveBox={setActiveBox}/>
     },
     {
       id: 5,
       label: 'Section5',
-      component: <AboutSection5Form sectionsStatusHandle={(status) => sectionsStatusHandle(4, status)} />
+      component: <AboutSection5Form sectionsStatusHandle={(status) => sectionsStatusHandle(4, status)} setActiveBox={setActiveBox}/>
     },
     {
       id: 6,

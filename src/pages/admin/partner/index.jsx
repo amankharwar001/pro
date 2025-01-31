@@ -66,7 +66,7 @@ const Index = () => {
     {
       id: 1,
       label: 'Hero Banner Section',
-      component: <HeroSectionForm sectionsStatusHandle={(status) => sectionsStatusHandle(0, status)} url={"partnerpage/herosection"} referencetype={"herosection_partner_page"} />
+      component: <HeroSectionForm sectionsStatusHandle={(status) => sectionsStatusHandle(0, status)} url={"partnerpage/herosection"} referencetype={"herosection_partner_page"} setActiveBox={setActiveBox}/>
     },
     {
       id: 2,

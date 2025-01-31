@@ -53,7 +53,7 @@ const StatusSelector = ({ blogId, initialStatus = 'draft', onStatusChange }) => 
             <select
                 value={status}
                 onChange={handleStatusChange}
-                className="h-8 px-2 rounded border text-para cursor-pointer"
+                className="h-8 px-8 bg-white rounded border text-para cursor-pointer"
             >
                 <option value="active">Active</option>
                 <option value="draft">Draft</option>

@@ -85,14 +85,14 @@ const AboutUs = ({ data = {}, baseUrl = "" }) => {
         {/* Text Content */}
         <div className="lg:w-1/2">
           <Fade direction="up" className="flex" triggerOnce delay={100}>
-            <h2 className="text-sm bg-[#003167] text-white font-semibold px-6 py-2 rounded-full uppercase mb-3">
+            <h2 className="text-sm bg-[#003167]  text-white font-semibold px-6 py-2 rounded-full uppercase mb-3">
               {data?.title || "Default Title"}
             </h2>
           </Fade>
           <Fade direction="up" triggerOnce delay={300}>
-            <h1 className="font-bold text-gray-900 leading-snug mb-4">
+            <h2 className="font-bold about-heading text-gray-900 leading-snug mb-4">
               {data?.heading || "Default Heading"}
-            </h1>
+            </h2>
           </Fade>
           <Fade triggerOnce delay={400}>
             <p>{data?.text || "Default text about your company goes here."}</p>

@@ -127,7 +127,7 @@ const AboutSection3Form = ({ setActiveBox, sectionsStatusHandle }) => {
         <div>
           <label className="block font-medium mb-1 text-xs">Cards</label>
           {Array.isArray(formData.card) && formData.card.map((card, index) => (
-            <div key={index} className="mb-3 space-y-2">
+            <div key={index} className="mb-3 space-y-2 p-4 border shadow-md rounded bg-white"> 
               {/* <ImageUploader setImageStatus={setImageStatus} referenceType={"aboutpage_section_3"} referenceId={index + 1} width={30} height={30} /> */}
               <ImageUploader
                 setImageStatus={(status) => updateImageStatus("aboutpage_section_3", index + 1, status)}  // dynamically set status based on section and index

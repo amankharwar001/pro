@@ -65,7 +65,7 @@ const WeChooseSection = ({ section7 }) => {
         <div className='py-16'>
             <div className="container mx-auto   lg:grid grid-cols-2 gap-5 place-items-center">
                 {/* Section Heading and Button */}
-                <div className="text-center md:text-start">
+                <div className=" md:text-start place-content-start">
                     <Fade triggerOnce delay={100}>
                         <h2 className="font-bold mb-4">{section7.heading}</h2>
                     </Fade>

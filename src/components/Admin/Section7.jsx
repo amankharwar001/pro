@@ -108,7 +108,7 @@ export default function Section7Manager({setActiveBox,sectionsStatusHandle}) {
             name="heading"
             value={form.heading}
             onChange={handleInputChange}
-            className="border p-2 w-full"
+            className="border p-2 w-full rounded-md"
             required
           />
         </div>
@@ -121,7 +121,7 @@ export default function Section7Manager({setActiveBox,sectionsStatusHandle}) {
             name="content"
             value={form.content}
             onChange={handleInputChange}
-            className="border p-2 w-full"
+            className="border p-2 w-full rounded-md"
             required
           />
         </div>
@@ -135,7 +135,7 @@ export default function Section7Manager({setActiveBox,sectionsStatusHandle}) {
             name="btn"
             value={form.btn}
             onChange={handleInputChange}
-            className="border p-2 w-full"
+            className="border p-2 w-full rounded-md"
             required
           />
         </div>
@@ -149,7 +149,7 @@ export default function Section7Manager({setActiveBox,sectionsStatusHandle}) {
             name="btnLink"
             value={form.btnLink}
             onChange={handleInputChange}
-            className="border p-2 w-full"
+            className="border p-2 w-full rounded-md"
             required
           />
         </div>
@@ -157,7 +157,7 @@ export default function Section7Manager({setActiveBox,sectionsStatusHandle}) {
         {/* Submit Button */}
         <button
           type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded"
+           className="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-gray-800 transition duration-300"
         >
           {isEditMode ? "Update Section" : "Create Section"}
         </button>

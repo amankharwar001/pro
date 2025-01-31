@@ -52,12 +52,12 @@ const AddProduct = () => {
       <>
         <div className='sticky top-16 border-b shadow-md z-10 flex gap-2 bg-white p-4 overflow-x-auto'>
           <span className={getTabClass(1)} onClick={() => handleClick(1)}>Hero Banner Section</span>
-          <span className={getTabClass(2)} onClick={() => handleClick(2)}>Section2</span>
+          {/* <span className={getTabClass(2)} onClick={() => handleClick(2)}>Section2</span>
           <span className={getTabClass(3)} onClick={() => handleClick(3)}>Section3</span>
           <span className={getTabClass(4)} onClick={() => handleClick(4)}>Section4</span>
           <span className={getTabClass(5)} onClick={() => handleClick(5)}>Section5</span>
           <span className={getTabClass(6)} onClick={() => handleClick(6)}>Section6</span>
-          <span className={getTabClass(7)} onClick={() => handleClick(7)}>Section7</span>
+          <span className={getTabClass(7)} onClick={() => handleClick(7)}>Section7</span> */}
         </div>
         
         {activeBox === 1 && <div><HeroSectionForm productpage={data} onSubmitId={handleHeroSectionSubmit} /></div>}

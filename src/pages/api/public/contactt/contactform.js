@@ -4,6 +4,7 @@
 
 
 
+import AdminModel from "@/models/AdminModel";
 import ContactForm from "@/models/contactPage/ContactForm";
 import LeadFormEmail from "@/models/formEmail/Email";
 import nodemailer from "nodemailer";
@@ -49,6 +50,8 @@ export default async function handler(req, res) {
         enquiryType,
         queryComment,
       });
+      const admin = await AdminModel.findOne();
+      const adminEmail = admin.email;
        // Fetch the email and password from the LeadFormEmail model (database)
        const leadFormEmailData = await LeadFormEmail.findOne(); // Adjust query if necessary (e.g., filtering based on conditions)
 
@@ -72,7 +75,7 @@ export default async function handler(req, res) {
 
       const mailOptions = {
         from: '"Partner Contact Form" <no-reply@yourapp.com>', // Sender's email address
-        to: `${email}`, // Replace with your own email address
+        to: `${adminEmail}`, // Replace with your own email address
         subject: `New Contact Form Submission - ${name}`,
         text: `
           A new contact form has been submitted.

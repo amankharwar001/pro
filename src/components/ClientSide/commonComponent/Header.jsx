@@ -286,7 +286,7 @@ const Header = ({ data, apikey, img }) => {
       </div>
 
       {/* Sidebar Container */}
-      <div className="block lg:hidden">
+      <div className="block lg:hidden z-[1000]">
         <div
           className=" " // Separate the sidebar with a fixed position
         >

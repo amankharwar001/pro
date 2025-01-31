@@ -226,7 +226,7 @@ const AboutSection4Form = ({ setActiveBox,sectionsStatusHandle }) => {
       <div className='flex justify-end'>
         <StatusManager sectionName={"about_section4"}/>
       </div>
-      <div className="mb-3 border-blue-500 border p-4">
+      <div className="mb-3 bg-white shadow-md rounded border p-4">
         <span className="text-sm font-medium">Main images</span>
         <div className="flex flex-wrap gap-10 items-center">
           <ImageUploader setImageStatus={(status) => updateImageStatus("about_section4_primaryImage", 1, status)} referenceType={"about_section4_primaryImage"} width={660} height={440}/>

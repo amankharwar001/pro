@@ -209,7 +209,7 @@ const OverviewSection3 = ({apidata1,apidata2}) => {
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 animate={inView ? { opacity: 1, scale: 1 } : {}}
                                 transition={{ delay: 0.9, duration: 0.7 }}
-                                className="absolute top-16 right-5 md:right-14 rounded-lg overflow-hidden"
+                                className="absolute top-14 right-5 md:right-14 rounded-lg overflow-hidden"
                             >
                                 <Image
                                     src={`${multiImage[1]?.filePath || "/paramotor_assets/aboutsection/phonecard.jpg"}`}
