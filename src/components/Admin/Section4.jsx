@@ -111,7 +111,7 @@ const Section4Form = ({ setActiveBox, sectionsStatusHandle }) => {
         </div>
       </div>
       <div className="flex flex-col space-y-1">
-        <label className="text-sm font-medium text-gray-700">Heading</label>
+        <label className="text-sm font-semibold text-gray-700">Heading</label>
         <input
           type="text"
           value={heading}
@@ -121,7 +121,7 @@ const Section4Form = ({ setActiveBox, sectionsStatusHandle }) => {
       </div>
 
       <div className="flex flex-col space-y-1">
-        <label className="text-sm font-medium text-gray-700">Content</label>
+        <label className="text-sm font-semibold text-gray-700">Content</label>
         <textarea
           value={content}
           onChange={(e) => setContent(e.target.value)}
@@ -131,7 +131,7 @@ const Section4Form = ({ setActiveBox, sectionsStatusHandle }) => {
 
       {/* Static Lead Details */}
       <div className="space-y-2">
-        <label className="text-sm font-medium text-gray-700">Lead Details</label>
+        <label className="text-sm font-semibold text-gray-700">Lead Details</label>
 
         {/* Lead 1 */}
         <div className="flex space-x-4">

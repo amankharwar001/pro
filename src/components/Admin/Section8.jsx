@@ -116,18 +116,18 @@ const Section8Page = ({ setActiveBox, sectionsStatusHandle }) => {
         </div>
       </div>
 
-      {message && (
+      {/* {message && (
         <div
           className={`p-4 mb-4 text-white rounded-md ${message.includes("error") ? "bg-red-600" : "bg-green-600"
             }`}
         >
           {message}
         </div>
-      )}
+      )} */}
 
       <form onSubmit={handleSubmit} className="">
         <div>
-          <label htmlFor="heading" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="heading" className="block text-sm font-semibold text-gray-700">
             Heading
           </label>
           <input
@@ -142,7 +142,7 @@ const Section8Page = ({ setActiveBox, sectionsStatusHandle }) => {
         </div>
 
         <div>
-          <label htmlFor="content" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="content" className="block text-sm font-semibold text-gray-700">
             Content
           </label>
           <textarea
@@ -157,7 +157,7 @@ const Section8Page = ({ setActiveBox, sectionsStatusHandle }) => {
         </div>
 
         <div>
-          <label htmlFor="btn" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="btn" className="block text-sm font-semibold text-gray-700">
             Button Text
           </label>
           <input
@@ -172,7 +172,7 @@ const Section8Page = ({ setActiveBox, sectionsStatusHandle }) => {
         </div>
 
         <div>
-          <label htmlFor="btnLink" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="btnLink" className="block text-sm font-semibold text-gray-700">
             Button Link
           </label>
           <input

@@ -101,7 +101,7 @@ export default function Section7Manager({setActiveBox,sectionsStatusHandle}) {
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Heading */}
         <div>
-          <label htmlFor="heading" className="block font-medium">Heading</label>
+          <label htmlFor="heading" className="block font-bold text-gray-700">Heading</label>
           <input
             type="text"
             id="heading"
@@ -115,7 +115,7 @@ export default function Section7Manager({setActiveBox,sectionsStatusHandle}) {
 
         {/* Content */}
         <div>
-          <label htmlFor="content" className="block font-medium">Content</label>
+          <label htmlFor="content" className="block font-bold text-gray-700">Content</label>
           <textarea
             id="content"
             name="content"
@@ -128,7 +128,7 @@ export default function Section7Manager({setActiveBox,sectionsStatusHandle}) {
 
         {/* Button Text */}
         <div>
-          <label htmlFor="btn" className="block font-medium">Button Text</label>
+          <label htmlFor="btn" className="block font-bold text-gray-700">Button Text</label>
           <input
             type="text"
             id="btn"
@@ -142,7 +142,7 @@ export default function Section7Manager({setActiveBox,sectionsStatusHandle}) {
 
         {/* Button Link */}
         <div>
-          <label htmlFor="btnLink" className="block font-medium">Button Link</label>
+          <label htmlFor="btnLink" className="block font-bold text-gray-700">Button Link</label>
           <input
             type="url"
             id="btnLink"

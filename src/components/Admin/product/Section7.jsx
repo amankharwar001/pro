@@ -93,17 +93,17 @@ export default function Section7Product({ productpage, setActiveBox,sectionsStat
 
   return (
     <div className="p-4 border bg-gray-50 shadow-inner rounded">
-      <h1 className="text-xl font-bold mb-4">Section 7 Product</h1>
+      {/* <h1 className="text-xl font-bold mb-4">Section 7 Product</h1> */}
 
-      {loading && <p>Loading...</p>}
+      {/* {loading && <p>Loading...</p>}
       {error && <p className="text-red-500">{error}</p>}
-      {success && <p className="text-green-500">{success}</p>}
+      {success && <p className="text-green-500">{success}</p>} */}
       <div className="flex justify-end">
         <StatusManager sectionName={`product_section7${productpage?.id}`}/>
       </div>
 
       <div className="mb-4">
-        <label className="block font-medium mb-1">Heading:</label>
+        <label className="block font-semibold mb-1 text-gray-700">Heading:</label>
         <input
           type="text"
           value={formData.heading}
@@ -113,7 +113,7 @@ export default function Section7Product({ productpage, setActiveBox,sectionsStat
       </div>
 
       <div className="mb-4">
-        <label className="block font-medium mb-1">Text:</label>
+        <label className="block font-semibold mb-1 text-gray-700">Text:</label>
         <textarea
           value={formData.text}
           onChange={(e) => handleChange("text", e.target.value)}
@@ -122,7 +122,7 @@ export default function Section7Product({ productpage, setActiveBox,sectionsStat
       </div>
 
       <div className="mb-4">
-        <label className="block font-medium mb-1">Button Text:</label>
+        <label className="block font-semibold mb-1 text-gray-700">Button Text:</label>
         <input
           type="text"
           value={formData.btn}
@@ -132,7 +132,7 @@ export default function Section7Product({ productpage, setActiveBox,sectionsStat
       </div>
 
       <div className="mb-4">
-        <label className="block font-medium mb-1">Button Link:</label>
+        <label className="block font-semibold mb-1 text-gray-700">Button Link:</label>
         <input
           type="text"
           value={formData.btnLink}

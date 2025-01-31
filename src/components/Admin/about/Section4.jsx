@@ -75,7 +75,7 @@
             
 //             <form onSubmit={handleSubmit} className="space-y-4 w-full">
 //                 <div>
-//                     <label className="block font-medium mb-1 text-xs">Cards</label>
+//                     <label className="block font-semibold mb-1 text-sm text-gray-700">Cards</label>
 //                     {formData.card.map((card, index) => (
 //                         <div key={index} className="mb-3 space-y-2">
 //                             <ImageUploader referenceType={"aboutpage_section_4"} referenceId={index + 1} />
@@ -223,7 +223,7 @@ const AboutSection4Form = ({ setActiveBox,sectionsStatusHandle }) => {
 
   return (
     <div className="mx-auto p-4">
-      <div className='flex justify-end'>
+      <div className='flex justify-end mb-2'>
         <StatusManager sectionName={"about_section4"}/>
       </div>
       <div className="mb-3 bg-white shadow-md rounded border p-4">
@@ -236,7 +236,7 @@ const AboutSection4Form = ({ setActiveBox,sectionsStatusHandle }) => {
 
       <form onSubmit={handleSubmit} className="space-y-4 w-full">
         <div>
-          <label className="block font-medium mb-1 text-xs">Cards</label>
+          <label className="block font-semibold mb-1 text-sm text-gray-700">Cards</label>
           {formData.card.map((card, index) => (
             <div key={index} className="mb-3 space-y-2">
               <ImageUploader setImageStatus={(status) => updateImageStatus("aboutpage_section_4", index + 1, status)} referenceType={"aboutpage_section_4"} referenceId={index + 1} width={25} height={25}/>

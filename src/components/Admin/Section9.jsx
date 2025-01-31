@@ -109,10 +109,10 @@ export default function Section9Manager({setActiveBox,sectionsStatusHandle}) {
             {message && <p className={`mb-4 ${message.includes("Failed") ? "text-red-500" : "text-green-500"}`}>{message}</p>}
             <CommonImageUpload referenceType={"homepage_section_9"} imageCount={4} setMultiImageStatus={setMultiImageStatus}/>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4 mt-4">
                 {/* Heading */}
                 <div>
-                    <label htmlFor="heading" className="block font-medium">Heading</label>
+                    <label htmlFor="heading" className="block font-semibold text-gray-700">Heading</label>
                     <input
                         type="text"
                         id="heading"
@@ -126,7 +126,7 @@ export default function Section9Manager({setActiveBox,sectionsStatusHandle}) {
 
                 {/* Content */}
                 <div>
-                    <label htmlFor="content" className="block font-medium">Content</label>
+                    <label htmlFor="content" className="block font-semibold text-gray-700">Content</label>
                     <textarea
                         id="content"
                         name="content"
@@ -139,7 +139,7 @@ export default function Section9Manager({setActiveBox,sectionsStatusHandle}) {
 
                 {/* Button */}
                 <div>
-                    <label htmlFor="btn" className="block font-medium">Button Text</label>
+                    <label htmlFor="btn" className="block font-semibold text-gray-700">Button Text</label>
                     <input
                         type="text"
                         id="btn"
@@ -153,7 +153,7 @@ export default function Section9Manager({setActiveBox,sectionsStatusHandle}) {
 
                 {/* Button Link */}
                 <div>
-                    <label htmlFor="btnLink" className="block font-medium">Button Link</label>
+                    <label htmlFor="btnLink" className="block font-semibold text-gray-700">Button Link</label>
                     <input
                         type="url"
                         id="btnLink"
@@ -171,7 +171,7 @@ export default function Section9Manager({setActiveBox,sectionsStatusHandle}) {
                     {form.info.map((info, index) => (
                         <div key={index} className="space-y-2 mb-4 rounded-md border bg-white p-4 shadow-md">
                             <div>
-                                <label htmlFor={`infoheading${index}`} className="block font-medium">{`heading ${index+1}`}</label>
+                                <label htmlFor={`infoheading${index}`} className="block font-semibold text-gray-700">{`heading ${index+1}`}</label>
                                 <input
                                     type="text"
                                     id={`infoheading${index}`}
@@ -183,7 +183,7 @@ export default function Section9Manager({setActiveBox,sectionsStatusHandle}) {
                                 />
                             </div>
                             <div>
-                                <label htmlFor={`infotext${index}`} className="block font-medium">{`text ${index+1}`}</label>
+                                <label htmlFor={`infotext${index}`} className="block font-semibold text-gray-700">{`text ${index+1}`}</label>
                                 <textarea
                                     placeholder={`Content ${index + 1}`}
                                     id={`infotext${index}`}

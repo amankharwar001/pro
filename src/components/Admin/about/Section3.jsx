@@ -114,7 +114,7 @@ const AboutSection3Form = ({ setActiveBox, sectionsStatusHandle }) => {
       </div>
       <form onSubmit={handleSubmit} className="space-y-4 w-full">
         <div>
-          <label className="block font-medium mb-1 text-xs">Heading</label>
+          <label className="block font-semibold text-gray-700 mb-1 text-sm">Heading</label>
           <input
             type="text"
             name="heading"
@@ -125,7 +125,7 @@ const AboutSection3Form = ({ setActiveBox, sectionsStatusHandle }) => {
           />
         </div>
         <div>
-          <label className="block font-medium mb-1 text-xs">Cards</label>
+          <label className="block font-semibold text-gray-700 mb-1 text-sm">Cards</label>
           {Array.isArray(formData.card) && formData.card.map((card, index) => (
             <div key={index} className="mb-3 space-y-2 p-4 border shadow-md rounded bg-white"> 
               {/* <ImageUploader setImageStatus={setImageStatus} referenceType={"aboutpage_section_3"} referenceId={index + 1} width={30} height={30} /> */}

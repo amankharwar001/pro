@@ -108,11 +108,11 @@ const AboutSectionForm = ({ setActiveBox, sectionsStatusHandle }) => {
       </div>
 
       {/* Display error message */}
-      {errorMessage && <p className="text-red-500 mb-4">{errorMessage}</p>}
+      {/* {errorMessage && <p className="text-red-500 mb-4">{errorMessage}</p>} */}
 
       <form onSubmit={handleSubmit} className="space-y-4 w-full">
         <div>
-          <label className="block font-medium mb-1 text-xs">Title</label>
+          <label className="block font-semibold mb-1 text-sm text-gray-700">Title</label>
           <input
             type="text"
             name="title"
@@ -123,7 +123,7 @@ const AboutSectionForm = ({ setActiveBox, sectionsStatusHandle }) => {
           />
         </div>
         <div>
-          <label className="block font-medium mb-1 text-xs">Heading</label>
+          <label className="block font-semibold mb-1 text-sm text-gray-700">Heading</label>
           <input
             type="text"
             name="heading"
@@ -134,7 +134,7 @@ const AboutSectionForm = ({ setActiveBox, sectionsStatusHandle }) => {
           />
         </div>
         <div>
-          <label className="block font-medium mb-1 text-xs">Text</label>
+          <label className="block font-semibold mb-1 text-sm text-gray-700">Text</label>
           <textarea
             name="text"
             value={formData.text}

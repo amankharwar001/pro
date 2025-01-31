@@ -90,16 +90,16 @@ const TestimonialManager = ({setActiveBox,sectionsStatusHandle}) => {
         <StatusManager sectionName={"homepage_section10"}/>
       </div>
       <CommonImageUpload referenceType={"homepage_testimonial"} imageCount={9} setMultiImageStatus={setMultiImageStatus}/>
-      {message && (
+      {/* {message && (
         <div className="mb-4 p-2 bg-gray-100 border rounded">
           {message}
         </div>
-      )}
+      )} */}
 
       {/* Form for Adding/Updating Testimonial */}
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-4 mt-4">
         <div>
-          <label className="block text-gray-700 font-medium">Heading:</label>
+          <label className="block text-gray-700 font-semibold">Heading:</label>
           <input
             type="text"
             name="heading"
@@ -110,7 +110,7 @@ const TestimonialManager = ({setActiveBox,sectionsStatusHandle}) => {
           />
         </div>
         <div>
-          <label className="block text-gray-700 font-medium">Content:</label>
+          <label className="block text-gray-700 font-semibold">Content:</label>
           <textarea
             name="content"
             value={formData.content}
@@ -120,7 +120,7 @@ const TestimonialManager = ({setActiveBox,sectionsStatusHandle}) => {
           />
         </div>
         <div>
-          <label className="block text-gray-700 font-medium">Info:</label>
+          <label className="block text-gray-700 font-semibold">Info:</label>
           <input
             type="text"
             name="info"

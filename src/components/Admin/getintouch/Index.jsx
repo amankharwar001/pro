@@ -101,11 +101,11 @@ export default function Section5Product({setActiveBox,sectionsStatusHandle}) {
   return (
     <div className="p-4  border bg-gray-50 shadow-inner rounded">
       {/* {loading && <p>Loading...</p>} */}
-      {error && <p className="text-red-500">{error}</p>}
+      {/* {error && <p className="text-red-500">{error}</p>} */}
       {!loading && (
         <form className="space-y-4">
           <div>
-            <label className="block text-lg font-medium">Heading</label>
+            <label className="block text-sm font-semibold text-gray-700">Heading</label>
             <input
               type="text"
               name="heading"
@@ -115,7 +115,7 @@ export default function Section5Product({setActiveBox,sectionsStatusHandle}) {
             />
           </div>
           <div>
-            <label className="block text-lg font-medium">Text</label>
+            <label className="block text-sm font-semibold text-gray-700">Text</label>
             <textarea
               name="content"
               value={data.content}
@@ -125,7 +125,7 @@ export default function Section5Product({setActiveBox,sectionsStatusHandle}) {
             />
           </div>
           <div>
-            <h2 className="text-lg font-medium">Info</h2>
+            <h2 className="text-sm font-semibold text-gray-700">Info</h2>
             {data?.card?.map((item, index) => (
               <div key={index} className="border p-4 rounded mb-4 bg-white shadow-md">
                 <div>

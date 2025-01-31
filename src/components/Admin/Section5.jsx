@@ -106,7 +106,7 @@ const Section5Form = ({ setActiveBox, sectionsStatusHandle }) => {
             <form className="space-y-6  p-4 rounded-lg">
                 {/* Heading */}
                 <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Section Heading</label>
+                    <label className="block text-sm font-semibold  text-gray-700 mb-1">Section Heading</label>
                     <input
                         type="text"
                         value={heading}
@@ -118,7 +118,7 @@ const Section5Form = ({ setActiveBox, sectionsStatusHandle }) => {
 
                 {/* Content */}
                 <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Section Content</label>
+                    <label className="block text-sm font-semibold  text-gray-700 mb-1">Section Content</label>
                     <textarea
                         value={content}
                         onChange={(e) => setContent(e.target.value)}

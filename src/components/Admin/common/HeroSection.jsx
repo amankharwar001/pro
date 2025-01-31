@@ -92,7 +92,7 @@ const HeroSectionForm = ({ onSubmitId, url,referencetype,setActiveBox,sectionsSt
       </div>
       <form onSubmit={handleSubmit} className="space-y-4 w-full">
         <div>
-          <label className="block font-medium mb-1 text-xs">Title</label>
+          <label className="block font-semibold text-gray-700 mb-1 text-sm">Title</label>
           <input
             type="text"
             name="title"
@@ -103,7 +103,7 @@ const HeroSectionForm = ({ onSubmitId, url,referencetype,setActiveBox,sectionsSt
           />
         </div>
         <div>
-          <label className="block font-medium mb-1 text-xs">Heading</label>
+          <label className="block font-semibold text-gray-700 mb-1 text-sm">Heading</label>
           <input
             type="text"
             name="heading"
@@ -114,7 +114,7 @@ const HeroSectionForm = ({ onSubmitId, url,referencetype,setActiveBox,sectionsSt
           />
         </div>
         <div>
-          <label className="block font-medium mb-1 text-xs">Text</label>
+          <label className="block font-semibold text-gray-700 mb-1 text-sm">Text</label>
           <textarea
             name="text"
             value={formData.text}
@@ -125,7 +125,7 @@ const HeroSectionForm = ({ onSubmitId, url,referencetype,setActiveBox,sectionsSt
           ></textarea>
         </div>
         <div>
-          <label className="block font-medium mb-1 text-xs">Button Text</label>
+          <label className="block font-semibold text-gray-700 mb-1 text-sm">Button Text</label>
           <input
             type="text"
             name="btn"
@@ -136,7 +136,7 @@ const HeroSectionForm = ({ onSubmitId, url,referencetype,setActiveBox,sectionsSt
           />
         </div>
         <div>
-          <label className="block font-medium mb-1 text-xs">Button Link</label>
+          <label className="block font-semibold text-gray-700 mb-1 text-sm">Button Link</label>
           <input
             type="text"
             name="btnLink"

@@ -127,7 +127,7 @@ const Section3Form = ({ setActiveBox, sectionsStatusHandle }) => {
 
             <form onSubmit={handleSubmit} className='pt-5'>
                 <div className="mb-4">
-                    <label htmlFor="heading" className="block text-sm font-medium text-gray-700">
+                    <label htmlFor="heading" className="block text-sm font-medium font-semibold text-gray-700">
                         Heading
                     </label>
                     <input
@@ -140,7 +140,7 @@ const Section3Form = ({ setActiveBox, sectionsStatusHandle }) => {
                 </div>
 
                 <div className="mb-4">
-                    <label htmlFor="content" className="block text-sm font-medium text-gray-700">
+                    <label htmlFor="content" className="block text-sm font-medium font-semibold text-gray-700">
                         Content
                     </label>
                     <textarea
@@ -154,7 +154,7 @@ const Section3Form = ({ setActiveBox, sectionsStatusHandle }) => {
 
 
                 <div className="mb-4 mt-2">
-                    <label htmlFor="agentBrief" className="block text-sm font-medium text-gray-700">
+                    <label htmlFor="agentBrief" className="block text-sm font-medium font-semibold text-gray-700">
                         Agent Brief
                     </label>
                     <textarea
@@ -167,7 +167,7 @@ const Section3Form = ({ setActiveBox, sectionsStatusHandle }) => {
                 </div>
                 <div className='flex gap-5 '>
                     <div className="mb-4 grow">
-                        <label htmlFor="leadNo" className="block text-sm font-medium text-gray-700">
+                        <label htmlFor="leadNo" className="block text-sm font-medium font-semibold text-gray-700">
                             Lead Number
                         </label>
                         <input
@@ -179,7 +179,7 @@ const Section3Form = ({ setActiveBox, sectionsStatusHandle }) => {
                         />
                     </div>
                     <div className="mb-4 grow">
-                        <label htmlFor="leadName" className="block text-sm font-medium text-gray-700">
+                        <label htmlFor="leadName" className="block text-sm font-medium font-semibold text-gray-700">
                             Lead Name
                         </label>
                         <input

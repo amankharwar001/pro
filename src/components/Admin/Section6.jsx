@@ -121,7 +121,7 @@
 //       <form onSubmit={handleFormSubmit} className="space-y-6">
 //         {/* Section Heading */}
 //         <div>
-//           <label className="block text-sm font-medium text-gray-700 mb-1">
+//           <label className="block text-sm font-semibold text-gray-700 mb-1">
 //             Section Heading
 //           </label>
 //           <input
@@ -136,7 +136,7 @@
 
 //         {/* Section Content (Text Area) */}
 //         <div>
-//           <label className="block text-sm font-medium text-gray-700 mb-1">
+//           <label className="block text-sm font-semibold text-gray-700 mb-1">
 //             Section Content
 //           </label>
 //           <textarea
@@ -151,7 +151,7 @@
 
 //         {/* Bottom Text */}
 //         <div>
-//           <label className="block text-sm font-medium text-gray-700 mb-1">
+//           <label className="block text-sm font-semibold text-gray-700 mb-1">
 //             Bottom Text
 //           </label>
 //           <ReactQuill
@@ -200,7 +200,7 @@
 //                   <ImageUploader setImageStatus={setImageStatus} referenceType={`homepage_section${index+1}`} width={421} height={260}  />
 //                   <div className="space-y-2">
 //                     <div>
-//                       <label className="block text-sm font-medium text-gray-700 mb-1">
+//                       <label className="block text-sm font-semibold text-gray-700 mb-1">
 //                         Title
 //                       </label>
 //                       <input
@@ -214,7 +214,7 @@
 //                       />
 //                     </div>
 //                     <div>
-//                       <label className="block text-sm font-medium text-gray-700 mb-1">
+//                       <label className="block text-sm font-semibold text-gray-700 mb-1">
 //                         Content
 //                       </label>
 //                       <ReactQuill
@@ -226,7 +226,7 @@
 //                       />
 //                     </div>
 //                     <div>
-//                       <label className="block text-sm font-medium text-gray-700 mb-1">
+//                       <label className="block text-sm font-semibold text-gray-700 mb-1">
 //                         Info
 //                       </label>
 //                       <ReactQuill
@@ -238,7 +238,7 @@
 //                       />
 //                     </div>
 //                     <div>
-//                       <label className="block text-sm font-medium text-gray-700 mb-1">
+//                       <label className="block text-sm font-semibold text-gray-700 mb-1">
 //                         Button Name
 //                       </label>
 //                       <input
@@ -252,7 +252,7 @@
 //                       />
 //                     </div>
 //                     <div>
-//                       <label className="block text-sm font-medium text-gray-700 mb-1">
+//                       <label className="block text-sm font-semibold text-gray-700 mb-1">
 //                         Button Link
 //                       </label>
 //                       <input
@@ -511,7 +511,7 @@
 //       <form onSubmit={handleFormSubmit} className="space-y-6">
 //         {/* Section Heading */}
 //         <div>
-//           <label className="block text-sm font-medium text-gray-700 mb-1">
+//           <label className="block text-sm font-semibold text-gray-700 mb-1">
 //             Section Heading
 //           </label>
 //           <input
@@ -526,7 +526,7 @@
 
 //         {/* Section Content (Text Area) */}
 //         <div>
-//           <label className="block text-sm font-medium text-gray-700 mb-1">
+//           <label className="block text-sm font-semibold text-gray-700 mb-1">
 //             Section Content
 //           </label>
 //           <textarea
@@ -541,7 +541,7 @@
 
 //         {/* Bottom Text */}
 //         <div>
-//           <label className="block text-sm font-medium text-gray-700 mb-1">
+//           <label className="block text-sm font-semibold text-gray-700 mb-1">
 //             Bottom Text
 //           </label>
 //           <ReactQuill
@@ -592,7 +592,7 @@
 //                   <ImageUploader setImageStatus={setImageStatus} referenceType={`homepage_section${index+1}`} width={421} height={260}  />
 //                   <div className="space-y-2">
 //                     <div>
-//                       <label className="block text-sm font-medium text-gray-700 mb-1">
+//                       <label className="block text-sm font-semibold text-gray-700 mb-1">
 //                         Title
 //                       </label>
 //                       <input
@@ -606,7 +606,7 @@
 //                       />
 //                     </div>
 //                     <div>
-//                       <label className="block text-sm font-medium text-gray-700 mb-1">
+//                       <label className="block text-sm font-semibold text-gray-700 mb-1">
 //                         Content
 //                       </label>
 //                       <ReactQuill
@@ -618,7 +618,7 @@
 //                       />
 //                     </div>
 //                     <div>
-//                       <label className="block text-sm font-medium text-gray-700 mb-1">
+//                       <label className="block text-sm font-semibold text-gray-700 mb-1">
 //                         Info
 //                       </label>
 //                       <ReactQuill
@@ -630,7 +630,7 @@
 //                       />
 //                     </div>
 //                     <div>
-//                       <label className="block text-sm font-medium text-gray-700 mb-1">
+//                       <label className="block text-sm font-semibold text-gray-700 mb-1">
 //                         Button Name
 //                       </label>
 //                       <input
@@ -644,7 +644,7 @@
 //                       />
 //                     </div>
 //                     <div>
-//                       <label className="block text-sm font-medium text-gray-700 mb-1">
+//                       <label className="block text-sm font-semibold text-gray-700 mb-1">
 //                         Button Link
 //                       </label>
 //                       <input
@@ -825,14 +825,14 @@ const AdminSection6Panel = ({ setActiveBox, sectionsStatusHandle }) => {
       <div className='flex justify-end '>
         <StatusManager sectionName={"homepage_section6"} />
       </div>
-      {isLoading && <p className="text-blue-600">Loading...</p>}
+      {/* {isLoading && <p className="text-blue-600">Loading...</p>}
       {errorMessage && <p className="text-red-600">{errorMessage}</p>}
-      {successMessage && <p className="text-green-600">{successMessage}</p>}
+      {successMessage && <p className="text-green-600">{successMessage}</p>} */}
 
       <form onSubmit={handleFormSubmit} className="space-y-6">
         {/* Section Heading */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-semibold text-gray-700 mb-1">
             Section Heading
           </label>
           <input
@@ -847,7 +847,7 @@ const AdminSection6Panel = ({ setActiveBox, sectionsStatusHandle }) => {
 
         {/* Section Content (Text Area) */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-semibold text-gray-700 mb-1">
             Section Content
           </label>
           <textarea
@@ -862,7 +862,7 @@ const AdminSection6Panel = ({ setActiveBox, sectionsStatusHandle }) => {
 
         {/* Bottom Text */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-semibold text-gray-700 mb-1">
             Bottom Text
           </label>
           <ReactQuill
@@ -919,7 +919,7 @@ const AdminSection6Panel = ({ setActiveBox, sectionsStatusHandle }) => {
                     <ImageUploader setImageStatus={(status) => updateImageStatus(index, status)} referenceType={`homepage_section6_${index + 1}`} width={421} height={260} />
                     <div className="space-y-2">
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                        <label className="block text-sm font-semibold text-gray-700 mb-1">
                           Title
                         </label>
                         <input
@@ -931,7 +931,7 @@ const AdminSection6Panel = ({ setActiveBox, sectionsStatusHandle }) => {
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                        <label className="block text-sm font-semibold text-gray-700 mb-1">
                           Content
                         </label>
                         <ReactQuill
@@ -941,7 +941,7 @@ const AdminSection6Panel = ({ setActiveBox, sectionsStatusHandle }) => {
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                        <label className="block text-sm font-semibold text-gray-700 mb-1">
                           Info
                         </label>
                         <ReactQuill
@@ -951,7 +951,7 @@ const AdminSection6Panel = ({ setActiveBox, sectionsStatusHandle }) => {
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                        <label className="block text-sm font-semibold text-gray-700 mb-1">
                           Button Name
                         </label>
                         <input
@@ -963,7 +963,7 @@ const AdminSection6Panel = ({ setActiveBox, sectionsStatusHandle }) => {
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                        <label className="block text-sm font-semibold text-gray-700 mb-1">
                           Button Link
                         </label>
                         <input
@@ -979,7 +979,7 @@ const AdminSection6Panel = ({ setActiveBox, sectionsStatusHandle }) => {
                         onClick={() => handleDeleteCard(index)}
                         className="mt-2 text-red-500"
                       >
-                        Delete Card
+                        Delete Card {index+1}
                       </button>
                     </div>
                   </div>

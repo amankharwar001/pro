@@ -114,7 +114,7 @@ export default function FAQManager({setActiveBox,sectionsStatusHandle}) {
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label htmlFor="heading" className="block font-medium">Heading</label>
+          <label htmlFor="heading" className="block text-gray-700 font-semibold">Heading</label>
           <input
             type="text"
             id="heading"
@@ -126,7 +126,7 @@ export default function FAQManager({setActiveBox,sectionsStatusHandle}) {
           />
         </div>
         <div>
-          <label htmlFor="bottomtext" className="block font-medium">Bottom Text</label>
+          <label htmlFor="bottomtext" className="block text-gray-700 font-semibold">Bottom Text</label>
           <ReactQuill
             value={form.bottomtext}
             onChange={(value) => handleEditorChange("bottomtext", value)}
@@ -134,7 +134,7 @@ export default function FAQManager({setActiveBox,sectionsStatusHandle}) {
           />
         </div>
         <div>
-          <label className="block font-medium">Questions</label>
+          <label className="block text-gray-700 font-semibold">Questions</label>
           {form.questions.map((q, index) => (
             <div key={index} className=" space-y-2 mb-4 rounded-lg shadow-md p-4 border bg-white">
               <input

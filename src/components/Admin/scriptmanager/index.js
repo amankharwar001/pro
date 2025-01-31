@@ -124,7 +124,7 @@ const ScriptManager = () => {
               onChange={(e) => setNewScript(e.target.value)}
             />
             <button
-              className="bg-green-500 text-white px-6 py-2 rounded-lg"
+              className="bg-black hover:bg-green-500 text-white px-6 py-2 rounded-lg"
               onClick={createScript}
             >
               Add Script
@@ -174,7 +174,7 @@ const ScriptManager = () => {
                         {script.script}
                       </pre>
                       <button
-                        className="bg-yellow-500 text-white px-6 py-2 rounded-lg mr-2"
+                        className= "bg-slate-400 hover:bg-yellow-500 text-white px-6 py-2 rounded-lg mr-2"
                         onClick={() => {
                           setEditingId(script.id);
                           setUpdatedScript(script.script);
@@ -183,7 +183,7 @@ const ScriptManager = () => {
                         Edit
                       </button>
                       <button
-                        className="bg-red-500 text-white px-6 py-2 rounded-lg"
+                        className="bg-slate-400 hover:bg-red-500 text-white px-6 py-2 rounded-lg"
                         onClick={() => deleteScript(script.id)}
                       >
                         Delete

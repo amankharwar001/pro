@@ -95,7 +95,7 @@ const Test = ({setActiveBox,sectionsStatusHandle}) => {
     <div className=" mx-auto p-4 bg-slate-100 shadow-inner rounded-lg space-y-4 ">
       <ImageUploader referenceType={"hero_section"} width={1920} height={750} setImageStatus={setImageStatus}/>
       <div className="flex flex-col space-y-1">
-        <label className="text-sm font-medium text-gray-700">Heading</label>
+        <label className="text-sm  text-gray-700 font-semibold ">Heading</label>
         <input
           type="text"
           value={text}
@@ -105,7 +105,7 @@ const Test = ({setActiveBox,sectionsStatusHandle}) => {
       </div>
 
       <div className="flex flex-col space-y-1">
-        <label className="text-sm font-medium text-gray-700">Text</label>
+        <label className="text-sm  text-gray-700 font-semibold ">Text</label>
         <textarea
           value={textarea}
           onChange={(e) => setTextarea(e.target.value)}
@@ -114,7 +114,7 @@ const Test = ({setActiveBox,sectionsStatusHandle}) => {
       </div>
 
       <div className="flex flex-col space-y-1">
-        <label className="text-sm font-medium text-gray-700">Button Link</label>
+        <label className="text-sm  text-gray-700 font-semibold ">Button Link</label>
         <input
           value={btnLink}
           onChange={(e) => setBtnLink(e.target.value)}
@@ -123,7 +123,7 @@ const Test = ({setActiveBox,sectionsStatusHandle}) => {
       </div>
 
       <div className="flex flex-col space-y-1">
-        <label className="text-sm font-medium text-gray-700">Button Text</label>
+        <label className="text-sm  text-gray-700 font-semibold ">Button Text</label>
         <input
           value={btn}
           onChange={(e) => setBtn(e.target.value)}

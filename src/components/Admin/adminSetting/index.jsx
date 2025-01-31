@@ -206,9 +206,9 @@ const handleSubmit = async (e) => {
             </>
           )}
           <Link href="/admin/account/forgot-password">
-          <span className='text-sm text-blue-500  hover:text-blue-600'>Forgot Password?</span></Link>
+          <span className='text-sm text-indigo-600  hover:text-blue-600'>Forgot Password?</span></Link>
 
-          <button type="submit" className="w-full mt-4 py-2 px-4 bg-blue-500 text-white rounded-md hover:bg-blue-600">
+          <button type="submit" className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
             Change {isUsername ? 'Username' : 'Password'}
           </button>
         </form>
@@ -217,7 +217,7 @@ const handleSubmit = async (e) => {
           <button
             type="button"
             onClick={() => setIsUsername(!isUsername)}
-            className="text-blue-500 hover:underline"
+            className="text-indigo-600 hover:underline"
           >
             {isUsername ? 'Change Password' : 'Change Username'}
           </button>

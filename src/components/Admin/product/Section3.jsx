@@ -96,16 +96,16 @@ const Section3Form = ({ productpage, setActiveBox, sectionsStatusHandle }) => {
 
   return (
     <div className="p-4 border bg-gray-50 shadow-inner rounded">
-      <h1 className="text-xl font-bold mb-4">
+      {/* <h1 className="text-xl font-bold mb-4">
         {isEditMode ? "Edit Section 3 Product" : "Create Section 3 Product"}
-      </h1>
+      </h1> */}
       <div className="flex justify-end">
         <StatusManager sectionName={`product_section3${productpage?.id}`}/>
       </div>
       <ImageUploader referenceType={productpage?.id} referenceId={3} width={550} height={300} setImageStatus={(status) => handleImageStatusChange(3, status)}/>
       <form onSubmit={handleSubmit}>
-        <div className="mb-4">
-          <label className="block font-medium mb-2">Heading</label>
+        <div className="mb-4 mt-4">
+          <label className="block font-semibold text-sm text-gray-700 mb-2">Heading</label>
           <input
             type="text"
             value={heading}
@@ -116,7 +116,7 @@ const Section3Form = ({ productpage, setActiveBox, sectionsStatusHandle }) => {
         </div>
 
         <div className="mb-4">
-          <label className="block font-medium mb-2">Text</label>
+          <label className="block font-semibold text-sm text-gray-700 mb-2">Text</label>
           <textarea
             value={text}
             onChange={(e) => setText(e.target.value)}
@@ -135,7 +135,7 @@ const Section3Form = ({ productpage, setActiveBox, sectionsStatusHandle }) => {
             height={25}
             setImageStatus={(status) => handleImageStatusChange(index + 31, status)} 
           />
-            <label className="block font-medium mb-2">Info {index + 1}</label>
+            <label className="block font-semibold text-sm text-gray-700 mb-2">Info {index + 1}</label>
             <input
               type="text"
               placeholder="Title"

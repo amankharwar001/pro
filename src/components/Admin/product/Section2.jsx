@@ -87,9 +87,9 @@ const Section2Form = ({ productpage,setActiveBox,sectionsStatusHandle }) => {  /
 
   return (
     <div className="p-4 border bg-gray-50 shadow-inner rounded">
-      <h1 className="text-xl font-bold mb-4">
+      {/* <h1 className="text-xl font-bold mb-4">
         {isEditMode ? "Edit Section 2 Product" : "Create Section 2 Product"}
-      </h1>
+      </h1> */}
       <div className="flex justify-end">
         <StatusManager sectionName={`product_section2${productpage?.id}`}/>
       </div>
@@ -108,7 +108,7 @@ const Section2Form = ({ productpage,setActiveBox,sectionsStatusHandle }) => {  /
       {/* <ImageUploader referenceType={productpage?.id} referenceId={3} /> */}
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label className="block font-medium mb-2 text-xs mt-5">Title</label>
+          <label className="block font-semibold text-sm mb-2 text-gray-700  mt-5 ">Title</label>
           <input
             type="text"
             value={title}

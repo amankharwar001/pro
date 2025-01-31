@@ -630,7 +630,7 @@ const FooterAdminPanel = () => {
             </div>
           </div>
 
-          {/* Copyright Section */}
+          {/* Copyright Section dffsf*/}
           <div className="mt-6 space-y-4 mb-6">
             <label className="block text-sm font-medium text-gray-700">Copyright</label>
             <input
@@ -648,7 +648,7 @@ const FooterAdminPanel = () => {
             <button
               type="button"
               onClick={handleSave}
-              className="bg-green-500 text-white p-3 rounded-md  hover:bg-green-600 w-full"
+               className="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-gray-800 transition duration-300"
             >
               Save Footer
             </button>

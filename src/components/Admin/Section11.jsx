@@ -100,53 +100,53 @@ export default function Section11Manager({ setActiveBox, sectionsStatusHandle })
       <ImageUploader referenceType={"homepage_section_11_primary"} width={62} height={52} setImageStatus={setImageStatus} />
 
 
-      {message && <p className="text-red-500 mb-4">{message}</p>}
+      {/* {message && <p className="text-red-500 mb-4">{message}</p>} */}
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-4 mt-5">
         <div>
-          <label htmlFor="heading" className="block font-medium">Heading</label>
+          <label htmlFor="heading" className="block font-semibold text-gray-700">Heading</label>
           <input
             type="text"
             id="heading"
             name="heading"
             value={form.heading}
             onChange={handleInputChange}
-            className="border p-2 w-full"
+            className="border p-2 w-full rounded-md"
             required
           />
         </div>
         <div>
-          <label htmlFor="content" className="block font-medium">Content</label>
+          <label htmlFor="content" className="block font-semibold text-gray-700">Content</label>
           <textarea
             id="content"
             name="content"
             value={form.content}
             onChange={handleInputChange}
-            className="border p-2 w-full"
+            className="border p-2 w-full rounded-md"
             required
           />
         </div>
         <div>
-          <label htmlFor="btn" className="block font-medium">Button Text</label>
+          <label htmlFor="btn" className="block font-semibold text-gray-700">Button Text</label>
           <input
             type="text"
             id="btn"
             name="btn"
             value={form.btn}
             onChange={handleInputChange}
-            className="border p-2 w-full"
+            className="border p-2 w-full rounded-md"
             required
           />
         </div>
         <div>
-          <label htmlFor="btnLink" className="block font-medium">Button Link</label>
+          <label htmlFor="btnLink" className="block font-semibold text-gray-700">Button Link</label>
           <input
             type="text"
             id="btnLink"
             name="btnLink"
             value={form.btnLink}
             onChange={handleInputChange}
-            className="border p-2 w-full"
+            className="border p-2 w-full rounded-md"
             required
           />
         </div>

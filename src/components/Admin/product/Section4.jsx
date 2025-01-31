@@ -100,18 +100,18 @@ export default function Section4Product({ productpage, setActiveBox, sectionsSta
 
   return (
     <div className="p-4 border bg-gray-50 shadow-inner rounded">
-      <h1 className="text-2xl font-bold mb-4">Section 4 Product</h1>
-      {loading && <p>Loading...</p>}
-      {error && <p className="text-red-500">{error}</p>}
+      {/* <h1 className="text-2xl font-bold mb-4">Section 4 Product</h1> */}
+      {/* {loading && <p>Loading...</p>}
+      {error && <p className="text-red-500">{error}</p>} */}
       <div className="flex justify-end">
         <StatusManager sectionName={`product_section4${productpage?.id}`}/>
       </div>
       <ImageUploader referenceType={productpage?.id} referenceId={4} width={550} height={300} setImageStatus={setImageStatus}/>
 
       {!loading && (
-        <form className="space-y-4">
+        <form className="space-y-4 mt-4">
           <div>
-            <label className="block text-lg font-medium">Heading</label>
+            <label className="block text-sm text-gray-700 font-semibold">Heading</label>
             <input
               type="text"
               name="heading"
@@ -121,7 +121,7 @@ export default function Section4Product({ productpage, setActiveBox, sectionsSta
             />
           </div>
           <div>
-            <label className="block text-lg font-medium">Text</label>
+            <label className="block text-sm text-gray-700 font-semibold">Text</label>
             <textarea
               name="text"
               value={data.text}
