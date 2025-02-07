@@ -8,13 +8,13 @@ const Testimonial = ({ apidata }) => {
 
   return (
     <div>
-      <div className="text-center p-8 bg-background mt-10">
-        <div>
+      <div className="text-center p-8 bg-gray-50 pt-20 py-10">
+        <div className='max-w-2xl m-auto '>
           <Fade triggerOnce>
-            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">{heading || 'Testimonials'}</h1>
+            <h2 className="text-h2_medium font-bold mb-4">{heading || 'Testimonials'}</h2>
           </Fade>
           <Fade triggerOnce direction="down" delay={200}>
-            <p className="text-slate-700 mb-8">{content || 'What our users say about us'}</p>
+            <p className="text-slate-700 mb-8 text-p">{content || 'What our users say about us'}</p>
           </Fade>
         </div>
         <Zoom triggerOnce>
@@ -50,7 +50,7 @@ const Testimonial = ({ apidata }) => {
 
         <div className="relative mb-8">
           <Slide direction="up" triggerOnce>
-            <blockquote className="bg-card p-10 rounded-lg shadow-lg max-w-xl m-auto border">
+            <blockquote className="bg-card bg-white p-10 rounded-lg shadow-lg max-w-xl m-auto border border-gray-50">
               <span  >
                 <FaQuoteLeft size={30} className='text-blue-50 mb-5' />
               </span>

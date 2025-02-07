@@ -8,6 +8,7 @@ import FooterSection from '@/components/ClientSide/commonComponent/FooterSection
 import Layout from '@/components/Admin/common/Layout'; // Assuming Layout contains the Sidebar
 import { FaArrowCircleUp } from "react-icons/fa";
 import { useEffect, useState } from 'react';
+import { IoIosArrowUp } from "react-icons/io";
 
 export default function App({ Component, pageProps, data }) {
   const router = useRouter();
@@ -60,12 +61,12 @@ export default function App({ Component, pageProps, data }) {
             <FooterSection />
             {showScroll && (
               <span
-                className="fixed z-[999] bottom-16 md:bottom-20 right-10 md:right-0 w-[8vw] text-[#013466] cursor-pointer"
+                className="fixed z-[999]  bottom-16 md:bottom-20  right-10 md:right-0 w-[8vw] text-black cursor-pointer"
                 onClick={scrollToTop}
               >
-                <FaArrowCircleUp
-                  className="border rounded-full  shadow-xl bg-white hover:bg-[#1f4469] hover:scale-105"
-                  size={50}
+                <IoIosArrowUp
+                  className="border rounded-md w-12 h-12 p-2   shadow-xl bg-gray-200/90 hover:bg-gray-200 hover:scale-105"
+                  
                 />
               </span>
             )}</>

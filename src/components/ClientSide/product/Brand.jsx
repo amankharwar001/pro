@@ -9,7 +9,7 @@ const Brand = ({section2,baseUrl}) => {
       <div className="container mx-auto lg:grid grid-cols-3 items-center gap-8">
         {/* Heading Section with Fade Effect */}
         <Fade triggerOnce>
-          <h5 className="font-bold text-lg text-center lg:text-left mb-6 lg:mb-0 lg:max-w-[300px] leading-snug">
+          <h5 className="font-bold text_h5  text-gray-500 mb-6 lg:mb-0 lg:max-w-[300px] leading-snug">
             {/* ACCEPTABLE TO MILLIONS OF CUSTOMERS WORLDWIDE AND IN TOP MARKETPLACES. */}
             {section2.section2Data.title}
           </h5>

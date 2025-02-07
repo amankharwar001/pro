@@ -10,8 +10,8 @@ const Footercta = () => {
                 <div className=" p-8 md:p-16 md:flex justify-between m-auto text-white z-20">
                     <div>
                         <Fade triggerOnce cascade duration={1000} delay={300}>
-                            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">Have any question?</h2>
-                            <p className="text-base md:text-xl mb-6">Ask us anything. Do you have a love question you want us to answer?</p>
+                            <h2 className="text-h2_medium font-bold mb-4">Have any question?</h2>
+                            <p className="text-[18px] mb-6">Ask us anything. Do you have a love question you want us to answer?</p>
                         </Fade>
                     </div>
                     <div className="flex items-center">

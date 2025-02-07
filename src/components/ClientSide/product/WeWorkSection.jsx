@@ -16,10 +16,10 @@ const WeWorkSection = ({section6,baseUrl}) => {
             <div className="container bg-background ">
                 <div className="text-center mb-8">
                     <Fade triggerOnce delay={100} >
-                        <h2 className=" font-bold text-primary">{section6.section6Data.heading}</h2>
+                        <h2 className=" font-bold text-h2_large">{section6.section6Data.heading}</h2>
                     </Fade>
                     <Fade triggerOnce delay={300}>
-                        <p className="text-muted-foreground md:max-w-[60%] m-auto">{section6.section6Data.text}</p>
+                        <p className="text-p md:max-w-[60%] m-auto">{section6.section6Data.text}</p>
                     </Fade>
                 </div>
                 <div className="relative flex flex-col md:flex-row gap-5 justify-around py-10">
@@ -37,7 +37,7 @@ const WeWorkSection = ({section6,baseUrl}) => {
                             </Zoom>
 
                         </div>
-                        <h3 className="text-xl font-semibold text-primary">{section6.section6Data.info[0].title}</h3>
+                        <h3 className="text_h3 font-semibold text-primary">{section6.section6Data.info[0].title}</h3>
                         <p className="text-muted-foreground">{section6.section6Data.info[0].content}</p>
                     </div>
                     <div className="text-center mb-8 md:mb-0">
@@ -64,7 +64,7 @@ const WeWorkSection = ({section6,baseUrl}) => {
 
                             </div>
                         </div>
-                        <h3 className="text-xl font-semibold text-primary">{section6.section6Data.info[1].title}</h3>
+                        <h3 className="text_h3 font-semibold text-primary">{section6.section6Data.info[1].title}</h3>
                         <p className="text-muted-foreground">{section6.section6Data.info[1].content}</p>
                     </div>
                     <div className="text-center">
@@ -80,7 +80,7 @@ const WeWorkSection = ({section6,baseUrl}) => {
                             </Zoom>
 
                         </div>
-                        <h3 className="text-xl font-semibold text-primary">{section6.section6Data.info[2].title}</h3>
+                        <h3 className="text_h3 font-semibold text-primary">{section6.section6Data.info[2].title}</h3>
                         <p className="text-muted-foreground">{section6.section6Data.info[2].content}</p>
                     </div>
                 </div>

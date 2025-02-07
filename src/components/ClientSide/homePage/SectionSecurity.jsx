@@ -7,9 +7,9 @@ const SectionSecurity = ({ apidata }) => {
   const primaryImage = images && images.length > 0 ? images[0] : null;
 
   return (
-    <div className="bg-[#003066] mt-5 relative">
+    <div className="bg-[#003066] relative">
       <div className="container overflow-hidden m-auto">
-        <div className="bg-primary text-primary-foreground p-6 text-center text-white py-14">
+        <div className="bg-primary text-primary-foreground p-6 text-center text-white py-14 max-w-3xl m-auto">
 
           {/* Animate Image */}
           {primaryImage && (
@@ -28,14 +28,14 @@ const SectionSecurity = ({ apidata }) => {
 
           {/* Animate Heading */}
           <Fade triggerOnce duration={1000} delay={200}>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-2">
+            <h2 className="text-h2_medium font-bold mb-2">
               {heading}
             </h2>
           </Fade>
 
           {/* Animate Content */}
           <Fade triggerOnce duration={1000} delay={400}>
-            <p className="mt-5 text-base md:text-xl mb-4">
+            <p className="mt-5 text-p mb-4">
               {content}
             </p>
           </Fade>

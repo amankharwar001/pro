@@ -69,9 +69,9 @@ function FormSection() {
   };
 
   return (
-    <div className="container overflow-hidden px-4 sm:px-6 lg:px-8 mx-auto">
+    <div className="container overflow-hidden px-4 md:max-w-[80%] sm:px-6 lg:px-8 mx-auto">
       <div className="m-auto p-4 mb-10 bg-white rounded-lg border shadow-md mt-10 ">
-        <h2 className=" font-semibold mb-6">Feel free to drop us a message</h2>
+        <h2 className=" text-h2 font-semibold mb-6">Feel free to drop us a message</h2>
         <form className="grid grid-cols-1 sm:grid-cols-2 gap-6" onSubmit={handleSubmit}>
           <input
             type="text"

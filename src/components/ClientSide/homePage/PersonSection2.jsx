@@ -13,12 +13,12 @@ export default function PersonSection2({ apidata }) {
                 <div className="order-last lg:order-none">
                     {/* Fade In Animation for Heading */}
                     <Fade triggerOnce direction="up">
-                        <h2 className="font-bold mb-4 heading-text">{apidata?.heading}</h2>
+                        <h2 className="font-bold mb-4 text-h2_large">{apidata?.heading}</h2>
                     </Fade>
 
                     {/* Fade In Animation for Paragraph */}
                     <Fade triggerOnce direction="up" delay={300}>
-                        <p className="mb-6 text-slate-900">{apidata?.content}</p>
+                        <p className="mb-6 text-slate-900 text-p">{apidata?.content}</p>
                     </Fade>
 
                     {/* Slide In Animation for Button */}

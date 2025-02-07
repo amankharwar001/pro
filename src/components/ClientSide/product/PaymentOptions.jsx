@@ -46,7 +46,7 @@ const PaymentOptions = ({ section5, baseUrl }) => {
         {/* Right Side - Text & Cards Section */}
         <div className="text-center lg:text-left space-y-6 md:p-4">
           <Fade triggerOnce delay={100}>
-            <h1 className="font-bold text-2xl lg:text-3xl">{section5.section5Data.heading}</h1>
+            <h2 className="font-bold text-h2_large">{section5.section5Data.heading}</h2>
           </Fade>
           <Fade triggerOnce delay={300}>
             <p className="text-gray-600 max-w-lg mx-auto lg:mx-0">
@@ -67,8 +67,8 @@ const PaymentOptions = ({ section5, baseUrl }) => {
                   height={50}
                 />
                 <div>
-                  <h2 className="text-lg font-semibold">{section5.section5Data.info[0].title}</h2>
-                  <p className="text-gray-600 text-sm lg:text-base">
+                  <h5 className="text_h5 font-semibold">{section5.section5Data.info[0].title}</h5>
+                  <p className="text-gray-600 text-p">
                   {section5.section5Data.info[0].content}
                   </p>
                 </div>
@@ -86,8 +86,8 @@ const PaymentOptions = ({ section5, baseUrl }) => {
                   height={50}
                 />
                 <div>
-                  <h2 className="text-lg font-semibold">{section5.section5Data.info[1].title}</h2>
-                  <p className="text-gray-600 text-sm lg:text-base">
+                  <h5 className="text_h5 font-semibold">{section5.section5Data.info[1].title}</h5>
+                  <p className="text-gray-600 text-p">
                   {section5.section5Data.info[1].content}
                   </p>
                 </div>
@@ -105,8 +105,8 @@ const PaymentOptions = ({ section5, baseUrl }) => {
                   height={50}
                 />
                 <div>
-                  <h2 className="text-lg font-semibold">{section5.section5Data.info[2].title}</h2>
-                  <p className="text-gray-600 text-sm lg:text-base">
+                  <h5 className="text_h5 font-semibold">{section5.section5Data.info[2].title}</h5>
+                  <p className="text-gray-600 text-p">
                   {section5.section5Data.info[2].content}
                   </p>
                 </div>

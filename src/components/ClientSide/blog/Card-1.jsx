@@ -36,7 +36,7 @@ const Card1 = ({ blogData, baseUrl }) => {
                                 <Image className="w-full h-56 object-cover" src={`${baseUrl}${card.image[0].filePath}`} width={100} height={100} alt={`${card.image[0].altText}`} />
                             )}
                             <div className="p-4 relative">
-                                <h2 className="text-lg mt-2 md:text-xl font-semibold text-zinc-800 dark:text-white line-clamp-2">{card.heading || "No Title"}</h2>
+                                <h5 className="text-h5 mt-2 md:text-xl  font-semibold text-zinc-800 dark:text-white line-clamp-2">{card.heading || "No Title"}</h5>
                                 <div className="absolute bg-[#DE6773] rounded-full w-5/6 -top-5 -translate-x-2/4 left-2/4">
                                     <div className='flex justify-between px-2 py-2'>
                                         <div className='flex gap-2 items-center'>

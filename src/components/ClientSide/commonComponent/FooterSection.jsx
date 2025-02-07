@@ -88,8 +88,8 @@ export default function FooterSection() {
     <div className="relative mt-20">
       <Footercta />
       <div className="bg-[#D4D4D4] py-10 pt-48 md:pt-40 -z-10">
-        <div className="container m-auto  md:place-content-start  md:text-start grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-10">
-          <Slide triggerOnce direction="left">
+        <div className="container m-auto  md:place-content-start  md:text-start grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5 lg:gap-14 mt-10">
+          <Slide  triggerOnce direction="left" className='lg:col-span-2'>
             <div className="mt-4">
               <Link href={baseUrl} className=''>
                 <Image
@@ -109,20 +109,20 @@ export default function FooterSection() {
 
           <Fade triggerOnce delay={200}>
             <div className="mt-4">
-              <h3 className="text-lg font-semibold">Important Links</h3>
+              <h5 className="text-h5 font-semibold">Important Links</h5>
               <ul className="text-muted-foreground flex flex-col gap-5 mt-5">
-                <li><Link href="/privacy-policy">Privacy Policy</Link></li>
-                <li><Link href="/term-and-condition">Term and Condition</Link></li>
-                <li><Link href="/refund-policy">Refund Policy</Link></li>
-                <li><Link href="/blog">Blog</Link></li>
-                <li><Link href="/sitemap">Sitemap</Link></li>
+                <li className='text-p'><Link href="/privacy-policy">Privacy Policy</Link></li>
+                <li className='text-p'><Link href="/term-and-condition">Term and Condition</Link></li>
+                <li className='text-p'><Link href="/refund-policy">Refund Policy</Link></li>
+                <li className='text-p'><Link href="/blog">Blog</Link></li>
+                <li className='text-p'><Link href="/sitemap">Sitemap</Link></li>
               </ul>
             </div>
           </Fade>
 
           <Fade triggerOnce delay={400}>
             <div className="mt-4">
-              <h3 className="text-lg font-semibold">{footerData?.heading}</h3>
+              <h5 className="text-h5 font-semibold">{footerData?.heading}</h5>
               <ul className="text-muted-foreground flex flex-col gap-5 mt-5">
                 {footerData?.buttons?.map((item, index) => (
                   <li key={index}>
@@ -136,7 +136,7 @@ export default function FooterSection() {
 
           <Fade triggerOnce delay={600}>
             <div className="mt-4">
-              <h3 className="text-lg font-semibold">Products</h3>
+              <h5 className="text-h5 font-semibold">Products</h5>
               <ul className="text-muted-foreground flex flex-col gap-5 mt-5">
                 {productList?.map((product) => (
                   <li
@@ -146,10 +146,6 @@ export default function FooterSection() {
                     <Link href={`product/${product?.seo}`}>{product.nickname}</Link>
                   </li>
                 ))}
-                {/* <li>Gift Card</li>
-                <li>Prepaid Gift Card</li>
-                <li>Our job offers</li>
-                <li>Our websites</li> */}
               </ul>
             </div>
           </Fade>
@@ -159,7 +155,7 @@ export default function FooterSection() {
           <hr />
           <div className="md:flex justify-between items-center mt-5">
             <Fade triggerOnce delay={800}>
-              <p className="text-sm md:text-start text-center">{footerData?.copyright}</p>
+              <p className="text-p md:text-start text-center">{footerData?.copyright}</p>
             </Fade>
 
             <div className="flex space-x-4 justify-center mt-3 md:mt-0">

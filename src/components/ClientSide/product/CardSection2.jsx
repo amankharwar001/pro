@@ -13,12 +13,12 @@ const CardSection2 = ({ section4, baseUrl }) => {
                 {/* Left Side - Text Content */}
                 <div className="flex-1 text-center lg:text-left">
                     <Fade triggerOnce delay={100}>
-                        <h2 className="font-bold text-gray-900 text-2xl md:text-3xl lg:text-4xl">
+                        <h2 className="font-bold text-gray-900 text-h2_large">
                             {section4.section4Data.heading}
                         </h2>
                     </Fade>
                     <Fade triggerOnce delay={300}>
-                        <p className="mt-4 text-gray-600 text-sm md:text-base">
+                        <p className="mt-4 text-gray-600 text-p">
                             {section4.section4Data.text}
                         </p>
                     </Fade>

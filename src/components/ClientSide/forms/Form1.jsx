@@ -76,7 +76,7 @@ const Form1 = () => {
     <div className=" container md:max-w-[80%] border my-20 mx-auto   bg-card rounded-lg shadow-md">
       <Zoom triggerOnce delay={100} className="p-6">
         <div className="">
-          <h2 className="font-semibold mb-4">Contact Us</h2>
+          <h2 className="font-semibold mb-4 text-h2_large">Contact Us</h2>
           <form onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 gap-4 mb-4">
               <div className="grid grid-cols-2 gap-4">

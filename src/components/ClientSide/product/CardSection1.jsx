@@ -43,12 +43,12 @@ const CardSection1 = ({ section3, baseUrl }) => {
                 {/* Right Side - Text Content */}
                 <div className=" text-center lg:text-start flex-1">
                     <Fade triggerOnce delay={100}>
-                        <h2 className="font-bold text-gray-900 text-2xl md:text-3xl lg:text-4xl">
+                        <h2 className="font-bold text-gray-900 text-h2_large">
                             {section3.section3Data.heading}
                         </h2>
                     </Fade>
                     <Fade triggerOnce direction='left' delay={300}>
-                        <p className="mt-4 text-gray-600 text-sm md:text-base lg:border-l-2 pl-4 border-blue-500">
+                        <p className="mt-4 text-gray-600 text-p lg:border-l-2 pl-4 border-blue-500">
                             {section3.section3Data.text}
                         </p>
                     </Fade>
@@ -68,8 +68,8 @@ const CardSection1 = ({ section3, baseUrl }) => {
                                     />
                                 </div>
                                 <div>
-                                    <h3 className="text-lg font-semibold text-gray-900">{section3.section3Data.info[0].title}</h3>
-                                    <p className="text-gray-600 text-sm">{section3.section3Data.info[0].content}</p>
+                                    <h5 className="text_h5 font-semibold text-gray-900">{section3.section3Data.info[0].title}</h5>
+                                    <p className="text-gray-600 text-p">{section3.section3Data.info[0].content}</p>
                                 </div>
                             </div>
                         </Fade>
@@ -87,8 +87,8 @@ const CardSection1 = ({ section3, baseUrl }) => {
                                     />
                                 </div>
                                 <div>
-                                    <h3 className="text-lg font-semibold text-gray-900">{section3.section3Data.info[1].title}</h3>
-                                    <p className="text-gray-600 text-sm">{section3.section3Data.info[1].content}</p>
+                                    <h5 className="text_h5 font-semibold text-gray-900">{section3.section3Data.info[1].title}</h5>
+                                    <p className="text-gray-600 text-p">{section3.section3Data.info[1].content}</p>
                                 </div>
                             </div>
                         </Fade>

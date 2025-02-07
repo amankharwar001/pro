@@ -55,9 +55,9 @@ const BlogSection = ({ data, baseUrl }) => {
       <div className="order-2 lg:order-1 flex flex-col gap-8 md:col-span-1 w-full md:max-w-96 md:m-auto">
         {/* Search Bar */}
         <div className="p-6 bg-[#F5F5F5] rounded-lg shadow-md">
-          <h2 className="flex items-center text-xl font-bold text-foreground">
+          <h5 className="flex items-center text-h5 font-bold text-foreground">
             <span className="mr-2 text-primary">—</span> Search Blog
-          </h2>
+          </h5>
           <div className="flex mt-4 gap-5">
             <input
               type="text"
@@ -74,9 +74,9 @@ const BlogSection = ({ data, baseUrl }) => {
 
         {/* Categories Section */}
         <div className="bg-[#F5F5F5] border p-6 rounded-lg shadow-xl overflow-hidden">
-          <h2 className="flex items-center text-xl font-bold text-foreground">
+          <h5 className="flex items-center text-h5 font-bold text-foreground">
             <span className="mr-2 text-primary">—</span> Categories
-          </h2>
+          </h5>
           <div className="flex flex-col space-y-4 mt-5">
 
             {categories?.length > 0 &&

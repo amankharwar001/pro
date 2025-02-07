@@ -56,25 +56,25 @@ const OverviewSection3 = ({ apidata1, apidata2 }) => {
         <div className='pt-20'>
 
             <div className="container m-auto  relative -mb-44">
-                <div className="grid md:grid-cols-[50%_40%] lg:grid-cols-[55%_40%] z-10 gap-10" ref={ref}>
-                    <div className="relative">
-                        <div className='relative md:top-[10%] h-full md:max-w-xl'>
+                <div className="grid md:grid-cols-[45%_45%] lg:grid-cols-[55%_40%] md:place-content-around  z-10 gap-10" ref={ref}>
+                    <div className="relative ">
+                        <div className='relative h-full md:h-auto md:mb-10 md:bottom-0 md:top-2/4 md:-translate-y-[65%] lg:-translate-y-[85%] md:max-w-xl'>
                             <Fade triggerOnce direction="up">
-                                <h1 className="font-bold w-[95%] md:text-start text-center">
+                                <h2 className="font-bold w-[95%] md:text-start text-h2 text-center">
                                     {/* Write Some heading related to content will come here lorem ipsum */}
                                     {apidata1?.heading}
-                                </h1>
+                                </h2>
                             </Fade>
                             <Fade triggerOnce direction="up" delay={300}>
                                 <div className="relative">
-                                    <p className="mt-5 md:pb-5 md:text-start text-center">
+                                    <p className="mt-5 md:pb-5 md:text-start text-p text-center">
                                         {apidata1?.content}
                                     </p>
                                 </div>
                             </Fade>
                         </div>
                         {/* agen brief image section */}
-                        <div className="md:absolute right-10 flex max-w-[360px] m-auto -mt-10 md:mt-0">
+                        <div className=" right-10 flex max-w-[360px] m-auto -mt-10 md:mt-0">
                             <div className="bg-slate-100 m-auto w-[70%] md:w-[200px] rounded-xl md:p-5 py-2 px-10 pr-12 relative md:absolute  md:-bottom-10 lg:bottom-5 md:-right-16 lg:right-6">
                                 {/* <div className="bg-slate-100 m-auto w-[70%] md:w-[200px] rounded-xl md:p-5 py-2 px-10 pr-12 relative top-24 md:top-5 lg:top-5 xl:top-24 "> */}
                                 <span className="font-semibold flex text-center text-xs md:text-base items-center ">{apidata1?.agentBrief}</span>
@@ -237,19 +237,19 @@ const OverviewSection3 = ({ apidata1, apidata2 }) => {
                         </div>
                         <div>
                             <div className="px-6 rounded-lg">
-                                <h2 className="text-2xl md:text-3xl lg:text-4xl text-center md:text-start mt-10 md:mt-0 font-bold mb-4 text-white">{apidata2?.heading}</h2>
+                                <h2 className="text-h2_big text-center md:text-start mt-10 md:mt-0 font-bold mb-4 text-white">{apidata2?.heading}</h2>
                                 <p className="text-base text-center md:text-start md:text-xl mb-6 text-white">
                                     {apidata2?.content}
                                 </p>
                             </div>
-                            <div className="flex md:justify-center justify-center pb-10  text-white items-center bg-background px-6">
+                            <div className="flex md:justify-start justify-center pb-10  text-white items-center bg-background px-6">
                                 <div className="text-center mr-8">
-                                    <div className="text-4xl lg:text-7xl font-bold text-red-600">{apidata2?.leadDetails[0].leadNo}</div>
+                                    <div className="text-h2_big font-bold text-red-600">{apidata2?.leadDetails[0].leadNo}</div>
                                     <span className="text-muted-foreground">{apidata2?.leadDetails[0].leadName}</span>
                                 </div>
                                 <div className="border-l-2 border-muted h-16"></div>
                                 <div className="text-center ml-8">
-                                    <div className="text-4xl lg:text-7xl font-bold text-red-600">{apidata2?.leadDetails[1].leadNo}</div>
+                                    <div className="text-h2_big font-bold text-red-600">{apidata2?.leadDetails[1].leadNo}</div>
                                     <span className="text-muted-foreground">{apidata2?.leadDetails[1].leadName}</span>
                                 </div>
                             </div>

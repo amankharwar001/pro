@@ -1,20 +1,21 @@
 import React from 'react';
 import Image from 'next/image';
 import { Fade, Slide } from 'react-awesome-reveal';
+import { IoCheckmark } from "react-icons/io5";
 
 const About = ({ apidata }) => {
-    
+
 
     return (
-        <div className='bg-[#003066] py-24'>
+        <div className='bg-[#003066] py-32'>
             <div className="container overflow-hidden p-8 text-white ">
                 <div className='lg:grid grid-cols-4 gap-6'>
                     <div className='col-span-2'>
                         <Slide triggerOnce direction="left">
-                            <h5 className="font-bold mb-4 ">{apidata?.heading}</h5>
+                            <h6 className="font-bold mb-4 text-p ">{apidata?.heading}</h6>
                         </Slide>
                         <Fade triggerOnce direction="left" delay={300}>
-                            <h1 className="font-bold mb-6 about-heading">{apidata?.content}</h1>
+                            <h3 className="font-bold mb-6 text-h3_medium">{apidata?.content}</h3>
                         </Fade>
                         <Fade triggerOnce delay={600} className='flex'>
                             <a
@@ -31,12 +32,13 @@ const About = ({ apidata }) => {
                         {apidata?.info.map((item, index) => (
                             <Fade triggerOnce direction="up" delay={index * 200} key={index}>
                                 <div className="flex items-start gap-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="30" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="30" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                         <path d="M20 6L9 17l-5-5"></path>
-                                    </svg>
+                                    </svg> */}
+                                    <span>  <IoCheckmark className='text-white text-semibold' size={20} /> </span>
                                     <div>
-                                        <h6 className="font-semibold pb-2">{item.heading}</h6>
-                                        <p className='text-sm md:text-base'>{item.content}</p>
+                                        <h3 className="font-semibold pb-2 text-p">{item.heading}</h3>
+                                        <p className='text-p text-gray-300'>{item.content}</p>
                                     </div>
                                 </div>
                             </Fade>
@@ -44,22 +46,28 @@ const About = ({ apidata }) => {
                     </div>
                 </div>
                 <hr className='mt-24' />
-                <div className="lg:flex justify-between items-center mt-10 text-center">
-                    <p className='text-start lg:text-center'>{apidata?.bottomtext}</p>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-8 lg:justify-center place-items-center">
+                <div className="grid grid-cols-1 md:grid-cols-[40%_60%] items-center mt-10 text-center gap-6 md:gap-10">
+                    {/* Left Text Section */}
+                    <h6 className="text-h6 max-w-lg md:max-w-sm text-semibold text-start">
+                        {apidata?.bottomtext}
+                    </h6>
+
+                    {/* Right Image Section */}
+                    <div className="flex flex-wrap justify-center md:justify-around gap-4">
                         {apidata?.images.map((image, index) => (
                             <Fade triggerOnce delay={index * 200} key={image.id}>
                                 <Image
                                     src={`/${image.filePath}`}
                                     alt={image.altText || `Paramotor image ${index + 1}`}
-                                    className=" md:w-full  md:h-5 object-contain mx-auto mt-5 md:mt-0"
-                                    width={131}
-                                    height={75}
+                                    className="w-24 h-auto md:w-32  object-contain"
+                                    width={160}
+                                    height={90}
                                 />
                             </Fade>
                         ))}
                     </div>
                 </div>
+
             </div>
         </div>
     );

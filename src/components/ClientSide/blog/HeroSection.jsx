@@ -30,7 +30,7 @@ const HeroSection = () => {
                     objectFit='cover'
                 />
                 <div className='absolute top-2/4 -translate-y-2/4 right-2/4 translate-x-2/4 '>
-                    <h2 className='uppercase font-bold m-auto  text-center'>{blogData?.headingName}</h2>
+                    <h1 className='uppercase text-h1 font-bold m-auto  text-center'>{blogData?.headingName}</h1>
                     <div className='flex gap-3 items-center justify-center'>
                         <span>Home</span>
                         <span>|</span>

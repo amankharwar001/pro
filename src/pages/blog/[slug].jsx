@@ -54,7 +54,7 @@ const Slug = ({ data, error, baseUrl }) => {
             <div className='container'>
                 <div className='md:px-10'>
                     <div>
-                        <h1 className='py-5 font-bold'>{data.heading}</h1>
+                        <h1 className='text-h1_small py-5 font-bold'>{data.heading}</h1>
                         <div className='flex gap-10 items-center'>
                             <span className='flex items-center gap-2 text-blue-500'>
                                 <FaUser />By Admin

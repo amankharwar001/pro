@@ -10,8 +10,9 @@ html,body{
 
 
 h1 {
-  font-size: clamp(2rem, 2.6vw + 1rem, 4rem);
-  font-weight:700;
+  /* font-size: clamp(2rem, 2.6vw + 1rem, 4rem); */
+  
+  font-weight:600;
   line-height: normal;
   
 }
@@ -31,7 +32,8 @@ h1 {
 }
 
 h2,.heading-h2 {
-  font-size: clamp(1.8rem, 0.9vw + 0.8rem, 2.4rem) ;
+  /* font-size: clamp(1.8rem, 0.9vw + 0.8rem, 2.4rem) ; */
+  font-size: clamp(1.5rem, 3.5vw, 1.875rem);
   font-weight:700;
 }
 

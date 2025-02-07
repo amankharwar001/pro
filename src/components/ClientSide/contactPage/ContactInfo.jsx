@@ -98,7 +98,7 @@ function ContactInfo({ data = {}, baseUrl = '' }) {
     <div className="bg-gray-50 py-12">
       <div className="container  mx-auto text-center">
         <Fade triggerOnce delay={100}>
-          <h2 className="font-bold mb-2">
+          <h2 className="font-bold mb-2 text-h2_large">
             {data?.getInTouchData?.[0]?.heading || 'Contact Us'}
           </h2>
         </Fade>
@@ -150,7 +150,7 @@ function ContactCard({ title, content, imageUrl, altText }) {
             width={56}
             height={56}
           />
-          <h3 className="text-lg font-semibold mt-4">{title}</h3>
+          <h4 className="text_h4 font-semibold mt-4">{title}</h4>
           <p className="text-gray-700 mt-2 text-base md:text-lg">{content}</p>
         </div>
       </Fade>
