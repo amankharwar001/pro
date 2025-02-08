@@ -10,32 +10,29 @@ module.exports = {
       center: true,      
     },
     fontSize: {
-      h1: ["clamp(2.5rem, 5vw, 4rem)", { lineHeight: "1.2", fontWeight: "700" }], // 40px
-      h1_small: ["clamp(2.1rem, 4.8vw, 3.6rem)", { lineHeight: "1.2", fontWeight: "700" }], // 40px
+      h1: ["clamp(2.5rem, 5vw, 4rem)", { lineHeight: "1.2", fontWeight: "700" }],
+      h1_small: ["clamp(2.1rem, 4.8vw, 3.6rem)", { lineHeight: "1.2", fontWeight: "700" }],
       h2_small:  ["clamp(1.4rem, 3.4vw, 1.75rem)", { lineHeight: "2.275rem", fontWeight: "600" }],
       h2:  ["clamp(1.5rem, 3.5vw, 1.875rem)", { lineHeight: "1.4", fontWeight: "600" }],
       h2_medium: ["clamp(1.6rem, 3.8vw, 2.25rem)", { lineHeight: "2.875rem", fontWeight: "700" }],
-      h2_big: ["clamp(1.75rem, 4vw, 2.813rem)", { lineHeight: "3.438rem", fontWeight: "600" }],
+      h2_big: ["clamp(1.75rem, 4vw, 2.813rem)", { lineHeight: "clamp(2.25rem, 4.5vw, 3.438rem)", fontWeight: "600" }],
       h2_large: ["clamp(1.95rem, 4.3vw, 3.125rem)", { lineHeight: "clamp(2.5rem, 5vw, 3.75rem)", fontWeight: "700" }],
-      h3: ["1.875rem", { lineHeight: "1.4", fontWeight: "600" }], 
+      // h3: ["1.875rem", { lineHeight: "1.4", fontWeight: "600" }], 
+      h3: ['clamp(1.5rem, 4vw, 1.875rem)', { lineHeight: '1.4', fontWeight: '600' }],
+
       h3_medium: ["clamp(1.75rem, 4vw, 2.5rem)", { lineHeight: "clamp(2.25rem, 5vw, 3.25rem)", fontWeight: "700" }],
-      
-      h4: ["1.5rem", { lineHeight: "1.5", fontWeight: "500" }], // 24px
-      // h5: ["clamp(1.125rem, 2.5vw, 1.438rem)", { lineHeight: "clamp(1.75rem, 3vw, 2.063rem)", fontWeight: "700" }],
+      // h4: ["1.5rem", { lineHeight: "1.5", fontWeight: "500" }],
+      h4: ['clamp(1.25rem, 3vw, 1.5rem)', { lineHeight: '1.5', fontWeight: '500' }] ,
       h5: [
         "clamp(1.25rem, 4vw, 1.125rem)", 
         { lineHeight: "clamp(1.75rem, 4vw, 2rem)", fontWeight: "700" }
       ],
-      
-      // h5: ["1.438rem", { lineHeight: "2.063rem", fontWeight: "500" }], // 20px
-      // h6: ["1.25rem", { lineHeight: "1.813", fontWeight: "500" }], // 16px
       h6: [
         "clamp(1rem, 2.5vw, 1.25rem)", 
         { lineHeight: "clamp(1.5rem, 3vw, 1.813rem)", fontWeight: "500" }
       ],
-      
-      p:[ "1rem", { lineHeight: "1.5", fontWeight: "400" }], // 16px
-      button: ["1.063rem", { lineHeight: "1.7", fontWeight: "500" }], // 16px
+      p:[ "1rem", { lineHeight: "1.5", fontWeight: "400" }], 
+      button: ["1.063rem", { lineHeight: "1.7", fontWeight: "500" }], 
     },
     
     
