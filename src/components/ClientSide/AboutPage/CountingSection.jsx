@@ -20,7 +20,7 @@ const CountingSection = ({ data }) => {
           <Fade triggerOnce direction="left">
             <div className="flex  items-center gap-2 text-center max-w-56">
               <h2 className="text-h1 font-bold">{data.card[0].counting || 'N/A'}</h2>
-              <p className="text-p text-start font-bold">{data.card[0].text || 'N/A'}</p>
+              <h5 className="text-h5 text-start font-bold">{data.card[0].text || 'N/A'}</h5>
             </div>
           </Fade>
 
@@ -28,7 +28,7 @@ const CountingSection = ({ data }) => {
           <Fade triggerOnce direction="bottom">
             <div className="flex  items-center gap-2 text-center max-w-56">
               <h2 className="text-h1 font-bold">{data.card[1].counting || 'N/A'}</h2>
-              <p className="text-p text-start font-bold">{data.card[1].text || 'N/A'}</p>
+              <h5 className="text-h5 text-start font-bold">{data.card[1].text || 'N/A'}</h5>
             </div>
           </Fade>
 
@@ -36,7 +36,7 @@ const CountingSection = ({ data }) => {
           <Zoom triggerOnce>
             <div className="flex  items-center gap-2 text-center max-w-56">
               <h2 className="text-h1 font-bold">{data.card[2].counting || 'N/A'}</h2>
-              <p className="text-p text-start font-bold">{data.card[2].text || 'N/A'}</p>
+              <h5 className="text-h5 text-start font-bold">{data.card[2].text || 'N/A'}</h5>
             </div>
           </Zoom>
 
@@ -44,7 +44,7 @@ const CountingSection = ({ data }) => {
           <Zoom triggerOnce>
             <div className="flex  items-center gap-2 text-center max-w-56">
               <h2 className="text-h1 font-bold">{data.card[3].counting || 'N/A'}</h2>
-              <p className="text-p text-start font-bold">{data.card[3].text || 'N/A'}</p>
+              <h5 className="text-h5 text-start font-bold">{data.card[3].text || 'N/A'}</h5>
             </div>
           </Zoom>
 

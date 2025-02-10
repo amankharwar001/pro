@@ -23,7 +23,7 @@ const WeChooseSection = ({ section7 }) => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
                     {section7.info.map((item, index) => (
                         <Zoom triggerOnce delay={500 + index * 100} key={index}>
-                            <div className={`bg-card p-6 lg:p-8 rounded-lg shadow-xl hover:bg-white bg-[#F6F6F6]`}>
+                            <div className={`bg-card p-6 lg:p-8 rounded-lg hover:shadow-custom hover:bg-white bg-[#F6F6F6]`}>
                                 <h3 className="text-[#003066] text_h3 font-semibold">{String(index + 1).padStart(2, '0')}</h3>
                                 <h5 className="text_h5 font-bold mt-2 mb-2">{item.title}</h5>
                                 <p className="text-p">{item.content}</p>
