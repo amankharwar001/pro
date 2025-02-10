@@ -1,5 +1,6 @@
 import React from 'react';
 import { Fade, Zoom } from 'react-awesome-reveal';
+import { FaArrowRightLong } from "react-icons/fa6";
 
 const WeChooseSection = ({ section7 }) => {
     return (
@@ -12,8 +13,8 @@ const WeChooseSection = ({ section7 }) => {
                     </Fade>
                     <Fade triggerOnce delay={400}>
                         <p className="text-p mb-6">{section7.text}</p>
-                        <a href={section7.btnLink} className="text-primary font-semibold hover:underline">
-                            {section7.btn}
+                        <a href={section7.btnLink} className="flex items-center text-blue-900 gap-2 group text-primary font-semibold hover:underline">
+                            {section7.btn}<FaArrowRightLong/>
                         </a>
                     </Fade>
                 </div>
@@ -22,7 +23,7 @@ const WeChooseSection = ({ section7 }) => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
                     {section7.info.map((item, index) => (
                         <Zoom triggerOnce delay={500 + index * 100} key={index}>
-                            <div className={`bg-card p-6 lg:p-8 rounded-lg shadow-xl ${index  === 0 ? '' : 'bg-[#F6F6F6]'}`}>
+                            <div className={`bg-card p-6 lg:p-8 rounded-lg shadow-xl hover:bg-white bg-[#F6F6F6]`}>
                                 <h3 className="text-[#003066] text_h3 font-semibold">{String(index + 1).padStart(2, '0')}</h3>
                                 <h5 className="text_h5 font-bold mt-2 mb-2">{item.title}</h5>
                                 <p className="text-p">{item.content}</p>

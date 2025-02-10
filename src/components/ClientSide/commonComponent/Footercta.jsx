@@ -9,13 +9,13 @@ const Footercta = () => {
             <div className=' overflow-hidden bg-[#003066] absolute -top-20 left-2/4 -translate-x-2/4  rounded-2xl w-[90%]'>
                 <div className=" p-8 md:p-16 md:flex justify-between m-auto text-white z-20">
                     <div>
-                        <Fade triggerOnce cascade duration={1000} delay={300}>
+                        <Fade triggerOnce  duration={2000} delay={300}>
                             <h2 className="text-h2_medium font-bold mb-4">Have any question?</h2>
                             <p className="text-[18px] mb-6">Ask us anything. Do you have a love question you want us to answer?</p>
                         </Fade>
                     </div>
                     <div className="flex items-center">
-                        <Fade triggerOnce duration={1000} delay={500}>
+                        <Fade triggerOnce duration={2000} delay={500}>
                             {/* <button className="flex bg-white text-black font-bold text-base md:text-lg justify-start md:justify-center p-2 md:p-4 px-4 md:px-6 rounded-full mt-6">
                                 Contact Us
                             </button> */}

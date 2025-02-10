@@ -66,7 +66,7 @@ const Slug = ({ data, error, baseUrl }) => {
                         <hr />
                     </div>
                     <div
-                        className="mt-8 blog-content-editor prose max-w-full" 
+                        className="mt-8 blog-content-editor prose max-w-7xl m-auto" 
                         dangerouslySetInnerHTML={{ __html: data?.content?.content || "no content available" }}
                     />
                 </div>
