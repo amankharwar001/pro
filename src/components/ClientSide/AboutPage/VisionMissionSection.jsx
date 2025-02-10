@@ -82,7 +82,7 @@ export default function VisionMissionSection({ data, baseUrl }) {
                       src={`${baseUrl}${images[index + 2].filePath}`}
                       alt={images[index + 2].altText || "Image"}
                       width={38}
-                      className="bg-black min-w-16 rounded-md min-h-16 p-2"
+                      className="bg-black min-w-16 rounded-md min-h-16 p-2 object-contain"
                       height={38}
                     />
                   ) : (
