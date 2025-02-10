@@ -32,7 +32,7 @@ const Section4 = ({ apidata }) => {
     <div className="bg-gray-100 py-20">
       <div className="container mx-auto px-4">
         <div className="md:grid grid-cols-2 ">
-          <Fade triggerOnce direction="up" className="max-w-lg">
+          <Fade triggerOnce direction="up" className="md:max-w-lg">
             <h2 className="text-h2_medium font-bold mb-4 lg:mb-0  text-center md:text-start w-full ">{apidata?.heading}</h2>
           </Fade>
           <div className="relative max-w-3xl">

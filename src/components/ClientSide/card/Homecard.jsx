@@ -47,12 +47,12 @@ const Homecard = ({ apidata }) => {
             {
                 breakpoint: 768,
                 settings: {
-                    slidesToShow: 1,
+                    slidesToShow: 3,
                     centerMode: true,
                 },
             },
             {
-                breakpoint: 600, // Example breakpoint for smaller screens
+                breakpoint: 748, // Example breakpoint for smaller screens
                 settings: {
                     slidesToShow: 1, 
                     centerMode: true, 
@@ -86,7 +86,7 @@ const Homecard = ({ apidata }) => {
                                 className={`${index === activeIndex
                                     ? 'bg-[#013466] text-white ' // Active card styling
                                     : 'bg-white text-black' // Default card styling
-                                    }   relative pb-10  min-w-[320px]  mx-auto h-full  border rounded-lg shadow-lg mt-10 transition-transform duration-300`}
+                                    }   relative pb-10  min-w-[240px]  mx-auto h-full  border rounded-lg shadow-lg mt-10 transition-transform duration-300`}
                                 initial="hidden"
                                 animate={isInView ? 'visible' : 'hidden'}
                                 variants={cardVariants}

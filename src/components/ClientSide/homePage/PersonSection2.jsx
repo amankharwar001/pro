@@ -9,8 +9,8 @@ export default function PersonSection2({ apidata }) {
 
     return (
         <div className='bg-[#F3F3F5] py-20'>
-            <div className="container overflow-hidden m-auto grid lg:grid-cols-2 gap-5 items-center">
-                <div className="order-last lg:order-none">
+            <div className="container overflow-hidden m-auto grid md:grid-cols-2 gap-5 items-center">
+                <div className="order-last md:order-none">
                     {/* Fade In Animation for Heading */}
                     <Fade triggerOnce direction="up">
                         <h2 className="font-bold mb-4 text-h2_large">{apidata?.heading}</h2>

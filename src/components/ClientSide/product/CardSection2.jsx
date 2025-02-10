@@ -7,11 +7,11 @@ const CardSection2 = ({ section4, baseUrl }) => {
         (image) => image.referenceId === 4
     );
     return (
-        <div className="relative bg-white py-16  lg:px-20 overflow-hidden">
+        <div className="relative bg-white py-16  lg:px-20 overflow-hidden pb-20">
             <div className="container mx-auto flex flex-col md:flex-col lg:flex-row items-center gap-10">
                 
                 {/* Left Side - Text Content */}
-                <div className="flex-1 text-center lg:text-left">
+                <div className="flex-1 text-center lg:text-left z-10">
                     <Fade triggerOnce delay={100}>
                         <h2 className="font-bold text-gray-900 text-h2_large">
                             {section4.section4Data.heading}
