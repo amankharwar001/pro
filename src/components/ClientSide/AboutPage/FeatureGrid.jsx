@@ -12,7 +12,7 @@ export default function FeatureGrid({ data = {}, baseUrl = "" }) {
             {/* Section Heading */}
             <div className="text-center mb-8">
                 <Fade triggerOnce delay={100}>
-                    <h2 className="md:max-w-[750px] m-auto font-bold text-2xl lg:text-3xl">
+                    <h2 className="md:max-w-[750px] m-auto font-bold about-heading">
                         {data?.heading || "Default Heading"}
                     </h2>
                 </Fade>
