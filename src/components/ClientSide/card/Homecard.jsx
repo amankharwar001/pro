@@ -72,9 +72,9 @@ const Homecard = ({ apidata }) => {
 
     return (
         <div ref={ref} className="pt-20 ">
-            <div className="container text-center ">
+            <div className="max-w-2xl m-auto  text-center ">
                 <h2 className="text-h2_medium  ">{apidata?.heading}</h2>
-                <p className="mt-2 text-p text-slate-700">{apidata?.content}</p>
+                <p className="mt-2 text-p text-paragraph">{apidata?.content}</p>
             </div>
             <div className="container overflow-hidden mt-10">
                 <Slider {...settings} className="md:homepage-card-slider flex ">

@@ -36,7 +36,7 @@ const SectionSecurity = ({ apidata }) => {
           {/* Animate Content */}
           <Fade triggerOnce duration={1000} delay={400}>
            
-              <p className="mt-5 text-[18px] mb-4">{content} <a className='underline font-semibold ' href={btnLink} target="_blank" rel="noopener noreferrer">
+              <p className="mt-5 text-[18px]  mb-4">{content} <a className='underline font-semibold ' href={btnLink} target="_blank" rel="noopener noreferrer">
               {btn}
             </a></p>
             

@@ -113,7 +113,7 @@ const Layout = ({ children }) => {
                   }
                 </div>
                 <div>
-                  <span className="text-md font-semibold text-orange-400 max-w-full">
+                  <span className="text-admin_name font-semibold text-orange-400 max-w-full">
                     {adminData && adminData || "Admin" } {/* Fallback if admin name is not available */}
                   </span>
                 </div>

@@ -15,7 +15,6 @@ export default function FooterSection() {
   const [productList, setProductList] = useState(null); // State to store API data
   const baseUrl = process.env.NEXT_PUBLIC_BASE_PATH;
   const [footerData, setFooterData] = useState(null);
-  console.log("footer data show is here", footerData)
 
 
   useEffect(() => {

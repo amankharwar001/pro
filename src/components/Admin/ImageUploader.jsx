@@ -169,16 +169,16 @@ const ImageUploader = ({ referenceType, referenceId: propReferenceId, width, hei
                   }}
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white text-sm p-2 pr-10">
-                  <p className="text-xs">{img.altText}</p>
+                  <p className="text-admin_image">{img.altText}</p>
                   <button
                     onClick={() => handleDelete(img.id)}
-                    className="absolute -top-8 right-2 text-xs text-white bg-[#F80F10] p-1 rounded-md hover:bg-red-600"
+                    className="absolute -top-8 right-2 text-admin_image text-white bg-[#F80F10] p-1 rounded-md hover:bg-red-600"
                   >
                     Delete
                   </button>
                   <button
                     onClick={() => handleEdit(img)}
-                    className="absolute -top-8 left-2 text-xs text-white bg-blue-500 p-1 rounded-md hover:bg-blue-600"
+                    className="absolute -top-8 left-2 text-admin_image text-white bg-blue-500 p-1 rounded-md hover:bg-blue-600"
                   >
                     Edit
                   </button>
@@ -209,7 +209,7 @@ const ImageUploader = ({ referenceType, referenceId: propReferenceId, width, hei
             <input
               type="file"
               onChange={handleFileChange}
-              className="border block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-2 file:rounded-full file:border-0 file:text-xs file:font-semibold file:w-30 file:bg-violet-50 file:text-blue-950 hover:file:bg-violet-100 border-gray-300 rounded-md p-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="border block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-2 file:rounded-full file:border-0 file:text-admin_image file:font-semibold file:w-30 file:bg-violet-50 file:text-blue-950 hover:file:bg-violet-100 border-gray-300 rounded-md p-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             <input
               type="text"

@@ -33,6 +33,11 @@ module.exports = {
       ],
       p:[ "1rem", { lineHeight: "1.5", fontWeight: "400" }], 
       button: ["1.063rem", { lineHeight: "1.7", fontWeight: "500" }], 
+      admin_sidebar:["0.8rem"],
+      admin_name:["0.85rem"],
+      admin_image:["0.78rem"],
+      admin_btn_tab:["0.8rem"]
+
     },
     
     
@@ -43,7 +48,8 @@ module.exports = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        adminbtn:"#151D2C"
+        adminbtn:"#151D2C",
+        paragraph: "#4c5267",
       },
       // animation
       animation: {
