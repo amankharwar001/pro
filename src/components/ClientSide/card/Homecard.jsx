@@ -1,19 +1,16 @@
-
-
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
 import Slider from "react-slick";
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-
+import { ChevronLeft, ChevronRight } from 'lucide-react'; 
 const Homecard = ({ apidata }) => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true });
 
-    const [activeIndex, setActiveIndex] = useState(0); // Track the active card
+    const [activeIndex, setActiveIndex] = useState(0); 
     console.log("active index show is here", apidata)
 
     const cardVariants = {
@@ -25,17 +22,39 @@ const Homecard = ({ apidata }) => {
         }),
     };
 
+    
+
+const CustomPrevArrow = ({ onClick }) => (
+  <button
+    className="absolute left-0 z-10 transform -translate-y-1/2 top-1/2  text-black p-2 rounded-full shadow-xl bg-gray-200/90 hover:bg-gray-200 hover:scale-105"
+    onClick={onClick}
+  >
+    <ChevronLeft size={24} />
+  </button>
+);
+
+const CustomNextArrow = ({ onClick }) => (
+  <button
+    className="absolute right-0 z-10 transform -translate-y-1/2 top-1/2  text-black p-2 rounded-full shadow-xl bg-gray-200/90 hover:bg-gray-200 hover:scale-105"
+    onClick={onClick}
+  >
+    <ChevronRight size={24} />
+  </button>
+);
+
     const settings = {
         infinite: true,
         centerMode: true,
         centerPadding: "0px",
-        slidesToShow: 3,  // Display 3 images at once
+        slidesToShow: 3,  
         speed: 500,
         autoplay: false,
         autoplaySpeed: 3000,
         beforeChange: (current, next) => {
-            setActiveIndex(next); // Update active index based on the next slide
+            setActiveIndex(next); 
         },
+        prevArrow: <CustomPrevArrow />,
+        nextArrow: <CustomNextArrow />,
         responsive: [
             {
                 breakpoint: 1024,
@@ -52,19 +71,19 @@ const Homecard = ({ apidata }) => {
                 },
             },
             {
-                breakpoint: 748, // Example breakpoint for smaller screens
+                breakpoint: 748, 
                 settings: {
                     slidesToShow: 1, 
                     centerMode: true, 
-                    centerPadding: '20px', // Adjust padding as needed
+                    centerPadding: '20px', 
                 },
             },
             {
-                breakpoint: 480, // Example breakpoint for mobile devices
+                breakpoint: 480, 
                 settings: {
                     slidesToShow: 1, 
                     centerMode: true, 
-                    centerPadding: '10px', // Adjust padding as needed
+                    centerPadding: '10px', 
                 },
             },
         ],
@@ -79,13 +98,13 @@ const Homecard = ({ apidata }) => {
             <div className="container overflow-hidden mt-10">
                 <Slider {...settings} className="md:homepage-card-slider flex ">
                     {apidata?.card.map((card, index) => (
-                        <div key={index} className=" p-5">
+                        <div key={index} className=" p-5 h-full">
 
                             <motion.div
                                 key={index}
                                 className={`${index === activeIndex
-                                    ? 'bg-[#013466] text-white ' // Active card styling
-                                    : 'bg-white text-black' // Default card styling
+                                    ? 'bg-[#013466] text-white ' 
+                                    : 'bg-white text-black' 
                                     }   relative pb-10  min-w-[240px]  mx-auto h-full  border rounded-lg shadow-lg mt-10 transition-transform duration-300`}
                                 initial="hidden"
                                 animate={isInView ? 'visible' : 'hidden'}
@@ -99,21 +118,21 @@ const Homecard = ({ apidata }) => {
                                             <Image
                                                 src={`/${apidata?.images[index]?.filePath}`}
                                                 alt={apidata?.images[index]?.altText || 'Card Image'}
-                                                className="rounded-xl w-full h-auto object-cover border border-slate-400"
+                                                className="rounded-xl w-full md:h-[14vw] 2xl:h-[250px]  border border-slate-400"
                                                 width={320}
                                                 height={150}
                                             />
                                         </div>
                                     </div>
-                                    <div className="px-6 homecard-ptag">
+                                    <div className="px-3 xl:px-6 homecard-ptag  md:h-[480px] lg:h-[350px] xl:h-[306px]">
                                         <h2 className="text-h2_small font-bold text-center ">{card.title }</h2>
                                         <div
-                                            className="text-muted-foreground text-center mt-2"
+                                            className="text-muted-foreground text-center mt-2 "
                                             dangerouslySetInnerHTML={{ __html: card.content }}
                                         ></div>
                                         <hr className="my-4 border-border" />
                                         <div
-                                            className="text-center text-muted homecard-ptag_lineheight"
+                                            className="text-center text-muted homecard-ptag_lineheight "
                                             dangerouslySetInnerHTML={{ __html: card.info }}
                                         ></div>
                                         <div className="w-full absolute right-2/4 translate-x-2/4 -bottom-5">
@@ -143,5 +162,12 @@ const Homecard = ({ apidata }) => {
 };
 
 export default Homecard;
+
+
+
+
+
+
+
 
 
