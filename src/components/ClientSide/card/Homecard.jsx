@@ -118,13 +118,13 @@ const CustomNextArrow = ({ onClick }) => (
                                             <Image
                                                 src={`/${apidata?.images[index]?.filePath}`}
                                                 alt={apidata?.images[index]?.altText || 'Card Image'}
-                                                className="rounded-xl w-full md:h-[14vw] 2xl:h-[250px]  border border-slate-400"
+                                                className="rounded-xl w-full md:h-[14vw] 2xl:h-[210px]  border border-slate-400"
                                                 width={320}
                                                 height={150}
                                             />
                                         </div>
                                     </div>
-                                    <div className="px-3 xl:px-6 homecard-ptag  md:h-[480px] lg:h-[350px] xl:h-[306px]">
+                                    <div className="px-3 xl:px-6 homecard-ptag  md:h-[580px] lg:h-[480px] xl:h-[320px]">
                                         <h2 className="text-h2_small font-bold text-center ">{card.title }</h2>
                                         <div
                                             className="text-muted-foreground text-center mt-2 "
