@@ -7,12 +7,13 @@ import Slider from "react-slick";
 import Image from "next/image";
 
 const BrandSection = ({ apidata }) => {
+  console.log("section 2 api data show is here",apidata)
   const settings = {
     dots: false,
     infinite: true,
     slidesToShow: 4, // Show 4 logos at a time
     slidesToScroll: 1,
-    autoplay: true,
+    autoplay: apidata?.images[1]?.length > 4,
     speed: 1200,
     autoplaySpeed: 5000,
     cssEase: "linear",
@@ -38,7 +39,9 @@ const BrandSection = ({ apidata }) => {
     infinite: true,
     slidesToShow: 4, // Show 4 logos at a time
     slidesToScroll: 1,
-    autoplay: true,
+    autoplay: apidata?.images[0]?.length > 4,
+    // autoplay : true ,
+
     speed: 1200,
     autoplaySpeed: 6000,
     cssEase: "linear",
@@ -79,7 +82,7 @@ const BrandSection = ({ apidata }) => {
             {/* Top Row Slider */}
             <div className="lg:hidden">
               <Slider {...reversesettings} className=" brand-slider ">
-                {apidata?.images?.slice(0, 4).map((logo, index) => (
+                {apidata?.images[0]?.map((logo, index) => (
                   <div key={index} className="flex-shrink-0  w-40 p-2 md:w-52 md:h-16 justify-end flex item-center h-auto gap-5 ">
                     <Image
                       src={logo?.filePath}
@@ -95,7 +98,7 @@ const BrandSection = ({ apidata }) => {
             <div className="hidden lg:block">
 
             <Slider {...reversesettings} className=" ">
-              {apidata?.images?.slice(0, 4).map((logo, index) => (
+              {apidata?.images[0]?.map((logo, index) => (
                 <div key={index} className="flex-shrink-0   w-40 p-2 md:w-52 md:h-16 justify-end flex item-center h-auto gap-5 ">
                   <Image
                     src={logo?.filePath}
@@ -112,7 +115,7 @@ const BrandSection = ({ apidata }) => {
             {/* Bottom Row Slider */}
             <div className="lg:hidden">
               <Slider {...settings} className=" brand-slider">
-                {apidata?.images?.slice(4, 8).map((logo, index) => (
+                {apidata?.images[1]?.map((logo, index) => (
                   <div key={`bottom-row-${index}`} className="flex-shrink-0 w-40p-2 md:w-52 md:h-16 justify-end flex h-auto item-center">
                     <Image
                       src={logo?.filePath}
@@ -127,7 +130,7 @@ const BrandSection = ({ apidata }) => {
             </div>
             <div className="hidden lg:block">
               <Slider {...settings}>
-                {apidata?.images?.slice(4, 8).map((logo, index) => (
+                {apidata?.images[1]?.map((logo, index) => (
                   <div key={`bottom-row-${index}`} className="flex-shrink-0  w-40 p-2 md:w-52 md:h-16 justify-end flex item-center h-auto gap-5 ">
                     <Image
                       src={logo?.filePath}

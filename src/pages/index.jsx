@@ -26,17 +26,6 @@ const Index = ({ data, error }) => {
   return (
     <div>
       <HeadTagSEO data={data} />
-      {/* <HeroSections apidata={data?.heroSection} />
-      <BrandSection apidata={data?.section2} />
-      <OverviewSection3 apidata1={data?.section3} apidata2={data?.section4} />
-      <Section4 apidata={data?.section5} />
-      <Homecard apidata={data?.section6} />
-      <PersonSection1 apidata={data?.section7} />
-      <PersonSection2 apidata={data?.section8} />
-      <About apidata={data?.section9} /> 
-      <Testomonial apidata={data?.testimonials} />
-      <SectionSecurity apidata={data?.section11} />
-      <FaqSection apidata={data?.faq} /> */}
       {data?.heroSection ? <HeroSections apidata={data.heroSection} /> : null}
       {data?.section2 ? <BrandSection apidata={data.section2} /> : null}
       {data?.section3 || data?.section4 ? (

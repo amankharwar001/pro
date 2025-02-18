@@ -11,7 +11,7 @@ const Homecard = ({ apidata }) => {
     const isInView = useInView(ref, { once: true });
 
     const [activeIndex, setActiveIndex] = useState(0); 
-    console.log("active index show is here", apidata)
+    console.log("Home card data show is here", apidata)
 
     const cardVariants = {
         hidden: { opacity: 0, y: 50 },
