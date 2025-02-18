@@ -6,13 +6,14 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { FaInfo } from "react-icons/fa";
 
-const ImageUploader = ({ referenceType, referenceId: propReferenceId, width, height,setImageStatus,setActiveProductBox }) => {
+const ImageUploader = ({ deleteStatus, referenceType, referenceId: propReferenceId, width, height, setImageStatus, setActiveProductBox }) => {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
   const [image, setImage] = useState(null);
   const [altText, setAltText] = useState('');
   const [uploadStatus, setUploadStatus] = useState('');
   const [images, setImages] = useState([]);
   const [editImageId, setEditImageId] = useState(null);
+
 
   // Static referenceId
   const referenceId = propReferenceId || 1;
@@ -170,12 +171,21 @@ const ImageUploader = ({ referenceType, referenceId: propReferenceId, width, hei
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white text-sm p-2 pr-10">
                   <p className="text-admin_image">{img.altText}</p>
-                  <button
+                  {/* <button
                     onClick={() => handleDelete(img.id)}
                     className="absolute -top-8 right-2 text-admin_image text-white bg-[#F80F10] p-1 rounded-md hover:bg-red-600"
                   >
                     Delete
+                  </button> */}
+
+                  <button
+                    onClick={() => handleDelete(img.id)}
+                    className={`absolute -top-8 right-2 text-admin_image text-white bg-[#F80F10] p-1 rounded-md hover:bg-red-600 ${deleteStatus === 1 && "hidden" ||  "block"}`}
+                  >
+                    Delete
                   </button>
+
+
                   <button
                     onClick={() => handleEdit(img)}
                     className="absolute -top-8 left-2 text-admin_image text-white bg-blue-500 p-1 rounded-md hover:bg-blue-600"
@@ -201,7 +211,7 @@ const ImageUploader = ({ referenceType, referenceId: propReferenceId, width, hei
             </div>
           )}
         </div>
-        {width && height &&(
+        {width && height && (
           <span className='text-[10px] mb-2 flex gap-1 items-center text-gray-500'><FaInfo className='rounded-full bg-slate-700 text-white p-[2px]' size={12} /> Width: {width}px | Height: {height}px</span>
         )}
         <div className="space-y-4 max-w-[320px]">

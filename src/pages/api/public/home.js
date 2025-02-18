@@ -87,7 +87,7 @@ const homepagePublic = async (req, res) => {
                         'homepage_section6_20'
                     ]
                 },
-                order: [['id', 'ASC']] 
+                order: [['referenceType', 'ASC']] 
             }), [])
             : [];
 
