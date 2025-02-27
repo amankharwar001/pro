@@ -11,7 +11,7 @@ const Testimonial = sequelize.define('HomeTestimonial', {
         allowNull: false,  // Ensuring the heading field is required
     },
     info: {
-        type: DataTypes.TEXT,
+        type: DataTypes.JSON,
         allowNull: false,  // Ensuring the button field is required
     },
 }, {
