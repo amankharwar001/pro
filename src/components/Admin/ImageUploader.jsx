@@ -46,14 +46,15 @@ const ImageUploader = ({ deleteStatus, referenceType, referenceId: propReference
   const handleUpload = async (e) => {
     e.preventDefault();
 
-    if (!image || !altText || !referenceId) {
+    if (!image  || !referenceId) {
       setUploadStatus('Please select an image, provide alt text');
       return;
     }
 
     const formData = new FormData();
     formData.append('image', image);
-    formData.append('altText', altText);
+    // formData.append('altText', altText);
+    // if (altText.trim()) formData.append('altText', altText);
     formData.append('referenceId', referenceId);
 
     try {
@@ -111,13 +112,14 @@ const ImageUploader = ({ deleteStatus, referenceType, referenceId: propReference
   const handleUpdate = async (e) => {
     e.preventDefault();
 
-    if (!altText) {
-      setUploadStatus('Please provide alt text.');
-      return;
-    }
+    // if (!altText) {
+    //   setUploadStatus('Please provide alt text.');
+    //   return;
+    // }
 
     const formData = new FormData();
-    formData.append('altText', altText);
+    // formData.append('altText', altText);
+    if (altText.trim()) formData.append('altText', altText);
     if (image) formData.append('image', image);
 
     try {

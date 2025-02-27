@@ -7,7 +7,7 @@ const section9 = sequelize.define('Homesection9', {
         allowNull: false,  // Ensuring the heading field is required
     },
     content: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false,  // Ensuring the heading field is required
     },
     btn: {
@@ -24,7 +24,7 @@ const section9 = sequelize.define('Homesection9', {
         defaultValue: [], // Default to an empty array
     },
     bottomtext: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false,  // Ensuring the button link field is required
     },
     

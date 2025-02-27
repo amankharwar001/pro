@@ -136,7 +136,7 @@ export default function Section7Manager({setActiveBox,sectionsStatusHandle}) {
             value={form.btn}
             onChange={handleInputChange}
             className="border p-2 w-full rounded-md"
-            required
+            
           />
         </div>
 
@@ -150,7 +150,7 @@ export default function Section7Manager({setActiveBox,sectionsStatusHandle}) {
             value={form.btnLink}
             onChange={handleInputChange}
             className="border p-2 w-full rounded-md"
-            required
+            
           />
         </div>
 

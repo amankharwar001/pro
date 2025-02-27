@@ -45,11 +45,11 @@ const Section5Form = ({ setActiveBox, sectionsStatusHandle }) => {
                     ]);
                     setApiStatus(true)
                 } else {
-                    alert('Failed to fetch section data');
+                    console.warn('Failed to fetch section data');
                 }
             } catch (error) {
                 console.error(error);
-                alert('Error fetching data');
+                
             }
         };
 
