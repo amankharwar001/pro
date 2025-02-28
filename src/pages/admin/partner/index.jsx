@@ -1,3 +1,51 @@
+// import  from '@/components/Admin/common/';
+// import React, { useState } from 'react'
+// import HeroSectionForm from '@/components/Admin/common/HeroSection';
+// import SeoPage from '@/components/Admin/seo/SEO';
+// const Index = () => {
+//   const [activeBox, setActiveBox] = useState(1);
+//   const [sectionsStatus, setSectionsStatus] = useState(Array(2).fill(false));
+
+//   const sectionsStatusHandle = (index, status) => {
+//     setSectionsStatus((prevStatus) => {
+//       const updatedStatus = [...prevStatus];
+//       updatedStatus[index] = status;
+//       return updatedStatus;
+//     });
+//   };
+
+//   const handleClick = (box) => {
+//     setActiveBox(box);
+//   };
+
+//   // Helper function to determine the classes for each tab
+//   const getTabClass = (id) =>
+//     `cursor-pointer px-4 py-2 text-xs transition-all duration-300 ease-in-out rounded-md border 
+//     ${activeBox === id ? 'bg-gradient-to-r from-black to-gray-700 text-white' : 'bg-gray-100 text-gray-700 hover:bg-black hover:text-white'}`;
+
+//   return (
+//     <div>
+//       <>
+//         <div className='bg-white shadow-lg rounded-lg p-4'>
+//           <div className='flex gap-3 pb-5 '>
+//             <span className={getTabClass(1)} onClick={() => handleClick(1)}>Hero Banner Section</span>
+//             <span className={getTabClass(2)} onClick={() => handleClick(2)}>SEO</span>
+//           </div>
+//           {activeBox === 1 && <div><HeroSectionForm setActiveBox={setActiveBox} url={"partnerpage/herosection"} referencetype={"herosection_partner_page"} /></div>}
+//           {activeBox === 2 && <div className=' border bg-gray-50 shadow-inner rounded'><SeoPage page={"partner-page"} /></div>}
+//         </div>
+//       </>
+//     </div>
+//   );
+// };
+
+// export default Index;
+
+
+
+
+
+
 import React, { useState, useEffect } from 'react';
 import HeroSectionForm from '@/components/Admin/common/HeroSection';
 import SeoPage from '@/components/Admin/seo/SEO';
@@ -59,7 +107,7 @@ const Index = () => {
           return (
             <div
               key={tab.id}
-              className={`cursor-pointer text-admin_btn_tab px-4 py-2 text-xs transition-all duration-300 ease-in-out rounded-md border ${getTabClass(
+              className={`cursor-pointer px-4 py-2 text-xs transition-all duration-300 ease-in-out rounded-md border ${getTabClass(
                 isActive,
                 isCompleted
               )}`}

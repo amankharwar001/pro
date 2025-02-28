@@ -43,7 +43,7 @@ const Test = ({setActiveBox,sectionsStatusHandle}) => {
         }
       } catch (error) {
         console.error('Error fetching data:', error);
-        // alert('Failed to fetch data');
+        alert('Failed to fetch data');
       }
     };
 

@@ -14,7 +14,7 @@ const Testimonial = ({ apidata }) => {
             <h2 className="text-h2_medium font-bold mb-4">{heading || 'Testimonials'}</h2>
           </Fade>
           <Fade triggerOnce direction="down" delay={200}>
-            <p className="text-paragraph mb-8 text-p">{content || 'What our users say about us'}</p>
+            <p className="text-slate-700 mb-8 text-p">{content || 'What our users say about us'}</p>
           </Fade>
         </div>
         <Zoom triggerOnce>

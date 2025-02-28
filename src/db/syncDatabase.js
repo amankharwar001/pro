@@ -75,8 +75,6 @@ import HideUnhideStatus from '../models/hideUnhide/index.js';
 
 //AdminFooterSetting
 import AdminFooterSetting from '../models/adminSetting/footer.js';
-import FooterCTA from '../models/adminSetting/footerCta.js';
-
 
 
 

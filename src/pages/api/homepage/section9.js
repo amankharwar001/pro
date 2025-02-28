@@ -19,7 +19,7 @@ export default async function handler(req, res) {
             const { heading, content, btn, btnLink, info, bottomtext } = req.body;
 
             // Validate input
-            if (!heading || !content ) {
+            if (!heading || !content || !btn || !btnLink || !Array.isArray(info) || info.length !== 4 || !bottomtext) {
                 return res.status(400).json({ success: false, message: 'Invalid data format. Ensure all required fields are provided.' });
             }
 
@@ -66,22 +66,22 @@ export default async function handler(req, res) {
 
 
 
-// info:[
-//     {
-//         heading:"heading1",
-//         text:"text1"
-//     },
-//     {
-//         heading:"heading2",
-//         text:"text1"
-//     },
-//     {
-//         heading:"heading3",
-//         text:"text1"
-//     },
-//     {
-//         heading:"heading4",
-//         text:"text1"
-//     },
+info:[
+    {
+        heading:"heading1",
+        text:"text1"
+    },
+    {
+        heading:"heading2",
+        text:"text1"
+    },
+    {
+        heading:"heading3",
+        text:"text1"
+    },
+    {
+        heading:"heading4",
+        text:"text1"
+    },
 
-// ]
+]

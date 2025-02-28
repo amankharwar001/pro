@@ -44,13 +44,13 @@ const AddProduct = () => {
 
   // Helper function to determine the classes for each tab
   const getTabClass = (id) =>
-    `cursor-pointer px-4 py-2 text-xs text-admin_btn_tab transition-all duration-300 ease-in-out rounded-md border 
+    `cursor-pointer px-4 py-2 text-xs transition-all duration-300 ease-in-out rounded-md border 
      ${activeBox === id ? 'bg-gradient-to-r from-black to-gray-700 text-white' : 'bg-gray-100 text-gray-700 hover:bg-black hover:text-white'}`;
 
   return (
     <div>
       <>
-        <div className='sticky top-16 border-b  shadow-md z-10 flex gap-2 bg-white p-4 overflow-x-auto'>
+        <div className='sticky top-16 border-b shadow-md z-10 flex gap-2 bg-white p-4 overflow-x-auto'>
           <span className={getTabClass(1)} onClick={() => handleClick(1)}>Hero Banner Section</span>
           {/* <span className={getTabClass(2)} onClick={() => handleClick(2)}>Section2</span>
           <span className={getTabClass(3)} onClick={() => handleClick(3)}>Section3</span>

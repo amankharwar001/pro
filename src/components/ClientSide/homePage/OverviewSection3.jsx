@@ -67,7 +67,7 @@ const OverviewSection3 = ({ apidata1, apidata2 }) => {
                             </Fade>
                             <Fade triggerOnce direction="up" delay={300}>
                                 <div className="relative">
-                                    <p className="mt-5 md:pb-5 md:text-start text-p text-paragraph text-center">
+                                    <p className="mt-5 md:pb-5 md:text-start text-p text-center">
                                         {apidata1?.content}
                                     </p>
                                 </div>

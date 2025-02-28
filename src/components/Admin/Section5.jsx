@@ -45,11 +45,11 @@ const Section5Form = ({ setActiveBox, sectionsStatusHandle }) => {
                     ]);
                     setApiStatus(true)
                 } else {
-                    console.warn('Failed to fetch section data');
+                    alert('Failed to fetch section data');
                 }
             } catch (error) {
                 console.error(error);
-                
+                alert('Error fetching data');
             }
         };
 
@@ -138,7 +138,7 @@ const Section5Form = ({ setActiveBox, sectionsStatusHandle }) => {
                                 <h4 className="text-md font-medium text-gray-700 mb-2">Box {index + 1}</h4>
                                 <div>
 
-                                    <ImageUploader deleteStatus={1}  referenceType={`homepage_section5_${index + 1}`} width={200} height={100}
+                                    <ImageUploader referenceType={`homepage_section5_${index + 1}`} width={200} height={100}
                                         setImageStatus={(status) =>
                                             setImageStatus(prevState => ({
                                                 ...prevState,
