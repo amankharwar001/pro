@@ -67,9 +67,13 @@ const OverviewSection3 = ({ apidata1, apidata2 }) => {
                             </Fade>
                             <Fade triggerOnce direction="up" delay={300}>
                                 <div className="relative">
-                                    <p className="mt-5 md:pb-5 md:text-start text-p text-paragraph text-center">
+                                    {/* <p className="mt-5 md:pb-5 md:text-start text-p text-paragraph text-center">
                                         {apidata1?.content}
-                                    </p>
+                                    </p> */}
+                                    <div
+                                        className="mt-5 md:pb-5 md:text-start text-p text-paragraph text-center  "
+                                        dangerouslySetInnerHTML={{ __html:apidata1?.content }}
+                                    />
                                 </div>
                             </Fade>
                         </div>
@@ -238,9 +242,13 @@ const OverviewSection3 = ({ apidata1, apidata2 }) => {
                         <div>
                             <div className="px-6 rounded-lg">
                                 <h2 className="text-h2_big text-center md:text-start mt-10 md:mt-0 font-bold mb-4 text-white">{apidata2?.heading}</h2>
-                                <p className="text-base text-center md:text-start md:text-xl mb-6 text-white">
+                                {/* <p className="text-base text-center md:text-start md:text-xl mb-6 text-white">
                                     {apidata2?.content}
-                                </p>
+                                </p> */}
+                                <div
+                                        className="text-base text-center md:text-start md:text-xl mb-6 text-white  "
+                                        dangerouslySetInnerHTML={{ __html:apidata2?.content }}
+                                    />
                             </div>
                             <div className="flex md:justify-start justify-center pb-10  text-white items-center bg-background px-6">
                                 <div className="text-center mr-8">

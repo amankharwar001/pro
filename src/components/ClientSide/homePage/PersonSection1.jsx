@@ -42,7 +42,11 @@ export default function PersonSection1({ apidata }) {
                     <h2 className="font-bold text-h2_large">{apidata?.heading}</h2>
                 </Fade>
                 <Fade triggerOnce>
-                    <p className="mt-4 text-p text-paragraph">{apidata?.content}</p>
+                    {/* <p className="mt-4 text-p text-paragraph">{apidata?.content}</p> */}
+                    <div
+                        className="mt-4 text-p text-paragraph  "
+                        dangerouslySetInnerHTML={{ __html: apidata?.content }}
+                    />
                     <div className="mt-6">
                         <button
                             onClick={() => {

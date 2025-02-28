@@ -4,8 +4,8 @@ import { Fade, Slide, Zoom } from 'react-awesome-reveal';
 export default function PersonSection2({ apidata }) {
     // Extract images from the API data
     const primaryImage = apidata?.images?.find(img => img.referenceType === 'homepage_section_8_primary');
-    const shape1Image = apidata?.images?.find(img => img.filePath.includes('shape-1'));
-    const shape2Image = apidata?.images?.find(img => img.filePath.includes('shape-2'));
+    const shape1Image = apidata?.images?.find(img => img.filePath);
+    const shape2Image = apidata?.images?.find(img => img.filePath);
 
     return (
         <div className='bg-[#F3F3F5] py-20'>
@@ -18,7 +18,11 @@ export default function PersonSection2({ apidata }) {
 
                     {/* Fade In Animation for Paragraph */}
                     <Fade triggerOnce direction="up" delay={300}>
-                        <p className="mb-6 text-paragraph text-p">{apidata?.content}</p>
+                        {/* <p className="mb-6 text-paragraph text-p">{apidata?.content}</p> */}
+                        <div
+                            className="mb-6 text-paragraph text-p  "
+                            dangerouslySetInnerHTML={{ __html: apidata?.content }}
+                        />
                     </Fade>
 
                     {/* Slide In Animation for Button */}

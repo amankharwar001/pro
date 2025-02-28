@@ -24,12 +24,19 @@ export default async function handler(req, res) {
             }
 
             // Validate each item in the info array
+            // for (let i = 0; i < info.length; i++) {
+            //     const { heading, content } = info[i];
+            //     if (!heading || !content) {
+            //         return res.status(400).json({ success: false, message: `Item ${i + 1} in info is missing required fields` });
+            //     }
+            // }
             for (let i = 0; i < info.length; i++) {
                 const { heading, content } = info[i];
-                if (!heading || !content) {
-                    return res.status(400).json({ success: false, message: `Item ${i + 1} in info is missing required fields` });
+                if (!heading.trim() && !content.trim()) {
+                    return res.status(400).json({ success: false, message: `Item ${i + 1} in info must have at least one field (heading or content)` });
                 }
             }
+            
 
             // Find existing Section9 data
             let section = await Section9.findOne();
