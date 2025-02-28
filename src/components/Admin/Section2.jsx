@@ -119,8 +119,7 @@ const Section2 = ({setActiveBox,sectionsStatusHandle}) => {
           </button>
         </form>
       )}
-      <CommonImageUpload referenceType={"homepage_section_2"} imageCount={8} setMultiImageStatus={setMultiImageStatus}/>
-      <CommonImageUpload referenceType={"homepage_section_2_2"} imageCount={8} setMultiImageStatus={setMultiImageStatus}/>
+      <CommonImageUpload referenceType={"homepage_section_2"} imageCount={5} setMultiImageStatus={setMultiImageStatus}/>
     </div>
   );
 };

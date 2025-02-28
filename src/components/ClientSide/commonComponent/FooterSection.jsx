@@ -8,13 +8,14 @@ import Link from 'next/link';
 import { FaTwitter } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
-import { FaPinterestP, FaInstagram } from "react-icons/fa";
+import { FaPinterestP,FaInstagram } from "react-icons/fa";
 
 
 export default function FooterSection() {
   const [productList, setProductList] = useState(null); // State to store API data
   const baseUrl = process.env.NEXT_PUBLIC_BASE_PATH;
   const [footerData, setFooterData] = useState(null);
+  console.log("footer data show is here", footerData)
 
 
   useEffect(() => {
@@ -88,7 +89,7 @@ export default function FooterSection() {
       <Footercta />
       <div className="bg-[#D4D4D4] py-10 pt-48 md:pt-40 -z-10">
         <div className="container m-auto  md:place-content-start  md:text-start grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5 lg:gap-14 mt-10">
-          <Slide triggerOnce direction="left" className='lg:col-span-2'>
+          <Slide  triggerOnce direction="left" className='lg:col-span-2'>
             <div className="mt-4">
               <Link href={baseUrl} className=''>
                 <Image
@@ -108,12 +109,27 @@ export default function FooterSection() {
 
           <Fade triggerOnce delay={200}>
             <div className="mt-4">
-              <h5 className="text-h5 font-semibold">Quick Links </h5>
+              <h5 className="text-h5 font-semibold">Important Links</h5>
               <ul className="text-muted-foreground flex flex-col gap-5 mt-5">
-                <li className='text-p'><Link href="/about">About</Link></li>
-                <li className='text-p'><Link href="/partner">Partner with Us</Link></li>
-                <li className='text-p'><Link href="/blog">Resources</Link></li>
-                <li className='text-p'><Link href="/contact">Contact</Link></li>
+                <li className='text-p'><Link href="/privacy-policy">Privacy Policy</Link></li>
+                <li className='text-p'><Link href="/term-and-condition">Term and Condition</Link></li>
+                <li className='text-p'><Link href="/refund-policy">Refund Policy</Link></li>
+                <li className='text-p'><Link href="/blog">Blog</Link></li>
+                <li className='text-p'><Link href="/sitemap">Sitemap</Link></li>
+              </ul>
+            </div>
+          </Fade>
+
+          <Fade triggerOnce delay={400}>
+            <div className="mt-4">
+              <h5 className="text-h5 font-semibold">{footerData?.heading}</h5>
+              <ul className="text-muted-foreground flex flex-col gap-5 mt-5">
+                {footerData?.buttons?.map((item, index) => (
+                  <li key={index}>
+                    <Link href={item.btnlink || '/'}>{item.btnname}</Link>
+                  </li>
+                ))
+                }
               </ul>
             </div>
           </Fade>
@@ -133,25 +149,6 @@ export default function FooterSection() {
               </ul>
             </div>
           </Fade>
-
-          <Fade triggerOnce delay={400}>
-            <div className="mt-4">
-              <h5 className="text-h5 font-semibold">{footerData?.heading}</h5>
-              <ul className="text-muted-foreground flex flex-col gap-5 mt-5">
-                <li className='text-p'><Link href="/privacy-policy">Privacy Policy</Link></li>
-                <li className='text-p'><Link href="/term-and-condition">Term and Condition</Link></li>
-                <li className='text-p'><Link href="/refund-policy">Refund Policy</Link></li>
-                <li className='text-p'><Link href="/sitemap">Sitemap</Link></li>
-                {footerData?.buttons?.map((item, index) => (
-                  <li key={index}>
-                    <Link href={item.btnlink || '/'}>{item.btnname}</Link>
-                  </li>
-                ))
-                }
-              </ul>
-            </div>
-          </Fade>
-
         </div>
 
         <div className="container m-auto mt-8 text-sm text-muted-foreground">

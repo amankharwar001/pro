@@ -4,13 +4,13 @@ import { Fade, Slide, Zoom } from 'react-awesome-reveal';
 export default function PersonSection2({ apidata }) {
     // Extract images from the API data
     const primaryImage = apidata?.images?.find(img => img.referenceType === 'homepage_section_8_primary');
-    const shape1Image = apidata?.images?.find(img => img.filePath);
-    const shape2Image = apidata?.images?.find(img => img.filePath);
+    const shape1Image = apidata?.images?.find(img => img.filePath.includes('shape-1'));
+    const shape2Image = apidata?.images?.find(img => img.filePath.includes('shape-2'));
 
     return (
         <div className='bg-[#F3F3F5] py-20'>
-            <div className="container overflow-hidden m-auto grid md:grid-cols-2 gap-5 items-center">
-                <div className="order-last md:order-none">
+            <div className="container overflow-hidden m-auto grid lg:grid-cols-2 gap-5 items-center">
+                <div className="order-last lg:order-none">
                     {/* Fade In Animation for Heading */}
                     <Fade triggerOnce direction="up">
                         <h2 className="font-bold mb-4 text-h2_large">{apidata?.heading}</h2>
@@ -18,11 +18,7 @@ export default function PersonSection2({ apidata }) {
 
                     {/* Fade In Animation for Paragraph */}
                     <Fade triggerOnce direction="up" delay={300}>
-                        {/* <p className="mb-6 text-paragraph text-p">{apidata?.content}</p> */}
-                        <div
-                            className="mb-6 text-paragraph text-p  "
-                            dangerouslySetInnerHTML={{ __html: apidata?.content }}
-                        />
+                        <p className="mb-6 text-slate-900 text-p">{apidata?.content}</p>
                     </Fade>
 
                     {/* Slide In Animation for Button */}

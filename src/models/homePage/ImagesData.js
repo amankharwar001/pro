@@ -9,7 +9,7 @@ const ImagesData = sequelize.define('ImagesData', {
   },
   altText: {
     type: DataTypes.STRING,
-    allowNull: true,
+    allowNull: false,
   },
   referenceId: {
     type: DataTypes.INTEGER,

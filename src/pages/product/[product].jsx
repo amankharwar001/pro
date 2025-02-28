@@ -11,7 +11,6 @@ import WeChooseSection from "../../components/ClientSide/product/WeChooseSection
 import Found4O4 from "@/components/NotFound/4O4";
 
 const ProductPage = ({ data, error, baseUrl }) => {
- 
   if (error) {
     return (
       <Found4O4 />
@@ -36,7 +35,6 @@ const ProductPage = ({ data, error, baseUrl }) => {
         <meta name="robots" content="index, follow" />
       </Head>
 
-      
       {/* <HeroSections heroSection={data.heroSection.heroSectionData} image={data.heroSection?.Images[0]?.filePath} baseUrl={baseUrl} />
       <Brand section2={data.section2} baseUrl={baseUrl} />
       <CardSection1 section3={data.section3} baseUrl={baseUrl} />
@@ -98,8 +96,9 @@ const ProductPage = ({ data, error, baseUrl }) => {
   );
 };
 
+// Fetch data server-side
 export async function getServerSideProps(context) {
-  const { product } = context.query; 
+  const { product } = context.query; // Extract the product slug from query params
   const baseUrl = process.env.NEXT_PUBLIC_BASE_PATH;
 
   if (!product) {
@@ -109,7 +108,7 @@ export async function getServerSideProps(context) {
   try {
     const response = await fetch(`${baseUrl}/api/product/${product}`, {
       headers: {
-        'api-key': process.env.API_KEY, 
+        'api-key': process.env.API_KEY, // Send the API key in the request header
       },
     });
     if (!response.ok) {

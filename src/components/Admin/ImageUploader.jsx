@@ -6,14 +6,13 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { FaInfo } from "react-icons/fa";
 
-const ImageUploader = ({ deleteStatus, referenceType, referenceId: propReferenceId, width, height, setImageStatus, setActiveProductBox }) => {
+const ImageUploader = ({ referenceType, referenceId: propReferenceId, width, height,setImageStatus,setActiveProductBox }) => {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
   const [image, setImage] = useState(null);
   const [altText, setAltText] = useState('');
   const [uploadStatus, setUploadStatus] = useState('');
   const [images, setImages] = useState([]);
   const [editImageId, setEditImageId] = useState(null);
-
 
   // Static referenceId
   const referenceId = propReferenceId || 1;
@@ -46,15 +45,14 @@ const ImageUploader = ({ deleteStatus, referenceType, referenceId: propReference
   const handleUpload = async (e) => {
     e.preventDefault();
 
-    if (!image  || !referenceId) {
+    if (!image || !altText || !referenceId) {
       setUploadStatus('Please select an image, provide alt text');
       return;
     }
 
     const formData = new FormData();
     formData.append('image', image);
-    // formData.append('altText', altText);
-    // if (altText.trim()) formData.append('altText', altText);
+    formData.append('altText', altText);
     formData.append('referenceId', referenceId);
 
     try {
@@ -112,14 +110,13 @@ const ImageUploader = ({ deleteStatus, referenceType, referenceId: propReference
   const handleUpdate = async (e) => {
     e.preventDefault();
 
-    // if (!altText) {
-    //   setUploadStatus('Please provide alt text.');
-    //   return;
-    // }
+    if (!altText) {
+      setUploadStatus('Please provide alt text.');
+      return;
+    }
 
     const formData = new FormData();
-    // formData.append('altText', altText);
-    if (altText.trim()) formData.append('altText', altText);
+    formData.append('altText', altText);
     if (image) formData.append('image', image);
 
     try {
@@ -172,25 +169,16 @@ const ImageUploader = ({ deleteStatus, referenceType, referenceId: propReference
                   }}
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white text-sm p-2 pr-10">
-                  <p className="text-admin_image">{img.altText}</p>
-                  {/* <button
-                    onClick={() => handleDelete(img.id)}
-                    className="absolute -top-8 right-2 text-admin_image text-white bg-[#F80F10] p-1 rounded-md hover:bg-red-600"
-                  >
-                    Delete
-                  </button> */}
-
+                  <p className="text-xs">{img.altText}</p>
                   <button
                     onClick={() => handleDelete(img.id)}
-                    className={`absolute -top-8 right-2 text-admin_image text-white bg-[#F80F10] p-1 rounded-md hover:bg-red-600 ${deleteStatus === 1 && "hidden" ||  "block"}`}
+                    className="absolute -top-8 right-2 text-xs text-white bg-[#F80F10] p-1 rounded-md hover:bg-red-600"
                   >
                     Delete
                   </button>
-
-
                   <button
                     onClick={() => handleEdit(img)}
-                    className="absolute -top-8 left-2 text-admin_image text-white bg-blue-500 p-1 rounded-md hover:bg-blue-600"
+                    className="absolute -top-8 left-2 text-xs text-white bg-blue-500 p-1 rounded-md hover:bg-blue-600"
                   >
                     Edit
                   </button>
@@ -213,7 +201,7 @@ const ImageUploader = ({ deleteStatus, referenceType, referenceId: propReference
             </div>
           )}
         </div>
-        {width && height && (
+        {width && height &&(
           <span className='text-[10px] mb-2 flex gap-1 items-center text-gray-500'><FaInfo className='rounded-full bg-slate-700 text-white p-[2px]' size={12} /> Width: {width}px | Height: {height}px</span>
         )}
         <div className="space-y-4 max-w-[320px]">
@@ -221,7 +209,7 @@ const ImageUploader = ({ deleteStatus, referenceType, referenceId: propReference
             <input
               type="file"
               onChange={handleFileChange}
-              className="border block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-2 file:rounded-full file:border-0 file:text-admin_image file:font-semibold file:w-30 file:bg-violet-50 file:text-blue-950 hover:file:bg-violet-100 border-gray-300 rounded-md p-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="border block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-2 file:rounded-full file:border-0 file:text-xs file:font-semibold file:w-30 file:bg-violet-50 file:text-blue-950 hover:file:bg-violet-100 border-gray-300 rounded-md p-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             <input
               type="text"

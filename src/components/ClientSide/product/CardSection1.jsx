@@ -15,7 +15,7 @@ const CardSection1 = ({ section3, baseUrl }) => {
     );
 
     return (
-        <div className="bg-white py-16 pt-20  lg:px-20">
+        <div className="bg-white py-16  lg:px-20">
             <div className="container mx-auto flex flex-col md:flex-col lg:flex-row items-center gap-10">
 
                 {/* Left Side - Card Image */}
