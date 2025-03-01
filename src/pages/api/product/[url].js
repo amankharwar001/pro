@@ -1,8 +1,7 @@
 
-// here is some information where you can integrate this.....
-// http://localhost:3000/api/product/your-slug
-// http://localhost:3000/product/<dynamicendpoint>
-
+// // here is some information where you can integrate this.....
+// // http://localhost:3000/api/product/your-slug
+// // http://localhost:3000/product/<dynamicendpoint>
 
 
 
@@ -23,6 +22,11 @@
 
 //   try {
 //     const urlfilter = await SEOProductPage.findOne({ where: { slug: url } });
+
+//     if (!urlfilter) {
+//       return res.status(404).json({ error: 'Invalid URL: No matching SEO data found' });
+//     }
+
 //     const id = urlfilter.heroSectionId;
 
 //     // Fetch all hide/unhide statuses
@@ -31,11 +35,11 @@
 //     // Helper function to check section activity
 //     const isSectionActive = (sectionName) => {
 //       const section = sectionsStatus.find(s => s.SectionName === sectionName);
-//       return section && section.Status === 'Active';
+//       return section?.Status === 'Active';
 //     };
 
 //     // Fetch main entry if active
-//     const heroSectionData =await HeroSectionProductPage.findOne({ where: { id } });
+//     const heroSectionData = await HeroSectionProductPage.findOne({ where: { id } });
 
 //     if (!heroSectionData) {
 //       return res.status(404).json({ error: 'Main data not found or inactive' });
@@ -43,27 +47,27 @@
 
 //     // Fetch related sections data if active
 //     const section2Data = isSectionActive(`product_section2${id}`)
-//       ? await Section2Product.findOne({ where: { heroSectionId: id } })
+//       ? await Section2Product.findOne({ where: { heroSectionId: id } }) || null
 //       : null;
 
 //     const section3Data = isSectionActive(`product_section3${id}`)
-//       ? await Section3Product.findOne({ where: { heroSectionId: id } })
+//       ? await Section3Product.findOne({ where: { heroSectionId: id } }) || null
 //       : null;
 
 //     const section4Data = isSectionActive(`product_section4${id}`)
-//       ? await Section4Product.findOne({ where: { heroSectionId: id } })
+//       ? await Section4Product.findOne({ where: { heroSectionId: id } }) || null
 //       : null;
 
 //     const section5Data = isSectionActive(`product_section5${id}`)
-//       ? await Section5Product.findOne({ where: { heroSectionId: id } })
+//       ? await Section5Product.findOne({ where: { heroSectionId: id } }) || null
 //       : null;
 
 //     const section6Data = isSectionActive(`product_section6${id}`)
-//       ? await Section6Product.findOne({ where: { heroSectionId: id } })
+//       ? await Section6Product.findOne({ where: { heroSectionId: id } }) || null
 //       : null;
 
 //     const section7Data = isSectionActive(`product_section7${id}`)
-//       ? await Section7Product.findOne({ where: { heroSectionId: id } })
+//       ? await Section7Product.findOne({ where: { heroSectionId: id } }) || null
 //       : null;
 
 //     const seoData = await SEOProductPage.findOne({ where: { heroSectionId: id } });
@@ -71,23 +75,23 @@
 //     // Fetch images for active sections
 //     const heroSectionImages = await ImagesData.findAll({ where: { referenceType: id, referenceId: [1] } });
 
-//     const section2Images = isSectionActive(`product_section2${id}`)
+//     const section2Images = section2Data
 //       ? await ImagesData.findAll({ where: { referenceType: id, referenceId: [21, 22, 23, 24] } })
 //       : [];
 
-//     const section3Images = isSectionActive(`product_section3${id}`)
+//     const section3Images = section3Data
 //       ? await ImagesData.findAll({ where: { referenceType: id, referenceId: [3, 31, 32] } })
 //       : [];
 
-//     const section4Images = isSectionActive(`product_section4${id}`)
+//     const section4Images = section4Data
 //       ? await ImagesData.findAll({ where: { referenceType: id, referenceId: [4] } })
 //       : [];
 
-//     const section5Images = isSectionActive(`product_section5${id}`)
+//     const section5Images = section5Data
 //       ? await ImagesData.findAll({ where: { referenceType: id, referenceId: [5, 51, 52, 53] } })
 //       : [];
 
-//     const section6Images = isSectionActive(`product_section6${id}`)
+//     const section6Images = section6Data
 //       ? await ImagesData.findAll({ where: { referenceType: id, referenceId: [61, 62, 63] } })
 //       : [];
 
@@ -115,19 +119,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 import ImagesData from "@/models/homePage/ImagesData";
 import HeroSectionProductPage from "@/models/productPage/HeroSectionProductPage";
 import Section2Product from "@/models/productPage/Section2Product";
@@ -145,11 +136,19 @@ export default async function handler(req, res) {
   try {
     const urlfilter = await SEOProductPage.findOne({ where: { slug: url } });
 
-    if (!urlfilter) {
-      return res.status(404).json({ error: 'Invalid URL: No matching SEO data found' });
-    }
+    let id;
+    if (urlfilter) {
+      id = urlfilter.heroSectionId;
+    } else {
+      // URL ko Hero Section heading format me convert karna (hyphen -> space)
+      const formattedHeading = url.replace(/-/g, ' '); // Replace hyphens with spaces
 
-    const id = urlfilter.heroSectionId;
+      const heroSection = await HeroSectionProductPage.findOne({ where: { heading: formattedHeading } });
+      if (!heroSection) {
+        return res.status(404).json({ error: 'Invalid URL: No matching data found' });
+      }
+      id = heroSection.id;
+    }
 
     // Fetch all hide/unhide statuses
     const sectionsStatus = await HideUnhideStatus.findAll();
@@ -160,14 +159,12 @@ export default async function handler(req, res) {
       return section?.Status === 'Active';
     };
 
-    // Fetch main entry if active
     const heroSectionData = await HeroSectionProductPage.findOne({ where: { id } });
 
     if (!heroSectionData) {
       return res.status(404).json({ error: 'Main data not found or inactive' });
     }
 
-    // Fetch related sections data if active
     const section2Data = isSectionActive(`product_section2${id}`)
       ? await Section2Product.findOne({ where: { heroSectionId: id } }) || null
       : null;
@@ -194,7 +191,6 @@ export default async function handler(req, res) {
 
     const seoData = await SEOProductPage.findOne({ where: { heroSectionId: id } });
 
-    // Fetch images for active sections
     const heroSectionImages = await ImagesData.findAll({ where: { referenceType: id, referenceId: [1] } });
 
     const section2Images = section2Data
@@ -217,7 +213,6 @@ export default async function handler(req, res) {
       ? await ImagesData.findAll({ where: { referenceType: id, referenceId: [61, 62, 63] } })
       : [];
 
-    // Combine all data into a single response object
     const responseData = {
       heroSection: heroSectionData ? { heroSectionData, Images: heroSectionImages } : null,
       section2: section2Data ? { section2Data, Images: section2Images } : null,

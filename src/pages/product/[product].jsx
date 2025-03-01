@@ -37,7 +37,7 @@ const ProductPage = ({ data, error, baseUrl }) => {
       </Head>
 
       
-      {/* <HeroSections heroSection={data.heroSection.heroSectionData} image={data.heroSection?.Images[0]?.filePath} baseUrl={baseUrl} />
+      {/* <HeroSections heroSection={data.heroSection.heroSectionData} hjg image={data.heroSection?.Images[0]?.filePath} baseUrl={baseUrl} />
       <Brand section2={data.section2} baseUrl={baseUrl} />
       <CardSection1 section3={data.section3} baseUrl={baseUrl} />
       <CardSection2 section4={data.section4} baseUrl={baseUrl} />

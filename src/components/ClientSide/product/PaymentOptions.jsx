@@ -102,8 +102,8 @@ const PaymentOptions = ({ section5, baseUrl }) => {
             <Fade direction="up" delay={600} triggerOnce>
               <div className="sm:flex items-start gap-4 p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
                 <Image
-                  src={`${baseUrl}${svg2?.filePath}`}
-                  alt={svg2?.altText}
+                  src={`${baseUrl}${svg3?.filePath}`}
+                  alt={svg3?.altText}
                   className="w-12 h-12 m-auto sm:m-0"
                   width={50}
                   height={50}

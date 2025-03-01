@@ -24,7 +24,7 @@ export default function NavBar({ data }) {
               {data?.map((product) => (
                 <NavItem
                   key={product.id}
-                  href={`${process.env.NEXT_PUBLIC_BASE_PATH}product/${product?.seo}`}
+                  href={`${process.env.NEXT_PUBLIC_BASE_PATH}product/${product?.link}`}
                   label={product.nickname}
                 />
               ))}
