@@ -107,7 +107,7 @@ export async function getServerSideProps(context) {
   }
 
   try {
-    const response = await fetch(`${baseUrl}/api/product/${product}`, {
+    const response = await fetch(`${baseUrl}/api/public/product/${product}`, {
       headers: {
         'api-key': process.env.API_KEY, 
       },
