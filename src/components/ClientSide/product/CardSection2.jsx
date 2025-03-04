@@ -238,7 +238,7 @@ const CardSection2 = ({ section4, baseUrl }) => {
 
     return (
         <div className="relative bg-white py-16 lg:px-20  pb-20">
-            <div className="container mx-auto flex flex-col gap-16">
+            <div className="container mx-auto flex flex-col gap-16 md:gap-32">
                 {section4.section4Data.section4.map((item, index) => {
                     // Find image by referenceId (starting from 41)
                     const imageIndex = index + 41;
