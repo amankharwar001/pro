@@ -39,7 +39,6 @@ export const config = {
 
 // export async function middleware(request) {
 //   const systemKey = request.headers.get('system-key');
-//   const method = request.method;
 //   const isInternalRequest = request.headers.get('internal-request') === 'true';
 
 //   // Only Encrypt API Methods except GET
@@ -51,10 +50,6 @@ export const config = {
 
 //   return NextResponse.next();
 // }
-
-// export const config = {
-//   matcher: ['/api/:path*'], // Ye Pure API Folder Ko Encrypt Karega
-// };
 
 
 

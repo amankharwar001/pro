@@ -7,7 +7,7 @@ const Section3Form = ({ productpage, setActiveBox, sectionsStatusHandle }) => {
   const [heading, setHeading] = useState("");
   const [text, setText] = useState("");
   const [info, setInfo] = useState([
-    { title: "", content: "" }, // Default empty entries
+    { title: "", content: "" }, 
     { title: "", content: "" },
   ]);
   const [isLoading, setIsLoading] = useState(false);
@@ -142,7 +142,7 @@ const Section3Form = ({ productpage, setActiveBox, sectionsStatusHandle }) => {
               value={item.title}
               onChange={(e) => handleInfoChange(index, "title", e.target.value)}
               className="w-full border p-2 rounded mb-2"
-              required
+              
             />
             <textarea
               placeholder="Content"
@@ -150,7 +150,7 @@ const Section3Form = ({ productpage, setActiveBox, sectionsStatusHandle }) => {
               onChange={(e) => handleInfoChange(index, "content", e.target.value)}
               className="w-full border p-2 rounded"
               rows="2"
-              required
+              
             />
           </div>
         ))}

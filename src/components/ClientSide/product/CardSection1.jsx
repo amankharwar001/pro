@@ -15,7 +15,7 @@ const CardSection1 = ({ section3, baseUrl }) => {
     );
 
     return (
-        <div className="bg-white py-16 pt-20  lg:px-20">
+        <div className="bg-white py-16 pt-24  lg:px-20">
             <div className="container mx-auto flex flex-col md:flex-col lg:flex-row items-center gap-10">
 
                 {/* Left Side - Card Image */}
@@ -59,15 +59,17 @@ const CardSection1 = ({ section3, baseUrl }) => {
                         {/* Online Payments Feature */}
                         <Fade triggerOnce delay={500}>
                             <div>
-                                <div className="flex-shrink-0 w-10 h-10 m-auto lg:m-0 rounded-full bg-red-100 flex items-center justify-center mb-3">
-                                    <Image
-                                        src={`${baseUrl}${svg1?.filePath}`}
-                                        alt={svg1?.altText || "Default Alt Text"}
-                                        className="w-6 h-6 rounded-full object-contain"
-                                        width={550}
-                                        height={20}
-                                    />
-                                </div>
+                                {svg1 && (
+                                    <div className="flex-shrink-0 w-10 h-10 m-auto lg:m-0 rounded-full bg-red-100 flex items-center justify-center mb-3">
+                                        <Image
+                                            src={`${baseUrl}${svg1?.filePath}`}
+                                            alt={svg1?.altText || "Default Alt Text"}
+                                            className="w-6 h-6 rounded-full object-contain"
+                                            width={550}
+                                            height={20}
+                                        />
+                                    </div>
+                                )}
                                 <div>
                                     <h5 className="text_h5 font-semibold text-gray-900">{section3.section3Data.info[0].title}</h5>
                                     <p className="text-gray-600 text-p">{section3.section3Data.info[0].content}</p>
@@ -78,15 +80,17 @@ const CardSection1 = ({ section3, baseUrl }) => {
                         {/* Safe Deposit Feature */}
                         <Fade triggerOnce delay={600}>
                             <div>
-                                <div className="flex-shrink-0 w-10 h-10 rounded-full m-auto lg:m-0 bg-green-100 flex items-center justify-center mb-3">
-                                    <Image
-                                        src={`${baseUrl}${svg2?.filePath}`}
-                                        alt={svg2?.altText || "Default Alt Text"}
-                                        className="w-6 h-6 rounded-full object-contain"
-                                        width={550}
-                                        height={20}
-                                    />
-                                </div>
+                                {svg2 && (
+                                    <div className="flex-shrink-0 w-10 h-10 rounded-full m-auto lg:m-0 bg-green-100 flex items-center justify-center mb-3">
+                                        <Image
+                                            src={`${baseUrl}${svg2?.filePath}`}
+                                            alt={svg2?.altText || "Default Alt Text"}
+                                            className="w-6 h-6 rounded-full object-contain"
+                                            width={550}
+                                            height={20}
+                                        />
+                                    </div>
+                                )}
                                 <div>
                                     <h5 className="text_h5 font-semibold text-gray-900">{section3.section3Data.info[1].title}</h5>
                                     <p className="text-gray-600 text-p">{section3.section3Data.info[1].content}</p>

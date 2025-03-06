@@ -11,11 +11,20 @@ const WeChooseSection = ({ section7 }) => {
                     <Fade triggerOnce delay={100}>
                         <h2 className="font-bold mb-4 text-h2_large">{section7.heading}</h2>
                     </Fade>
+
                     <Fade triggerOnce delay={400}>
-                        <p className="text-p mb-6">{section7.text}</p>
-                        <a href={section7.btnLink} className="flex items-center text-blue-900 gap-2 group text-primary font-semibold hover:underline">
-                            {section7.btn}<FaArrowRightLong/>
-                        </a>
+                        {section7.text && (
+                            <>
+                                <p className="text-p mb-6">{section7.text}</p>
+                                {section7.btn && section7.btnLink && (
+                                    <a href={section7.btnLink} className="flex items-center text-blue-900 gap-2 group text-primary font-semibold hover:underline">
+                                        {section7.btn}
+                                        <FaArrowRightLong />
+                                    </a>
+                                )}
+                            </>
+                        )}
+
                     </Fade>
                 </div>
 
