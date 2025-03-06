@@ -240,8 +240,8 @@ const PaymentOptions = ({ section5, baseUrl }) => {
   const infoItems = section5.section5Data.info || [];
 
   return (
-    <div className="bg-[#F5F7FA] py-32 sm:px-8">
-      <div className="container mx-auto mt-5 grid lg:grid-cols-2 gap-10 items-center">
+    <div className="bg-[#F5F7FA] py-20 sm:px-8">
+      <div className="container mx-auto grid lg:grid-cols-2 gap-10 items-center">
         {/* Left Side - Image Section */}
         <div className="relative w-full flex items-center justify-center">
           {/* Background Image */}
