@@ -12,7 +12,7 @@ const AboutSection3Form = ({ setActiveBox, sectionsStatusHandle }) => {
       { title: '', description: '' },
       { title: '', description: '' },
       { title: '', description: '' },
-    ], // Initialize with 6 empty card objects
+    ], 
   });
   const [isLoading, setIsLoading] = useState(false);
   const [isUpdate, setIsUpdate] = useState(false); // Track if the form is in update mode
@@ -143,7 +143,7 @@ const AboutSection3Form = ({ setActiveBox, sectionsStatusHandle }) => {
                 onChange={(e) => handleChange(index, e)}
                 placeholder={`Card ${index + 1} Title`}
                 className="w-full border p-1 px-2 rounded"
-                required
+                
               />
               <textarea
                 name="description"
@@ -152,7 +152,7 @@ const AboutSection3Form = ({ setActiveBox, sectionsStatusHandle }) => {
                 placeholder={`Card ${index + 1} Description`}
                 className="w-full border p-1 px-2 rounded"
                 rows="3"
-                required
+                
               ></textarea>
             </div>
           ))}

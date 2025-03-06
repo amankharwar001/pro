@@ -16,7 +16,7 @@ import HeadTagSEO from '@/components/HeadTag';
 const Index = ({ data, error }) => {
   if (error) {
     return (
-      <div className="text-center mt-20">
+      <div className="text-center mt-20 py-">
         <h1 className="text-4xl font-bold text-red-500">Error Loading Page</h1>
         <p className="text-gray-600 mt-4">An error occurred while fetching data.</p>
       </div>

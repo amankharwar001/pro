@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Fade, Zoom } from 'react-awesome-reveal';
 
 const AboutUs = ({ data = {}, baseUrl = "" }) => {
-  // Safely access images with optional chaining and default empty array
+  
   const primaryImage = data?.images?.find(
     (image) => image.referenceType === "about_section_primaryImage"
   ) || {};
@@ -29,7 +29,11 @@ const AboutUs = ({ data = {}, baseUrl = "" }) => {
             </h2>
           </Fade>
           <Fade triggerOnce delay={400}>
-            <p>{data?.text || "Default text about your company goes here."}</p>
+          <div
+                className="mb-4  text-center  lg:text-start  "
+                dangerouslySetInnerHTML={{ __html: data?.text  }}
+              />
+            {/* <p>{data?.text || "Default text about your company goes here."}</p> */}
           </Fade>
         </div>
 

@@ -73,7 +73,7 @@ export default function VisionMissionSection({ data, baseUrl }) {
           {data?.card?.slice(0, 2).map((card, index) => (
             <div
               key={index}
-              className="bg-white p-8 rounded-lg shadow-md md:flex gap-10 items-center"
+              className="bg-[#F8FCFB] p-8 rounded-lg shadow-md md:flex gap-10 items-center"
             >
               <div className="w-10 flex item-center mb-5 md:mb-0">
                 <Zoom triggerOnce delay={100 * (index + 1)}>

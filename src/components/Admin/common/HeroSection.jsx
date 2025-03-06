@@ -99,7 +99,7 @@ const HeroSectionForm = ({ onSubmitId, url,referencetype,setActiveBox,sectionsSt
             value={formData.title}
             onChange={handleChange}
             className="w-full border p-1 px-2 rounded"
-            required
+            
           />
         </div>
         <div>
@@ -121,7 +121,7 @@ const HeroSectionForm = ({ onSubmitId, url,referencetype,setActiveBox,sectionsSt
             onChange={handleChange}
             className="w-full border p-1 px-2 rounded"
             rows="3"
-            required
+            
           ></textarea>
         </div>
         <div>

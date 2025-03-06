@@ -15,6 +15,7 @@ export default function FooterSection() {
   const [productList, setProductList] = useState(null); // State to store API data
   const baseUrl = process.env.NEXT_PUBLIC_BASE_PATH;
   const [footerData, setFooterData] = useState(null);
+  console.log("product list show is here", productList)
 
 
   useEffect(() => {
@@ -122,14 +123,28 @@ export default function FooterSection() {
             <div className="mt-4">
               <h5 className="text-h5 font-semibold">Products</h5>
               <ul className="text-muted-foreground flex flex-col gap-5 mt-5">
-                {productList?.map((product) => (
+                {/* {productList?.map((product) => (
                   <li
                     key={product.id} // Always use a unique key when rendering lists
                     className="cursor-pointer hover:text-slate-800"
                   >
-                    <Link href={`product/${product?.seo}`}>{product.nickname}</Link>
+                    <Link href={`${process.env.NEXT_PUBLIC_BASE_PATH}product/${product?.link}`}>{product.nickname}</Link>
                   </li>
-                ))}
+                ))} */}
+                {productList
+                  ?.sort((a, b) => new Date(b.time) - new Date(a.time)) 
+                  ?.slice(0, 4)
+                  ?.map((product) => (
+                    <li
+                      key={product.id}
+                      className="cursor-pointer hover:text-slate-800"
+                    >
+                      <Link href={`${process.env.NEXT_PUBLIC_BASE_PATH}product/${product?.link}`}>
+                        {product.nickname}
+                      </Link>
+                    </li>
+                  ))}
+
               </ul>
             </div>
           </Fade>

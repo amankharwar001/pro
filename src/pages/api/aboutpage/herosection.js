@@ -9,7 +9,7 @@ export default async function handler(req, res) {
       const { id, title, heading, text, btn, btnLink } = req.body;
 
       // Validate required fields
-      if (!title || !heading || !text ) {
+      if ( !heading  ) {
         return res.status(400).json({
           success: false,
           message: ' (title, heading, text) are required.',
