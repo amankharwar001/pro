@@ -35,7 +35,84 @@ export const config = {
 
 
 
+// import { NextResponse } from 'next/server';
 
+// export async function middleware(request) {
+//   const systemKey = request.headers.get('system-key');
+//   const method = request.method;
+//   const isInternalRequest = request.headers.get('internal-request') === 'true';
+
+//   // Only Encrypt API Methods except GET
+//   if (!isInternalRequest) {
+//     if (systemKey !== process.env.SYSTEM_KEY) {
+//       return NextResponse.json({ message: 'Access Denied!' }, { status: 403 });
+//     }
+//   }
+
+//   return NextResponse.next();
+// }
+
+// export const config = {
+//   matcher: ['/api/:path*'], // Ye Pure API Folder Ko Encrypt Karega
+// };
+
+
+
+
+
+
+// import { NextResponse } from 'next/server';
+// import cookie from 'cookie';
+
+// const apiEncryptRoutes = [
+//   '/api/admin/packageCreate',
+//   '/api/admin/packageUpdate',
+//   '/api/admin/packageDelete',
+//   '/api/public/packageBooking'
+// ];
+
+// export async function middleware(request) {
+//   const { pathname } = request.nextUrl;
+//   const method = request.method;
+//   const cookies = cookie.parse(request.headers.get('cookie') || '');
+//   const token = cookies.token;
+//   const systemKey = request.headers.get('system-key');
+//   const isInternalRequest = request.headers.get('referer')?.includes(process.env.NEXT_PUBLIC_BASE_PATH);
+
+//   // ✅ Admin Authentication System
+//   if (pathname.startsWith('/admin/account/login') ||
+//       pathname.startsWith('/admin/account/forgot-password') ||
+//       pathname.startsWith('/admin/account/reset-password')) {
+//     return NextResponse.next(); // Free Access Pages
+//   }
+
+//   if (pathname.startsWith('/admin') && !token) {
+//     return NextResponse.redirect(new URL('/admin/account/login', request.url));
+//   }
+
+//   if (pathname.startsWith('/admin') && token) {
+//     return NextResponse.next();
+//   }
+
+//   // 🔥 Only Particular API Ko Encrypt Karo
+//   const isEncryptApi = apiEncryptRoutes.some(route => pathname.startsWith(route));
+
+//   if (isEncryptApi && method !== 'GET') {
+//     if (isInternalRequest) {
+//       return NextResponse.next(); // Website Ke Andar Wali API Free
+//     }
+
+//     if (systemKey !== process.env.SYSTEM_KEY) {
+//       return NextResponse.json({ message: 'Access Denied!' }, { status: 403 });
+//     }
+//   }
+
+//   return NextResponse.next();
+// }
+
+// export const config = {
+//   matcher: ['/api/:path*', '/admin/:path*', '/admin/account/:path*'],
+// };
 
 
 

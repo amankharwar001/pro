@@ -49,7 +49,8 @@ export async function getServerSideProps() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_PATH}/api/public/home`,{
       headers: {
-        'api-key': process.env.API_KEY, // Send the API key in the request header
+        'api-key': process.env.API_KEY, // API Key Header
+        'internal-request': 'true', // Internal Request Header
       },
     });
     if (!response.ok) {

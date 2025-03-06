@@ -143,7 +143,7 @@ const HeroSectionForm = ({ productpage, onSubmitId,setActiveBox,sectionsStatusHa
             onChange={handleChange}
             className="w-full border p-1 px-2 rounded"
             rows="3"
-            required
+            
           ></textarea>
         </div>
         <div>
@@ -154,7 +154,7 @@ const HeroSectionForm = ({ productpage, onSubmitId,setActiveBox,sectionsStatusHa
             value={formData.btn}
             onChange={handleChange}
             className="w-full border p-1 px-2 rounded"
-            required
+           
           />
         </div>
         <div>
@@ -165,7 +165,7 @@ const HeroSectionForm = ({ productpage, onSubmitId,setActiveBox,sectionsStatusHa
             value={formData.btnLink}
             onChange={handleChange}
             className="w-full border p-1 px-2 rounded"
-            required
+            
           />
         </div>
         <button
