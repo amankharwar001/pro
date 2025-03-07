@@ -7,9 +7,9 @@ import Head from 'next/head';
 import { FaBars } from 'react-icons/fa';
 import Link from 'next/link';
 
-const Header = ({ data, apikey, img }) => {
+const Header = ({ data, img }) => {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_PATH;
-  const apiKey = process.env.API_KEY;
+  const systemKey = process.env.NEXT_PUBLIC_SYSTEM_KEY;
 
   const [productList, setProductList] = useState(null); // State to store API data
   const [logo, setLogo] = useState(); // State to store admin settings
@@ -33,9 +33,7 @@ const Header = ({ data, apikey, img }) => {
       try {
         const response = await fetch('/api/public/logo', {
           method: 'GET',
-          headers: {
-            'api-key': apiKey,
-          },
+          'x-system-key': systemKey,
         });
         if (response.ok) {
           const data = await response.json();
@@ -53,7 +51,7 @@ const Header = ({ data, apikey, img }) => {
     };
 
     fetchAdminSetting();
-  }, [apiKey]);
+  }, []);
 
   // Fetch product list on component mount
   useEffect(() => {
@@ -62,7 +60,7 @@ const Header = ({ data, apikey, img }) => {
         const response = await fetch('/api/public/product/list', {
           method: 'GET',
           headers: {
-            'api-key': apiKey,
+            'x-system-key': systemKey,
           },
         });
         if (response.ok) {
@@ -75,7 +73,7 @@ const Header = ({ data, apikey, img }) => {
     };
 
     fetchData();
-  }, [apiKey]);
+  }, []);
 
   // Track scroll position and visibility
   useEffect(() => {

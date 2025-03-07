@@ -13,7 +13,11 @@ const Footercta = () => {
     useEffect(() => {
         const fetchFooterData = async () => {
             try {
-                const response = await fetch(`${baseUrl}/api/public/footer-cta`);
+                const response = await fetch(`${baseUrl}/api/public/footer-cta`, {
+                    headers: {
+                     'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+                    },
+                  });
                 if (response.ok) {
                     const data = await response.json();
                     setFooterCta(data.data); // Save footer data to state

@@ -91,7 +91,7 @@ export async function getServerSideProps() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_PATH}api/public/logo`, {
       headers: {
-        'api-key': process.env.API_KEY, // Send the API key in the request header
+       'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
       },
     });
     if (!response.ok) {

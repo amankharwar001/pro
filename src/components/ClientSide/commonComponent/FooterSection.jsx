@@ -21,7 +21,11 @@ export default function FooterSection() {
   useEffect(() => {
     const fetchFooterData = async () => {
       try {
-        const response = await fetch(`${baseUrl}/api/public/footer`);
+        const response = await fetch(`${baseUrl}/api/public/footer`, {
+          headers: {
+           'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+          },
+        });
         if (response.ok) {
           const data = await response.json();
           setFooterData(data); // Save footer data to state
@@ -39,7 +43,11 @@ export default function FooterSection() {
     // Fetch data from API
     const fetchData = async () => {
       try {
-        const response = await fetch('/api/public/product/list');
+        const response = await fetch('/api/public/product/list', {
+          headers: {
+           'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+          },
+        });
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
