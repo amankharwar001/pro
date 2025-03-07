@@ -111,7 +111,7 @@ const Layout = ({ children }) => {
                       width={20}
                     />
                   } */}
-                  {avatarImages?.length > 0 && (
+                  {/* {avatarImages?.length > 0 && (
                     <Image
                       src={`${baseUrl}${avatarImages[0]?.filePath}`}
                       alt={avatarImages[0]?.altText || 'Avatar'}
@@ -119,12 +119,12 @@ const Layout = ({ children }) => {
                       height={20}
                       width={20}
                     />
-                  )}
+                  )} */}
                 </div>
                 <div>
                   <span className="text-admin_name font-semibold text-orange-400 max-w-full">
                    
-                    {adminData || "Admin"}
+                    {/* {adminData || "Admin"} */}
 
                   </span>
                 </div>
