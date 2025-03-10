@@ -12,7 +12,11 @@ const StatusSelector = ({ productId, initialStatus = 'draft', onStatusChange }) 
 
     const fetchStatus = async (productId) => {
         try {
-            const response = await fetch(`/api/product/product-status/${productId}`);
+            const response = await fetch(`/api/product/product-status/${productId}`,{
+                headers: {
+                 'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+                },
+              });
             
             if (response.ok) {
                 const data = await response.json();

@@ -42,7 +42,7 @@ const CommonImageUpload = ({ referenceType, imageCount,setMultiImageStatus }) =>
   const handleUpload = async (e) => {
     e.preventDefault();
 
-    if (!image || !altText) {
+    if (!image ) {
       setUploadStatus("Please select an image and provide alt text.");
       return;
     }

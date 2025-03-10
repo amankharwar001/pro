@@ -129,8 +129,9 @@ const Section2Form = ({ productpage,setActiveBox,sectionsStatusHandle }) => {  /
           {isLoading ? "Submitting..." : isEditMode ? "Update" : "Create"}
         </button>
       </form>
-    </div>
+      </div>
   );
 };
 
 export default Section2Form;
+

@@ -24,7 +24,7 @@ export default async function handler(req, res) {
         const { heading, content, card } = req.body;
 
         // Validate required fields
-        if (!heading || !content || !Array.isArray(card)) {
+        if (!heading || !content ) {
           return res.status(400).json({
             error: "Heading, content, and card (array of objects) are required",
           });

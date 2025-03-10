@@ -107,7 +107,7 @@ const HeroSectionForm = ({ productpage, onSubmitId,setActiveBox,sectionsStatusHa
       }
       <form onSubmit={handleSubmit} className="space-y-4 w-full">
         <div>
-          <label className="block font-semibold text-gray-700 mb-1 text-sm ">Nickname</label>
+          <label className="block font-semibold text-gray-700 mb-1 text-sm ">Product Name</label>
           <input
             type="text"
             name="nickname"

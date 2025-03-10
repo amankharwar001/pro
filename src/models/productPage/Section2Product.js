@@ -22,7 +22,7 @@ import heroSectionProductPage from './HeroSectionProductPage.js';
 // import heroSectionProductPage from './HeroSectionProductPage';  // Import HeroSectionProductPage model
 const section2Product = sequelize.define('Section2Product', {
   title: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
     allowNull: false,
   },
   heroSectionId: {

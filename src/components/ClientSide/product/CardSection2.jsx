@@ -29,7 +29,10 @@ const CardSection2 = ({ section4, baseUrl }) => {
                                     <h2 className="font-bold text-gray-900 text-h2_large">{item.heading}</h2>
                                 </Fade>
                                 <Fade triggerOnce delay={300}>
-                                    <p className="mt-4 text-gray-600 text-p">{item.text}</p>
+                                    <div
+                                        className="mt-4 text-gray-600 text-p  "
+                                        dangerouslySetInnerHTML={{ __html: item.text }}
+                                    />
                                 </Fade>
                             </div>
 
@@ -50,7 +53,7 @@ const CardSection2 = ({ section4, baseUrl }) => {
 
                                 {/* Responsive Image */}
                                 {image && (
-                                    <div className={`relative w-full max-w-[320px] lg:max-w-[450px] ${!isTextLeft?"xl:-left-16":""} `}>
+                                    <div className={`relative w-full max-w-[320px] lg:max-w-[450px] ${!isTextLeft ? "xl:-left-16" : ""} `}>
                                         <Zoom triggerOnce delay={50}>
                                             <Image
                                                 src={`${baseUrl}${image.filePath}`}

@@ -49,9 +49,10 @@ const CardSection1 = ({ section3, baseUrl }) => {
                         </h2>
                     </Fade>
                     <Fade triggerOnce direction='left' delay={300}>
-                        <p className="mt-4 text-gray-600 text-p md:border-l-2 pl-4 border-blue-500">
-                            {section3.section3Data.text}
-                        </p>
+                        <div
+                            className="mt-4 text-gray-600 text-p md:border-l-2 pl-4 border-blue-500  "
+                            dangerouslySetInnerHTML={{ __html: section3.section3Data.text }}
+                        />
                     </Fade>
 
                     {/* Features Grid */}

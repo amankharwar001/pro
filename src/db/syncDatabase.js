@@ -77,6 +77,11 @@ import HideUnhideStatus from '../models/hideUnhide/index.js';
 import AdminFooterSetting from '../models/adminSetting/footer.js';
 import FooterCTA from '../models/adminSetting/footerCta.js';
 
+// dynamic page create 
+import heroSectionCreatePage from '../models/create-page/herosection.js';
+import CreatePageId from '../models/create-page/createid.js';
+
+
 
 
 

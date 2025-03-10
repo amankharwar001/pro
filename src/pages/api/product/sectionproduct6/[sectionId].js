@@ -12,7 +12,7 @@ export default async function handler(req, res) {
       const { heading, text, info } = req.body;
 
       // Validate input fields
-      if (!heading || !text || !info) {
+      if (!heading ) {
         return res.status(400).json({ error: 'Heading, text, and info are required' });
       }
 
@@ -44,7 +44,7 @@ export default async function handler(req, res) {
       const { heading, text, info } = req.body;
 
       // Validate input fields
-      if (!heading || !text || !info) {
+      if (!heading ) {
         return res.status(400).json({ error: 'Heading, text, and info are required' });
       }
 
