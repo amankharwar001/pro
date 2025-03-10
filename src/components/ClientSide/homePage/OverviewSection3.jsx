@@ -47,17 +47,6 @@ const OverviewSection3 = ({ apidata1, apidata2 }) => {
     const primary1Image_2 = apidata2?.images.find(
         (image) => image.referenceType === "homepage_section4"
     );
-    // png images
-    const png1 = apidata2?.images.find(
-        (image) => image.referenceType === "homepage_section4_png1"
-    );
-    const png2 = apidata2?.images.find(
-        (image) => image.referenceType === "homepage_section4_png2"
-    );
-    const png3 = apidata2?.images.find(
-        (image) => image.referenceType === "homepage_section4_png3"
-    );
-    console.log("section4 png show is here", apidata2)
 
 
 
@@ -78,13 +67,9 @@ const OverviewSection3 = ({ apidata1, apidata2 }) => {
                             </Fade>
                             <Fade triggerOnce direction="up" delay={300}>
                                 <div className="relative">
-                                    {/* <p className="mt-5 md:pb-5 md:text-start text-p text-paragraph text-center">
+                                    <p className="mt-5 md:pb-5 md:text-start text-p text-center">
                                         {apidata1?.content}
-                                    </p> */}
-                                    <div
-                                        className="mt-1 md:pb-5 md:text-start text-p text-paragraph text-center  "
-                                        dangerouslySetInnerHTML={{ __html: apidata1?.content }}
-                                    />
+                                    </p>
                                 </div>
                             </Fade>
                         </div>
@@ -189,7 +174,7 @@ const OverviewSection3 = ({ apidata1, apidata2 }) => {
                 </div>
                 {/* Blue section start */}
                 <div className="mt-16 pt-16 md:pt-36 bg-[#003066] rounded-t-3xl relative -top-44 md:-top-32 lg:-top-44 -z-[1]">
-                    <div className="md:grid grid-cols-2 items-center">
+                    <div className="md:grid grid-cols-2">
                         <div className="relative">
                             {/* phone image */}
                             <motion.div
@@ -207,66 +192,55 @@ const OverviewSection3 = ({ apidata1, apidata2 }) => {
                                 />
                             </motion.div>
                             {/* small component image */}
-                            {png1?.filePath && (
-                                <motion.div
-                                    initial={{ opacity: 0, scale: 0.8 }}
-                                    animate={inView ? { opacity: 1, scale: 1 } : {}}
-                                    transition={{ delay: 0.8, duration: 0.7 }}
-                                    className="absolute top-36 right-10 shadow-lg"
-                                >
-                                    <Image
-                                        src={`${png1?.filePath || "/paramotor_assets/aboutsection/phonecard.jpg"}`}
-                                        alt={`${png1?.altText || "Paramotor Logo"}`}
-                                        className="rounded-xl bg-slate-200 w-[40vw] md:w-52 overflow-hidden"
-                                        width={750}
-                                        height={120}
-                                    />
-                                </motion.div>
-                            )}
-                            {png2?.filePath && (
-                                <motion.div
-                                    initial={{ opacity: 0, scale: 0.8 }}
-                                    animate={inView ? { opacity: 1, scale: 1 } : {}}
-                                    transition={{ delay: 0.9, duration: 0.7 }}
-                                    className="absolute top-14 right-5 md:right-14 rounded-lg overflow-hidden"
-                                >
-                                    <Image
-                                        src={`${png2?.filePath}`}
-                                        alt={`${png2?.altText}`}
-                                        className="rounded-t-lg bg-slate-200 w-full md:w-16"
-                                        width={100}
-                                        height={100}
-                                    />
-                                </motion.div>
-                            )}
-                            {png3?.filePath && (
-                                <motion.div
-                                    initial={{ opacity: 0, scale: 0.8 }}
-                                    animate={inView ? { opacity: 1, scale: 1 } : {}}
-                                    transition={{ delay: 0.9, duration: 0.7 }}
-                                    className="absolute bottom-10 left-10 rounded-lg overflow-hidden"
-                                >
-                                    <Image
-                                        src={png3?.filePath}
-                                        alt={png3?.altText || "Image"}
-                                        className="rounded-lg bg-slate-200 max-w-[60px] md:max-w-[80px]"
-                                        width={100}
-                                        height={100}
-                                    />
-                                </motion.div>
-                            )}
-
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={inView ? { opacity: 1, scale: 1 } : {}}
+                                transition={{ delay: 0.8, duration: 0.7 }}
+                                className="absolute top-36 right-10 shadow-lg"
+                            >
+                                <Image
+                                    src={`${multiImage[0]?.filePath || "/paramotor_assets/aboutsection/phonecard.jpg"}`}
+                                    alt={`${multiImage[0]?.altText || "Paramotor Logo"}`}
+                                    className="rounded-xl bg-slate-200 w-[40vw] md:w-52 overflow-hidden"
+                                    width={750}
+                                    height={120}
+                                />
+                            </motion.div>
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={inView ? { opacity: 1, scale: 1 } : {}}
+                                transition={{ delay: 0.9, duration: 0.7 }}
+                                className="absolute top-14 right-5 md:right-14 rounded-lg overflow-hidden"
+                            >
+                                <Image
+                                    src={`${multiImage[1]?.filePath || "/paramotor_assets/aboutsection/phonecard.jpg"}`}
+                                    alt={`${multiImage[1]?.altText || "Paramotor Logo"}`}
+                                    className="rounded-t-lg bg-slate-200 w-full md:w-16"
+                                    width={100}
+                                    height={100}
+                                />
+                            </motion.div>
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={inView ? { opacity: 1, scale: 1 } : {}}
+                                transition={{ delay: 0.9, duration: 0.7 }}
+                                className="absolute bottom-10 left-10     rounded-lg overflow-hidden"
+                            >
+                                <Image
+                                    src={`${multiImage[2]?.filePath || "/paramotor_assets/aboutsection/phonecard.jpg"}`}
+                                    alt={`${multiImage[2]?.altText || "Paramotor Logo"}`}
+                                    className="rounded-lg bg-slate-200 max-w-[60px]  md:max-w-[80px]"
+                                    width={100}
+                                    height={100}
+                                />
+                            </motion.div>
                         </div>
                         <div>
                             <div className="px-6 rounded-lg">
                                 <h2 className="text-h2_big text-center md:text-start mt-10 md:mt-0 font-bold mb-4 text-white">{apidata2?.heading}</h2>
-                                {/* <p className="text-base text-center md:text-start md:text-xl mb-6 text-white">
+                                <p className="text-base text-center md:text-start md:text-xl mb-6 text-white">
                                     {apidata2?.content}
-                                </p> */}
-                                <div
-                                    className="text-base text-center md:text-start md:text-xl mb-6 text-white  "
-                                    dangerouslySetInnerHTML={{ __html: apidata2?.content }}
-                                />
+                                </p>
                             </div>
                             <div className="flex md:justify-start justify-center pb-10  text-white items-center bg-background px-6">
                                 <div className="text-center mr-8">

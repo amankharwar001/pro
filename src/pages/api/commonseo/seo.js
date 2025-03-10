@@ -1,9 +1,6 @@
 import CommonSEO from "@/models/commonseo/SEO";
 
 export default async function handler(req, res) {
-  if (req.headers['x-system-key'] !== process.env.NEXT_PUBLIC_SYSTEM_KEY) {
-    return res.status(401).json({ message: 'Unauthorized Access' });
-  }
   const { pageType } = req.query; // pageType ko query se fetch karenge
 
   if (!pageType) {

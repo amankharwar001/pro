@@ -4,9 +4,6 @@
 import section3Product from "@/models/productPage/Section3Products";
 
 export default async function handler(req, res) {
-  if (req.headers['x-system-key'] !== process.env.NEXT_PUBLIC_SYSTEM_KEY) {
-    return res.status(401).json({ message: 'Unauthorized Access' });
-  }
   const { sectionId } = req.query;  // Getting the sectionId from the query
 
   // Handle PUT request to update the existing entry

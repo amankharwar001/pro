@@ -21,8 +21,8 @@ export async function getServerSideProps() {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_PATH}/api/blog/idgenerate`,{
       headers: {
-        'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
-       },
+        'api-key': process.env.API_KEY, // Send the API key in the request header
+      },
     });
     const data = await res.json();
 

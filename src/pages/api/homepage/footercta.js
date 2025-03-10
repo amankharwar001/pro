@@ -2,9 +2,6 @@
 import FooterCta from "@/models/homePage/FooterCta";  // Import your Sequelize model
 
 export default async function handler(req, res) {
-  if (req.headers['x-system-key'] !== process.env.NEXT_PUBLIC_SYSTEM_KEY) {
-    return res.status(401).json({ message: 'Unauthorized Access' });
-  }
   if (req.method === 'GET') {
     // Fetch the first record from FooterCta
     try {

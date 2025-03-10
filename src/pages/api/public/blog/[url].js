@@ -5,9 +5,6 @@ import SEOBlogPage from "@/models/blogPage/SEO";
 import ImagesData from "@/models/homePage/ImagesData";
 
 export default async function handler(req, res) {
-    if (req.headers['x-system-key'] !== process.env.NEXT_PUBLIC_SYSTEM_KEY) {
-        return res.status(401).json({ message: 'Unauthorized Access' });
-      }
     const { url } = req.query; // Get the URL from the query parameters
 
     if (!url) {

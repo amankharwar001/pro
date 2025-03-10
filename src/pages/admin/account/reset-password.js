@@ -21,11 +21,7 @@ export default function ResetPassword() {
 
     const response = await fetch("/api/admin/reset-password", {
       method: "POST",
-      headers: {
-         "Content-Type": "application/json",
-        'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
-
-       },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ token, password }),
     });
 

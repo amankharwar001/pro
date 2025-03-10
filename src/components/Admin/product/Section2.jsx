@@ -36,11 +36,7 @@ const Section2Form = ({ productpage,setActiveBox,sectionsStatusHandle }) => {  /
     const fetchData = async () => {
       try {
         // Fetch existing data from API using the productpage?.id
-        const res = await fetch(`/api/product/sectionproduct2/${productpage?.id}`,{
-          headers: {
-           'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
-          },
-        }); // Use the dynamic productpage?.id in the API call
+        const res = await fetch(`/api/product/sectionproduct2/${productpage?.id}`); // Use the dynamic productpage?.id in the API call
         if (res.ok) {
           const data = await res.json();
           setTitle(data.title || "");
@@ -68,7 +64,7 @@ const Section2Form = ({ productpage,setActiveBox,sectionsStatusHandle }) => {  /
       const method = isEditMode ? "PUT" : "POST"; // Use PUT to update, POST to create
       const res = await fetch(`/api/product/sectionproduct2/${productpage?.id}`, {  // Use sectionId for dynamic URL
         method,
-        headers: { "Content-Type": "application/json" ,'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY,  },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ title }),
       });
 

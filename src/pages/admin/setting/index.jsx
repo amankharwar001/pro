@@ -1,6 +1,8 @@
 import ChangeCredentials from '@/components/Admin/adminSetting';
 import ScriptAndEmail from '@/components/Admin/adminSetting/ScriptAndEmail';
 import UpdateEmailForm from '@/components/Admin/adminSetting/UpdateEmail';
+import Layout from '@/components/Admin/common/Layout';
+import FooterAdminPanel from '@/components/Admin/footer';
 import ImageUploader from '@/components/Admin/ImageUploader';
 import React, { useState, useEffect } from 'react';
 
@@ -139,6 +141,7 @@ const Index = () => {
         </div>
       </div>
       <ScriptAndEmail/>
+      <FooterAdminPanel />
       <div className='h-[300px] w-full'></div>
       
     </>

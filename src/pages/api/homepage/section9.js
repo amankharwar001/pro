@@ -1,9 +1,6 @@
 import Section9 from "@/models/homePage/Section9"; // Correct model import
 
 export default async function handler(req, res) {
-    if (req.headers['x-system-key'] !== process.env.NEXT_PUBLIC_SYSTEM_KEY) {
-        return res.status(401).json({ message: 'Unauthorized Access' });
-      }
     if (req.method === 'GET') {
         // Fetch Section9 data
         try {
@@ -22,24 +19,17 @@ export default async function handler(req, res) {
             const { heading, content, btn, btnLink, info, bottomtext } = req.body;
 
             // Validate input
-            if (!heading || !content ) {
+            if (!heading || !content || !btn || !btnLink || !Array.isArray(info) || info.length !== 4 || !bottomtext) {
                 return res.status(400).json({ success: false, message: 'Invalid data format. Ensure all required fields are provided.' });
             }
 
             // Validate each item in the info array
-            // for (let i = 0; i < info.length; i++) {
-            //     const { heading, content } = info[i];
-            //     if (!heading || !content) {
-            //         return res.status(400).json({ success: false, message: `Item ${i + 1} in info is missing required fields` });
-            //     }
-            // }
             for (let i = 0; i < info.length; i++) {
                 const { heading, content } = info[i];
-                if (!heading.trim() && !content.trim()) {
-                    return res.status(400).json({ success: false, message: `Item ${i + 1} in info must have at least one field (heading or content)` });
+                if (!heading || !content) {
+                    return res.status(400).json({ success: false, message: `Item ${i + 1} in info is missing required fields` });
                 }
             }
-            
 
             // Find existing Section9 data
             let section = await Section9.findOne();
@@ -76,22 +66,22 @@ export default async function handler(req, res) {
 
 
 
-// info:[
-//     {
-//         heading:"heading1",
-//         text:"text1"
-//     },
-//     {
-//         heading:"heading2",
-//         text:"text1"
-//     },
-//     {
-//         heading:"heading3",
-//         text:"text1"
-//     },
-//     {
-//         heading:"heading4",
-//         text:"text1"
-//     },
+info:[
+    {
+        heading:"heading1",
+        text:"text1"
+    },
+    {
+        heading:"heading2",
+        text:"text1"
+    },
+    {
+        heading:"heading3",
+        text:"text1"
+    },
+    {
+        heading:"heading4",
+        text:"text1"
+    },
 
-// ]
+]

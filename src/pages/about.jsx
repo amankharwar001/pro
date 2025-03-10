@@ -13,7 +13,11 @@ const about = ({ data, error, baseUrl }) => {
   return (
     <div>
       <HeadTagSEO data={data} />
-      
+      {/* <HeroSections heroSection={data?.heroSection} image={data?.heroSection?.images[0]?.filePath} baseUrl={baseUrl}/>
+        <AboutUs data={data?.section2} baseUrl={baseUrl}/>
+        <FeatureGrid data={data?.section3} baseUrl={baseUrl}/>
+        <VisionMissionSection data={data?.section4} baseUrl={baseUrl}/>
+        <CountingSection data={data?.section5} /> */}
       {data?.heroSection && (
         <HeroSections
           heroSection={data.heroSection}
@@ -37,7 +41,7 @@ export async function getServerSideProps(context) {
   try {
     const response = await fetch(`${baseUrl}/api/public/about`, {
       headers: {
-       'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+        'api-key': process.env.API_KEY, // Send the API key in the request header
       },
     });
     if (!response.ok) {

@@ -2,9 +2,6 @@ import heroSectionRefundPolicyPage from '@/models/refundPolicyPage/HeroSection';
 
 
 export default async function handler(req, res) {
-  if (req.headers['x-system-key'] !== process.env.NEXT_PUBLIC_SYSTEM_KEY) {
-    return res.status(401).json({ message: 'Unauthorized Access' });
-  }
   try {
     if (req.method === 'POST') {
       const { title, heading, text, btn, btnLink } = req.body;

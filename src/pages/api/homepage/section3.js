@@ -3,9 +3,6 @@ import Section3 from "@/models/homePage/Section3";
 
 
 export default async function handler(req, res) {
-    if (req.headers['x-system-key'] !== process.env.NEXT_PUBLIC_SYSTEM_KEY) {
-        return res.status(401).json({ message: 'Unauthorized Access' });
-      }
     if (req.method === 'GET') {
         // Fetch Section3 data
         try {

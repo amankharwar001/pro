@@ -29,11 +29,7 @@ const HeroSectionForm = ({ onSubmitId, url,referencetype,setActiveBox,sectionsSt
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(`/api/${url}`,{
-          headers: {
-           'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
-          },
-        });
+        const res = await fetch(`/api/${url}`);
         if (res.ok) {
           const response = await res.json();
           if (response.data) {
@@ -65,7 +61,7 @@ const HeroSectionForm = ({ onSubmitId, url,referencetype,setActiveBox,sectionsSt
     try {
       const res = await fetch(`/api/${url}`, {
         method: "POST",
-        headers: { "Content-Type": "application/json", 'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY,  },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
@@ -103,7 +99,7 @@ const HeroSectionForm = ({ onSubmitId, url,referencetype,setActiveBox,sectionsSt
             value={formData.title}
             onChange={handleChange}
             className="w-full border p-1 px-2 rounded"
-            
+            required
           />
         </div>
         <div>
@@ -125,7 +121,7 @@ const HeroSectionForm = ({ onSubmitId, url,referencetype,setActiveBox,sectionsSt
             onChange={handleChange}
             className="w-full border p-1 px-2 rounded"
             rows="3"
-            
+            required
           ></textarea>
         </div>
         <div>

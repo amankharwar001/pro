@@ -1,9 +1,13 @@
 import ProductPageStatus from "@/models/productPage/Status";
+import heroSectionProductPage from '@/models/productPage/HeroSectionProductPage.js';
+import section2Product from '@/models/productPage/Section2Product.js';
+import section3Product from '@/models/productPage/Section3Products.js';
+import section4Product from '@/models/productPage/Section4Product.js';
+import section5Product from '@/models/productPage/Section5Product.js';
+import section6Product from '@/models/productPage/Section6Product.js';
+import section7Product from '@/models/productPage/Section7Product.js';
 
 export default async function handler(req, res) {
-    if (req.headers['x-system-key'] !== process.env.NEXT_PUBLIC_SYSTEM_KEY) {
-        return res.status(401).json({ message: 'Unauthorized Access' });
-      }
     if (req.method === 'POST') {
         const { productId, productstatus } = req.query;
 
@@ -16,7 +20,22 @@ export default async function handler(req, res) {
         }
 
         try {
-            
+            // Check if the productId exists in all required models
+            // const heroExists = await heroSectionProductPage.findOne({ where: { id: productId } });
+            // const section2Exists = await section2Product.findOne({ where: { heroSectionId: productId } });
+            // const section3Exists = await section3Product.findOne({ where: { heroSectionId: productId } });
+            // const section4Exists = await section4Product.findOne({ where: { heroSectionId: productId } });
+            // const section5Exists = await section5Product.findOne({ where: { heroSectionId: productId } });
+            // const section6Exists = await section6Product.findOne({ where: { heroSectionId: productId } });
+            // const section7Exists = await section7Product.findOne({ where: { heroSectionId: productId } });
+
+            // if (!heroExists || !section2Exists || !section3Exists || !section4Exists || !section5Exists || !section6Exists || !section7Exists) {
+            //     return res.status(400).json({
+            //         error: 'Product is missing in one or more sections. Please fill all sections before activating.',
+            //     });
+            // }
+
+            // Check if productstatus already exists for the provided productId
             const existingStatus = await ProductPageStatus.findOne({ where: { productId:productId } });
 
             if (existingStatus) {

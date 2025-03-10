@@ -26,9 +26,6 @@ export default function Section7Product({ productpage, setActiveBox,sectionsStat
         setLoading(true);
         const response = await fetch(`/api/product/sectionproduct7/${productpage?.id}`, {
           method: "GET",
-          headers: {
-            'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
-           },
         });
         if (!response.ok) {
           throw new Error("Failed to fetch data.");
@@ -74,7 +71,7 @@ export default function Section7Product({ productpage, setActiveBox,sectionsStat
 
       const response = await fetch(`/api/product/sectionproduct7/${productpage?.id}`, {
         method: method,
-        headers: { "Content-Type": "application/json", 'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY,  },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
@@ -96,6 +93,11 @@ export default function Section7Product({ productpage, setActiveBox,sectionsStat
 
   return (
     <div className="p-4 border bg-gray-50 shadow-inner rounded">
+      {/* <h1 className="text-xl font-bold mb-4">Section 7 Product</h1> */}
+
+      {/* {loading && <p>Loading...</p>}
+      {error && <p className="text-red-500">{error}</p>}
+      {success && <p className="text-green-500">{success}</p>} */}
       <div className="flex justify-end">
         <StatusManager sectionName={`product_section7${productpage?.id}`}/>
       </div>

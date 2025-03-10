@@ -12,11 +12,7 @@ const StatusSelector = ({ blogId, initialStatus = 'draft', onStatusChange }) => 
 
     const fetchStatus = async (blogId) => {
         try {
-            const response = await fetch(`/api/blog/blog-status/${blogId}`,{
-                headers: {
-                 'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
-                },
-              });
+            const response = await fetch(`/api/blog/blog-status/${blogId}`);
             if (response.ok) {
                 const data = await response.json();
                 setStatus(data.status);  // Set the fetched status
@@ -40,9 +36,6 @@ const StatusSelector = ({ blogId, initialStatus = 'draft', onStatusChange }) => 
             try {
                 const response = await fetch(`/api/blog/blog-status/${blogId}?blogstatus=${selectedStatus}`, {
                     method: 'POST',
-                    headers: {
-                        'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
-                       },
                 });
 
                 if (!response.ok) {

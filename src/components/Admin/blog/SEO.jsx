@@ -32,9 +32,6 @@ const SeoPage = ({ blogpageId }) => {
             try {
                 const response = await fetch(`/api/blog/seo/${blogpageId}`, {
                     method: 'GET',
-                    headers: {
-                        'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
-                       },
                 });
                 if (!response.ok) {
                     throw new Error('Failed to fetch data.');
@@ -125,7 +122,7 @@ const SeoPage = ({ blogpageId }) => {
     
             const response = await fetch(`/api/blog/seo/${blogpageId}`, {
                 method: method,
-                headers: { 'Content-Type': 'application/json', 'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(seoData),
             });
     

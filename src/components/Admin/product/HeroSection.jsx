@@ -16,8 +16,7 @@ const HeroSectionForm = ({ productpage, onSubmitId,setActiveBox,sectionsStatusHa
   const [isEditMode, setIsEditMode] = useState(false); // Track if data already exists
   const [apiStatus, setApiStatus] = useState(false)
   const [imageStatus, setImageStatus] = useState(false)
-  console.log("System Key:", process.env.NEXT_PUBLIC_SYSTEM_KEY,productpage?.id);
-
+  console.log(  "Image Status: ", imageStatus);
     
   
    useEffect(() => {
@@ -32,11 +31,7 @@ const HeroSectionForm = ({ productpage, onSubmitId,setActiveBox,sectionsStatusHa
     const fetchData = async () => {
       try {
         const endpoint = productpage ? `/api/product/productpage/${productpage?.id}` : '';
-        const res = await fetch(endpoint,{
-          headers: {
-           'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
-          },
-        }); // Replace with your API endpoint
+        const res = await fetch(endpoint); // Replace with your API endpoint
         if (res.ok) {
           const data = await res.json();
           setFormData(data); // Populate form with existing data
@@ -49,10 +44,10 @@ const HeroSectionForm = ({ productpage, onSubmitId,setActiveBox,sectionsStatusHa
       }
     };
   
-    if (productpage?.id) { 
+    if (productpage?.id) {  // Ensure productpage exists before fetching
       fetchData();
     }
-  }, [productpage]); 
+  }, [productpage]); // Add productpage?.id to the dependency array
   
 
   // Handle form input changes
@@ -71,7 +66,7 @@ const HeroSectionForm = ({ productpage, onSubmitId,setActiveBox,sectionsStatusHa
       const method = isEditMode ? "PUT" : "POST"; // Use PUT if data exists, otherwise POST
       const res = await fetch(endpoint, {
         method,
-        headers: { "Content-Type": "application/json",'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY,  },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
@@ -125,7 +120,7 @@ const HeroSectionForm = ({ productpage, onSubmitId,setActiveBox,sectionsStatusHa
             value={formData.title}
             onChange={handleChange}
             className="w-full border p-1 px-2 rounded"
-            
+            required
           />
         </div>
         
@@ -148,7 +143,7 @@ const HeroSectionForm = ({ productpage, onSubmitId,setActiveBox,sectionsStatusHa
             onChange={handleChange}
             className="w-full border p-1 px-2 rounded"
             rows="3"
-            
+            required
           ></textarea>
         </div>
         <div>
@@ -159,7 +154,7 @@ const HeroSectionForm = ({ productpage, onSubmitId,setActiveBox,sectionsStatusHa
             value={formData.btn}
             onChange={handleChange}
             className="w-full border p-1 px-2 rounded"
-           
+            required
           />
         </div>
         <div>
@@ -170,7 +165,7 @@ const HeroSectionForm = ({ productpage, onSubmitId,setActiveBox,sectionsStatusHa
             value={formData.btnLink}
             onChange={handleChange}
             className="w-full border p-1 px-2 rounded"
-            
+            required
           />
         </div>
         <button

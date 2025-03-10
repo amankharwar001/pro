@@ -1,9 +1,6 @@
 import section7Product from "@/models/productPage/Section7Product";
 
 export default async function handler(req, res) {
-  if (req.headers['x-system-key'] !== process.env.NEXT_PUBLIC_SYSTEM_KEY) {
-    return res.status(401).json({ message: 'Unauthorized Access' });
-  }
   const { sectionId } = req.query; // Get sectionId from the query parameters
 
   // Handle PUT request to update the existing entry
@@ -12,7 +9,7 @@ export default async function handler(req, res) {
       const { heading, text, btn, btnLink, info } = req.body;
 
       // Validate input fields
-      if (!heading || !text  || !info) {
+      if (!heading || !text || !btn || !btnLink || !info) {
         return res.status(400).json({ error: 'Heading, text, button, button link, and info are required' });
       }
 
@@ -46,7 +43,7 @@ export default async function handler(req, res) {
       const { heading, text, btn, btnLink, info } = req.body;
 
       // Validate input fields
-      if (!heading || !text || !info) {
+      if (!heading || !text || !btn || !btnLink || !info) {
         return res.status(400).json({ error: 'Heading, text, button, button link, and info are required' });
       }
 

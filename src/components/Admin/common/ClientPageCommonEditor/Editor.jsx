@@ -78,9 +78,6 @@ const ClientSideCommonEditor = ({ referenceType, sectionsStatusHandle, setActive
               const response = await fetch(`/api/blogupload/${referenceType}`, {
                 method: "POST",
                 body: formData,
-                headers: {
-                  'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
-                 },
               });
 
               const data = await response.json();
@@ -115,11 +112,7 @@ const ClientSideCommonEditor = ({ referenceType, sectionsStatusHandle, setActive
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`/api/common-term-policy-page/${referenceType}`,{
-          headers: {
-           'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
-          },
-        });
+        const response = await fetch(`/api/common-term-policy-page/${referenceType}`);
         if (response.ok) {
           const data = await response.json();
           setEditorContent(data.data.content); // Fetch full HTML content
@@ -174,7 +167,7 @@ const ClientSideCommonEditor = ({ referenceType, sectionsStatusHandle, setActive
 
       const response = await fetch(endpoint, {
         method,
-        headers: { "Content-Type": "application/json", 'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY,  },
+        headers: { "Content-Type": "application/json" },
         body,
       });
 

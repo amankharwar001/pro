@@ -1,3 +1,6 @@
+
+
+
 import { useState } from 'react';
 import path from 'path';
 import { MdDeleteForever } from "react-icons/md";
@@ -50,7 +53,6 @@ const Gallery = ({ images }) => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
         },
         body: JSON.stringify({ imagePath }),
       });

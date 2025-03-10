@@ -2,22 +2,10 @@ import React from 'react';
 import Image from 'next/image';
 import { Fade, Slide, Zoom } from 'react-awesome-reveal';
 import { FaQuoteLeft } from "react-icons/fa";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
+
 const Testimonial = ({ apidata }) => {
   const { heading, content, info, images } = apidata || {};
-  console.log("info data show is here testimonial", info)
-  const settings = {
-    dots: false,
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    speed: 2000,
-    autoplaySpeed: 5000,
-    cssEase: "linear"
-  };
+
   return (
     <div>
       <div className="text-center p-8 bg-gray-50 pt-20 py-10">
@@ -26,7 +14,7 @@ const Testimonial = ({ apidata }) => {
             <h2 className="text-h2_medium font-bold mb-4">{heading || 'Testimonials'}</h2>
           </Fade>
           <Fade triggerOnce direction="down" delay={200}>
-            <p className="text-paragraph mb-8 text-p">{content || 'What our users say about us'}</p>
+            <p className="text-slate-700 mb-8 text-p">{content || 'What our users say about us'}</p>
           </Fade>
         </div>
         <Zoom triggerOnce>
@@ -60,45 +48,19 @@ const Testimonial = ({ apidata }) => {
           </div>
         </Zoom>
 
-        {/* <div className="relative mb-8">
+        <div className="relative mb-8">
           <Slide direction="up" triggerOnce>
             <blockquote className="bg-card bg-white p-10 rounded-lg shadow-lg max-w-xl m-auto border border-gray-50">
               <span  >
                 <FaQuoteLeft size={30} className='text-blue-50 mb-5' />
               </span>
-              <Slider {...settings} className="md:homepage-card-slider flex ">
-                {info?.map((content, index) => (
-                  <div key={index}
-                    dangerouslySetInnerHTML={{ __html: content || 'Using a debit card makes my transactions easier and more practical. - John Doe, Customer' }}
-                  ></div>
-                ))}
-
-              </Slider>
-            </blockquote>
-          </Slide>
-        </div> */}
-
-        <div className="relative mb-8">
-          <Slide direction="up" triggerOnce>
-            <blockquote className="bg-card bg-white p-10 rounded-lg shadow-lg max-w-xl m-auto border border-gray-50">
-              <span>
-                <FaQuoteLeft size={30} className='text-blue-50 mb-5' />
-              </span>
-              <Slider {...settings} className="md:homepage-card-slider flex ">
-                {(Array.isArray(info) ? info : []).map((content, index) => (
-                  <div key={index} className="text-center">
-                    <div
-                      dangerouslySetInnerHTML={{ __html: content }}
-                      className="text-lg text-graytext font-medium"
-                    ></div>
-                  </div>
-                ))}
-              </Slider>
-
+              {/* {info || 'Using a debit card makes my transactions easier and more practical. - John Doe, Customer'} */}
+              <div
+                dangerouslySetInnerHTML={{ __html: info || 'Using a debit card makes my transactions easier and more practical. - John Doe, Customer' }}
+              ></div>
             </blockquote>
           </Slide>
         </div>
-
       </div>
     </div>
   );

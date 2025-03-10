@@ -1,3 +1,42 @@
+// import heroSectionProductPage from '@/models/productPage/HeroSectionProductPage.js';
+// import section2Product from '@/models/productPage/Section2Product.js';
+// import section3Product from '@/models/productPage/Section3Products.js';
+// import section4Product from '@/models/productPage/Section4Product.js';
+// import section5Product from '@/models/productPage/Section5Product.js';
+// import section6Product from '@/models/productPage/Section6Product.js';
+// import section7Product from '@/models/productPage/Section7Product.js';
+// import SEOProductPage from '@/models/productPage/SEO.js';
+// import ProductPageStatus from '@/models/productPage/Status.js';
+// export default async function handler(req, res) {
+//   if (req.method === "DELETE") {
+//     const { id } = req.query; // Get the product ID from the query parameter
+    
+//     if (!id) {
+//       return res.status(400).json({ error: "Product ID is required" });
+//     }
+
+//     try {  
+//       // Attempt to delete the product by its ID
+//       const deletedProduct = await heroSectionProductPage.destroy({
+//         where: { id: id }, // Use Sequelize's destroy method to delete by ID
+//       });
+
+//       if (deletedProduct === 0) {
+//         return res.status(404).json({ error: "Product not found" });
+//       }
+
+//       return res.status(200).json({ message: "Product deleted successfully" });
+//     } catch (error) {
+//       console.error("Error deleting product:", error);
+//       return res.status(500).json({ error: "Failed to delete product" });
+//     }
+//   }
+
+//   // If the method is not DELETE, return Method Not Allowed
+//   else {
+//     return res.status(405).json({ error: "Method Not Allowed" });
+//   }
+// }
 
 import heroSectionProductPage from '@/models/productPage/HeroSectionProductPage.js';
 import section2Product from '@/models/productPage/Section2Product.js';
@@ -10,9 +49,6 @@ import SEOProductPage from '@/models/productPage/SEO.js';
 import ProductPageStatus from '@/models/productPage/Status.js';
 
 export default async function handler(req, res) {
-  if (req.headers['x-system-key'] !== process.env.NEXT_PUBLIC_SYSTEM_KEY) {
-    return res.status(401).json({ message: 'Unauthorized Access' });
-  }
   if (req.method === 'DELETE') {
     const { id } = req.query; // Get the product ID from the query parameter
     

@@ -6,14 +6,17 @@ export default function Section5Product({ productpage, setActiveBox, sectionsSta
   const [data, setData] = useState({
     heading: "",
     text: "",
-    info: [],
+    info: [
+      { title: "", content: "" },
+      { title: "", content: "" },
+      { title: "", content: "" },
+    ],
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [isEditing, setIsEditing] = useState(false);
-  const [apiStatus, setApiStatus] = useState(false);
+  const [isEditing, setIsEditing] = useState(false); // To check if data exists for editing
+  const [apiStatus, setApiStatus] = useState(false)
   const [imageStatuses, setImageStatuses] = useState({});
-
   const handleImageStatusChange = (id, status) => {
     setImageStatuses((prevStatuses) => ({
       ...prevStatuses,
@@ -21,30 +24,33 @@ export default function Section5Product({ productpage, setActiveBox, sectionsSta
     }));
   };
 
+
   useEffect(() => {
     const allUploaded = Object.values(imageStatuses).every((status) => status === true);
-    sectionsStatusHandle(apiStatus && allUploaded);
-  }, [apiStatus, imageStatuses]);
 
+    if (apiStatus && allUploaded) {
+      sectionsStatusHandle(true);
+    } else {
+      sectionsStatusHandle(false);
+
+    }
+  }, [apiStatus, imageStatuses]);
+  // Fetch data on component mount using productpage.id
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`/api/product/sectionproduct5/${productpage?.id}`,{
-          headers: {
-           'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
-          },
-        });
+        const response = await fetch(`/api/product/sectionproduct5/${productpage?.id}`);
         if (!response.ok) {
           throw new Error("Failed to fetch data");
         }
         const result = await response.json();
         setData(result);
-        setIsEditing(true);
-        setApiStatus(true);
+        setIsEditing(true); // Data exists, switch to edit mode
+        setApiStatus(true)
       } catch (err) {
         setError(err.message);
-        setIsEditing(false);
+        setIsEditing(false); // No data, switch to create mode
       } finally {
         setLoading(false);
       }
@@ -54,52 +60,60 @@ export default function Section5Product({ productpage, setActiveBox, sectionsSta
     }
   }, [productpage?.id]);
 
+  // Handle input changes for heading and text
   const handleChange = (e) => {
     const { name, value } = e.target;
     setData((prev) => ({ ...prev, [name]: value }));
   };
 
+  // Handle input changes for info array
   const handleInfoChange = (index, field, value) => {
-    setData((prev) => {
-      const updatedInfo = [...prev.info];
-      updatedInfo[index][field] = value;
-      return { ...prev, info: updatedInfo };
-    });
+    const updatedInfo = [...data.info];
+    updatedInfo[index][field] = value;
+    setData((prev) => ({ ...prev, info: updatedInfo }));
   };
 
-  const handleAddInfo = () => {
-    setData((prev) => ({
-      ...prev,
-      info: [...prev.info, { title: "", content: "" }],
-    }));
-  };
-
-  const handleDeleteInfo = (index) => {
-    setData((prev) => ({
-      ...prev,
-      info: prev.info.filter((_, i) => i !== index),
-    }));
-  };
-
+  // Handle Save (PUT request)
   const handleSave = async () => {
     setLoading(true);
     try {
-      const method = isEditing ? "PUT" : "POST";
       const response = await fetch(`/api/product/sectionproduct5/${productpage?.id}`, {
-        method,
-        headers: { "Content-Type": "application/json", 'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY,  },
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
-
       if (!response.ok) {
-        throw new Error("Failed to save data");
+        throw new Error("Failed to update data");
       }
+      const updatedData = await response.json();
+      setData(updatedData);
 
-      const result = await response.json();
-      setData(result);
-      alert(`Data ${isEditing ? "updated" : "created"} successfully!`);
-      setActiveBox(6);
-      setApiStatus(true);
+      alert("Data updated successfully!");
+      setActiveBox(6); // Navigate to next box
+      setApiStatus(true)
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Handle Create (POST request)
+  const handleCreate = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch(`/api/product/sectionproduct5/${productpage?.id}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!response.ok) {
+        throw new Error("Failed to create data");
+      }
+      const newData = await response.json();
+      setData(newData);
+      alert("Data created successfully!");
+      setApiStatus(true)
     } catch (err) {
       setError(err.message);
     } finally {
@@ -109,6 +123,9 @@ export default function Section5Product({ productpage, setActiveBox, sectionsSta
 
   return (
     <div className="p-4 border bg-gray-50 shadow-inner rounded">
+      {/* <h1 className="text-2xl font-bold mb-4">Section 5 Product</h1> */}
+      {/* {loading && <p>Loading...</p>}
+      {error && <p className="text-red-500">{error}</p>} */}
       <div className="flex justify-end">
         <StatusManager sectionName={`product_section5${productpage?.id}`} />
       </div>
@@ -118,36 +135,65 @@ export default function Section5Product({ productpage, setActiveBox, sectionsSta
         <form className="space-y-4 mt-4">
           <div>
             <label className="block text-sm text-gray-700 font-semibold">Heading</label>
-            <input type="text" name="heading" value={data.heading} onChange={handleChange} className="w-full p-2 border rounded" />
+            <input
+              type="text"
+              name="heading"
+              value={data.heading}
+              onChange={handleChange}
+              className="w-full p-2 border rounded"
+            />
           </div>
           <div>
             <label className="block text-sm text-gray-700 font-semibold">Text</label>
-            <textarea name="text" value={data.text} onChange={handleChange} className="w-full p-2 border rounded" rows="4" />
+            <textarea
+              name="text"
+              value={data.text}
+              onChange={handleChange}
+              className="w-full p-2 border rounded"
+              rows="4"
+            />
           </div>
           <div>
             <h2 className="text-sm font-semibold text-gray-700">Info</h2>
-            {data.info.map((item, index) => (
+            {data?.info?.map((item, index) => (
               <div key={index} className="border p-4 rounded mb-4 shadow-md bg-white">
-                <div className="flex justify-between items-center">
-                  <h3 className="font-semibold">Info {index + 1}</h3>
-                  <button type="button" onClick={() => handleDeleteInfo(index)} className="text-red-500 text-sm hover:underline">
-                    Delete
-                  </button>
+                <div>
+                  <ImageUploader
+                    referenceType={productpage?.id}
+                    referenceId={index + 51} // Unique reference ID for each dynamic image
+                    width={50}
+                    height={50}
+                    setImageStatus={(status) => handleImageStatusChange(index + 51, status)} // Track each image's status
+                  />
+                  <label className="block font-medium">Title {index + 1}</label>
+                  <input
+                    type="text"
+                    value={item.title}
+                    onChange={(e) => handleInfoChange(index, "title", e.target.value)}
+                    className="w-full p-2 border rounded"
+                  />
                 </div>
-                <ImageUploader referenceType={productpage?.id} referenceId={index + 51} width={50} height={50} setImageStatus={(status) => handleImageStatusChange(index + 51, status)} />
-                <label className="block font-medium">Title</label>
-                <input type="text" value={item.title} onChange={(e) => handleInfoChange(index, "title", e.target.value)} className="w-full p-2 border rounded" />
-                <label className="block font-medium">Content</label>
-                <textarea value={item.content} onChange={(e) => handleInfoChange(index, "content", e.target.value)} className="w-full p-2 border rounded" rows="2" />
+                <div>
+                  <label className="block font-medium">Content {index + 1}</label>
+                  <textarea
+                    value={item.content}
+                    onChange={(e) => handleInfoChange(index, "content", e.target.value)}
+                    className="w-full p-2 border rounded"
+                    rows="2"
+                  />
+                </div>
               </div>
             ))}
-            <button type="button" onClick={handleAddInfo} className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 mt-2">
-              Add Info
+          </div>
+          <div className="space-x-4">
+            <button
+              type="button"
+              onClick={isEditing ? handleSave : handleCreate}
+               className="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-gray-800 transition duration-300"
+            >
+              {isEditing ? "Update" : "Create"}
             </button>
           </div>
-          <button type="button" onClick={handleSave} className="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-gray-800 transition duration-300">
-            {isEditing ? "Update" : "Create"}
-          </button>
         </form>
       )}
     </div>

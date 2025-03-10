@@ -1,7 +1,4 @@
 import { useEffect, useState } from 'react';
-import dynamic from "next/dynamic";
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
-import "react-quill/dist/quill.snow.css";
 import ImageUploader from './ImageUploader';
 import CommonImageUpload from './CommonImageUpload';
 import StatusManager from './status';
@@ -15,30 +12,32 @@ const Section3Form = ({ setActiveBox, sectionsStatusHandle }) => {
     const [leadName, setLeadName] = useState('');
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false);
-    const [apiStatus, setApiStatus] = useState(false);
-    const [imageStatus, setImageStatus] = useState({});
-    const [multiImageStatus, setMultiImageStatus] = useState(false);
+
+    const [apiStatus, setApiStatus] = useState(false)
+    // const [imageStatus, setImageStatus] = useState(false)
+    const [imageStatus, setImageStatus] = useState({}); // To track status of both images
+    const [multiImageStatus, setMultiImageStatus] = useState(false)
+    console.log("Image Status: ", imageStatus);
 
     useEffect(() => {
         const allImagesUploaded =
             imageStatus.home_section3_1 === true && imageStatus.home_section3_2 === true;
 
         if (apiStatus && allImagesUploaded && multiImageStatus) {
+            console.log("All conditions met: API and images are complete.");
             sectionsStatusHandle(true);
         } else {
+            console.log("Conditions not met: Updating sections status to false.");
             sectionsStatusHandle(false);
         }
-    }, [apiStatus, imageStatus, multiImageStatus]);
+    }, [apiStatus, imageStatus,multiImageStatus]);
+
 
     // Fetch Section3 data on component mount
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('/api/homepage/section3', {
-                    headers: {
-                     'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
-                    },
-                  });
+                const response = await fetch('/api/homepage/section3');
                 const result = await response.json();
 
                 if (result.success && result.data) {
@@ -48,7 +47,7 @@ const Section3Form = ({ setActiveBox, sectionsStatusHandle }) => {
                     setAgentBrief(result.data.agentBrief);
                     setLeadNo(result.data.leadNo);
                     setLeadName(result.data.leadName);
-                    setApiStatus(true);
+                    setApiStatus(true)
                 } else {
                     setError('Section not found');
                 }
@@ -62,6 +61,7 @@ const Section3Form = ({ setActiveBox, sectionsStatusHandle }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         setIsLoading(true);
         setError('');
 
@@ -70,7 +70,6 @@ const Section3Form = ({ setActiveBox, sectionsStatusHandle }) => {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
-                    'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
                 },
                 body: JSON.stringify({
                     heading,
@@ -83,6 +82,7 @@ const Section3Form = ({ setActiveBox, sectionsStatusHandle }) => {
 
             const data = await res.json();
             if (data.success) {
+                // Directly update the state with new data without refetching
                 setSectionData(data.data);
                 setHeading(data.data.heading);
                 setContent(data.data.content);
@@ -91,8 +91,8 @@ const Section3Form = ({ setActiveBox, sectionsStatusHandle }) => {
                 setLeadName(data.data.leadName);
                 setError('');
                 alert('Section updated successfully!');
-                setActiveBox(4);
-                setApiStatus(true);
+                setActiveBox(4)
+                setApiStatus(true)
             } else {
                 setError(data.message || 'Error updating section');
             }
@@ -103,40 +103,29 @@ const Section3Form = ({ setActiveBox, sectionsStatusHandle }) => {
         }
     };
 
+
     return (
         <div className="p-4 mx-auto bg-slate-50 shadow-inner rounded-lg">
-            <div className="flex justify-end pb-5">
-                <StatusManager sectionName={'homepage_section3'} />
+            <div className='flex justify-end pb-5'>
+                <StatusManager sectionName={"homepage_section3"} />
             </div>
-
-            <div className="md:flex block gap-5 items-center">
-                <div className="flex gap-10 flex-wrap mb-5">
-                    <ImageUploader
-                        referenceType={'home_section3_1'}
-                        width={350}
-                        height={700}
-                        setImageStatus={(status) =>
-                            setImageStatus((prevState) => ({ ...prevState, home_section3_1: status }))
-                        }
-                    />
-                    <ImageUploader
-                        referenceType={'home_section3_2'}
-                        width={250}
-                        height={410}
-                        setImageStatus={(status) =>
-                            setImageStatus((prevState) => ({ ...prevState, home_section3_2: status }))
-                        }
-                    />
+            {/* <h2 className="text-xl font-semibold mb-4"> Section 3</h2> */}
+            <div className='md:flex block gap-5 items-center '>
+                <div className='flex gap-10 flex-wrap mb-5'>
+                    <ImageUploader referenceType={"home_section3_1"} width={350} height={700} setImageStatus={(status) => setImageStatus(prevState => ({ ...prevState, home_section3_1: status }))} />
+                    <ImageUploader referenceType={"home_section3_2"} width={250} height={410} setImageStatus={(status) => setImageStatus(prevState => ({ ...prevState, home_section3_2: status }))} />
                 </div>
-                <div className="border bg-slate-100 rounded-lg overflow-hidden max-w-full grow">
-                    <div className="p-5">
-                        <span className="font-semibold opacity-40">Agent Brief Images</span>
-                        <CommonImageUpload referenceType={'homepage_section_3'} imageCount={4} setMultiImageStatus={setMultiImageStatus} />
+                <div className='border bg-slate-100  rounded-lg overflow-hidden max-w-full grow '>
+                    <div className='p-5'>
+                        <span className='font-semibold opacity-40'> Agent Brief Images</span>
+                        <CommonImageUpload referenceType={"homepage_section_3"} imageCount={4} setMultiImageStatus={setMultiImageStatus}/>
                     </div>
                 </div>
             </div>
 
-            <form onSubmit={handleSubmit} className="pt-5">
+            
+
+            <form onSubmit={handleSubmit} className='pt-5'>
                 <div className="mb-4">
                     <label htmlFor="heading" className="block text-sm font-medium font-semibold text-gray-700">
                         Heading
@@ -150,18 +139,19 @@ const Section3Form = ({ setActiveBox, sectionsStatusHandle }) => {
                     />
                 </div>
 
-                {/* React Quill Editor for Content */}
                 <div className="mb-4">
                     <label htmlFor="content" className="block text-sm font-medium font-semibold text-gray-700">
                         Content
                     </label>
-                    <ReactQuill
+                    <textarea
+                        id="content"
                         value={content}
-                        onChange={setContent}
-                        theme="snow"
-                        className="bg-white border border-gray-300 rounded-md"
-                    />
+                        onChange={(e) => setContent(e.target.value)}
+                        rows="4"
+                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    ></textarea>
                 </div>
+
 
                 <div className="mb-4 mt-2">
                     <label htmlFor="agentBrief" className="block text-sm font-medium font-semibold text-gray-700">
@@ -175,8 +165,7 @@ const Section3Form = ({ setActiveBox, sectionsStatusHandle }) => {
                         className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     ></textarea>
                 </div>
-
-                <div className="flex gap-5">
+                <div className='flex gap-5 '>
                     <div className="mb-4 grow">
                         <label htmlFor="leadNo" className="block text-sm font-medium font-semibold text-gray-700">
                             Lead Number
@@ -203,10 +192,16 @@ const Section3Form = ({ setActiveBox, sectionsStatusHandle }) => {
                     </div>
                 </div>
 
-                <button type="submit" className="w-full bg-black hover:bg-gray-800 text-white px-4 py-2 rounded-md">
-                    {isLoading ? 'Updating...' : 'Update Section 3'}
+
+
+                <button
+                    type="submit"
+                    className="w-full bg-black hover:bg-gray-800 text-white px-4 py-2 rounded-md"
+                >
+                    Update Section 3
                 </button>
             </form>
+
         </div>
     );
 };

@@ -42,7 +42,6 @@ const handleSubmit = async (e) => {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
           },
           body: JSON.stringify({
             currentUsername,
@@ -77,7 +76,6 @@ const handleSubmit = async (e) => {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
           },
           body: JSON.stringify({
             password: currentPassword, // Send currentPassword as 'password'

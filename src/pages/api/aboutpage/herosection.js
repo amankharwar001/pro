@@ -2,9 +2,6 @@ import HeroSectionAboutPage from '@/models/aboutPage/HeroSection';
 
 
 export default async function handler(req, res) {
-  if (req.headers['x-system-key'] !== process.env.NEXT_PUBLIC_SYSTEM_KEY) {
-    return res.status(401).json({ message: 'Unauthorized Access' });
-  }
   try {
     const { method } = req;
 
@@ -12,7 +9,7 @@ export default async function handler(req, res) {
       const { id, title, heading, text, btn, btnLink } = req.body;
 
       // Validate required fields
-      if ( !heading  ) {
+      if (!title || !heading || !text ) {
         return res.status(400).json({
           success: false,
           message: ' (title, heading, text) are required.',

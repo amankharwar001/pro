@@ -39,11 +39,7 @@ const Section2 = ({setActiveBox,sectionsStatusHandle}) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('/api/homepage/section2', {
-          headers: {
-           'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
-          },
-        });
+        const response = await fetch('/api/homepage/section2');
         if (response.ok) {
           const data = await response.json();
           setEditorContent(data.section.heading);
@@ -77,7 +73,7 @@ const Section2 = ({setActiveBox,sectionsStatusHandle}) => {
 
       const response = await fetch(endpoint, {
         method,
-        headers: { 'Content-Type': 'application/json','x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY,  },
+        headers: { 'Content-Type': 'application/json' },
         body,
       });
 
@@ -123,8 +119,7 @@ const Section2 = ({setActiveBox,sectionsStatusHandle}) => {
           </button>
         </form>
       )}
-      <CommonImageUpload referenceType={"homepage_section_2"} imageCount={8} setMultiImageStatus={setMultiImageStatus}/>
-      <CommonImageUpload referenceType={"homepage_section_2_2"} imageCount={8} setMultiImageStatus={setMultiImageStatus}/>
+      <CommonImageUpload referenceType={"homepage_section_2"} imageCount={5} setMultiImageStatus={setMultiImageStatus}/>
     </div>
   );
 };

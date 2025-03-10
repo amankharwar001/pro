@@ -3,9 +3,6 @@ import SEOProductPage from "@/models/productPage/SEO";
 import ProductPageStatus from "@/models/productPage/Status";
 
 export default async function handler(req, res) {
-  if (req.headers['x-system-key'] !== process.env.NEXT_PUBLIC_SYSTEM_KEY) {
-    return res.status(401).json({ message: 'Unauthorized Access' });
-  }
   if (req.method === "GET") {
     try {
       // Fetch all products with active status
@@ -26,17 +23,11 @@ export default async function handler(req, res) {
           const product = await HeroSectionProductPage.findOne({ where: { id } });
           const seo = await SEOProductPage.findOne({ where: { heroSectionId: id } });
 
-          // Process heading: Convert to lowercase and replace spaces with hyphen
-          const processedHeading = product?.heading
-            ? product.heading.toLowerCase().replace(/\s+/g, '-')
-            : null;
-
           return {
             id: product?.id || null,
-            time: product?.updatedAt || null,
             nickname: product?.nickname || null,
             status: "active", // Since we're only querying active products
-            link: seo?.slug || processedHeading, // Use SEO slug if available, otherwise use processed heading
+            seo: seo?.slug || null,
           };
         })
       );

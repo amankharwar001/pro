@@ -2,9 +2,6 @@
 import Section5 from '@/models/homePage/Section5';
 
 export default async function handler(req, res) {
-    if (req.headers['x-system-key'] !== process.env.NEXT_PUBLIC_SYSTEM_KEY) {
-        return res.status(401).json({ message: 'Unauthorized Access' });
-      }
     if (req.method === 'GET') {
         // Fetch the single Section5 entry
         try {

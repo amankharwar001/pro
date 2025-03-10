@@ -2,9 +2,6 @@
 import Section7 from "@/models/homePage/Section7";  // Import your Sequelize model
 
 export default async function handler(req, res) {
-  if (req.headers['x-system-key'] !== process.env.NEXT_PUBLIC_SYSTEM_KEY) {
-    return res.status(401).json({ message: 'Unauthorized Access' });
-  }
   if (req.method === 'GET') {
     // Fetch the first record from Section7
     try {
@@ -23,8 +20,8 @@ export default async function handler(req, res) {
       const { heading, content, btn, btnLink } = req.body;
 
       // Validate input data
-      if (!heading || !content ) {
-        return res.status(400).json({ success: false, message: 'All fields (heading, content) are required' });
+      if (!heading || !content || !btn || !btnLink) {
+        return res.status(400).json({ success: false, message: 'All fields (heading, content, btn, btnLink) are required' });
       }
 
       // Find the existing record (there should only be one)
@@ -52,8 +49,8 @@ export default async function handler(req, res) {
       const { heading, content, btn, btnLink } = req.body;
 
       // Validate input data
-      if (!heading || !content ) {
-        return res.status(400).json({ success: false, message: 'All fields (heading, content) are required' });
+      if (!heading || !content || !btn || !btnLink) {
+        return res.status(400).json({ success: false, message: 'All fields (heading, content, btn, btnLink) are required' });
       }
 
       // Check if the Section7 record already exists

@@ -3,9 +3,6 @@ import AboutSection4 from "@/models/aboutPage/Section4";
 
 export default async function handler (req, res) {
     const { method } = req;
-    if (req.headers['x-system-key'] !== process.env.NEXT_PUBLIC_SYSTEM_KEY) {
-        return res.status(401).json({ message: 'Unauthorized Access' });
-      }
 
     switch (method) {
         case 'GET':

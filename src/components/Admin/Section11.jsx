@@ -30,11 +30,7 @@ export default function Section11Manager({ setActiveBox, sectionsStatusHandle })
   useEffect(() => {
     async function fetchSectionData() {
       try {
-        const response = await fetch("/api/homepage/section11", {
-          headers: {
-           'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
-          },
-        });
+        const response = await fetch("/api/homepage/section11");
         const result = await response.json();
 
         if (result.success) {
@@ -73,9 +69,7 @@ export default function Section11Manager({ setActiveBox, sectionsStatusHandle })
     try {
       const response = await fetch("/api/homepage/section11", {
         method,
-        headers: { "Content-Type": "application/json",
-          'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
-         },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
 
@@ -141,7 +135,7 @@ export default function Section11Manager({ setActiveBox, sectionsStatusHandle })
             value={form.btn}
             onChange={handleInputChange}
             className="border p-2 w-full rounded-md"
-            
+            required
           />
         </div>
         <div>
@@ -153,7 +147,7 @@ export default function Section11Manager({ setActiveBox, sectionsStatusHandle })
             value={form.btnLink}
             onChange={handleInputChange}
             className="border p-2 w-full rounded-md"
-            
+            required
           />
         </div>
         <button

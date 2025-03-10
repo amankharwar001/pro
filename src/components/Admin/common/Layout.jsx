@@ -15,7 +15,7 @@ const Layout = ({ children }) => {
   const sidebarRef = useRef();
   const [adminData, setAdminData] = useState(null); // Default state set to null
   const [avatarImages, setAvatarImages] = useState(null); // Default state set to null
-  console.log("admin data show is here", adminData)
+  console.log("admin data show is here",adminData)
 
   // Fetch admin settings data safely
   useEffect(() => {
@@ -102,7 +102,7 @@ const Layout = ({ children }) => {
             <div className="flex items-center gap-5">
               <div className="flex items-center gap-4 ">
                 <div className="w-12 h-12 flex-shrink-0 rounded-full overflow-hidden ">
-                  {/* {avatarImages?.filePath &&
+                  {avatarImages?.filePath &&
                     <Image
                       src={`${baseUrl}${avatarImages.filePath}` } 
                       alt={avatarImages?.altText || 'Avatar'}
@@ -110,22 +110,11 @@ const Layout = ({ children }) => {
                       height={20}
                       width={20}
                     />
-                  } */}
-                  {/* {avatarImages?.length > 0 && (
-                    <Image
-                      src={`${baseUrl}${avatarImages[0]?.filePath}`}
-                      alt={avatarImages[0]?.altText || 'Avatar'}
-                      className="w-full h-full object-cover"
-                      height={20}
-                      width={20}
-                    />
-                  )} */}
+                  }
                 </div>
                 <div>
-                  <span className="text-admin_name font-semibold text-orange-400 max-w-full">
-                   
-                    {/* {adminData || "Admin"} */}
-
+                  <span className="text-md font-semibold text-orange-400 max-w-full">
+                    {adminData && adminData || "Admin" } {/* Fallback if admin name is not available */}
                   </span>
                 </div>
               </div>

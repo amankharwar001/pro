@@ -9,11 +9,7 @@ const CategoryList = () => {
   // Fetch categories from the server
   const fetchCategories = async () => {
     try {
-      const response = await fetch("/api/blog/category",{
-        headers: {
-         'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
-        },
-      });
+      const response = await fetch("/api/blog/category");
       if (response.ok) {
         const data = await response.json();
         setCategories(data);
@@ -37,7 +33,6 @@ const CategoryList = () => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
           },
           body: JSON.stringify({ category: newCategory }),
         });
@@ -66,7 +61,6 @@ const CategoryList = () => {
             method: "PUT",
             headers: {
               "Content-Type": "application/json",
-              'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
             },
             body: JSON.stringify({ category: updatedName }),
           }
@@ -99,9 +93,6 @@ const CategoryList = () => {
       try {
         const response = await fetch(`/api/blog/category?id=${id}`, {
           method: "DELETE",
-          headers: {
-            'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
-           },
         });
   
         if (response.ok) {

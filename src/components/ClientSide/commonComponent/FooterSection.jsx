@@ -8,24 +8,20 @@ import Link from 'next/link';
 import { FaTwitter } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
-import { FaPinterestP, FaInstagram } from "react-icons/fa";
+import { FaPinterestP,FaInstagram } from "react-icons/fa";
 
 
 export default function FooterSection() {
   const [productList, setProductList] = useState(null); // State to store API data
   const baseUrl = process.env.NEXT_PUBLIC_BASE_PATH;
   const [footerData, setFooterData] = useState(null);
-  console.log("product list show is here", productList)
+  console.log("footer data show is here", footerData)
 
 
   useEffect(() => {
     const fetchFooterData = async () => {
       try {
-        const response = await fetch(`${baseUrl}/api/public/footer`, {
-          headers: {
-           'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
-          },
-        });
+        const response = await fetch(`${baseUrl}/api/public/footer`);
         if (response.ok) {
           const data = await response.json();
           setFooterData(data); // Save footer data to state
@@ -43,11 +39,7 @@ export default function FooterSection() {
     // Fetch data from API
     const fetchData = async () => {
       try {
-        const response = await fetch('/api/public/product/list', {
-          headers: {
-           'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
-          },
-        });
+        const response = await fetch('/api/public/product/list');
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -97,7 +89,7 @@ export default function FooterSection() {
       <Footercta />
       <div className="bg-[#D4D4D4] py-10 pt-48 md:pt-40 -z-10">
         <div className="container m-auto  md:place-content-start  md:text-start grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5 lg:gap-14 mt-10">
-          <Slide triggerOnce direction="left" className='lg:col-span-2'>
+          <Slide  triggerOnce direction="left" className='lg:col-span-2'>
             <div className="mt-4">
               <Link href={baseUrl} className=''>
                 <Image
@@ -117,42 +109,13 @@ export default function FooterSection() {
 
           <Fade triggerOnce delay={200}>
             <div className="mt-4">
-              <h5 className="text-h5 font-semibold">Quick Links </h5>
+              <h5 className="text-h5 font-semibold">Important Links</h5>
               <ul className="text-muted-foreground flex flex-col gap-5 mt-5">
-                <li className='text-p'><Link href="/about">About</Link></li>
-                <li className='text-p'><Link href="/partner">Partner with Us</Link></li>
-                <li className='text-p'><Link href="/blog">Resources</Link></li>
-                <li className='text-p'><Link href="/contact">Contact</Link></li>
-              </ul>
-            </div>
-          </Fade>
-
-          <Fade triggerOnce delay={600}>
-            <div className="mt-4">
-              <h5 className="text-h5 font-semibold">Products</h5>
-              <ul className="text-muted-foreground flex flex-col gap-5 mt-5">
-                {/* {productList?.map((product) => (
-                  <li
-                    key={product.id} // Always use a unique key when rendering lists
-                    className="cursor-pointer hover:text-slate-800"
-                  >
-                    <Link href={`${process.env.NEXT_PUBLIC_BASE_PATH}product/${product?.link}`}>{product.nickname}</Link>
-                  </li>
-                ))} */}
-                {productList
-                  ?.sort((a, b) => new Date(b.time) - new Date(a.time)) 
-                  ?.slice(0, 4)
-                  ?.map((product) => (
-                    <li
-                      key={product.id}
-                      className="cursor-pointer hover:text-slate-800"
-                    >
-                      <Link href={`${process.env.NEXT_PUBLIC_BASE_PATH}product/${product?.link}`}>
-                        {product.nickname}
-                      </Link>
-                    </li>
-                  ))}
-
+                <li className='text-p'><Link href="/privacy-policy">Privacy Policy</Link></li>
+                <li className='text-p'><Link href="/term-and-condition">Term and Condition</Link></li>
+                <li className='text-p'><Link href="/refund-policy">Refund Policy</Link></li>
+                <li className='text-p'><Link href="/blog">Blog</Link></li>
+                <li className='text-p'><Link href="/sitemap">Sitemap</Link></li>
               </ul>
             </div>
           </Fade>
@@ -161,10 +124,6 @@ export default function FooterSection() {
             <div className="mt-4">
               <h5 className="text-h5 font-semibold">{footerData?.heading}</h5>
               <ul className="text-muted-foreground flex flex-col gap-5 mt-5">
-                <li className='text-p'><Link href="/privacy-policy">Privacy Policy</Link></li>
-                <li className='text-p'><Link href="/term-and-condition">Term and Condition</Link></li>
-                <li className='text-p'><Link href="/refund-policy">Refund Policy</Link></li>
-                <li className='text-p'><Link href="/sitemap">Sitemap</Link></li>
                 {footerData?.buttons?.map((item, index) => (
                   <li key={index}>
                     <Link href={item.btnlink || '/'}>{item.btnname}</Link>
@@ -175,6 +134,21 @@ export default function FooterSection() {
             </div>
           </Fade>
 
+          <Fade triggerOnce delay={600}>
+            <div className="mt-4">
+              <h5 className="text-h5 font-semibold">Products</h5>
+              <ul className="text-muted-foreground flex flex-col gap-5 mt-5">
+                {productList?.map((product) => (
+                  <li
+                    key={product.id} // Always use a unique key when rendering lists
+                    className="cursor-pointer hover:text-slate-800"
+                  >
+                    <Link href={`product/${product?.seo}`}>{product.nickname}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Fade>
         </div>
 
         <div className="container m-auto mt-8 text-sm text-muted-foreground">

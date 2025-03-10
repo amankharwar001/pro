@@ -19,11 +19,7 @@ export default function FAQManager({setActiveBox,sectionsStatusHandle}) {
   useEffect(() => {
     async function fetchFaqData() {
       try {
-        const response = await fetch("/api/homepage/homefaq", {
-          headers: {
-           'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
-          },
-        });
+        const response = await fetch("/api/homepage/homefaq");
         const result = await response.json();
 
         if (result.success) {
@@ -87,9 +83,7 @@ export default function FAQManager({setActiveBox,sectionsStatusHandle}) {
     try {
       const response = await fetch("/api/homepage/homefaq", {
         method: "PUT",
-        headers: { "Content-Type": "application/json",
-          'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
-         },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
 
