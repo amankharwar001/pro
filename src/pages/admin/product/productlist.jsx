@@ -7,7 +7,11 @@ const ProductList = () => {
   const router = useRouter();
 
   useEffect(() => {
-    fetch("/api/product/productpage/getsection")
+    fetch("/api/product/productpage/getsection",{
+      headers: {
+       'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+      },
+    })
       .then((response) => response.json())
       .then((data) => setProducts(data))
       .catch((error) => console.error("Error fetching products:", error));
@@ -34,6 +38,9 @@ const ProductList = () => {
       // Proceed with DELETE request if 'yes' is typed
       const response = await fetch(`/api/product/productpage/deletesection?id=${productId}`, {
         method: "DELETE",
+        headers: {
+          'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+         },
       });
   
       if (!response.ok) {

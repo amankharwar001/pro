@@ -39,7 +39,11 @@ const Section2 = ({setActiveBox,sectionsStatusHandle}) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('/api/homepage/section2');
+        const response = await fetch('/api/homepage/section2', {
+          headers: {
+           'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+          },
+        });
         if (response.ok) {
           const data = await response.json();
           setEditorContent(data.section.heading);
@@ -73,7 +77,7 @@ const Section2 = ({setActiveBox,sectionsStatusHandle}) => {
 
       const response = await fetch(endpoint, {
         method,
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json','x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY,  },
         body,
       });
 

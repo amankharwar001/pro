@@ -14,7 +14,11 @@ const FooterCTA_Manager = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('/api/adminsetting/footer-cta');
+        const response = await fetch('/api/adminsetting/footer-cta',{
+          headers: {
+           'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+          },
+        });
         const result = await response.json();
 
         if (result.success ) {
@@ -52,6 +56,7 @@ const FooterCTA_Manager = () => {
         method: id ? 'PUT' : 'POST', // Use PUT for updating, POST for creatings
         headers: {
           'Content-Type': 'application/json',
+          'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
         },
         body: JSON.stringify({ ...payload, id }), // Include ID for updates
       });

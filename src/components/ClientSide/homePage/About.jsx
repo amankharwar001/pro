@@ -66,7 +66,7 @@ const About = ({ apidata }) => {
                     </h6>
 
                     {/* Right Image Section */}
-                    <div className="flex flex-wrap justify-center md:justify-around gap-4">
+                    <div className="flex flex-wrap justify-center md:justify-around gap-4 logocol">
                         {apidata?.images.map((image, index) => (
                             <Fade triggerOnce delay={index * 200} key={image.id}>
                                 <Image

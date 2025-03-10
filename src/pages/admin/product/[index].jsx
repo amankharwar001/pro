@@ -131,7 +131,12 @@ const Index = () => {
       const fetchData = async () => {
         try {
           const endpoint = `/api/product/productpage/${index}`;
-          const res = await fetch(endpoint);
+          const res = await fetch(endpoint,{
+            headers: {
+             'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+            },
+          }
+  );
           if (res.ok) {
             const data = await res.json();
             setData(data);

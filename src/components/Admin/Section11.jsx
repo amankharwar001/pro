@@ -30,7 +30,11 @@ export default function Section11Manager({ setActiveBox, sectionsStatusHandle })
   useEffect(() => {
     async function fetchSectionData() {
       try {
-        const response = await fetch("/api/homepage/section11");
+        const response = await fetch("/api/homepage/section11", {
+          headers: {
+           'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+          },
+        });
         const result = await response.json();
 
         if (result.success) {
@@ -69,7 +73,9 @@ export default function Section11Manager({ setActiveBox, sectionsStatusHandle })
     try {
       const response = await fetch("/api/homepage/section11", {
         method,
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json",
+          'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+         },
         body: JSON.stringify(form),
       });
 

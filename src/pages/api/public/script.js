@@ -6,6 +6,9 @@ import FooterScript from "@/models/Script/FooterScript";
 
 // Utility function to safely fetch data
 const fetchDataSafely = async (fetchFunction, fallback = null) => {
+    if (req.headers['x-system-key'] !== process.env.NEXT_PUBLIC_SYSTEM_KEY) {
+        return res.status(401).json({ message: 'Unauthorized Access' });
+      }
     try {
         return await fetchFunction();
     } catch (error) {

@@ -41,7 +41,11 @@ const AdminSection6Panel = ({ setActiveBox, sectionsStatusHandle }) => {
     const fetchSectionData = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch("/api/homepage/section6");
+        const response = await fetch("/api/homepage/section6", {
+          headers: {
+           'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+          },
+        });
         const result = await response.json();
         if (result.success && result.data) {
           setFormData({
@@ -95,7 +99,9 @@ const AdminSection6Panel = ({ setActiveBox, sectionsStatusHandle }) => {
     try {
       const response = await fetch("/api/homepage/section6", {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json",
+          'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+         },
         body: JSON.stringify({ ...formData }),
       });
 

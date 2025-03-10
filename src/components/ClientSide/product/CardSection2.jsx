@@ -7,7 +7,7 @@ const CardSection2 = ({ section4, baseUrl }) => {
     console.log("section 4 data:", section4);
 
     return (
-        <div className="relative bg-white py-16 lg:px-20  pb-20">
+        <div className="relative bg-white py-20 lg:px-20  pb-10">
             <div className="container mx-auto flex flex-col gap-16">
                 {section4.section4Data.section4.map((item, index) => {
                     // Find image by referenceId (starting from 41)
@@ -20,11 +20,11 @@ const CardSection2 = ({ section4, baseUrl }) => {
                     return (
                         <div
                             key={index}
-                            className={`flex flex-col lg:flex-row items-center py-16 gap-10 ${isTextLeft ? "lg:flex-row" : "lg:flex-row-reverse"
+                            className={`flex flex-col md:flex-row pb-20 mb-10 sm-pb-0 items-center py-0 gap-10 ${isTextLeft ? "md:flex-row" : "md:flex-row-reverse"
                                 }`}
                         >
                             {/* Left Side - Text */}
-                            <div className="flex-1 text-center lg:text-start z-10">
+                            <div className="flex-1 text-center md:text-start z-10">
                                 <Fade triggerOnce delay={100}>
                                     <h2 className="font-bold text-gray-900 text-h2_large">{item.heading}</h2>
                                 </Fade>
@@ -34,7 +34,7 @@ const CardSection2 = ({ section4, baseUrl }) => {
                             </div>
 
                             {/* Right Side - Image */}
-                            <div className="flex-shrink-0 w-full lg:w-1/2 flex justify-center relative">
+                            <div className="tabmb_30 flex-shrink-0 w-full md:w-1/2 flex justify-center relative">
                                 {/* Background Circle - Conditional Rendering */}
                                 {isTextLeft ? (
                                     // Jab Image RIGHT side ho, toh ye background dikhaye

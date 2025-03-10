@@ -16,8 +16,7 @@ import SeoPage from "@/components/Admin/seo/SEO";
 const Index = () => {
   const [activeBox, setActiveBox] = useState(1);
   const [sectionsStatus, setSectionsStatus] = useState(Array(13).fill(false));
-  console.log("section satatus show is here",sectionsStatus)
-  
+  console.log("system key show is here",process.env.NEXT_PUBLIC_SYSTEM_KEY)
   const sectionsStatusHandle = (index, status) => {
     setSectionsStatus((prevStatus) => {
       const updatedStatus = [...prevStatus];

@@ -28,7 +28,12 @@ export default function Section9Manager({ setActiveBox, sectionsStatusHandle }) 
     useEffect(() => {
         async function fetchSection9Data() {
             try {
-                const response = await fetch("/api/homepage/section9");
+                const response = await fetch("/api/homepage/section9", {
+                    headers: {
+                     'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+                    },
+                  }
+              );
                 const result = await response.json();
                 if (result.success) {
                     setForm(result.data);
@@ -70,10 +75,11 @@ export default function Section9Manager({ setActiveBox, sectionsStatusHandle }) 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setMessage("");
+      
         try {
             const response = await fetch("/api/homepage/section9", {
                 method: "PUT",
-                headers: { "Content-Type": "application/json" },
+                headers: { "Content-Type": "application/json",'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY,  },
                 body: JSON.stringify(form),
             });
             const result = await response.json();

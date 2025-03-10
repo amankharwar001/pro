@@ -16,7 +16,8 @@ const HeroSectionForm = ({ productpage, onSubmitId,setActiveBox,sectionsStatusHa
   const [isEditMode, setIsEditMode] = useState(false); // Track if data already exists
   const [apiStatus, setApiStatus] = useState(false)
   const [imageStatus, setImageStatus] = useState(false)
-  console.log(  "Image Status: ", imageStatus);
+  console.log("System Key:", process.env.NEXT_PUBLIC_SYSTEM_KEY,productpage?.id);
+
     
   
    useEffect(() => {
@@ -31,7 +32,11 @@ const HeroSectionForm = ({ productpage, onSubmitId,setActiveBox,sectionsStatusHa
     const fetchData = async () => {
       try {
         const endpoint = productpage ? `/api/product/productpage/${productpage?.id}` : '';
-        const res = await fetch(endpoint); // Replace with your API endpoint
+        const res = await fetch(endpoint,{
+          headers: {
+           'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+          },
+        }); // Replace with your API endpoint
         if (res.ok) {
           const data = await res.json();
           setFormData(data); // Populate form with existing data
@@ -44,10 +49,10 @@ const HeroSectionForm = ({ productpage, onSubmitId,setActiveBox,sectionsStatusHa
       }
     };
   
-    if (productpage?.id) {  // Ensure productpage exists before fetching
+    if (productpage?.id) { 
       fetchData();
     }
-  }, [productpage]); // Add productpage?.id to the dependency array
+  }, [productpage]); 
   
 
   // Handle form input changes
@@ -66,7 +71,7 @@ const HeroSectionForm = ({ productpage, onSubmitId,setActiveBox,sectionsStatusHa
       const method = isEditMode ? "PUT" : "POST"; // Use PUT if data exists, otherwise POST
       const res = await fetch(endpoint, {
         method,
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json",'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY,  },
         body: JSON.stringify(formData),
       });
 

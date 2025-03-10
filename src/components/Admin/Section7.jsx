@@ -29,7 +29,11 @@ export default function Section7Manager({ setActiveBox, sectionsStatusHandle }) 
   useEffect(() => {
     async function fetchSection7() {
       try {
-        const response = await fetch("/api/homepage/section7");
+        const response = await fetch("/api/homepage/section7", {
+          headers: {
+           'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+          },
+        });
         const result = await response.json();
 
         if (result.success) {
@@ -60,7 +64,9 @@ export default function Section7Manager({ setActiveBox, sectionsStatusHandle }) 
       const method = isEditMode ? "PUT" : "POST";
       const response = await fetch("/api/homepage/section7", {
         method,
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json",
+          'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+         },
         body: JSON.stringify({ heading, content: content, btn, btnLink }),
       });
 

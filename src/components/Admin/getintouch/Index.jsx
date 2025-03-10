@@ -31,7 +31,11 @@ export default function Section5Product({setActiveBox,sectionsStatusHandle}) {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`/api/getintouch`);
+        const response = await fetch(`/api/getintouch`,{
+          headers: {
+           'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+          },
+        });
         if (!response.ok) {
           throw new Error("Failed to fetch data");
         }
@@ -78,7 +82,7 @@ export default function Section5Product({setActiveBox,sectionsStatusHandle}) {
     try {
       const response = await fetch(`/api/getintouch`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json",'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY,  },
         body: JSON.stringify(data),
       });
 

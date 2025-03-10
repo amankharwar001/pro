@@ -44,6 +44,9 @@ export default function Section6Product({ productpage, setActiveBox,sectionsStat
         setLoading(true);
         const response = await fetch(`/api/product/sectionproduct6/${productpage?.id}`, {
           method: "GET",
+          headers: {
+            'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+           },
         });
         if (!response.ok) {
           throw new Error("Failed to fetch data.");
@@ -86,7 +89,7 @@ export default function Section6Product({ productpage, setActiveBox,sectionsStat
 
       const response = await fetch(`/api/product/sectionproduct6/${productpage?.id}`, {
         method,
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json",  'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY,  },
         body: JSON.stringify(formData),
       });
 

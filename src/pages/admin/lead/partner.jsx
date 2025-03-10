@@ -11,7 +11,11 @@ export default function PartnerContactList() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('/api/partnerpage/partner-contact');
+                const response = await fetch('/api/partnerpage/partner-contact',{
+                    headers: {
+                     'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+                    },
+                  });
                 const result = await response.json();
                 if (response.ok) {
                     setData(result);
@@ -36,6 +40,9 @@ export default function PartnerContactList() {
         try {
             const response = await fetch(`/api/partnerpage/partner-contact?id=${id}`, {
                 method: 'DELETE',
+                headers: {
+                    'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+                   },
             });
             if (response.ok) {
                 setData(data.filter(item => item.id !== id));

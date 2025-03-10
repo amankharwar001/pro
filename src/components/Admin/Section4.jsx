@@ -1,9 +1,3 @@
-
-
-
-
-
-
 import React, { useState, useEffect } from 'react';
 import dynamic from "next/dynamic";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
@@ -35,7 +29,11 @@ const Section4Form = ({ setActiveBox, sectionsStatusHandle }) => {
   useEffect(() => {
     const fetchSectionData = async () => {
       try {
-        const response = await fetch('/api/homepage/section4');
+        const response = await fetch('/api/homepage/section4', {
+          headers: {
+           'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+          },
+        });
         const result = await response.json();
 
         if (response.ok && result.success) {
@@ -78,6 +76,7 @@ const Section4Form = ({ setActiveBox, sectionsStatusHandle }) => {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
+          'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
         },
         body: JSON.stringify(payload),
       });

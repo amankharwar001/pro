@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router"; // Import useRouter
 import Link from "next/link";
@@ -90,6 +89,9 @@ const Sidebar = ({ setSidebarOpen, sidebarOpen }) => {
     try {
       const response = await fetch("/api/admin/logout", {
         method: "POST",
+        headers: {
+          'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+         },
       });
 
       if (response.ok) {
@@ -114,7 +116,11 @@ const Sidebar = ({ setSidebarOpen, sidebarOpen }) => {
     // Function to fetch admin setting data
     const fetchAdminSetting = async () => {
       try {
-        const response = await fetch('/api/adminsetting/info');
+        const response = await fetch('/api/adminsetting/info',{
+          headers: {
+           'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+          },
+        });
         if (response.ok) {
           const data = await response.json();
           setAdminData(data.admin || {}); // Set admin settings or empty object

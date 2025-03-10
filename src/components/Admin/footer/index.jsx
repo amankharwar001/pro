@@ -29,7 +29,11 @@ const FooterAdminPanel = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('/api/adminsetting/footer');
+        const response = await fetch('/api/adminsetting/footer',{
+          headers: {
+           'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+          },
+        });
         if (!response.ok) {
           throw new Error('Failed to fetch footer data');
         }
@@ -91,7 +95,7 @@ const FooterAdminPanel = () => {
     try {
       const response = await fetch('/api/adminsetting/footer', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json','x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY,  },
         body: JSON.stringify({
           content,
           heading: formData.heading,

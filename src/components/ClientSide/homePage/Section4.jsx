@@ -5,7 +5,7 @@ import { Fade, Zoom } from "react-awesome-reveal";
 
 const BoxCard = ({ box, image }) => (
   <Zoom triggerOnce delay={300} className="md:w-full  flex-grow">
-    <div className="bg-card bg-white p-6 rounded-lg shadow-md hover:shadow-xl flex flex-col sm:flex-row gap-4">
+    <div className="bg-card bg-white p-6 rounded-lg shadow-md hover:shadow-xl flex flex-col sm:flex-row gap-4 h-100">
       {/* Image Section */}
       <div className="flex-shrink-0 flex  justify-center">
         <div className="bg-black rounded-full p-1 w-12 h-12 flex items-center justify-center">

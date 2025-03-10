@@ -12,7 +12,10 @@ export default function ForgotPassword() {
 
     const response = await fetch("/api/admin/forgot-password", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { 
+        "Content-Type": "application/json",
+        'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+       },
       body: JSON.stringify({ email }),
     });
 

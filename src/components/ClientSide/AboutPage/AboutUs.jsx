@@ -30,7 +30,7 @@ const AboutUs = ({ data = {}, baseUrl = "" }) => {
           </Fade>
           <Fade triggerOnce delay={400}>
           <div
-                className="mb-4  text-center  lg:text-start  "
+                className="mb-4  text-start  lg:text-start  "
                 dangerouslySetInnerHTML={{ __html: data?.text  }}
               />
             {/* <p>{data?.text || "Default text about your company goes here."}</p> */}

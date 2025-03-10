@@ -16,7 +16,7 @@ const PaymentOptions = ({ section5, baseUrl }) => {
 
   return (
     <div className="bg-[#F5F7FA] py-20 sm:px-8">
-      <div className="container mx-auto grid lg:grid-cols-2 gap-10 items-center">
+      <div className="container mx-auto grid md:grid-cols-2 gap-10 items-center">
         {/* Left Side - Image Section */}
         <div className="relative w-full flex items-center justify-center">
           {/* Background Image */}
@@ -49,7 +49,7 @@ const PaymentOptions = ({ section5, baseUrl }) => {
         </div>
 
         {/* Right Side - Text & Cards Section */}
-        <div className="text-center lg:text-left space-y-6 md:p-4">
+        <div className="text-center md:text-left space-y-6 md:p-4">
           <Fade triggerOnce delay={100}>
             <h2 className="font-bold text-h2_large">{section5.section5Data.heading || "Default Heading"}</h2>
           </Fade>

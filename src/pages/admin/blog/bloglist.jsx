@@ -18,7 +18,12 @@ const BlogList = () => {
 
   // Fetch the blog data when the component mounts
   useEffect(() => {
-    fetch("/api/blog/idgenerate")
+    fetch("/api/blog/idgenerate",{
+      headers: {
+       'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+      },
+    }
+)
       .then((response) => response.json())
       .then((data) => setBlogList(data))
       .catch((error) => console.error("Error fetching products:", error));
@@ -28,6 +33,9 @@ const BlogList = () => {
   const handleAddBlogClick = () => {
     fetch(`/api/blog/idgenerate`, {
       method: "POST",
+      headers: {
+        'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+       },
     })
       .then((response) => {
         if (response.ok) {
@@ -58,6 +66,9 @@ const handleDeleteBlog = async (blogId) => {
       // Proceed with DELETE request if 'yes' is typed
       const response = await fetch(`/api/blog/deleteblog-id?id=${blogId}`, {
           method: 'DELETE',
+          headers: {
+            'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+           },
       });
 
       if (!response.ok) {

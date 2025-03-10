@@ -29,7 +29,11 @@ const HeroSectionForm = ({ onSubmitId, url,referencetype,setActiveBox,sectionsSt
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(`/api/${url}`);
+        const res = await fetch(`/api/${url}`,{
+          headers: {
+           'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+          },
+        });
         if (res.ok) {
           const response = await res.json();
           if (response.data) {
@@ -61,7 +65,7 @@ const HeroSectionForm = ({ onSubmitId, url,referencetype,setActiveBox,sectionsSt
     try {
       const res = await fetch(`/api/${url}`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", 'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY,  },
         body: JSON.stringify(formData),
       });
 

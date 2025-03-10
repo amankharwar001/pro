@@ -1,6 +1,9 @@
 import FooterCTA from '@/models/adminSetting/footerCta';
 
 export default async function handler(req, res) {
+  if (req.headers['x-system-key'] !== process.env.NEXT_PUBLIC_SYSTEM_KEY) {
+    return res.status(401).json({ message: 'Unauthorized Access' });
+  }
   try {
     if (req.method === 'GET') {
       const footerCta = await FooterCTA.findOne();

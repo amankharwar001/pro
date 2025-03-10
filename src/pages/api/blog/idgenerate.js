@@ -7,6 +7,9 @@ import CreateBlogId from '@/models/blogPage/IdGenerate';
 import ImagesData from '@/models/homePage/ImagesData';
 import SEOBlogPage from "@/models/blogPage/SEO";
 export default async function handler(req, res) {
+    if (req.headers['x-system-key'] !== process.env.NEXT_PUBLIC_SYSTEM_KEY) {
+        return res.status(401).json({ message: 'Unauthorized Access' });
+      }
     const { id } = req.query;
 
     switch (req.method) {

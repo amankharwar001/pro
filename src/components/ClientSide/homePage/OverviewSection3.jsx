@@ -82,7 +82,7 @@ const OverviewSection3 = ({ apidata1, apidata2 }) => {
                                         {apidata1?.content}
                                     </p> */}
                                     <div
-                                        className="mt-5 md:pb-5 md:text-start text-p text-paragraph text-center  "
+                                        className="mt-1 md:pb-5 md:text-start text-p text-paragraph text-center  "
                                         dangerouslySetInnerHTML={{ __html: apidata1?.content }}
                                     />
                                 </div>
@@ -189,7 +189,7 @@ const OverviewSection3 = ({ apidata1, apidata2 }) => {
                 </div>
                 {/* Blue section start */}
                 <div className="mt-16 pt-16 md:pt-36 bg-[#003066] rounded-t-3xl relative -top-44 md:-top-32 lg:-top-44 -z-[1]">
-                    <div className="md:grid grid-cols-2">
+                    <div className="md:grid grid-cols-2 items-center">
                         <div className="relative">
                             {/* phone image */}
                             <motion.div

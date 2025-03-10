@@ -31,7 +31,11 @@ const Section5Form = ({ setActiveBox, sectionsStatusHandle }) => {
     useEffect(() => {
         const fetchSectionData = async () => {
             try {
-                const response = await fetch('/api/homepage/section5');
+                const response = await fetch('/api/homepage/section5', {
+                    headers: {
+                     'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+                    },
+                  });
                 const result = await response.json();
 
                 if (response.ok && result.success) {
@@ -75,7 +79,10 @@ const Section5Form = ({ setActiveBox, sectionsStatusHandle }) => {
             setIsSubmitting(true);
             const response = await fetch('/api/homepage/section5', {
                 method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+                 },
                 body: JSON.stringify(payload),
             });
 

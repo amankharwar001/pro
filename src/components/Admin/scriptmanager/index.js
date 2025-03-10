@@ -12,7 +12,11 @@ const ScriptManager = () => {
   // Fetch all scripts for the current tab
   const fetchScripts = async () => {
     try {
-      const response = await fetch(`/api/script/${activeTab}-script`);
+      const response = await fetch(`/api/script/${activeTab}-script`,{
+        headers: {
+         'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+        },
+      });
       const data = await response.json();
       setScripts(data || []);
     } catch (error) {
@@ -27,6 +31,7 @@ const ScriptManager = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
         },
         body: JSON.stringify({ script: newScript }),
       });
@@ -49,6 +54,7 @@ const ScriptManager = () => {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
+          'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
         },
         body: JSON.stringify({ script: updatedScript }),
       });
@@ -70,6 +76,9 @@ const ScriptManager = () => {
     try {
       const response = await fetch(`/api/script/${activeTab}-script?id=${id}`, {
         method: "DELETE",
+        headers: {
+          'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+         },
       });
 
       if (response.ok) {
@@ -139,7 +148,7 @@ const ScriptManager = () => {
             {scripts.length === 0 ? (
               <p className="text-gray-500">No scripts found for {activeTab}.</p>
             ) : (
-              scripts.map((script) => (
+              scripts?.map((script) => (
                 <div
                   key={script.id}
                   className="bg-gray-50 border p-4 rounded-lg mb-4 shadow"

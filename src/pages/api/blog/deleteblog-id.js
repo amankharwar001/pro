@@ -6,6 +6,9 @@ import ContentBlog from '@/models/blogPage/content';
 import CommonBlogContent from '@/models/blogPage/CommonBlogContent';
 
 export default async function handler(req, res) {
+    if (req.headers['x-system-key'] !== process.env.NEXT_PUBLIC_SYSTEM_KEY) {
+        return res.status(401).json({ message: 'Unauthorized Access' });
+      }
     const { id } = req.query;
 
     if (req.method !== 'DELETE') {

@@ -16,6 +16,7 @@ import CommonSEO from '@/models/commonseo/SEO';
 import HideUnhideStatus from '@/models/hideUnhide';
 
 const fetchDataSafely = async (fetchFunction, fallback = null) => {
+    
     try {
         return await fetchFunction();
     } catch (error) {
@@ -25,6 +26,9 @@ const fetchDataSafely = async (fetchFunction, fallback = null) => {
 };
 
 const homepagePublic = async (req, res) => {
+    if (req.headers['x-system-key'] !== process.env.NEXT_PUBLIC_SYSTEM_KEY) {
+        return res.status(401).json({ message: 'Unauthorized Access' });
+      }
     if (req.method !== 'GET') {
         res.setHeader('Allow', ['GET']);
         return res.status(405).json({ success: false, message: `Method ${req.method} not allowed` });

@@ -40,7 +40,12 @@ const Section3Form = ({ productpage, setActiveBox, sectionsStatusHandle }) => {
       if (!productpage?.id) return; // Exit if no productpage ID
 
       try {
-        const res = await fetch(`/api/product/sectionproduct3/${productpage.id}`); // Fetch data with dynamic productpage.id
+        const res = await fetch(`/api/product/sectionproduct3/${productpage.id}`,{
+          headers: {
+           'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+          },
+        }
+); // Fetch data with dynamic productpage.id
         if (res.ok) {
           const data = await res.json();
           setHeading(data.heading || "");
@@ -66,7 +71,7 @@ const Section3Form = ({ productpage, setActiveBox, sectionsStatusHandle }) => {
       const method = isEditMode ? "PUT" : "POST"; // Use PUT to update, POST to create
       const res = await fetch(`/api/product/sectionproduct3/${productpage?.id}`, {
         method,
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json",'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY,  },
         body: JSON.stringify({ heading, text, info }),
       });
 

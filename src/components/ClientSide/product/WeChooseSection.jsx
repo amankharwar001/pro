@@ -5,9 +5,9 @@ import { FaArrowRightLong } from "react-icons/fa6";
 const WeChooseSection = ({ section7 }) => {
     return (
         <div className='py-16'>
-            <div className="container mx-auto   lg:grid grid-cols-2 gap-5 place-items-center">
+            <div className="container mx-auto  lg:grid grid-cols-2 gap-5 place-items-center">
                 {/* Section Heading and Button */}
-                <div className="m-auto md:text-start place-content-start w-[80%]  p-4">
+                <div className="m-auto text-center lg:text-start place-content-start w-[100%]  p-4">
                     <Fade triggerOnce delay={100}>
                         <h2 className="font-bold mb-4 text-h2_large">{section7.heading}</h2>
                     </Fade>
@@ -17,7 +17,7 @@ const WeChooseSection = ({ section7 }) => {
                             <>
                                 <p className="text-p mb-6">{section7.text}</p>
                                 {section7.btn && section7.btnLink && (
-                                    <a href={section7.btnLink} className="flex items-center text-blue-900 gap-2 group text-primary font-semibold hover:underline">
+                                    <a href={section7.btnLink} className="flex justify-center lg:justify-start items-center text-blue-900 gap-2 group text-primary font-semibold hover:underline">
                                         {section7.btn}
                                         <FaArrowRightLong />
                                     </a>

@@ -8,6 +8,9 @@ import LeadFormEmail from "@/models/formEmail/Email";
 import AdminModel from "@/models/AdminModel";
 
 export default async function handler(req, res) {
+  if (req.headers['x-system-key'] !== process.env.NEXT_PUBLIC_SYSTEM_KEY) {
+    return res.status(401).json({ message: 'Unauthorized Access' });
+  }
   if (req.method === "POST") {
     const {
       name,

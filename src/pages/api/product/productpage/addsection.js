@@ -1,6 +1,9 @@
 import heroSectionProductPage from "@/models/productPage/HeroSectionProductPage";
 
 export default async function handler(req, res) {
+  if (req.headers['x-system-key'] !== process.env.NEXT_PUBLIC_SYSTEM_KEY) {
+    return res.status(401).json({ message: 'Unauthorized Access' });
+  }
     
   // If it's a POST request, create a new entry (if no data exists yet)
   if (req.method === 'POST') {

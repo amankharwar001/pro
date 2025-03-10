@@ -2,6 +2,9 @@ import AdminModel from "@/models/AdminModel"; // Assuming AdminModel is exported
 import bcrypt from "bcryptjs"; // Used for comparing hashed passwords
 
 export default async function handler(req, res) {
+  if (req.headers['x-system-key'] !== process.env.NEXT_PUBLIC_SYSTEM_KEY) {
+    return res.status(401).json({ message: 'Unauthorized Access' });
+  }
   if (req.method === "POST") {
     const { currentPassword, newEmail } = req.body;  // Current password & new email
 

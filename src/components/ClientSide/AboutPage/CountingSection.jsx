@@ -13,7 +13,7 @@ const CountingSection = ({ data }) => {
 
   return (
     <div className='pb-16 py-10'>
-      <div className="container overflow-hidden mx-auto  ">
+      <div className="container overflow-hidden mx-auto countingtitle">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 place-items-center">
 
           {/* Total Customers */}

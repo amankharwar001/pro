@@ -63,7 +63,7 @@ export default function FeatureGrid({ data = {}, baseUrl = "" }) {
 
     return (
       <Zoom triggerOnce key={index} delay={100 * index + 100}>
-        <div className="bg-white rounded-3xl shadow-md p-6 md:p-12 text-center md:text-start">
+        <div className="bg-white rounded-3xl shadow-md p-6 md:p-12 text-center md:text-start mob_number">
           {/* Icon and Index */}
           <div className="flex items-end justify-between mb-5">
             <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center">
@@ -79,7 +79,7 @@ export default function FeatureGrid({ data = {}, baseUrl = "" }) {
                 <span className="text-gray-400">N/A</span>
               )}
             </div>
-            <div className="text-gray-500 font-medium">0{index + 1}</div>
+            <div className="text-gray-500 font-medium rightpos_numb">0{index + 1}</div>
           </div>
 
           {/* Feature Title and Description */}
