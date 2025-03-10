@@ -16,7 +16,7 @@ import HeadTagSEO from '@/components/HeadTag';
 const Index = ({ data, error }) => {
   if (error) {
     return (
-      <div className="text-center mt-20">
+      <div className="text-center mt-20 py-">
         <h1 className="text-4xl font-bold text-red-500">Error Loading Page</h1>
         <p className="text-gray-600 mt-4">An error occurred while fetching data.</p>
       </div>
@@ -26,17 +26,6 @@ const Index = ({ data, error }) => {
   return (
     <div>
       <HeadTagSEO data={data} />
-      {/* <HeroSections apidata={data?.heroSection} />
-      <BrandSection apidata={data?.section2} />
-      <OverviewSection3 apidata1={data?.section3} apidata2={data?.section4} />
-      <Section4 apidata={data?.section5} />
-      <Homecard apidata={data?.section6} />
-      <PersonSection1 apidata={data?.section7} />
-      <PersonSection2 apidata={data?.section8} />
-      <About apidata={data?.section9} /> 
-      <Testomonial apidata={data?.testimonials} />
-      <SectionSecurity apidata={data?.section11} />
-      <FaqSection apidata={data?.faq} /> */}
       {data?.heroSection ? <HeroSections apidata={data.heroSection} /> : null}
       {data?.section2 ? <BrandSection apidata={data.section2} /> : null}
       {data?.section3 || data?.section4 ? (
@@ -60,7 +49,7 @@ export async function getServerSideProps() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_PATH}/api/public/home`,{
       headers: {
-        'api-key': process.env.API_KEY, // Send the API key in the request header
+        'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY,
       },
     });
     if (!response.ok) {

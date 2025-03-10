@@ -2,6 +2,9 @@ import Section2 from '@/models/homePage/Section2';
 import ImagesData from '@/models/homePage/ImagesData';
 
 export default async function Section2Api(req, res) {
+  if (req.headers['x-system-key'] !== process.env.NEXT_PUBLIC_SYSTEM_KEY) {
+    return res.status(401).json({ message: 'Unauthorized Access' });
+  }
   try {
     if (req.method === 'GET') {
       // Fetch section data

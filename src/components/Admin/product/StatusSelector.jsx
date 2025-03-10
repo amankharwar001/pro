@@ -37,6 +37,9 @@ const StatusSelector = ({ productId, initialStatus = 'draft', onStatusChange }) 
             try {
                 const response = await fetch(`/api/product/product-status/${productId}?productstatus=${selectedStatus}`, {
                     method: 'POST',
+                    headers: {
+                        'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+                       },
                 });
 
                 if (!response.ok) {

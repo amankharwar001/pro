@@ -45,7 +45,7 @@ const WeWorkSection = ({section6,baseUrl}) => {
                         <Image
                             src="/product/line-shape.png"
                             alt="Paramotor Logo"
-                            className=" max-w-[650px] lg:min-w-[5vw] xl:min-w-[40vw] top-2/4 -translate-y-20 absolute right-2/4 translate-x-2/4 "
+                            className="hideon_tab max-w-[650px] lg:min-w-[5vw] xl:min-w-[40vw] top-2/4 -translate-y-20 absolute right-2/4 translate-x-2/4 "
                             width={520}
                             height={20}
                         />

@@ -5,10 +5,10 @@ import { Fade, Zoom } from "react-awesome-reveal";
 
 const BoxCard = ({ box, image }) => (
   <Zoom triggerOnce delay={300} className="md:w-full  flex-grow">
-    <div className="bg-card bg-white p-6 rounded-lg shadow-md hover:shadow-xl flex flex-col sm:flex-row gap-4">
+    <div className="bg-card bg-white p-6 rounded-lg shadow-md hover:shadow-xl flex flex-col sm:flex-row gap-4 h-100">
       {/* Image Section */}
-      <div className="flex-shrink-0 flex items-center justify-center">
-        <div className="bg-black rounded-full p-1 w-16 h-16 flex items-center justify-center">
+      <div className="flex-shrink-0 flex  justify-center">
+        <div className="bg-black rounded-full p-1 w-12 h-12 flex items-center justify-center">
           <Image
             width={100}
             height={100}
@@ -32,7 +32,7 @@ const Section4 = ({ apidata }) => {
     <div className="bg-gray-100 py-20">
       <div className="container mx-auto px-4">
         <div className="md:grid grid-cols-2 ">
-          <Fade triggerOnce direction="up" className="max-w-lg">
+          <Fade triggerOnce direction="up" className="md:max-w-lg">
             <h2 className="text-h2_medium font-bold mb-4 lg:mb-0  text-center md:text-start w-full ">{apidata?.heading}</h2>
           </Fade>
           <div className="relative max-w-3xl">

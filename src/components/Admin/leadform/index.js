@@ -8,7 +8,11 @@ function LeadFormEmailComponent() {
   // Fetch existing data on component mount
   useEffect(() => {
     async function fetchData() {
-      const res = await fetch('/api/formemail/receive');
+      const res = await fetch('/api/formemail/receive',{
+        headers: {
+         'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+        },
+      });
       const data = await res.json();
       if (data?.email) {
         setFormData({ email: data.email, password: data.password });
@@ -23,7 +27,7 @@ function LeadFormEmailComponent() {
     try {
       await fetch('/api/formemail/receive', {
         method: formData.email ? 'PUT' : 'POST',  // Use PUT if data exists, otherwise POST
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY,  },
         body: JSON.stringify(formData),
       });
       alert(formData.email ? 'Data updated successfully!' : 'Data created successfully!');

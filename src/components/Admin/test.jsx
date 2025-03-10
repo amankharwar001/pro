@@ -8,6 +8,7 @@ const Test = ({setActiveBox,sectionsStatusHandle}) => {
   const [btnLink, setBtnLink] = useState('');
   const [btn, setBtn] = useState('');
   const [isUploading, setIsUploading] = useState(false);
+ 
 
   // ------
   const [apiStatus, setApiStatus] = useState(false)
@@ -27,9 +28,15 @@ const Test = ({setActiveBox,sectionsStatusHandle}) => {
 
   // Fetch existing data on component load
   useEffect(() => {
+    
     const fetchData = async () => {
       try {
-        const response = await fetch('/api/homepage/submitForm');
+        const response = await fetch(`/api/homepage/submitForm`, {
+          headers: {
+           'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+          },
+        }
+    );
         const result = await response.json();
 
         if (result.success ) {
@@ -43,7 +50,7 @@ const Test = ({setActiveBox,sectionsStatusHandle}) => {
         }
       } catch (error) {
         console.error('Error fetching data:', error);
-        alert('Failed to fetch data');
+        // alert('Failed to fetch data');
       }
     };
 
@@ -68,6 +75,7 @@ const Test = ({setActiveBox,sectionsStatusHandle}) => {
         method: id ? 'PUT' : 'POST', // Use PUT for updating, POST for creatings
         headers: {
           'Content-Type': 'application/json',
+          'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
         },
         body: JSON.stringify({ ...payload, id }), // Include ID for updates
       });

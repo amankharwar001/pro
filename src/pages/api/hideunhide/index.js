@@ -1,6 +1,9 @@
 import HideUnhideStatus from "@/models/hideUnhide";
 
 export default async function handler(req, res) {
+  if (req.headers['x-system-key'] !== process.env.NEXT_PUBLIC_SYSTEM_KEY) {
+    return res.status(401).json({ message: 'Unauthorized Access' });
+  }
   if (req.method === 'PUT') {
     const { SectionName, Status } = req.body; // Expecting section details in the request body
     

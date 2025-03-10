@@ -7,7 +7,7 @@ const Section7 = sequelize.define('HomeSection7', {
         allowNull: false,  // Ensuring the heading field is required
     },
     content: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false,  // Ensuring the heading field is required
     },
     btn: {

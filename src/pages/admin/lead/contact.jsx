@@ -8,7 +8,12 @@ export default function ContactFormList() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('/api/contactpage/contactform'); // Replace with your GET API endpoint
+                const response = await fetch('/api/contactpage/contactform',{
+                    headers: {
+                     'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+                    },
+                  }
+          ); // Replace with your GET API endpoint
                 const result = await response.json();
                 if (response.ok) {
                     setData(result.data);
@@ -29,6 +34,9 @@ export default function ContactFormList() {
         try {
             const response = await fetch(`/api/contactpage/contactform?id=${id}`, {
                 method: 'DELETE',
+                headers: {
+                    'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+                   },
             });
             if (response.ok) {
                 setData(data.filter(item => item.id !== id));

@@ -14,7 +14,11 @@ const AboutSection5Form = ({setActiveBox,sectionsStatusHandle}) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await fetch('/api/aboutpage/section5');
+                const res = await fetch('/api/aboutpage/section5',{
+                    headers: {
+                     'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+                    },
+                  });
                 if (res.ok) {
                     const data = await res.json();
                     if (data.card && data.card.length > 0) {
@@ -47,7 +51,7 @@ const AboutSection5Form = ({setActiveBox,sectionsStatusHandle}) => {
         try {
             const res = await fetch('/api/aboutpage/section5', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 'Content-Type': 'application/json' , 'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, },
                 body: JSON.stringify({ card: formData }),
             });
 

@@ -66,7 +66,7 @@ const Slug = ({ data, error, baseUrl }) => {
                         <hr />
                     </div>
                     <div
-                        className="mt-8 blog-content-editor prose max-w-full" 
+                        className="mt-8 blog-content-editor prose max-w-7xl m-auto"
                         dangerouslySetInnerHTML={{ __html: data?.content?.content || "no content available" }}
                     />
                 </div>
@@ -74,7 +74,7 @@ const Slug = ({ data, error, baseUrl }) => {
 
             <SocialShare url={blogUrl} title={data.heading} />
             <div className='pt-10'></div>
-            
+
         </div>
     );
 };
@@ -88,11 +88,12 @@ export async function getServerSideProps(context) {
     }
 
     try {
-        const response = await fetch(`${baseUrl}/api/public/blog/${slug}`,{
+        const response = await fetch(`${baseUrl}/api/public/blog/${slug}`, {
             headers: {
-              'api-key': process.env.API_KEY, // Send the API key in the request header
+                'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY,
             },
-          });
+        }
+        );
         if (!response.ok) {
             return { props: { error: "Blog not found", data: null, baseUrl } };
         }

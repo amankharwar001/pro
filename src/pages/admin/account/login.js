@@ -15,7 +15,11 @@ export default function AdminLogin() {
 
     const response = await fetch("/api/admin/login", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { 
+        "Content-Type": "application/json",
+        'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+
+       },
       body: JSON.stringify({ username, password }),
     });
 

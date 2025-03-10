@@ -12,7 +12,7 @@ const AboutSection3Form = ({ setActiveBox, sectionsStatusHandle }) => {
       { title: '', description: '' },
       { title: '', description: '' },
       { title: '', description: '' },
-    ], // Initialize with 6 empty card objects
+    ], 
   });
   const [isLoading, setIsLoading] = useState(false);
   const [isUpdate, setIsUpdate] = useState(false); // Track if the form is in update mode
@@ -42,7 +42,11 @@ const AboutSection3Form = ({ setActiveBox, sectionsStatusHandle }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch('/api/aboutpage/section3');
+        const res = await fetch('/api/aboutpage/section3',{
+          headers: {
+           'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+          },
+        });
         if (res.ok) {
           const data = await res.json();
           console.log('Fetched data:', data); // Check the fetched data
@@ -88,7 +92,7 @@ const AboutSection3Form = ({ setActiveBox, sectionsStatusHandle }) => {
     try {
       const res = await fetch('/api/aboutpage/section3', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json','x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY,  },
         body: JSON.stringify(formData),
       });
 
@@ -143,7 +147,7 @@ const AboutSection3Form = ({ setActiveBox, sectionsStatusHandle }) => {
                 onChange={(e) => handleChange(index, e)}
                 placeholder={`Card ${index + 1} Title`}
                 className="w-full border p-1 px-2 rounded"
-                required
+                
               />
               <textarea
                 name="description"
@@ -152,7 +156,7 @@ const AboutSection3Form = ({ setActiveBox, sectionsStatusHandle }) => {
                 placeholder={`Card ${index + 1} Description`}
                 className="w-full border p-1 px-2 rounded"
                 rows="3"
-                required
+                
               ></textarea>
             </div>
           ))}

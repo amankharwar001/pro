@@ -9,7 +9,7 @@ const SectionSecurity = ({ apidata }) => {
   return (
     <div className="bg-[#003066] relative">
       <div className="container overflow-hidden m-auto">
-        <div className="bg-primary text-primary-foreground p-6 text-center text-white py-14 max-w-3xl m-auto">
+        <div className="bg-primary text-primary-foreground p-6 text-center text-white py-16 max-w-3xl m-auto">
 
           {/* Animate Image */}
           {primaryImage && (
@@ -35,21 +35,18 @@ const SectionSecurity = ({ apidata }) => {
 
           {/* Animate Content */}
           <Fade triggerOnce duration={1000} delay={400}>
-            <p className="mt-5 text-p mb-4">
-              {content}
-            </p>
+           
+              <p className="mt-5 text-[18px]  mb-4">{content} <a className='underline font-semibold ' href={btnLink} target="_blank" rel="noopener noreferrer">
+              {btn}
+            </a></p>
+            
+            
+
           </Fade>
 
           {/* Animate Button */}
           <Fade triggerOnce duration={1000} delay={600} className='flex'>
-            <a
-              href={btnLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex bg-white text-[#003066] font-bold text-base md:text-lg justify-start m-auto md:justify-center p-2 md:p-4 px-4 md:px-6 rounded-full mt-6"
-            >
-              {btn}
-            </a>
+
           </Fade>
         </div>
       </div>

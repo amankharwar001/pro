@@ -30,21 +30,21 @@ const uploadImage = upload.single('image');  // 'image' is the key for file uplo
 // Route to upload or update an image for a specific referenceType
 const uploadImageRoute = async (req, res) => {
     const { referenceType } = req.params;  // Get referenceType from the route
-    const { altText, referenceId } = req.body;  // altText, referenceId should be part of form data
+    const { altText=null, referenceId } = req.body;  // altText, referenceId should be part of form data
 
     if (!req.file) {
         return res.status(400).json({
             success: false,
             error: 'No file uploaded',
             referenceType: referenceType,
-            altText: altText,
+           
         });
     }
 
-    if (!altText || !referenceId || !referenceType) {
+    if ( !referenceId || !referenceType) {
         return res.status(400).json({
             success: false,
-            error: 'Missing altText, referenceId, or referenceType',
+            error: 'Missing referenceId, or referenceType',
         });
     }
 
@@ -150,7 +150,7 @@ const getImages = async (req, res) => {
 // Route to update an existing image
 const updateImage = async (req, res) => {
     const { referenceType, id } = req.params; // Get referenceType and image ID from URL params
-    const { altText } = req.body; // altText should be part of the request body
+    const { altText=null } = req.body; // altText should be part of the request body
 
     try {
         // Find the image record in the database

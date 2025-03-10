@@ -1,16 +1,16 @@
+
+
 import React from "react";
 import Image from "next/image";
-import { Fade,Zoom } from 'react-awesome-reveal';
+import { Fade, Zoom } from 'react-awesome-reveal';
 
-
-const Brand = ({section2,baseUrl}) => {
+const Brand = ({ section2, baseUrl }) => {
   return (
     <div className="bg-gray-50 py-16 px-4">
       <div className="container mx-auto lg:grid grid-cols-3 items-center gap-8">
         {/* Heading Section with Fade Effect */}
         <Fade triggerOnce>
-          <h5 className="font-bold text_h5  text-gray-500 mb-6 lg:mb-0 lg:max-w-[300px] leading-snug">
-            {/* ACCEPTABLE TO MILLIONS OF CUSTOMERS WORLDWIDE AND IN TOP MARKETPLACES. */}
+          <h5 className=" text_h5 text-center lg:text-start text-gray-500 mb-6 lg:mb-0 lg:max-w-[350px] ">
             {section2.section2Data.title}
           </h5>
         </Fade>
@@ -23,7 +23,7 @@ const Brand = ({section2,baseUrl}) => {
                 <Image
                   src={`${baseUrl}${src.filePath}`}
                   alt={src.altText}
-                  className="w-24 sm:w-28 md:w-36 lg:w-40"
+                  className="w-24 sm:w-28 md:w-36 lg:w-40 grayscale transition-all duration-300 ease-in-out hover:grayscale-0"
                   width={250}
                   height={100}
                 />

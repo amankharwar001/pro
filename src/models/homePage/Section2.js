@@ -4,7 +4,7 @@ import sequelize from '../../db/dbConnect.js';
 
 const Section2 = sequelize.define('HeroSection2', {
   heading: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
     allowNull: false,  // Ensuring the heading field is required
   },
   

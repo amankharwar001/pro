@@ -1,6 +1,9 @@
 import ContactForm from "@/models/contactPage/ContactForm";
 
 export default async function handler(req, res) {
+  if (req.headers['x-system-key'] !== process.env.NEXT_PUBLIC_SYSTEM_KEY) {
+    return res.status(401).json({ message: 'Unauthorized Access' });
+  }
   if (req.method === 'POST') {
     try {
       const {

@@ -31,7 +31,11 @@ const Section5Form = ({ setActiveBox, sectionsStatusHandle }) => {
     useEffect(() => {
         const fetchSectionData = async () => {
             try {
-                const response = await fetch('/api/homepage/section5');
+                const response = await fetch('/api/homepage/section5', {
+                    headers: {
+                     'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+                    },
+                  });
                 const result = await response.json();
 
                 if (response.ok && result.success) {
@@ -45,11 +49,11 @@ const Section5Form = ({ setActiveBox, sectionsStatusHandle }) => {
                     ]);
                     setApiStatus(true)
                 } else {
-                    alert('Failed to fetch section data');
+                    console.warn('Failed to fetch section data');
                 }
             } catch (error) {
                 console.error(error);
-                alert('Error fetching data');
+                
             }
         };
 
@@ -75,7 +79,10 @@ const Section5Form = ({ setActiveBox, sectionsStatusHandle }) => {
             setIsSubmitting(true);
             const response = await fetch('/api/homepage/section5', {
                 method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+                 },
                 body: JSON.stringify(payload),
             });
 
@@ -138,7 +145,7 @@ const Section5Form = ({ setActiveBox, sectionsStatusHandle }) => {
                                 <h4 className="text-md font-medium text-gray-700 mb-2">Box {index + 1}</h4>
                                 <div>
 
-                                    <ImageUploader referenceType={`homepage_section5_${index + 1}`} width={200} height={100}
+                                    <ImageUploader deleteStatus={1}  referenceType={`homepage_section5_${index + 1}`} width={200} height={100}
                                         setImageStatus={(status) =>
                                             setImageStatus(prevState => ({
                                                 ...prevState,

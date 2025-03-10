@@ -17,7 +17,7 @@ const About = ({ apidata }) => {
                         <Fade triggerOnce direction="left" delay={300}>
                             <h3 className="font-bold mb-6 text-h3_medium">{apidata?.content}</h3>
                         </Fade>
-                        <Fade triggerOnce delay={600} className='flex'>
+                        {/* <Fade triggerOnce delay={600} className='flex'>
                             <a
                                 href={apidata?.btnLink}
                                 target="_blank"
@@ -26,7 +26,20 @@ const About = ({ apidata }) => {
                             >
                                 {apidata?.btn}
                             </a>
-                        </Fade>
+                        </Fade> */}
+                        {apidata?.btn && (
+                            <Fade triggerOnce delay={600} className='flex'>
+                                <a
+                                    href={apidata?.btnLink || '#'}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex w-auto border border-white hover:bg-white hover:text-black text-white text-base md:text-lg justify-start md:justify-center p-2 md:px-4 rounded-full"
+                                >
+                                    {apidata?.btn}
+                                </a>
+                            </Fade>
+                        )}
+
                     </div>
                     <div className="lg:pt-0 pt-10 col-span-2 grid grid-cols-1 md:grid-cols-2 gap-10">
                         {apidata?.info.map((item, index) => (
@@ -53,7 +66,7 @@ const About = ({ apidata }) => {
                     </h6>
 
                     {/* Right Image Section */}
-                    <div className="flex flex-wrap justify-center md:justify-around gap-4">
+                    <div className="flex flex-wrap justify-center md:justify-around gap-4 logocol">
                         {apidata?.images.map((image, index) => (
                             <Fade triggerOnce delay={index * 200} key={image.id}>
                                 <Image
