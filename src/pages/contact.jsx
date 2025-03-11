@@ -34,7 +34,7 @@ export async function getServerSideProps(context) {
   try {
     const response = await fetch(`${baseUrl}/api/public/contact`,{
       headers: {
-        'api-key': process.env.API_KEY, // Send the API key in the request header
+        'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY,
       },
     });
     const data = response.ok ? await response.json() : null;

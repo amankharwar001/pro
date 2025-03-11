@@ -10,7 +10,7 @@ const HeroSections = ({ apidata }) => {
   if (!apidata) return <div></div>;
 
   return (
-    <div className="bg-[#F2F2F2] pb-5 pt-5">
+    <div className="bg-[#F2F2F2] pb-5 pt-2 md:pt-5">
       <div className="container min-w-[360px] overflow-hidden mx-auto pb-5">
         {/* Hero Section Wrapper */}
         <div className="relative bg-zinc-100 rounded-2xl overflow-hidden flex flex-col justify-center min-h-[65vh] lg:min-h-[80vh]">
