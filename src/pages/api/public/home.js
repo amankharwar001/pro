@@ -100,7 +100,7 @@ const homepagePublic = async (req, res) => {
         const section8ImagesGroup = isSectionActive('homepage_section8') ? await fetchDataSafely(() => ImagesData.findAll({ where: { referenceType: ['homepage_section_8'] } }), []) : [];
         const section9Images = isSectionActive('homepage_section9') ? await fetchDataSafely(() => ImagesData.findAll({ where: { referenceType: ['homepage_section_9'] } }), []) : [];
         const section11Images = isSectionActive('homepage_section11') ? await fetchDataSafely(() => ImagesData.findAll({ where: { referenceType: ['homepage_section_11_primary'] } }), []) : [];
-        const testimonialsImages = isSectionActive('homepage_section10') ? await fetchDataSafely(() => ImagesData.findAll({ where: { referenceType: ['homepage_testimonial'] } }), []) : [];
+        const testimonialsImages = isSectionActive('homepage_section10') ? await fetchDataSafely(() => ImagesData.findAll({ where: { referenceType: ['homepage_testimonial_primary','homepage_testimonial'] } }), []) : [];
 
         // Combine section data and image data
         const homepageData = {

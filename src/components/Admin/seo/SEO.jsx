@@ -102,7 +102,7 @@ const SeoPage = ({ page,sectionsStatusHandle }) => {
       alert("SEO Data Submitted Successfully");
     } catch (error) {
       console.error(error);
-      alert(error.message);
+      // alert(error.message);
     }
   };
 

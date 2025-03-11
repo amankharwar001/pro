@@ -4,6 +4,8 @@ const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import "react-quill/dist/quill.snow.css";
 import CommonImageUpload from "./CommonImageUpload";
 import StatusManager from "./status";
+import ImageUploader from "./ImageUploader";
+// jkh
 
 const TestimonialManager = ({ setActiveBox, sectionsStatusHandle }) => {
   const [heading, setHeading] = useState("");
@@ -12,9 +14,10 @@ const TestimonialManager = ({ setActiveBox, sectionsStatusHandle }) => {
   const [message, setMessage] = useState(null);
   const [apiStatus, setApiStatus] = useState(false);
   const [multiImageStatus, setMultiImageStatus] = useState(false);
+  const [imageStatus, setImageStatus] = useState(false)
 
   useEffect(() => {
-    if (apiStatus && multiImageStatus) {
+    if (apiStatus && multiImageStatus && imageStatus) {
       sectionsStatusHandle(true);
     } else {
       sectionsStatusHandle(false);
@@ -99,7 +102,10 @@ const TestimonialManager = ({ setActiveBox, sectionsStatusHandle }) => {
       <div className="flex justify-end pb-5">
         <StatusManager sectionName={"homepage_section10"} />
       </div>
-      <CommonImageUpload referenceType={"homepage_testimonial"} imageCount={9} setMultiImageStatus={setMultiImageStatus} />
+      <div className="flex justify-between">
+      <ImageUploader referenceType={"homepage_testimonial_primary"} width={1920} height={750} setImageStatus={setImageStatus}/>
+      <CommonImageUpload referenceType={"homepage_testimonial"} imageCount={8} setMultiImageStatus={setMultiImageStatus} />
+      </div>
       <form onSubmit={handleSubmit} className="space-y-4 mt-4">
         <div>
           <label className="block text-gray-700 font-semibold">Heading:</label>

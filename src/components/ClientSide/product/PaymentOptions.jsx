@@ -54,9 +54,13 @@ const PaymentOptions = ({ section5, baseUrl }) => {
             <h2 className="font-bold text-h2_large">{section5.section5Data.heading || "Default Heading"}</h2>
           </Fade>
           <Fade triggerOnce delay={300}>
-            <p className="text-gray-600 max-w-lg mx-auto lg:mx-0">
+            <div
+              className="text-gray-600 max-w-lg mx-auto lg:mx-0  "
+              dangerouslySetInnerHTML={{ __html: section5.section5Data.text }}
+            />
+            {/* <p className="text-gray-600 max-w-lg mx-auto lg:mx-0">
               {section5.section5Data.text || "Default text content goes here."}
-            </p>
+            </p> */}
           </Fade>
 
           {/* Cards Section */}
@@ -81,7 +85,11 @@ const PaymentOptions = ({ section5, baseUrl }) => {
                     )}
                     <div>
                       <h5 className="text_h5 font-semibold">{info.title || "Default Title"}</h5>
-                      <p className="text-gray-600 text-p">{info.content || "No content available."}</p>
+                      <div
+                        className="text-gray-600 text-p "
+                        dangerouslySetInnerHTML={{ __html: info.content }}
+                      />
+                      {/* <p className="text-gray-600 text-p">{info.content || "No content available."}</p> */}
                     </div>
                   </div>
                 </Fade>
