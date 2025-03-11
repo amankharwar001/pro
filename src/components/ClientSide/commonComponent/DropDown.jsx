@@ -13,7 +13,7 @@ export default function NavBar({ data }) {
           {/* Dropdown Menu for Product */}
           <NavItem href={process.env.NEXT_PUBLIC_BASE_PATH} label="Home" />
           <div className="relative group ">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-0">
                 <span className="text-md font-medium cursor-pointer group-hover:text-[#013466] transition  ">
                 Product
                 </span>

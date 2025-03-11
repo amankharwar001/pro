@@ -20,7 +20,7 @@ const CardSection2 = ({ section4, baseUrl }) => {
                     return (
                         <div
                             key={index}
-                            className={`flex flex-col md:flex-row pb-20 mb-10 sm-pb-0 items-center py-0 gap-10 ${isTextLeft ? "md:flex-row" : "md:flex-row-reverse"
+                            className={`flex flex-col reverseonmob md:flex-row pb-20 mb-10 sm-pb-0 items-center py-0 gap-10 ${isTextLeft ? "md:flex-row" : "md:flex-row-reverse"
                                 }`}
                         >
                             {/* Left Side - Text */}

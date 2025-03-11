@@ -26,7 +26,6 @@ const Header = ({ data, img }) => {
   const closeSidebar = () => {
     setIsOpen(false);
   };
-  console.log("logo show is here",logo)
 
   // Fetch admin settings on component mount
   useEffect(() => {
@@ -35,8 +34,8 @@ const Header = ({ data, img }) => {
         const response = await fetch('/api/public/logo', {
           method: 'GET',
           headers: {
-            'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
-           },
+            'x-system-key': systemKey,
+          },
         });
         if (response.ok) {
           const data = await response.json();

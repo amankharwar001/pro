@@ -31,7 +31,7 @@ const Footercta = () => {
     }, [baseUrl]);
     return (
         <div>
-            <div className=' overflow-hidden bg-[#003066] absolute -top-20 left-2/4 -translate-x-2/4  rounded-2xl w-[90%]'>
+            <div className=' overflow-hidden bg-[#003066] absolute -top-20 left-2/4 -translate-x-2/4  rounded-2xl w-[94%]'>
                 <div className=" p-8 md:p-16 md:flex justify-between m-auto text-white z-20">
                     <div>
                         <Fade triggerOnce duration={2000} delay={300}>

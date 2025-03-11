@@ -19,7 +19,7 @@ const BoxCard = ({ box, image }) => (
         </div>
       </div>
       {/* Content Section */}
-      <div className="flex-1">
+      <div className="flex-1 text-center sm:text-start">
         <h5 className="text-h5 font-bold mb-2">{box?.heading}</h5>
         <p className="text-p">{box?.content}</p>
       </div>

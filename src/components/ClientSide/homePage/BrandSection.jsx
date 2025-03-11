@@ -20,6 +20,12 @@ const BrandSection = ({ apidata }) => {
     rtl: false, // Reverse direction
     arrows: false, // Disable arrows
     responsive: [
+    {
+        breakpoint: 1023, // For small devices
+        settings: {
+          slidesToShow: 3,
+        },
+      },
       {
         breakpoint: 768, // For small devices
         settings: {
@@ -66,19 +72,19 @@ const BrandSection = ({ apidata }) => {
   return (
     <div className="mt-20 px-0 md:px-0">
       <div className="container  mx-auto py-4 flex flex-col pl-0">
-        <div className="flex gap-5  items-center flex-col lg:flex-row justify-center lg:justify-between">
+        <div className="flex gap-5  items-center flex-col md:flex-row justify-center lg:justify-between">
           {/* Heading */}
-          <div className="w-full lg:w-[28%] mb-4 lg:mb-0">
-            <div className="relative text-center lg:text-left">
+          <div className="w-full md:w-[28%] mb-4 lg:mb-0">
+            <div className="relative text-center md:text-left">
               <div
-                className="mb-4 font-bold text-center  lg:text-start  "
+                className="mb-4 font-bold text-center  md:text-start  "
                 dangerouslySetInnerHTML={{ __html: apidata?.heading }}
               />
               <span className="absolute w-20 md:w-32 h-[3px] bg-blue-900 hidden lg:block"></span>
             </div>
           </div>
 
-          <div className="w-full lg:w-[68%] ">
+          <div className="w-full md:w-[68%] ">
             {/* Top Row Slider */}
             <div className="lg:hidden">
               <Slider {...reversesettings} className=" brand-slider ">

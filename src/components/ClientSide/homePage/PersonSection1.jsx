@@ -8,8 +8,8 @@ export default function PersonSection1({ apidata }) {
     const secondaryImage = apidata?.images?.find(img => img.referenceType === 'homepage_section7_1');
 
     return (
-        <div className="container m-auto grid md:grid-cols-2 gap-5 -mt-10 md:mt-20 mb-10 md:mb-32">
-            <div className="' order-last md:order-none w-full mb-6 md:mb-0 relative md:pt-0 pt-5">
+        <div className="container m-auto grid md:grid-cols-2 gap-5 -mt-10 md:mt-20 mb-20 md:mb-28 mt-10 items-center">
+            <div className="' order-first md:order-none w-full relative m-0">
                 <div className="lg:max-w-[497px] w-full">
                     <Zoom triggerOnce delay={300}>
                         <div className="flex justify-end w-full">
@@ -37,7 +37,7 @@ export default function PersonSection1({ apidata }) {
                     )}
                 </div>
             </div>
-            <div className="mt-28">
+            <div className="m-0">
                 <Fade triggerOnce direction="up">
                     <h2 className="font-bold text-h2_large">{apidata?.heading}</h2>
                 </Fade>

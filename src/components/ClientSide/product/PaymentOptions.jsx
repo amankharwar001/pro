@@ -15,7 +15,7 @@ const PaymentOptions = ({ section5, baseUrl }) => {
   const infoItems = section5.section5Data.info || [];
 
   return (
-    <div className="bg-[#F5F7FA] py-20 sm:px-8">
+    <div className="bg-[#F5F7FA] py-20 sm:px-8 ptb_11rem">
       <div className="container mx-auto grid md:grid-cols-2 gap-10 items-center">
         {/* Left Side - Image Section */}
         <div className="relative w-full flex items-center justify-center">
@@ -49,7 +49,7 @@ const PaymentOptions = ({ section5, baseUrl }) => {
         </div>
 
         {/* Right Side - Text & Cards Section */}
-        <div className="text-center md:text-left space-y-6 md:p-4">
+        <div className="text-center md:text-left space-y-6 md:p-4 mttab30">
           <Fade triggerOnce delay={100}>
             <h2 className="font-bold text-h2_large">{section5.section5Data.heading || "Default Heading"}</h2>
           </Fade>
@@ -83,7 +83,7 @@ const PaymentOptions = ({ section5, baseUrl }) => {
                         ❌
                       </div>
                     )}
-                    <div>
+                    <div className="tavleft">
                       <h5 className="text_h5 font-semibold">{info.title || "Default Title"}</h5>
                       <div
                         className="text-gray-600 text-p "

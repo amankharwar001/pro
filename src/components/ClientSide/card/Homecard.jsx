@@ -65,18 +65,18 @@ const Homecard = ({ apidata }) => {
                 },
             },
             {
-                breakpoint: 768,
+                breakpoint: 991,
                 settings: {
-                    slidesToShow: 3,
+                    slidesToShow: 2,
                     centerMode: true,
                 },
             },
             {
-                breakpoint: 748,
+                breakpoint: 780,
                 settings: {
-                    slidesToShow: 1,
+                    slidesToShow: 2,
                     centerMode: true,
-                    centerPadding: '20px',
+                    centerPadding: '10px',
                 },
             },
             {
@@ -131,7 +131,7 @@ const Homecard = ({ apidata }) => {
                                                         : `/default_image_path.jpg`
                                                 }
                                                 alt={apidata?.images?.[index]?.altText || 'Card Image'}
-                                                className="rounded-xl w-full md:h-[14vw] 2xl:h-[210px] border border-slate-400"
+                                                className="rounded-xl w-full ontab_210 md:h-[14vw] 2xl:h-[210px] border border-slate-400"
                                                 width={320}
                                                 height={150}
                                             />
@@ -139,7 +139,7 @@ const Homecard = ({ apidata }) => {
 
                                         </div>
                                     </div>
-                                    <div className="px-3 xl:px-6 homecard-ptag  md:h-[580px] lg:h-[480px] xl:h-[320px]">
+                                    <div className="px-3 xl:px-6 homecard-ptag  h-[auto] sm:h-[420px] md:h-[480px] lg:h-[480px] xl:h-[320px]">
                                         <h2 className="text-h2_small font-bold text-center ">{card.title}</h2>
                                         <div
                                             className="text-muted-foreground text-center mt-2 "
@@ -169,7 +169,7 @@ const Homecard = ({ apidata }) => {
                 </Slider>
             </div>
             <div
-                className="container w-full flex justify-center mt-8 text-xs"
+                className="container w-full flex justify-center mt-8 text-xs subtext_bottom"
                 dangerouslySetInnerHTML={{ __html: apidata?.bottomtext }}
             ></div>
         </div>

@@ -92,7 +92,7 @@ const OverviewSection3 = ({ apidata1, apidata2 }) => {
                         <div className=" right-10 flex max-w-[360px] m-auto -mt-10 md:mt-0">
                             <div className="bg-slate-100 m-auto w-[70%] md:w-[200px] rounded-xl md:p-5 py-2 px-10 pr-12 relative md:absolute  md:-bottom-10 lg:bottom-5 md:-right-16 lg:right-6">
                                 {/* <div className="bg-slate-100 m-auto w-[70%] md:w-[200px] rounded-xl md:p-5 py-2 px-10 pr-12 relative top-24 md:top-5 lg:top-5 xl:top-24 "> */}
-                                <span className="font-semibold flex text-center text-xs md:text-base items-center ">{apidata1?.agentBrief}</span>
+                                <span className="font-semibold flex text-center text-xs md:text-base items-center justify-center">{apidata1?.agentBrief}</span>
                                 <div>
                                     <div className="relative h-10 my-5 w-full">
                                         <motion.img
@@ -175,7 +175,7 @@ const OverviewSection3 = ({ apidata1, apidata2 }) => {
                                     transition={{ delay: 0.7, duration: 0.7 }}
                                     className="m-auto  md:w-full mt-5   py-2 px-1 xl:px-5"
                                 >
-                                    <div className="mt-0 md:py-3">
+                                    <div className="mt-0 md:py-3 text-center">
                                         <span className="font-semibold text-white text-[2.2rem] xl:text-[3.5rem] leading-10">
                                             {apidata1?.leadNo}
                                         </span>
