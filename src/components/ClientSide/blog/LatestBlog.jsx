@@ -13,7 +13,11 @@ const LatestBlog = ({ baseUrl }) => {
     // Fetch latest posts from API
     const fetchLatestPosts = async () => {
       try {
-        const response = await fetch("/api/public/blog/latestpost");
+        const response = await fetch("/api/public/blog/latestpost", {
+          headers: {
+              'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY,
+          },
+      });
         const result = await response.json();
         setPosts(result || []); // Update posts state
       } catch (err) {

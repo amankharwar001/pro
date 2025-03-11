@@ -10,7 +10,11 @@ const HeroSection = () => {
         const fetchData = async () => {
             try {
                 // Fetch data from the public blog API
-                const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_PATH}/api/public/blog/blog`);
+                const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_PATH}/api/public/blog/blog`, {
+                    headers: {
+                        'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY,
+                    },
+                });
                 const data = await res.json();
                 setBlogData(data); // Update the state with the fetched data
             } catch (error) {

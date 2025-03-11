@@ -72,7 +72,11 @@ export default function FooterSection() {
     // Function to fetch admin setting data
     const fetchAdminSetting = async () => {
       try {
-        const response = await fetch('/api/public/logo');
+        const response = await fetch('/api/public/logo', {
+          headers: {
+           'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+          },
+        });
         if (response.ok) {
           const data = await response.json();
           setlogo(data.logo || {}); // Set admin settings or empty object
@@ -131,14 +135,6 @@ export default function FooterSection() {
             <div className="mt-4">
               <h5 className="text-h5 font-semibold">Products</h5>
               <ul className="text-muted-foreground flex flex-col gap-5 mt-5">
-                {/* {productList?.map((product) => (
-                  <li
-                    key={product.id} // Always use a unique key when rendering lists
-                    className="cursor-pointer hover:text-slate-800"
-                  >
-                    <Link href={`${process.env.NEXT_PUBLIC_BASE_PATH}product/${product?.link}`}>{product.nickname}</Link>
-                  </li>
-                ))} */}
                 {productList
                   ?.sort((a, b) => new Date(b.time) - new Date(a.time)) 
                   ?.slice(0, 4)

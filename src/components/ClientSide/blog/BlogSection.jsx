@@ -15,7 +15,11 @@ const BlogSection = ({ data, baseUrl }) => {
     const fetchCategories = async () => {
       try {
         const response = await fetch(
-          "/api/public/blog/category"
+          "/api/public/blog/category", {
+            headers: {
+                'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY,
+            },
+        }
         );
         const result = await response.json();
         setCategories(result || []);

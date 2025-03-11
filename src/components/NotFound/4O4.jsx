@@ -14,7 +14,7 @@ const Found4O4 = () => {
           <div className="w-full">
             <div className="relative w-full h-[300px] md:h-[400px] mx-auto -mt-10 -mb-24 -z-[10]">
               <Image
-                src="/gif/stone_age.gif"  // Replace with the correct path to your gif
+                src="/gif/stone_age.gif"  
                 alt="404 Gif"
                 layout="fill"
                 objectFit="contain"
