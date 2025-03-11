@@ -10,6 +10,7 @@ const Section2Form = ({ productpage,setActiveBox,sectionsStatusHandle }) => {  /
 
    const [apiStatus, setApiStatus] = useState(false)
    const [imageStatuses, setImageStatuses] = useState({}); // Track statuses for all images
+   const [multiImageStatus, setMultiImageStatus] = useState(false)
 
    // Update the status for a specific image
    const handleImageStatusChange = (id, status) => {
@@ -98,7 +99,7 @@ const Section2Form = ({ productpage,setActiveBox,sectionsStatusHandle }) => {  /
         <StatusManager sectionName={`product_section2${productpage?.id}`}/>
       </div>
       <div className="flex flex-wrap gap-5">
-        {[...Array(4)].map((_, index) => (
+        {/* {[...Array(4)].map((_, index) => (
           <ImageUploader
           key={index}
           referenceType={productpage?.id} // Unique reference for the product
@@ -107,7 +108,8 @@ const Section2Form = ({ productpage,setActiveBox,sectionsStatusHandle }) => {  /
           height={115}
           setImageStatus={(status) => handleImageStatusChange(index + 21, status)} // Update status for the specific image
         />
-        ))}
+        ))} */}
+        <CommonImageUpload referenceType={`${productpage?.id}_section2`} imageCount={40} setMultiImageStatus={setMultiImageStatus} />
       </div>
       {/* <ImageUploader referenceType={productpage?.id} referenceId={3} /> */}
       <form onSubmit={handleSubmit}>

@@ -9,6 +9,7 @@ import Section6Product from "@/models/productPage/Section6Product";
 import Section7Product from "@/models/productPage/Section7Product";
 import SEOProductPage from "@/models/productPage/SEO";
 import HideUnhideStatus from '@/models/hideUnhide';
+import Section2Optional from "@/models/productPage/Section2Optional";
 
 export default async function handler(req, res) {
   if (req.headers['x-system-key'] !== process.env.NEXT_PUBLIC_SYSTEM_KEY) {
@@ -51,6 +52,9 @@ export default async function handler(req, res) {
     const section2Data = isSectionActive(`product_section2${id}`)
       ? await Section2Product.findOne({ where: { heroSectionId: id } }) || null
       : null;
+    const section2DataOptional = isSectionActive(`product_section2_optional${id}`)
+      ? await Section2Optional.findOne({ where: { heroSectionId: id } }) || null
+      : null;
 
     const section3Data = isSectionActive(`product_section3${id}`)
       ? await Section3Product.findOne({ where: { heroSectionId: id } }) || null
@@ -77,7 +81,13 @@ export default async function handler(req, res) {
     const heroSectionImages = await ImagesData.findAll({ where: { referenceType: id, referenceId: [1] } });
 
     const section2Images = section2Data
-      ? await ImagesData.findAll({ where: { referenceType: id, referenceId: [21, 22, 23, 24] } })
+      ? await ImagesData.findAll({ where: { referenceType: [`${id}_section2`] } })
+      : [];
+    const section2OptionalImagesTop = section2DataOptional
+      ? await ImagesData.findAll({ where: { referenceType: [`${id}section2_top`] } })
+      : [];
+    const section2OptionalImagesBottom = section2DataOptional
+      ? await ImagesData.findAll({ where: { referenceType: [`${id}section2_bottom`] } })
       : [];
 
     const section3Images = section3Data
@@ -99,6 +109,7 @@ export default async function handler(req, res) {
     const responseData = {
       heroSection: heroSectionData ? { heroSectionData, Images: heroSectionImages } : null,
       section2: section2Data ? { section2Data, Images: section2Images } : null,
+      section2optional: section2DataOptional ? { section2DataOptional, topImages: section2OptionalImagesTop, bottomImages:section2OptionalImagesBottom } : null,
       section3: section3Data ? { section3Data, Images: section3Images } : null,
       section4: section4Data ? { section4Data, Images: section4Images } : null,
       section5: section5Data ? { section5Data, Images: section5Images } : null,

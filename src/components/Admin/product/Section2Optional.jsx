@@ -18,7 +18,7 @@ const modules = {
   ],
 };
 
-const Section2Form = ({ productpage, setActiveBox, sectionsStatusHandle }) => {
+const Section2Optional = ({ productpage, setActiveBox, sectionsStatusHandle }) => {
   const [editorContent, setEditorContent] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
@@ -37,7 +37,7 @@ const Section2Form = ({ productpage, setActiveBox, sectionsStatusHandle }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(`/api/product/sectionproduct2/${productpage?.id}`, {
+        const res = await fetch(`/api/product/sectionproduct2optional/${productpage?.id}`, {
           headers: {
             "x-system-key": process.env.NEXT_PUBLIC_SYSTEM_KEY,
           },
@@ -65,7 +65,7 @@ const Section2Form = ({ productpage, setActiveBox, sectionsStatusHandle }) => {
 
     try {
       const method = isEditMode ? "PUT" : "POST";
-      const res = await fetch(`/api/product/sectionproduct2/${productpage?.id}`, {
+      const res = await fetch(`/api/product/sectionproduct2optional/${productpage?.id}`, {
         method,
         headers: {
           "Content-Type": "application/json",
@@ -94,7 +94,7 @@ const Section2Form = ({ productpage, setActiveBox, sectionsStatusHandle }) => {
   return (
     <div className="p-4 border bg-gray-50 shadow-inner rounded">
       <div className="flex justify-end">
-        <StatusManager sectionName={`product_section2${productpage?.id}`} />
+        <StatusManager sectionName={`product_section2_optional${productpage?.id}`} />
       </div>
 
       <form onSubmit={handleSubmit}>
@@ -118,10 +118,10 @@ const Section2Form = ({ productpage, setActiveBox, sectionsStatusHandle }) => {
           {isLoading ? "Submitting..." : isEditMode ? "Update" : "Create"}
         </button>
       </form>
-      <CommonImageUpload referenceType={`${productpage?.id}_top`} imageCount={8} setMultiImageStatus={setMultiImageStatus} />
-      <CommonImageUpload referenceType={`${productpage?.id}_bottom`} imageCount={8} setMultiImageStatus={setMultiImageStatus} />
+      <CommonImageUpload referenceType={`${productpage?.id}section2_top`} imageCount={8} setMultiImageStatus={setMultiImageStatus} />
+      <CommonImageUpload referenceType={`${productpage?.id}section2_bottom`} imageCount={8} setMultiImageStatus={setMultiImageStatus} />
     </div>
   );
 };
 
-export default Section2Form;
+export default Section2Optional;

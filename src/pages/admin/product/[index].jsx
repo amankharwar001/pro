@@ -14,6 +14,7 @@ import Section7Product from '../../../components/Admin/product/Section7';
 import { useRouter } from 'next/router';
 import SeoPage from '@/components/Admin/product/SEO';
 import StatusSelector from '@/components/Admin/product/StatusSelector';
+import Section2Optional from '@/components/Admin/product/Section2Optional';
 
 const Index = () => {
   const [activeBox, setActiveBox] = useState(1);
@@ -55,6 +56,17 @@ const Index = () => {
     },
     {
       id: 3,
+      label: 'Section2 optional',
+      component: (
+        <Section2Optional
+          productpage={data}
+          setActiveBox={setActiveBox}
+          sectionsStatusHandle={(status) => sectionsStatusHandle(1, status)}
+        />
+      ),
+    },
+    {
+      id: 4,
       label: 'Section3',
       component: (
         <Section3Form
@@ -65,7 +77,7 @@ const Index = () => {
       ),
     },
     {
-      id: 4,
+      id: 5,
       label: 'Section4',
       component: (
         <Section4Product
@@ -76,7 +88,7 @@ const Index = () => {
       ),
     },
     {
-      id: 5,
+      id: 6,
       label: 'Section5',
       component: (
         <Section5Product
@@ -87,7 +99,7 @@ const Index = () => {
       ),
     },
     {
-      id: 6,
+      id: 7,
       label: 'Section6',
       component: (
         <Section6Product
@@ -98,7 +110,7 @@ const Index = () => {
       ),
     },
     {
-      id: 7,
+      id: 8,
       label: 'Section7',
       component: (
         <Section7Product
@@ -109,7 +121,7 @@ const Index = () => {
       ),
     },
     {
-      id: 8,
+      id: 9,
       label: 'SEO',
       component: (
         <SeoPage

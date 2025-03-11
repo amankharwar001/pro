@@ -9,6 +9,7 @@ import PaymentOptions from "../../components/ClientSide/product/PaymentOptions";
 import WeWorkSection from "../../components/ClientSide/product/WeWorkSection";
 import WeChooseSection from "../../components/ClientSide/product/WeChooseSection";
 import Found4O4 from "@/components/NotFound/4O4";
+import Brand2Section from "@/components/ClientSide/product/Brand2";
 
 const ProductPage = ({ data, error, baseUrl }) => {
  
@@ -55,6 +56,12 @@ const ProductPage = ({ data, error, baseUrl }) => {
       {data.section2 && (
         <Brand
           section2={data.section2}
+          baseUrl={baseUrl}
+        />
+      )}
+      {data.section2optional && (
+        <Brand2Section
+          section2={data.section2optional}
           baseUrl={baseUrl}
         />
       )}

@@ -9,7 +9,11 @@ const StatusManager = ({ sectionName }) => {
         const fetchOrCreateSection = async () => {
             setLoading(true);
             try {
-                const response = await fetch(`/api/hideunhide?SectionName=${sectionName}`);
+                const response = await fetch(`/api/hideunhide?SectionName=${sectionName}`, {
+                    headers: {
+                     'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+                    },
+                  });
                 const data = await response.json();
 
                 if (response.ok && data.SectionName) {
@@ -20,6 +24,7 @@ const StatusManager = ({ sectionName }) => {
                         method: "PUT",
                         headers: {
                             "Content-Type": "application/json",
+                            'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
                         },
                         body: JSON.stringify({
                             SectionName: sectionName,
@@ -46,6 +51,7 @@ const StatusManager = ({ sectionName }) => {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
+                    'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
                 },
                 body: JSON.stringify({
                     SectionName:sectionName,

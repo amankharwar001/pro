@@ -1,13 +1,13 @@
 
 import { DataTypes,Sequelize  } from 'sequelize';
-import sequelize from '../../db/dbConnect.js';  // Import the sequelize i nstance
+import sequelize from '../../db/dbConnect.js';  
 
 
 const heroSectionProductPage = sequelize.define('HeroSectionProductPage', {
   id: {
     type: DataTypes.UUID,
-    defaultValue: Sequelize.UUIDV4,  // Automatically generates a new UUID
-    primaryKey: true,  // This makes the id field the primary key
+    defaultValue: Sequelize.UUIDV4,  
+    primaryKey: true,  
   },
   nickname:{
     type: DataTypes.STRING,
@@ -15,27 +15,27 @@ const heroSectionProductPage = sequelize.define('HeroSectionProductPage', {
   },
   title: {
     type: DataTypes.STRING,
-    allowNull: false,  // Ensuring the heading field is required
+    allowNull: false,  
   },
   heading: {
     type: DataTypes.STRING,
-    allowNull: false,  // Ensuring the heading field is required
+    allowNull: false,
   },
   text: {
     type: DataTypes.TEXT,
-    allowNull: false,  // Ensuring the text field is required
+    allowNull: false, 
   },
   btn: {
     type: DataTypes.STRING,
-    allowNull: false,  // Ensuring the button field is required
+    allowNull: false, 
   },
   btnLink: {
     type: DataTypes.STRING,
-    allowNull: false,  // Ensuring the button link field is required
+    allowNull: false,  
   },
   
 }, {
-  tableName: 'hero_section_product_page',  // Ensure this matches your table name exactly
+  tableName: 'hero_section_product_page', 
   timestamps: true,
 });
 

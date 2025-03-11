@@ -16,6 +16,7 @@ import Testimonial from '../models/homePage/Testimonial.js';
 import HomeFAQ from '../models/homePage/HomeFAQ.js';
 // Product Page
 import heroSectionProductPage from '../models/productPage/HeroSectionProductPage.js';
+import Section2Optional from '../models/productPage/Section2Optional.js';
 import section2Product from '../models/productPage/Section2Product.js';
 import section3Product from '../models/productPage/Section3Products.js';
 import section4Product from '../models/productPage/Section4Product.js';
@@ -80,7 +81,6 @@ import FooterCTA from '../models/adminSetting/footerCta.js';
 // dynamic page create 
 import heroSectionCreatePage from '../models/create-page/herosection.js';
 import CreatePageId from '../models/create-page/createid.js';
-
 
 
 
