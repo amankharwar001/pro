@@ -1,8 +1,3 @@
-
-
-
-
-
 import React, { useEffect, useState } from 'react';
 import HeroSectionForm from '../../../components/Admin/product/HeroSection';
 import Section2Form from '../../../components/Admin/product/Section2';
@@ -18,7 +13,7 @@ import Section2Optional from '@/components/Admin/product/Section2Optional';
 
 const Index = () => {
   const [activeBox, setActiveBox] = useState(1);
-  const [sectionsStatus, setSectionsStatus] = useState(Array(8).fill(false)); // Initialize status for all sections
+  const [sectionsStatus, setSectionsStatus] = useState(Array(8).fill(false));
   const [data, setData] = useState(null);
   const router = useRouter();
   const { index, edit: queryActiveBox } = router.query;

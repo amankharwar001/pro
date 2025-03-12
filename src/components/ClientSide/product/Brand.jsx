@@ -336,6 +336,7 @@
 // };
 
 // export default Brand;
+// jhsd
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -394,7 +395,7 @@ const Brand = ({ section2, baseUrl }) => {
 
         {/* Image Carousel Section */}
         <div className="w-full md:w-[70%] px-2 md:px-4">
-          <Slider {...settings} className="brand-slider">
+          <Slider {...settings} className="product-brand-slider">
             {section2.Images.map((src, index) => (
               <div key={index} className="flex-shrink-0 w-40 p-2 md:w-52 md:h-16 flex justify-end items-center h-auto gap-5 px-6"> 
                 <Image

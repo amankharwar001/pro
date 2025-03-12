@@ -18,7 +18,7 @@ const BlogList = () => {
 
   // Fetch the blog data when the component mounts
   useEffect(() => {
-    fetch("/api/blog/idgenerate",{
+    fetch("/api/create-page/idgenerate",{
       headers: {
        'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
       },
@@ -45,7 +45,7 @@ const BlogList = () => {
         }
       })
       .then((data) => {
-        router.push(`/admin/blog/create/${data.id}`);
+        router.push(`/admin/create-page/new/${data.id}`);
       })
       .catch((error) => {
         alert(error.message);
@@ -197,7 +197,7 @@ const handleDeleteBlog = async (blogId) => {
                   </td>
                   <td className="px-6 py-4 border-b border-gray-200 text-center">
                     <button
-                      onClick={() => router.push(`/admin/blog/create/${blog.id}`)}
+                      onClick={() => router.push(`/admin/create-page/new/${blog.id}`)}
                       className="text-blue-500 hover:text-blue-600 mx-2"
                     >
                       ✏️

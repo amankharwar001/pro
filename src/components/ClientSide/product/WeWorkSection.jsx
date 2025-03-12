@@ -22,14 +22,14 @@ const WeWorkSection = ({section6,baseUrl}) => {
                         <p className="text-p md:max-w-[60%] m-auto">{section6.section6Data.text}</p>
                     </Fade>
                 </div>
-                <div className="relative flex flex-col md:flex-row gap-5 justify-around py-10">
+                <div className="relative grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 md:grid-cols-3 gap-5 py-10">
                     <div className="text-center relative mb-8 md:mb-0">
                         <div className='flex items-center justify-center'>
                             <Zoom triggerOnce delay={400}>
                                 <Image
                                     src={`${baseUrl}${svg1?.filePath}`}
                                     alt={svg1?.altText}
-                                    className=" mb-10 "
+                                    className=" mb-5 "
                                     width={80}
                                     height={20}
                                 />
@@ -40,12 +40,12 @@ const WeWorkSection = ({section6,baseUrl}) => {
                         <h3 className="text_h3 font-semibold text-primary">{section6.section6Data.info[0].title}</h3>
                         <p className="text-muted-foreground">{section6.section6Data.info[0].content}</p>
                     </div>
-                    <div className="text-center mb-8 md:mb-0">
+                    <div className="text-center mb-8 md:mb-8">
 
                         <Image
                             src="/product/line-shape.png"
                             alt="Paramotor Logo"
-                            className="hideon_tab max-w-[50vw] lg:min-w-[5vw] xl:min-w-[50vw] top-2/4 -translate-y-20 absolute right-2/4 translate-x-2/4 "
+                            className="hideon_tab hideon_tabwave max-w-[50vw] lg:min-w-[5vw] xl:min-w-[50vw] top-2/4 -translate-y-20 absolute right-2/4 translate-x-2/4 "
                             width={520}
                             height={20}
                         />

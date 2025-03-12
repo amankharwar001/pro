@@ -50,6 +50,7 @@ const menuItems = [
       { name: "Refund Policy", icon: <HiOutlineReceiptRefund />, link: "/admin/refund-policy", key: "refund-policy" },
       { name: "Privacy Policy", icon: <MdPrivacyTip />, link: "/admin/privacy-policy", key: "privacy-policy" },
       { name: "Term Condition", icon: <RiNewspaperLine />, link: "/admin/term-condition", key: "term-condition" },
+      { name: "Create Page", icon: <RiNewspaperLine />, link: "/admin/create-page/list", key: "create-page" },
     ],
     key: "websiteFunction",
   },

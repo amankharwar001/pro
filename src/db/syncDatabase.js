@@ -81,6 +81,9 @@ import FooterCTA from '../models/adminSetting/footerCta.js';
 // dynamic page create 
 import heroSectionCreatePage from '../models/create-page/herosection.js';
 import CreatePageId from '../models/create-page/createid.js';
+import CreatePageContent from '../models/create-page/contentpage.js';
+import CreatePageSEO from '../models/create-page/SEO.js';
+import CreatePageStatus from '../models/create-page/PageStatus.js';
 
 
 

@@ -17,8 +17,6 @@ const ClientSideCommonEditor = ({ referenceType, sectionsStatusHandle, setActive
   const [contentId, setContentId] = useState(null);
   const [apiStatus, setApiStatus] = useState(false)
 
-  console.log("reference type show is here",referenceType)
-
 
 
   useEffect(() => {

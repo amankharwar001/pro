@@ -3,7 +3,7 @@
 import { useState, useEffect, useMemo, forwardRef, useImperativeHandle } from "react";
 import dynamic from "next/dynamic";
 
-// Dynamically import React Quill
+// Dynamically import React Quilll
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import "react-quill/dist/quill.snow.css";
 import { useRouter } from "next/router";
@@ -66,7 +66,11 @@ const CommonEditor = forwardRef(({ blogId }, ref) => {
               // Upload image to API
               const response = await fetch(`/api/blogupload/${blogId}`, {
                 method: "POST",
+                headers: {
+                  'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+                 },
                 body: formData,
+
               });
       
               const data = await response.json();
@@ -101,7 +105,11 @@ const CommonEditor = forwardRef(({ blogId }, ref) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`/api/blog/editor/${blogId}`);
+        const response = await fetch(`/api/blog/editor/${blogId}`,{
+          headers: {
+            'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+           },
+        });
         if (response.ok) {
           const data = await response.json();
           setEditorContent(data.section.content); // Fetch full HTML content
@@ -134,7 +142,8 @@ const CommonEditor = forwardRef(({ blogId }, ref) => {
 
       const response = await fetch(endpoint, {
         method,
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json",  'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY,  },
+        
         body,
       });
 

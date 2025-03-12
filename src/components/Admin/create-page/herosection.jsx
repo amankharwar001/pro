@@ -1,55 +1,61 @@
-// HeroSectionForm.js
+import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import ImageUploader from "../ImageUploader";
-
-const HeroSectionForm = ({ onSubmitId, url,referencetype,setActiveBox,sectionsStatusHandle }) => {
+const CreatePageHeroSectionForm = ({ page, onSubmitId,setActiveBox,sectionsStatusHandle }) => {
   const [formData, setFormData] = useState({
-    id: "",
+    nickname:"",
     title: "",
     heading: "",
     text: "",
     btn: "",
     btnLink: "",
   });
+  const router = useRouter();
+  const { edit } = router.query;
   const [isLoading, setIsLoading] = useState(false);
-   const [apiStatus, setApiStatus] = useState(false)
-    const [imageStatus, setImageStatus] = useState(false)
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [apiStatus, setApiStatus] = useState(false)
+  const [imageStatus, setImageStatus] = useState(false)
+  console.log("System Key:", process.env.NEXT_PUBLIC_SYSTEM_KEY,page);
+  console.log("form data is here ", formData);
+
     
   
    useEffect(() => {
       if (apiStatus && imageStatus) {
         sectionsStatusHandle(true);
-      }else{
-        sectionsStatusHandle(false);
-  
       }
     }, [apiStatus, imageStatus]); 
 
-  // Fetch existing data on component load
+
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(`/api/${url}`,{
+        const endpoint = page ? `/api/create-page/herosection/${page}` : '';
+        const res = await fetch(endpoint,{
           headers: {
            'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
           },
-        });
+        }); // Replace with your API endpoint
         if (res.ok) {
-          const response = await res.json();
-          if (response.data) {
-            setFormData({ ...response.data, id: response.data._id });
-          }
+          const data = await res.json();
+          console.log("data is here in server",data)
+          setFormData(data); // Populate form with existing data
+          setIsEditMode(true); // Enable edit mode
           setApiStatus(true)
-        } else {
-          console.error("Failed to fetch data", await res.text());
         }
+        
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
-
-    fetchData();
-  }, [url]); // Fetch when the `url` prop changes
+  
+    if (page) { 
+      fetchData();
+    }
+  }, [page]); 
+  
 
   // Handle form input changes
   const handleChange = (e) => {
@@ -63,40 +69,59 @@ const HeroSectionForm = ({ onSubmitId, url,referencetype,setActiveBox,sectionsSt
     setIsLoading(true);
 
     try {
-      const res = await fetch(`/api/${url}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", 'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY,  },
-        body: JSON.stringify(formData),
+      const endpoint = page ? `/api/create-page/herosection/${page}` : '/api/create-page/herosection/addsection';
+      const method = isEditMode ? "PUT" : "POST"; // Use PUT if data exists, otherwise POST
+      const updatedFormData = { ...formData, id: page};
+      const res = await fetch(endpoint, {
+        method,
+        headers: { "Content-Type": "application/json",'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY,  },
+        body: JSON.stringify(updatedFormData),
       });
 
       if (res.ok) {
         const response = await res.json();
-        alert(`Data ${formData.id ? "updated" : "created"} successfully!`);
+        onSubmitId(response?.id)
         setActiveBox(2)
-        onSubmitId(response?.data?._id);
+        setApiStatus(true)
       } else {
         const error = await res.json();
-        alert(`Error: ${error.message || "Something went wrong"}`);
+        alert(`Error: ${error.error}`);
       }
     } catch (error) {
-      console.error("Error submitting form:", error);
-      // alert("Failed to submit data. Please try again.");
+      console.warn("Failed to submit data. Please try again.");
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div className="mx-auto p-4 border bg-gray-50 shadow-inner rounded md:flex flex-row-reverse gap-10 items-center">
-      <div>
-        <span className="font-bold text-xs">Hero Section Image</span>
-        <div className="bg-slate-100 p-4 rounded-md mt-2">
-          <ImageUploader referenceType={referencetype} width={1920} height={750} setImageStatus={setImageStatus}/>
+    <div className=" mx-auto p-4 border bg-gray-50 shadow-inner rounded  md:flex flex-row-reverse gap-10 items-center">
+      {/* <h1 className="text-xl font-bold mb-4">
+        {isEditMode ? "Edit Hero Section" : "Create Hero Section"}
+      </h1> */}
+      {isEditMode ?
+        <div>
+          <span className="font-bold text-xs">Hero Section Image</span>
+          <div className="bg-slate-100 p-4 rounded-md mt-2">
+            <ImageUploader referenceType={page?.id} width={1920} height={750} setImageStatus={setImageStatus} setActiveProductBox={setActiveBox}/>
+          </div>
         </div>
-      </div>
+        : ""
+      }
       <form onSubmit={handleSubmit} className="space-y-4 w-full">
         <div>
-          <label className="block font-semibold text-gray-700 mb-1 text-sm">Title</label>
+          <label className="block font-semibold text-gray-700 mb-1 text-sm ">Page Name</label>
+          <input
+            type="text"
+            name="nickname"
+            value={formData.nickname}
+            onChange={handleChange}
+            className="w-full border p-1 px-2 rounded"
+            required
+          />
+        </div>
+        <div>
+          <label className="block font-semibold text-gray-700 mb-1 text-sm ">Title</label>
           <input
             type="text"
             name="title"
@@ -106,8 +131,9 @@ const HeroSectionForm = ({ onSubmitId, url,referencetype,setActiveBox,sectionsSt
             
           />
         </div>
+        
         <div>
-          <label className="block font-semibold text-gray-700 mb-1 text-sm">Heading</label>
+          <label className="block font-semibold text-gray-700 mb-1 text-sm ">Heading</label>
           <input
             type="text"
             name="heading"
@@ -118,7 +144,7 @@ const HeroSectionForm = ({ onSubmitId, url,referencetype,setActiveBox,sectionsSt
           />
         </div>
         <div>
-          <label className="block font-semibold text-gray-700 mb-1 text-sm">Text</label>
+          <label className="block font-semibold text-gray-700 mb-1 text-sm ">Text</label>
           <textarea
             name="text"
             value={formData.text}
@@ -129,18 +155,18 @@ const HeroSectionForm = ({ onSubmitId, url,referencetype,setActiveBox,sectionsSt
           ></textarea>
         </div>
         <div>
-          <label className="block font-semibold text-gray-700 mb-1 text-sm">Button Text</label>
+          <label className="block font-semibold text-gray-700 mb-1 text-sm ">Button Text</label>
           <input
             type="text"
             name="btn"
             value={formData.btn}
             onChange={handleChange}
             className="w-full border p-1 px-2 rounded"
-            
+           
           />
         </div>
         <div>
-          <label className="block font-semibold text-gray-700 mb-1 text-sm">Button Link</label>
+          <label className="block font-semibold text-gray-700 mb-1 text-sm ">Button Link</label>
           <input
             type="text"
             name="btnLink"
@@ -155,11 +181,11 @@ const HeroSectionForm = ({ onSubmitId, url,referencetype,setActiveBox,sectionsSt
           className="w-full bg-adminbtn text-white py-2 rounded"
           disabled={isLoading}
         >
-          {isLoading ? "Submitting..." : formData.title ? "Update" : "Create"}
+          {isLoading ? "Submitting..." : isEditMode ? "Update" : "Create"}
         </button>
       </form>
     </div>
   );
 };
 
-export default HeroSectionForm;
+export default CreatePageHeroSectionForm;

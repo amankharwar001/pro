@@ -183,7 +183,7 @@ const Brand2Section = ({ section2,baseUrl }) => {
 
   const settings = {
     dots: false,
-    infinite: true,
+    infinite: false,
     slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: section2?.bottomImages?.length > 4,
@@ -243,13 +243,13 @@ const Brand2Section = ({ section2,baseUrl }) => {
             <div className="lg:hidden">
               <Slider {...reverseSettings} className="brand-slider">
                 {section2?.topImages?.slice().reverse().map((logo, index) => (
-                  <div key={index} className="flex-shrink-0 w-40 p-2 md:w-52 md:h-16 flex justify-end items-center h-auto gap-5">
+                  <div key={index} className="flex-shrink-0 w-40 p-2 md:w-52 md:h-30 flex justify-end items-center h-auto gap-5">
                     <Image
                       src={`${baseUrl}${logo?.filePath}`}
                       alt={logo?.altText || "Brand Logo"}
                       width={160}
                       height={80}
-                      className="object-contain"
+                      className="object-contain product_doublebrand"
                     />
                   </div>
                 ))}
@@ -259,13 +259,13 @@ const Brand2Section = ({ section2,baseUrl }) => {
             <div className="hidden lg:block">
               <Slider {...reverseSettings}>
                 {section2?.topImages?.map((logo, index) => (
-                  <div key={index} className="flex-shrink-0 w-40 p-2 md:w-52 md:h-16 flex justify-end items-center h-auto gap-5">
+                  <div key={index} className="flex-shrink-0 w-40 p-2 md:w-52 md:h-30 flex justify-end items-center h-auto gap-5">
                     <Image
                       src={`${baseUrl}${logo?.filePath}`}
                       alt={logo?.altText || "Brand Logo"}
                       width={180}
                       height={80}
-                      className="object-contain"
+                      className="object-contain product_doublebrand"
                     />
                   </div>
                 ))}
@@ -276,13 +276,13 @@ const Brand2Section = ({ section2,baseUrl }) => {
             <div className="lg:hidden">
               <Slider {...settings} className="brand-slider">
                 {section2?.bottomImages?.slice().reverse().map((logo, index) => (
-                  <div key={`bottom-row-${index}`} className="flex-shrink-0 w-40 p-2 md:w-52 md:h-16 flex justify-end items-center h-auto gap-5">
+                  <div key={`bottom-row-${index}`} className="flex-shrink-0 w-40 p-2 md:w-52 md:h-30 flex justify-end items-center h-auto gap-5">
                     <Image
                       src={`${baseUrl}${logo?.filePath}`}
                       alt={logo?.altText || "Brand Logo"}
                       width={160}
                       height={80}
-                      className="object-contain"
+                      className="object-contain product_doublebrand"
                     />
                   </div>
                 ))}
@@ -292,13 +292,13 @@ const Brand2Section = ({ section2,baseUrl }) => {
             <div className="hidden lg:block mt-4">
               <Slider {...settings}>
                 {section2?.bottomImages?.map((logo, index) => (
-                  <div key={`bottom-row-${index}`} className="flex-shrink-0 w-40 p-2 md:w-52 md:h-16 flex justify-end items-center h-auto gap-5">
+                  <div key={`bottom-row-${index}`} className="flex-shrink-0 w-40 p-2 md:w-52 md:h-30 flex justify-end items-center h-auto gap-5">
                     <Image
                       src={`${baseUrl}${logo?.filePath}`}
                       alt={logo?.altText || "Brand Logo"}
                       width={180}
                       height={80}
-                      className="object-contain"
+                      className="object-contain product_doublebrand"
                     />
                   </div>
                 ))}

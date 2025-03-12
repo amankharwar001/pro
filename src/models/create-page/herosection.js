@@ -1,31 +1,41 @@
+
 import { DataTypes,Sequelize  } from 'sequelize';
-import sequelize from '../../db/dbConnect.js';  // Import the sequelize i nstance
+import sequelize from '../../db/dbConnect.js';  
 
 
 const heroSectionCreatePage = sequelize.define('HeroSectionCreatePage', {
+  id: {
+    type: DataTypes.UUID,
+    primaryKey: true,
+    allowNull: false, 
+  },
+  nickname:{
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   title: {
     type: DataTypes.STRING,
-    allowNull: false,  // Ensuring the heading field is required
+    allowNull: false,  
   },
   heading: {
     type: DataTypes.STRING,
-    allowNull: false,  // Ensuring the heading field is required
+    allowNull: false,
   },
   text: {
     type: DataTypes.TEXT,
-    allowNull: false,  // Ensuring the text field is required
+    allowNull: false, 
   },
   btn: {
     type: DataTypes.STRING,
-    allowNull: false,  // Ensuring the button field is required
+    allowNull: false, 
   },
   btnLink: {
     type: DataTypes.STRING,
-    allowNull: false,  // Ensuring the button link field is required
+    allowNull: false,  
   },
   
 }, {
-  tableName: 'hero_section_create_page',  // Ensure this matches your table name exactly
+  tableName: 'create_page_hero_section', 
   timestamps: true,
 });
 
