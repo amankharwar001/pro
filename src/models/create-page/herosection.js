@@ -9,6 +9,10 @@ const heroSectionCreatePage = sequelize.define('HeroSectionCreatePage', {
     primaryKey: true,
     allowNull: false, 
   },
+  sectionType: { 
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   nickname:{
     type: DataTypes.STRING,
     allowNull: false,

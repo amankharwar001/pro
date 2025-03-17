@@ -1,31 +1,31 @@
 
 
 import { DataTypes } from 'sequelize';
-import sequelize from '../../db/dbConnect.js';  // Import the sequelize instance
-import heroSectionProductPage from './HeroSectionProductPage.js';  // Assuming it's relevant
+import sequelize from '../../db/dbConnect.js';  
+import heroSectionProductPage from './HeroSectionProductPage.js';  
 
 const SEOProductPage = sequelize.define('SEOProductPage', {
     title: {
         type: DataTypes.STRING,
-        allowNull: false,  // Ensuring the title field is required
+        allowNull: false, 
     },
     description: {
         type: DataTypes.TEXT,
-        allowNull: false,  // Ensuring the description field is required
+        allowNull: false,  
     },
     slug: {
         type: DataTypes.STRING,
-        allowNull: false,  // Ensuring the slug field is required
+        allowNull: false, 
     },
     keyword: {
-        type: DataTypes.STRING,  // Store as a string, comma-separated
-        allowNull: false,  // Ensuring the keyword field is required
+        type: DataTypes.STRING, 
+        allowNull: false,  
         get() {
             const value = this.getDataValue('keyword');
-            return value ? value.split(',').map((k) => k.trim()) : [];  // Return as an array when reading from DB
+            return value ? value.split(',').map((k) => k.trim()) : [];  
         },
         set(value) {
-            this.setDataValue('keyword', Array.isArray(value) ? value.join(', ') : value);  // Store as a comma-separated string
+            this.setDataValue('keyword', Array.isArray(value) ? value.join(', ') : value); 
         }
     },
     heroSectionId: {
@@ -37,7 +37,7 @@ const SEOProductPage = sequelize.define('SEOProductPage', {
         allowNull: false,
     },
 }, {
-    tableName: 'SEO_Product_Page',  // Ensure this matches your table name exactly
+    tableName: 'SEO_Product_Page', 
     timestamps: true,
 });
 SEOProductPage.belongsTo(heroSectionProductPage, { foreignKey: 'heroSectionId' });

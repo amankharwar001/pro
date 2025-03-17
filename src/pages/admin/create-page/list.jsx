@@ -12,11 +12,11 @@ const BlogList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const blogsPerPage = 5;
 
-  // State for sorting
-  const [sortBy, setSortBy] = useState(null); // Title, Status, Image
-  const [sortOrder, setSortOrder] = useState("asc"); // Ascending or Descending
+  
+  const [sortBy, setSortBy] = useState(null); 
+  const [sortOrder, setSortOrder] = useState("asc"); 
 
-  // Fetch the blog data when the component mounts
+  
   useEffect(() => {
     fetch("/api/create-page/idgenerate",{
       headers: {
@@ -29,7 +29,7 @@ const BlogList = () => {
       .catch((error) => console.error("Error fetching products:", error));
   }, []);
 
-  // Handle adding a new blog
+ 
   const handleAddBlogClick = () => {
     fetch(`/api/create-page/idgenerate`, {
       method: "POST",
@@ -53,18 +53,18 @@ const BlogList = () => {
   };
 
 const handleDeleteBlog = async (blogId) => {
-  // Show prompt for confirmation
+ 
   const userConfirmation = prompt("Type 'yes' to confirm deletion:");
 
   if (userConfirmation === null || userConfirmation.trim().toLowerCase() !== "yes") {
-      // If user cancels or doesn't type 'yes', cancel the delete action
+     
       alert("Blog deletion canceled.");
       return;
   }
 
   try {
-      // Proceed with DELETE request if 'yes' is typed
-      const response = await fetch(`/api/blog/deleteblog-id?id=${blogId}`, {
+      
+      const response = await fetch(`/api/create-page/delete-id?id=${blogId}`, {
           method: 'DELETE',
           headers: {
             'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
@@ -75,7 +75,7 @@ const handleDeleteBlog = async (blogId) => {
           const errorData = await response.json();
           alert('Failed to delete blog.');
       } else {
-          // If deletion is successful, update the blog list state
+          
           setBlogList((prevBlogs) => prevBlogs.filter(blog => blog.id !== blogId));
           alert("Blog successfully deleted!");
       }
@@ -86,14 +86,14 @@ const handleDeleteBlog = async (blogId) => {
 
 
 
-  // Sorting function
+ 
   const handleSort = (column) => {
     const newSortOrder = sortOrder === "asc" ? "desc" : "asc";
     setSortBy(column);
     setSortOrder(newSortOrder);
   };
 
-  // Sort blogList based on column and order
+ 
   
   const sortedBlogs = [...blogList].sort((a, b) => {
     if (sortBy === "title") {
@@ -101,8 +101,8 @@ const handleDeleteBlog = async (blogId) => {
       const bHeading = (b.heading || "").toLowerCase();
   
       return sortOrder === "asc"
-        ? aHeading.localeCompare(bHeading)   // Ascending (A to Z)
-        : bHeading.localeCompare(aHeading);  // Descending (Z to A)
+        ? aHeading.localeCompare(bHeading)   
+        : bHeading.localeCompare(aHeading);  
     } else if (sortBy === "status") {
       const statusOrder = ["draft", "active"];
       return sortOrder === "asc"
@@ -118,28 +118,28 @@ const handleDeleteBlog = async (blogId) => {
     return 0;
   });
   
-  // Filter blogs by search term
+  
   const filteredBlogs = sortedBlogs.filter(blog =>
     (blog.heading?.toLowerCase() || "").includes(searchTerm.toLowerCase())
   );
 
-  // Pagination Logic
+  
   const indexOfLastBlog = currentPage * blogsPerPage;
   const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
   const currentBlogs = filteredBlogs.slice(indexOfFirstBlog, indexOfLastBlog);
   const totalPages = Math.ceil(filteredBlogs.length / blogsPerPage);
 
-  // Handle search input change
+  
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
-    setCurrentPage(1); // Reset to first page on search term change
+    setCurrentPage(1); 
   };
 
   return (
     <>
       <div className="container mx-auto p-6">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold text-gray-700">Blog List</h2>
+          <h2 className="text-2xl font-bold text-gray-700">Page List</h2>
           <div className="flex items-center gap-5">
             
             <button
@@ -151,7 +151,7 @@ const handleDeleteBlog = async (blogId) => {
           </div>
         </div>
 
-        {/* Search Input */}
+       
         <div className="mb-4">
           <input
             type="text"
@@ -174,7 +174,7 @@ const handleDeleteBlog = async (blogId) => {
               </tr>
             </thead>
 
-            {/* Table Body */}
+            
             <tbody>
               {currentBlogs.map((blog) => (
                 <tr
@@ -212,7 +212,7 @@ const handleDeleteBlog = async (blogId) => {
                   <td className="px-6 py-4 border-b border-gray-200 text-center">
                     {blog.status === "active" ? (
                       <a
-                        href={`${basePath}blog/${blog.seo}`}
+                        href={`${basePath}/${blog.seo}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="hover:underline text-blue-500"
@@ -228,15 +228,15 @@ const handleDeleteBlog = async (blogId) => {
             </tbody>
           </table>
 
-          {/* Empty State */}
+         
           {currentBlogs.length === 0 && (
             <div className="text-center py-8 text-gray-500">
-              No blogs found. Add a new blog to get started!
+              No Page found. Add a new Page to get started!
             </div>
           )}
         </div>
 
-        {/* Pagination */}
+      
         {totalPages > 1 && (
           <div className="flex justify-center mt-6">
             <button

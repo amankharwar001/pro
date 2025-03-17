@@ -9,19 +9,19 @@ const CreatePageSEO = sequelize.define('CreatePageSEO', {
       },
     title: {
         type: DataTypes.STRING,
-        allowNull: false,  
+        allowNull: true,  
     },
     description: {
         type: DataTypes.TEXT,
-        allowNull: false, 
+        allowNull: true, 
     },
     slug: {
         type: DataTypes.STRING,
-        allowNull: false, 
+        allowNull: true, 
     },
     keyword: {
         type: DataTypes.STRING,  
-        allowNull: false,
+        allowNull: true,
         get() {
             const value = this.getDataValue('keyword');
             return value ? value.split(',').map((k) => k.trim()) : [];

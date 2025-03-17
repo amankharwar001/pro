@@ -1,6 +1,6 @@
 
 
-import { useState, useEffect, useMemo, forwardRef, useImperativeHandle } from "react";
+import { useState, useEffect, useMemo } from "react";
 import dynamic from "next/dynamic";
 
 // Dynamically import React Quill
@@ -14,7 +14,7 @@ const ClientSideCommonEditor = ({ referenceType, sectionsStatusHandle, setActive
 
   const [editorContent, setEditorContent] = useState("");
   const [loading, setLoading] = useState(true);
-  const [contentId, setContentId] = useState(null);
+  const [contentId, setContentId] = useState(null);0
   const [apiStatus, setApiStatus] = useState(false)
 
   console.log("reference type show is here",referenceType)

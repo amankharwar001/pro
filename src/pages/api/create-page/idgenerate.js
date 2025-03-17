@@ -6,6 +6,16 @@ import CommonBlogContent from '@/models/blogPage/CommonBlogContent';
 import ImagesData from '@/models/homePage/ImagesData';
 import SEOBlogPage from "@/models/blogPage/SEO";
 import CreatePageId from '@/models/create-page/createid';
+
+
+
+
+
+
+
+import CreatePageStatus from "@/models/create-page/PageStatus";
+
+import heroSectionCreatePage from "@/models/create-page/herosection";
 export default async function handler(req, res) {
     if (req.headers['x-system-key'] !== process.env.NEXT_PUBLIC_SYSTEM_KEY) {
         return res.status(401).json({ message: 'Unauthorized Access' });
@@ -27,9 +37,9 @@ export default async function handler(req, res) {
                 try {
                     // Fetch a single blog by ID
                     const page = await CreatePageId.findByPk(id);
-                    const heading = await CommonBlogContent.findOne({ where: { blogId: id } });
-                    const status = await BlogStatus.findOne({ where: { blogId: id } });
-                    const image = await ImagesData.findAll({ where: { referenceType: blog.id } });
+                    const heading = await heroSectionCreatePage.findOne({ where: { id: id } });
+                    const status = await CreatePageStatus.findOne({ where: { id: id } });
+                    // const image = await ImagesData.findAll({ where: { referenceType: blog.id } });
                     const seo = await SEOBlogPage.findOne({ where: { blogId: id } });
 
                     if (page) {
@@ -54,8 +64,8 @@ export default async function handler(req, res) {
                     // For each blog, fetch its heading and status
                     const result = await Promise.all(
                         pages.map(async (page) => {
-                            const heading = await CommonBlogContent.findOne({ where: { blogId: page.id } });
-                            const status = await BlogStatus.findOne({ where: { blogId: page.id } });
+                            const heading = await heroSectionCreatePage.findOne({ where: { id: page.id } });
+                            const status = await CreatePageStatus.findOne({ where: { id: page.id } });
                             const image = await ImagesData.findAll({ where: { referenceType: page.id } });
                             const seo = await SEOBlogPage.findOne({ where: { blogId: page.id } });
 

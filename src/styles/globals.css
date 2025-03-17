@@ -532,6 +532,7 @@ height: 100%;
 }
 .product_doublebrand
 {
-  width: 100px;
+  width: 200px;
   height: 100px;
+  margin: auto;
 }

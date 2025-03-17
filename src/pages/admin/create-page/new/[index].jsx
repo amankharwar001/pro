@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import SeoPage from '@/components/Admin/seo/SEO';
 import ClientSideCommonEditor from '@/components/Admin/common/ClientPageCommonEditor/Editor';
@@ -6,6 +6,7 @@ import CreatePageHeroSectionForm from '@/components/Admin/create-page/herosectio
 import CommonEditor from '@/components/Admin/create-page/CommonEditor';
 import CreatePageSeo from '@/components/Admin/create-page/SEO';
 import PageStatusSelector from '@/components/Admin/create-page/StatusSelector';
+import ClientSidePageEditor from '@/components/Admin/create-page/PageEditor';
 
 const Index = () => {
 
@@ -13,8 +14,13 @@ const Index = () => {
   const router = useRouter();
   const [data, setData] = useState(null);
   const { index } = router.query;
-
+  const childRef = useRef();
   console.log("page data show is here",data)
+  const handleClick = () => {
+    if (childRef.current) {
+      childRef.current.save(); 
+    }
+  };
 
   const sectionsStatusHandle = (index, status) => {
     setSectionsStatus((prevStatus) => {
@@ -53,20 +59,26 @@ const Index = () => {
 
   return (
     <div>
+      <div className='flex  items-center gap-10 justify-end py-5 px-2' >
+        <PageStatusSelector blogId={index}/>
+        <span  onClick={handleClick} className="px-6 py-2 cursor-pointer bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500" >Button</span>
+      </div>
       
-      <span >Button</span>
-      <PageStatusSelector blogId={index}/>
       <div className="bg-white shadow-lg rounded-lg p-4">
         <CreatePageHeroSectionForm
           page={index}
           // setActiveBox={setActiveBox}
+          ref={childRef} 
           sectionsStatusHandle={(status) => sectionsStatusHandle(0, status)}
         />
          {/* <CommonEditor pageId={index} /> */}
         {/* <ClientSideCommonEditor sectionsStatus={sectionsStatus} referenceType={index}/> */}
-        <ClientSideCommonEditor sectionsStatus={sectionsStatus} referenceType={index} sectionsStatusHandle={(status) => sectionsStatusHandle(1, status)} />
+          <div className='mb-10'></div>
+
+        <ClientSidePageEditor ref={childRef}  sectionsStatus={sectionsStatus} referenceType={index} sectionsStatusHandle={(status) => sectionsStatusHandle(1, status)} />
         {/* <SeoPage page={index} sectionsStatusHandle={(status) => sectionsStatusHandle(2, status)} /> */}
-        <CreatePageSeo blogpageId={index}/>
+        <div className='mb-10'></div>
+        <CreatePageSeo  blogpageId={index}/>
       </div>
     </div>
   );

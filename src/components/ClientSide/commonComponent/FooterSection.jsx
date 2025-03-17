@@ -15,6 +15,7 @@ export default function FooterSection() {
   const [productList, setProductList] = useState(null); // State to store API data
   const baseUrl = process.env.NEXT_PUBLIC_BASE_PATH;
   const [footerData, setFooterData] = useState(null);
+  const [pageData, setPageData] = useState(null);
   console.log("product list show is here", productList)
 
 
@@ -23,7 +24,7 @@ export default function FooterSection() {
       try {
         const response = await fetch(`${baseUrl}/api/public/footer`, {
           headers: {
-           'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+            'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY,
           },
         });
         if (response.ok) {
@@ -37,6 +38,25 @@ export default function FooterSection() {
 
     fetchFooterData(); // Call function to fetch footer data
   }, [baseUrl]);
+  useEffect(() => {
+    const fetchPageData = async () => {
+      try {
+        const response = await fetch(`${baseUrl}/api/public/create-pages/list`, {
+          headers: {
+            'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY,
+          },
+        });
+        if (response.ok) {
+          const data = await response.json();
+          setPageData(data); // Save footer data to state
+        }
+      } catch (err) {
+        console.error('Error fetching footer data:', err);
+      }
+    };
+
+    fetchPageData(); // Call function to fetch footer data
+  }, [baseUrl]);
 
 
   useEffect(() => {
@@ -45,7 +65,7 @@ export default function FooterSection() {
       try {
         const response = await fetch('/api/public/product/list', {
           headers: {
-           'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+            'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY,
           },
         });
         if (!response.ok) {
@@ -74,7 +94,7 @@ export default function FooterSection() {
       try {
         const response = await fetch('/api/public/logo', {
           headers: {
-           'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+            'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY,
           },
         });
         if (response.ok) {
@@ -127,6 +147,17 @@ export default function FooterSection() {
                 <li className='text-p'><Link href="/partner">Partner with Us</Link></li>
                 <li className='text-p'><Link href="/blog">Resources</Link></li>
                 <li className='text-p'><Link href="/contact">Contact</Link></li>
+                <li className='text-p'><Link href="/transaction-document">Transaction Document</Link></li>
+                {pageData?.data
+                  ?.filter((item) => item.sectionType === "footer")
+                  .map((item, index) => (
+                    <h3 key={index}>
+                      <Link href={`/${item.slug}`} className="text-p ">
+                        { }
+                        <li className='text-p'>{item.heading}</li>
+                      </Link>
+                    </h3>
+                  ))}
               </ul>
             </div>
           </Fade>
@@ -136,7 +167,7 @@ export default function FooterSection() {
               <h5 className="text-h5 font-semibold">Products</h5>
               <ul className="text-muted-foreground flex flex-col gap-5 mt-5">
                 {productList
-                  ?.sort((a, b) => new Date(b.time) - new Date(a.time)) 
+                  ?.sort((a, b) => new Date(b.time) - new Date(a.time))
                   ?.slice(0, 4)
                   ?.map((product) => (
                     <li

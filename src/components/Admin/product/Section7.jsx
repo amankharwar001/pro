@@ -86,7 +86,7 @@ export default function Section7Product({ productpage, setActiveBox,sectionsStat
       const result = await response.json();
       setSuccess("Data saved successfully!");
       setFormData(result);
-      setActiveBox(8); // Navigate to the next section after success
+      setActiveBox(9); // Navigate to the next section after success
     } catch (err) {
       setError(err.message);
     } finally {

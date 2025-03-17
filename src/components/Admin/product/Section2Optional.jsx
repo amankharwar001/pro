@@ -77,7 +77,7 @@ const Section2Optional = ({ productpage, setActiveBox, sectionsStatusHandle }) =
       if (res.ok) {
         const response = await res.json();
         alert(`Data ${isEditMode ? "updated" : "created"} successfully!`);
-        setActiveBox(3);
+        setActiveBox(4);
         setApiStatus(true);
       } else {
         const error = await res.json();

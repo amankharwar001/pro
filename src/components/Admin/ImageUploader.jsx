@@ -100,7 +100,7 @@ const ImageUploader = ({ referenceType, referenceId: propReferenceId, width, hei
   const handleEdit = (img) => {
     setEditImageId(img.id);
     setAltText(img.altText);
-    setImage(null); // Clear any new file if editing only the alt text
+    setImage(null); 
   };
 
   const handleUpdate = async (e) => {

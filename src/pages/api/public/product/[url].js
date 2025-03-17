@@ -10,7 +10,7 @@ import Section7Product from "@/models/productPage/Section7Product";
 import SEOProductPage from "@/models/productPage/SEO";
 import HideUnhideStatus from '@/models/hideUnhide';
 import Section2Optional from "@/models/productPage/Section2Optional";
-
+import sequelize from '../../../../db/dbConnect';
 export default async function handler(req, res) {
   if (req.headers['x-system-key'] !== process.env.NEXT_PUBLIC_SYSTEM_KEY) {
     return res.status(401).json({ message: 'Unauthorized Access' });
@@ -18,21 +18,40 @@ export default async function handler(req, res) {
   const { url } = req.query; // Get the URL slug
 
   try {
-    const urlfilter = await SEOProductPage.findOne({ where: { slug: url } });
 
-    let id;
-    if (urlfilter) {
-      id = urlfilter.heroSectionId;
+    const formattedHeading = url.replace(/-/g, ' ').trim().toLowerCase();
+    console.log("Formatted Heading:", formattedHeading);
+
+    // ✅ Pehle SEO Table me dekhein slug match karta hai ya nahi
+    let seoDatafilter = await SEOProductPage.findOne({ where: { slug: url } });
+
+    let heroSection;
+
+    if (seoDatafilter) {
+      console.log("SEO Data Found, Fetching HeroSection...");
+      heroSection = await HeroSectionProductPage.findOne({ where: { id: seoDatafilter.heroSectionId } });
     } else {
-      // URL ko Hero Section heading format me convert karna (hyphen -> space)
-      const formattedHeading = url.replace(/-/g, ' '); // Replace hyphens with spaces
+      
+      console.log("SEO Data Not Found, Checking HeroSection by Heading...");
 
-      const heroSection = await HeroSectionProductPage.findOne({ where: { heading: formattedHeading } });
-      if (!heroSection) {
-        return res.status(404).json({ error: 'Invalid URL: No matching data found' });
-      }
-      id = heroSection.id;
+      // ✅ Agar SEO data nahi mila, toh heading se dhundho
+      heroSection = await HeroSectionProductPage.findOne({
+        where: sequelize.where(
+          sequelize.fn('LOWER', sequelize.fn('TRIM', sequelize.col('heading'))),
+          formattedHeading
+        )
+      });
     }
+
+    if (!heroSection ) {
+      console.log("Final Hero Section Not Found");
+      return res.status(404).json({ error: 'Invalid URL: No matching data found' });
+    }
+
+    console.log("Final Hero Section:", heroSection.dataValues);
+    const id = heroSection.dataValues.id;
+
+
 
     // Fetch all hide/unhide statuses
     const sectionsStatus = await HideUnhideStatus.findAll();
@@ -95,11 +114,11 @@ export default async function handler(req, res) {
       : [];
 
     const section4Images = section4Data
-      ? await ImagesData.findAll({ where: { referenceType: id, referenceId: [41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90] } })
+      ? await ImagesData.findAll({ where: { referenceType: id, referenceId: [41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90] } })
       : [];
 
     const section5Images = section5Data
-      ? await ImagesData.findAll({ where: { referenceType: id, referenceId: [5, 51, 52, 53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70] } })
+      ? await ImagesData.findAll({ where: { referenceType: id, referenceId: [5, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70] } })
       : [];
 
     const section6Images = section6Data
@@ -109,7 +128,7 @@ export default async function handler(req, res) {
     const responseData = {
       heroSection: heroSectionData ? { heroSectionData, Images: heroSectionImages } : null,
       section2: section2Data ? { section2Data, Images: section2Images } : null,
-      section2optional: section2DataOptional ? { section2DataOptional, topImages: section2OptionalImagesTop, bottomImages:section2OptionalImagesBottom } : null,
+      section2optional: section2DataOptional ? { section2DataOptional, topImages: section2OptionalImagesTop, bottomImages: section2OptionalImagesBottom } : null,
       section3: section3Data ? { section3Data, Images: section3Images } : null,
       section4: section4Data ? { section4Data, Images: section4Images } : null,
       section5: section5Data ? { section5Data, Images: section5Images } : null,
@@ -124,3 +143,14 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'Failed to fetch data', details: error.message });
   }
 }
+
+
+
+
+
+
+
+
+
+
+

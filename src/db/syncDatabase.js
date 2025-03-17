@@ -85,6 +85,9 @@ import CreatePageContent from '../models/create-page/contentpage.js';
 import CreatePageSEO from '../models/create-page/SEO.js';
 import CreatePageStatus from '../models/create-page/PageStatus.js';
 
+// document_transaction page
+import HeroSectionDocumentTransaction from '../models/document-transaction/HeroSectionDocumentTransaction.js';
+
 
 
 

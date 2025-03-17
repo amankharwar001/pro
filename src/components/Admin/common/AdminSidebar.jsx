@@ -29,6 +29,7 @@ const menuItems = [
   { name: "Contact", icon: <MdContacts />, link: "/admin/contact", key: "contact" },
   { name: "About", icon: <MdQuestionAnswer />, link: "/admin/about", key: "about" },
   { name: "Product", icon: <AiFillProduct />, link: "/admin/product/productlist", key: "product" },
+  { name: "Document Transaction", icon: <MdContacts />, link: "/admin/document-transaction", key: "document-transaction" },
   { name: "Category", icon: <MdCategory />, link: "/admin/category", key: "category" },
   { name: "Blog", icon: <FaBlog />, link: "/admin/blog/bloglist", key: "blog" },
   { name: "Gallery", icon: <IoMdPhotos />, link: "/admin/gallery", key: "gallery" },

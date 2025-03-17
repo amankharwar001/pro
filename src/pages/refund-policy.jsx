@@ -27,8 +27,8 @@ export async function getServerSideProps(context) {
   try {
     const response = await fetch(`${baseUrl}/api/public/refund-policy`,{
       headers: {
-        'api-key': process.env.API_KEY, // Send the API key in the request header
-      },
+        'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+       },
     });
     if (!response.ok) {
       return { props: { error: "Product not found", data: null, baseUrl } };

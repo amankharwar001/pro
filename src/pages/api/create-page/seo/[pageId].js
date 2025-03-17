@@ -1,4 +1,4 @@
-import SEOBlogPage from "@/models/blogPage/SEO";
+// import SEOBlogPage from "@/models/blogPage/SEO";
 import CreatePageSEO from "@/models/create-page/SEO";
 
 export default async function handler(req, res) {

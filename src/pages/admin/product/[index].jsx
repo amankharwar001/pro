@@ -13,7 +13,7 @@ import Section2Optional from '@/components/Admin/product/Section2Optional';
 
 const Index = () => {
   const [activeBox, setActiveBox] = useState(1);
-  const [sectionsStatus, setSectionsStatus] = useState(Array(8).fill(false));
+  const [sectionsStatus, setSectionsStatus] = useState(Array(10).fill(false));
   const [data, setData] = useState(null);
   const router = useRouter();
   const { index, edit: queryActiveBox } = router.query;
