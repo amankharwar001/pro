@@ -154,7 +154,7 @@ const CreatePageHeroSectionForm = forwardRef(({ page, onSubmitId, setActiveBox, 
               value={formData[field]}
               onChange={handleChange}
               className="w-full border p-1 px-2 rounded"
-              required={field !== "title" && field !== "btn" && field !== "btnLink"}
+              
             />
           </div>
         ))}
