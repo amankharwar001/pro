@@ -10,47 +10,16 @@ import Section7Product from "@/models/productPage/Section7Product";
 import SEOProductPage from "@/models/productPage/SEO";
 import HideUnhideStatus from '@/models/hideUnhide';
 import Section2Optional from "@/models/productPage/Section2Optional";
-import sequelize from '../../../../db/dbConnect';
+
 export default async function handler(req, res) {
   if (req.headers['x-system-key'] !== process.env.NEXT_PUBLIC_SYSTEM_KEY) {
     return res.status(401).json({ message: 'Unauthorized Access' });
   }
-  const { url } = req.query; // Get the URL slug
+  const { url } = req.query; 
 
   try {
-
-    const formattedHeading = url.replace(/-/g, ' ').trim().toLowerCase();
-    console.log("Formatted Heading:", formattedHeading);
-
-    // ✅ Pehle SEO Table me dekhein slug match karta hai ya nahi
-    let seoDatafilter = await SEOProductPage.findOne({ where: { slug: url } });
-
-    let heroSection;
-
-    if (seoDatafilter) {
-      console.log("SEO Data Found, Fetching HeroSection...");
-      heroSection = await HeroSectionProductPage.findOne({ where: { id: seoDatafilter.heroSectionId } });
-    } else {
-      
-      console.log("SEO Data Not Found, Checking HeroSection by Heading...");
-
-      // ✅ Agar SEO data nahi mila, toh heading se dhundho
-      heroSection = await HeroSectionProductPage.findOne({
-        where: sequelize.where(
-          sequelize.fn('LOWER', sequelize.fn('TRIM', sequelize.col('heading'))),
-          formattedHeading
-        )
-      });
-    }
-
-    if (!heroSection ) {
-      console.log("Final Hero Section Not Found");
-      return res.status(404).json({ error: 'Invalid URL: No matching data found' });
-    }
-
-    console.log("Final Hero Section:", heroSection.dataValues);
-    const id = heroSection.dataValues.id;
-
+    const urlfilter = await SEOProductPage.findOne({ where: { slug:url } });
+    const id = urlfilter.heroSectionId;
 
 
     // Fetch all hide/unhide statuses
@@ -118,7 +87,7 @@ export default async function handler(req, res) {
       : [];
 
     const section5Images = section5Data
-      ? await ImagesData.findAll({ where: { referenceType: id, referenceId: [5, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70] } })
+      ? await ImagesData.findAll({ where: { referenceType: id, referenceId: [5, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70,71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90] } })
       : [];
 
     const section6Images = section6Data

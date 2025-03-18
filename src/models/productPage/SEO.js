@@ -11,7 +11,7 @@ const SEOProductPage = sequelize.define('SEOProductPage', {
     },
     description: {
         type: DataTypes.TEXT,
-        allowNull: false,  
+        allowNull: true,  
     },
     slug: {
         type: DataTypes.STRING,
@@ -19,7 +19,7 @@ const SEOProductPage = sequelize.define('SEOProductPage', {
     },
     keyword: {
         type: DataTypes.STRING, 
-        allowNull: false,  
+        allowNull: true,  
         get() {
             const value = this.getDataValue('keyword');
             return value ? value.split(',').map((k) => k.trim()) : [];  

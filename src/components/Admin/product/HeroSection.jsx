@@ -36,11 +36,11 @@ const HeroSectionForm = ({ productpage, onSubmitId,setActiveBox,sectionsStatusHa
           headers: {
            'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
           },
-        }); // Replace with your API endpoint
+        }); 
         if (res.ok) {
           const data = await res.json();
-          setFormData(data); // Populate form with existing data
-          setIsEditMode(true); // Enable edit mode
+          setFormData(data); 
+          setIsEditMode(true);
           setApiStatus(true)
         }
         

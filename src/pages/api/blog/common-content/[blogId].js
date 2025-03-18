@@ -1,10 +1,16 @@
 import CommonBlogContent from '@/models/blogPage/CommonBlogContent';
 import CreateBlogId from '@/models/blogPage/IdGenerate';
-
+import SEOBlogPage from "@/models/blogPage/SEO";
 export default async function handler(req, res) {
   if (req.headers['x-system-key'] !== process.env.NEXT_PUBLIC_SYSTEM_KEY) {
     return res.status(401).json({ message: 'Unauthorized Access' });
   }
+  const generateSlug = (text) => {
+    return text
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+  };
   const { blogId } = req.query;  // Get the blogId from query params
 
   if (!blogId) {
@@ -71,6 +77,25 @@ export default async function handler(req, res) {
           heading,
           selectedCategories,
         });
+        if (heading) {
+          console.log("Generating slug for heading:", heading);
+          const slug = generateSlug(heading);
+          console.log("Generated Slug:", slug);
+  
+          try {
+            console.log("Saving SEO Entry...");
+            const seoEntry = await SEOBlogPage.create({
+              title: heading,
+              slug: slug,
+              blogId: blogId,
+            });
+            console.log("SEO Entry Created Successfully:", seoEntry);
+          } catch (seoError) {
+            console.error("Error saving SEO entry:", seoError);
+          }
+        } else {
+          console.log("No heading provided, skipping SEO entry.");
+        }
 
         return res.status(201).json(newEntry);
       }

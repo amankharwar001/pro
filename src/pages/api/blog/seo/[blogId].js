@@ -4,7 +4,7 @@ export default async function handler(req, res) {
   if (req.headers['x-system-key'] !== process.env.NEXT_PUBLIC_SYSTEM_KEY) {
     return res.status(401).json({ message: 'Unauthorized Access' });
   }
-  const { blogId } = req.query; // Get blogId from the query parameters
+  const { blogId } = req.query; 
 
   // Handle PUT request to update the existing entry
   if (req.method === 'PUT') {

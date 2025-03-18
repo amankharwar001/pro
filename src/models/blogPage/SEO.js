@@ -9,7 +9,7 @@ const SEOBlogPage = sequelize.define('SEOBlogPage', {
     },
     description: {
         type: DataTypes.TEXT,
-        allowNull: false,  // Ensuring the description field is required
+        allowNull: true,  // Ensuring the description field is required
     },
     slug: {
         type: DataTypes.STRING,
@@ -17,7 +17,7 @@ const SEOBlogPage = sequelize.define('SEOBlogPage', {
     },
     keyword: {
         type: DataTypes.STRING,  // Store as a string, comma-separated
-        allowNull: false,  // Ensuring the keyword field is required
+        allowNull: true,  // Ensuring the keyword field is required
         get() {
             const value = this.getDataValue('keyword');
             return value ? value.split(',').map((k) => k.trim()) : [];  // Return as an array when reading from DB
