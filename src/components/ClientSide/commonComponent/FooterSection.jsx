@@ -16,7 +16,7 @@ export default function FooterSection() {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_PATH;
   const [footerData, setFooterData] = useState(null);
   const [pageData, setPageData] = useState(null);
-  console.log("product list show is here", productList)
+  console.log("page list show is here", pageData)
 
 
   useEffect(() => {
@@ -149,15 +149,15 @@ export default function FooterSection() {
                 <li className='text-p'><Link href="/contact">Contact</Link></li>
                 <li className='text-p'><Link href="/transaction-document">Transaction Document</Link></li>
                 {pageData?.data
-                  ?.filter((item) => item.sectionType === "footer")
+                  ?.filter((item) => item.sectionType === "footer" && item.status === "active") 
                   .map((item, index) => (
                     <h3 key={index}>
-                      <Link href={`/${item.slug}`} className="text-p ">
-                        { }
-                        <li className='text-p'>{item.heading}</li>
+                      <Link href={`/${item.slug}`} className="text-p">
+                        <li className="text-p">{item.heading}</li>
                       </Link>
                     </h3>
                   ))}
+
               </ul>
             </div>
           </Fade>

@@ -11,8 +11,9 @@ const PrivacyPolicy = ({ data, pageData, error, baseUrl }) => {
     <div>
       <HeadTagSEO data={data} />
       <HeroSections heroSection={data?.heroSection} image={data?.heroSection?.images[0]?.filePath} alttext={data?.heroSection?.images[0]?.filePath} baseUrl={baseUrl} />
-      <div className='container'>
-        {pageData?.data
+      <div className='container my-20'>
+        <h2>Transaction Document</h2>
+        {/* {pageData?.data
           ?.filter((item) => item.sectionType === "page") 
           .map((item, index) => (
             <h3 key={index}>
@@ -20,7 +21,17 @@ const PrivacyPolicy = ({ data, pageData, error, baseUrl }) => {
                 {item.heading}
               </Link>
             </h3>
+          ))} */}
+        {pageData?.data
+          ?.filter((item) => item.sectionType === "page" && item.status === "active") // ✅ Show only active status pages
+          .map((item, index) => (
+            <h3 key={index}>
+              <Link href={`/${item.slug}`} className="text-blue-700 text-[16px] hover:underline capitalize">
+                {item.heading}
+              </Link>
+            </h3>
           ))}
+
       </div>
       <div
         className="mt-8 blog-content-editor prose container "

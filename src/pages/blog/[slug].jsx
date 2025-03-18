@@ -13,7 +13,7 @@ const Slug = ({ data, error, baseUrl }) => {
     const featureImageUrl = data?.featureImage ? `${baseUrl}${data?.featureImage?.filePath}` : null;
 
     // Check if the status is not 'active' or if data is missing
-    if (error || !data || data.status !== 'active' || !featureImageUrl) {
+    if (error || !data || data.status !== 'active' ) {
         return (<Found4O4 />);
     }
 
