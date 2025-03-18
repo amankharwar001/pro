@@ -188,6 +188,7 @@ const CreatePageSeo = ({ blogpageId }) => {
                         onChange={handleMetaTag}
                         className="h-8 px-2 rounded border text-para"
                         type="text"
+                        required
                     />
                     <span className="text-xs text-gray-500">
                         Slug auto-generates from the title. You can edit it manually.

@@ -27,7 +27,7 @@ const ImageUploader = ({ referenceType, referenceId: propReferenceId, width, hei
         }
       } catch (error) {
         console.error('Error fetching images:', error);
-        setUploadStatus('Error fetching images.');
+        // setUploadStatus('Error fetching images.');
       }
     };
 
@@ -42,7 +42,7 @@ const ImageUploader = ({ referenceType, referenceId: propReferenceId, width, hei
     e.preventDefault();
 
     if (!image  || !referenceId) {
-      setUploadStatus('Please select an image, provide alt text');
+      setUploadStatus('Please select an image');
       return;
     }
 
@@ -74,7 +74,7 @@ const ImageUploader = ({ referenceType, referenceId: propReferenceId, width, hei
       }
     } catch (error) {
       console.error('Error uploading image:', error);
-      setUploadStatus('Error uploading image.');
+      
     }
   };
 
@@ -218,13 +218,13 @@ const ImageUploader = ({ referenceType, referenceId: propReferenceId, width, hei
               type="button"
               onClick={editImageId ? handleUpdate : handleUpload}
               className="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-gray-800 transition duration-300">
-              {editImageId ? 'Update' : 'Upload'}
+              {editImageId ? 'Update' : 'save'}
             </button>
           </div>
         </div>
       </div>
       <div className="flex pl-2   break-words max-w-44 justify-center">
-        {uploadStatus && <p className=" text-cyan-600 text-sm">{uploadStatus}</p>}
+        {uploadStatus && <p className=" text-cyan-600 text-[12px]">{uploadStatus}</p>}
       </div>
     </div>
   );

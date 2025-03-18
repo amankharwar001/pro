@@ -12,6 +12,8 @@ const BlogList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const blogsPerPage = 5;
 
+  console.log("blog list show is here",blogList)
+
   
   const [sortBy, setSortBy] = useState(null); 
   const [sortOrder, setSortOrder] = useState("asc"); 
@@ -210,7 +212,7 @@ const handleDeleteBlog = async (blogId) => {
                     </button>
                   </td>
                   <td className="px-6 py-4 border-b border-gray-200 text-center">
-                    {blog.status === "active" ? (
+                    {blog.status === "active" && blog.seo ? (
                       <a
                         href={`${basePath}/${blog.seo}`}
                         target="_blank"

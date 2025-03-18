@@ -294,18 +294,18 @@ const ClientSidePageEditor = forwardRef(({ referenceType, sectionsStatusHandle, 
   const handleSubmit = async (event) => {
     if (event) event.preventDefault();
 
-    const countWords = (content) => {
-      const plainText = content.replace(/<[^>]*>/g, "").trim();
-      const words = plainText.split(/\s+/).filter((word) => word !== "");
-      return { count: words.length, plainText };
-    };
+    // const countWords = (content) => {
+    //   const plainText = content.replace(/<[^>]*>/g, "").trim();
+    //   const words = plainText.split(/\s+/).filter((word) => word !== "");
+    //   return { count: words.length, plainText };
+    // };
 
-    const { count, plainText } = countWords(editorContent);
+    // const { count, plainText } = countWords(editorContent);
 
-    if (count < 5 || !/[a-zA-Z]/.test(plainText)) {
-      alert("Content must have at least 5 words and include alphabets.");
-      return;
-    }
+    // if (count < 5 || !/[a-zA-Z]/.test(plainText)) {
+    //   alert("Content must have at least 5 words and include alphabets.");
+    //   return;
+    // }
 
     try {
       const endpoint = contentId ? `/api/common-term-policy-page/${contentId}` : `/api/common-term-policy-page/post`;
@@ -321,10 +321,10 @@ const ClientSidePageEditor = forwardRef(({ referenceType, sectionsStatusHandle, 
 
       const result = await response.json();
       if (response.ok) {
-        alert("save data");
+        
         if (method === "POST") setContentId(result.section.id);
         setActiveBox(3);
-        if (/[a-zA-Z]/.test(plainText)) setApiStatus(true);
+        // if (/[a-zA-Z]/.test(plainText)) setApiStatus(true);
       } else {
         alert(result.error || "Failed to save content.");
       }

@@ -1,21 +1,11 @@
-
-
-// pages/api/blogs.js
-import BlogStatus from '@/models/blogPage/BlogStatus';
-import CommonBlogContent from '@/models/blogPage/CommonBlogContent';
 import ImagesData from '@/models/homePage/ImagesData';
-import SEOBlogPage from "@/models/blogPage/SEO";
 import CreatePageId from '@/models/create-page/createid';
-
-
-
-
-
-
-
 import CreatePageStatus from "@/models/create-page/PageStatus";
-
 import heroSectionCreatePage from "@/models/create-page/herosection";
+import CreatePageSEO from '@/models/create-page/SEO';
+
+
+
 export default async function handler(req, res) {
     if (req.headers['x-system-key'] !== process.env.NEXT_PUBLIC_SYSTEM_KEY) {
         return res.status(401).json({ message: 'Unauthorized Access' });
@@ -39,15 +29,14 @@ export default async function handler(req, res) {
                     const page = await CreatePageId.findByPk(id);
                     const heading = await heroSectionCreatePage.findOne({ where: { id: id } });
                     const status = await CreatePageStatus.findOne({ where: { id: id } });
-                    // const image = await ImagesData.findAll({ where: { referenceType: blog.id } });
-                    const seo = await SEOBlogPage.findOne({ where: { blogId: id } });
+                    
+                    const seo = await CreatePageSEO.findOne({ where: { id: id } });
 
                     if (page) {
                         res.status(200).json({
                             id: page.id,
                             heading: heading ? heading.heading : null,
                             status: status ? status.status : null,
-                            image: image ? image : null,
                             seo:seo? seo.slug : null
                         });
                     } else {
@@ -66,14 +55,13 @@ export default async function handler(req, res) {
                         pages.map(async (page) => {
                             const heading = await heroSectionCreatePage.findOne({ where: { id: page.id } });
                             const status = await CreatePageStatus.findOne({ where: { id: page.id } });
-                            const image = await ImagesData.findAll({ where: { referenceType: page.id } });
-                            const seo = await SEOBlogPage.findOne({ where: { blogId: page.id } });
+                            
+                            const seo = await CreatePageSEO.findOne({ where: { id: page.id } });
 
                             return {
                                 id: page.id,
                                 heading: heading ? heading.heading : null,
                                 status: status ? status.status : null,
-                                image: image ? image : null,
                                 seo:seo? seo.slug : null
                             };
                         })
@@ -92,7 +80,7 @@ export default async function handler(req, res) {
                     where: { id }
                 });
                 if (deleted) {
-                    res.status(204).end(); // No content, successfully deleted
+                    res.status(204).end(); 
                 } else {
                     res.status(404).json({ message: 'page not found' });
                 }
