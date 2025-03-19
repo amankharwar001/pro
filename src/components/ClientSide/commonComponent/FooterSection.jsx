@@ -153,7 +153,7 @@ export default function FooterSection() {
                   .map((item, index) => (
                     <h3 key={index}>
                       <Link href={`/${item.slug}`} className="text-p">
-                        <li className="text-p">{item.heading}</li>
+                        <li className="text-p">{item.nickname}</li>
                       </Link>
                     </h3>
                   ))}

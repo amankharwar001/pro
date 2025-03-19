@@ -83,8 +83,8 @@ export default async function handler(req, res) {
                 sectionType: heading.sectionType,
                 nickname: heading.nickname,
                 heading: heading.heading,
-                slug: seoMap[heading.id] || null, // ✅ Add slug if exists
-                status: statusMap[heading.id] || 'draft' // ✅ Add status if exists
+                slug: seoMap[heading.id] || null, 
+                status: statusMap[heading.id] || 'draft'
             }));
 
             return res.status(200).json({ data: filteredData });

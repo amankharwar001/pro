@@ -7,7 +7,7 @@ import { BsFillFolderSymlinkFill } from "react-icons/bs";
 
 
 const PrivacyPolicy = ({ data, pageData, error, baseUrl }) => {
-  console.log("transaction details", data)
+  console.log("transaction details", pageData)
 
   return (
     <div>
@@ -33,7 +33,7 @@ const PrivacyPolicy = ({ data, pageData, error, baseUrl }) => {
               </span>
               <h3 >
                 <Link href={`/${item.slug}`} className="hover:text-blue-700  text-[16px] hover:underline capitalize">
-                  {item.heading}
+                  {item.nickname}
                 </Link>
               </h3>
             </div>
