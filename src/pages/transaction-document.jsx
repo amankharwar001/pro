@@ -14,7 +14,7 @@ const PrivacyPolicy = ({ data, pageData, error, baseUrl }) => {
       <HeadTagSEO data={data} />
       <HeroSections heroSection={data?.heroSection} image={data?.heroSection?.images[0]?.filePath} alttext={data?.heroSection?.images[0]?.filePath} baseUrl={baseUrl} />
       <div className='container my-20'>
-        <h2>Transaction Document</h2>
+        <h2>{data?.heroSection?.heading}</h2>
         {/* {pageData?.data
           ?.filter((item) => item.sectionType === "page") 
           .map((item, index) => (
