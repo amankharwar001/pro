@@ -149,22 +149,22 @@ const ClientSideCommonEditor = ({ referenceType, sectionsStatusHandle, setActive
   // Handle form submission
   const handleSubmit = async (event) => {
     event.preventDefault()
-    const countWords = (content) => {
-      // Remove HTML tags
-      const plainText = content.replace(/<[^>]*>/g, "").trim();
-      // Split by spaces and filter out empty strings
-      const words = plainText.split(/\s+/).filter((word) => word !== "");
-      return { count: words.length, plainText };
-    };
+    // const countWords = (content) => {
+    //   // Remove HTML tags
+    //   const plainText = content.replace(/<[^>]*>/g, "").trim();
+    //   // Split by spaces and filter out empty strings
+    //   const words = plainText.split(/\s+/).filter((word) => word !== "");
+    //   return { count: words.length, plainText };
+    // };
 
-    // Count words and get plain text
-    const { count, plainText } = countWords(editorContent);
+    // // Count words and get plain text
+    // const { count, plainText } = countWords(editorContent);
 
-    // Validate word count and check for at least one alphabet
-    if (count < 5 || !/[a-zA-Z]/.test(plainText)) {
-      alert("Content must have at least 5 words and include alphabets.");
-      return;
-    }
+    // // Validate word count and check for at least one alphabet
+    // if (count < 5 || !/[a-zA-Z]/.test(plainText)) {
+    //   alert("Content must have at least 5 words and include alphabets.");
+    //   return;
+    // }
     try {
       const endpoint = contentId ? `/api/common-term-policy-page/${contentId}` : `/api/common-term-policy-page/post`;
       const method = contentId ? "PUT" : "POST";

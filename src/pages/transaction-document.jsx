@@ -7,7 +7,6 @@ import { BsFillFolderSymlinkFill } from "react-icons/bs";
 
 
 const PrivacyPolicy = ({ data, pageData, error, baseUrl }) => {
-  console.log("transaction details", pageData)
 
   return (
     <div>
@@ -15,15 +14,6 @@ const PrivacyPolicy = ({ data, pageData, error, baseUrl }) => {
       <HeroSections heroSection={data?.heroSection} image={data?.heroSection?.images[0]?.filePath} alttext={data?.heroSection?.images[0]?.filePath} baseUrl={baseUrl} />
       <div className='container my-20'>
         <h2>{data?.heroSection?.heading}</h2>
-        {/* {pageData?.data
-          ?.filter((item) => item.sectionType === "page") 
-          .map((item, index) => (
-            <h3 key={index}>
-              <Link href={`/${item.slug}`} className="text-blue-500 hover:underline">
-                {item.heading}
-              </Link>
-            </h3>
-          ))} */}
         {pageData?.data
           ?.filter((item) => item.sectionType === "page" && item.status === "active") // ✅ Show only active status pages
           .map((item, index) => (
