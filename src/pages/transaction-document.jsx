@@ -27,11 +27,11 @@ const PrivacyPolicy = ({ data, pageData, error, baseUrl }) => {
         {pageData?.data
           ?.filter((item) => item.sectionType === "page" && item.status === "active") // ✅ Show only active status pages
           .map((item, index) => (
-            <div className="flex gap-5 items-center pl-10 mt-3">
+            <div key={index} className="flex gap-5 items-center pl-10 mt-3">
               <span >
                 <BsFillFolderSymlinkFill size={20} className="text-blue-700 " />
               </span>
-              <h3 key={index}>
+              <h3 >
                 <Link href={`/${item.slug}`} className="hover:text-blue-700  text-[16px] hover:underline capitalize">
                   {item.heading}
                 </Link>
