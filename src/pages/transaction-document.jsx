@@ -3,6 +3,8 @@ import FooterSection from '../components/ClientSide/commonComponent/FooterSectio
 import React from 'react'
 import HeadTagSEO from '@/components/HeadTag'
 import Link from 'next/link';
+import { BsFillFolderSymlinkFill } from "react-icons/bs";
+
 
 const PrivacyPolicy = ({ data, pageData, error, baseUrl }) => {
   console.log("transaction details", data)
@@ -25,11 +27,17 @@ const PrivacyPolicy = ({ data, pageData, error, baseUrl }) => {
         {pageData?.data
           ?.filter((item) => item.sectionType === "page" && item.status === "active") // ✅ Show only active status pages
           .map((item, index) => (
-            <h3 key={index}>
-              <Link href={`/${item.slug}`} className="text-blue-700 text-[16px] hover:underline capitalize">
-                {item.heading}
-              </Link>
-            </h3>
+            <div className="flex gap-5 items-center pl-10 mt-3">
+              <span >
+                <BsFillFolderSymlinkFill size={20} className="text-blue-700 " />
+              </span>
+              <h3 key={index}>
+                <Link href={`/${item.slug}`} className="hover:text-blue-700  text-[16px] hover:underline capitalize">
+                  {item.heading}
+                </Link>
+              </h3>
+            </div>
+
           ))}
 
       </div>

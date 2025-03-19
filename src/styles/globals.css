@@ -50,6 +50,14 @@ h2,.heading-h2 {
   font-weight: 700;
   margin-bottom: 0.7rem;
 }
+.blog-content-editor ul{
+  list-style:disc;
+  padding-left: 50px;
+}
+.blog-content-editor ol{
+  list-style:decimal;
+  padding-left: 50px;
+}
 
 h3 {
   font-size: clamp(1.3rem,1.5vw + .7rem,1rem);
