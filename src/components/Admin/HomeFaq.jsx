@@ -15,7 +15,15 @@ export default function FAQManager({setActiveBox,sectionsStatusHandle}) {
     questions: [],
   });
   const [message, setMessage] = useState("");
-
+  const modules = {
+    toolbar: [
+      [{ header: [1, 2, 3, 4, 5, 6, false] }],
+      ["bold", "italic", "underline"],
+      [{ color: [] }],
+      [{ list: "ordered" }, { list: "bullet" }],
+      ["clean"],
+    ],
+  };
   useEffect(() => {
     async function fetchFaqData() {
       try {
@@ -143,6 +151,7 @@ export default function FAQManager({setActiveBox,sectionsStatusHandle}) {
                 value={q.answer}
                 onChange={(value) => handleQuestionChange(index, "answer", value)}
                 className=" w-full"
+                modules={modules}
               />
               <button
                 type="button"

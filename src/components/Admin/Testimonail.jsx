@@ -134,7 +134,7 @@ const TestimonialManager = ({ setActiveBox, sectionsStatusHandle }) => {
               onChange={(value) => handleQuillChange(value, index)}
               modules={{
                 toolbar: [
-                  [{ header: [1, 2, false] }],
+                  [{ header: [1, 2, 3, 4, 5, 6, false] }],
                   ["bold", "italic", "underline"],
                   [{ color: [] }],
                   [{ list: "ordered" }, { list: "bullet" }],

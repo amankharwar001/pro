@@ -18,6 +18,16 @@ const Section4Form = ({ setActiveBox, sectionsStatusHandle }) => {
   const [imageStatus, setImageStatus] = useState(false);
   const [multiImageStatus, setMultiImageStatus] = useState(false);
 
+  const modules = {
+    toolbar: [
+      [{ header: [1, 2, 3, 4, 5, 6, false] }],
+      ["bold", "italic", "underline"],
+      [{ color: [] }],
+      [{ list: "ordered" }, { list: "bullet" }],
+      ["clean"],
+    ],
+  };
+
   useEffect(() => {
     if (apiStatus && imageStatus && multiImageStatus) {
       sectionsStatusHandle(true);
@@ -124,6 +134,7 @@ const Section4Form = ({ setActiveBox, sectionsStatusHandle }) => {
         <ReactQuill
           value={content}
           onChange={setContent}
+          modules={modules}
           theme="snow"
           className="bg-white border border-gray-300 rounded-md"
         />

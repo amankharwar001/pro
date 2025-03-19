@@ -11,6 +11,16 @@ export default function Section4Product({ productpage, setActiveBox, sectionsSta
   const [apiStatus, setApiStatus] = useState(false);
   const [imageStatus, setImageStatus] = useState(false);
 
+  const modules = {
+    toolbar: [
+      [{ header: [1, 2, 3, 4, 5, 6, false] }],
+      ["bold", "italic", "underline"],
+      [{ color: [] }],
+      [{ list: "ordered" }, { list: "bullet" }],
+      ["clean"],
+    ],
+  };
+
   useEffect(() => {
     if (apiStatus && imageStatus) {
       sectionsStatusHandle(true);
@@ -114,6 +124,7 @@ export default function Section4Product({ productpage, setActiveBox, sectionsSta
               <label className="block text-sm text-gray-700 font-semibold">Text</label>
               <ReactQuill
                 value={item.text}
+                modules={modules}
                 onChange={(value) => handleChange(index, "text", value)}
                 className="bg-white"
               />

@@ -18,6 +18,16 @@ export default function Section5Product({ productpage, setActiveBox, sectionsSta
   const [apiStatus, setApiStatus] = useState(false);
   const [imageStatuses, setImageStatuses] = useState({});
 
+  const modules = {
+    toolbar: [
+      [{ header: [1, 2, 3, 4, 5, 6, false] }],
+      ["bold", "italic", "underline"],
+      [{ color: [] }],
+      [{ list: "ordered" }, { list: "bullet" }],
+      ["clean"],
+    ],
+  };
+
   const handleImageStatusChange = (id, status) => {
     setImageStatuses((prevStatuses) => ({
       ...prevStatuses,
@@ -125,7 +135,7 @@ export default function Section5Product({ productpage, setActiveBox, sectionsSta
           </div>
           <div>
             <label className="block text-sm text-gray-700 font-semibold">Text</label>
-            <ReactQuill theme="snow" value={data.text} onChange={(value) => handleChange("text", value)} />
+            <ReactQuill theme="snow" modules={modules} value={data.text} onChange={(value) => handleChange("text", value)} />
           </div>
           <div>
             <h2 className="text-sm font-semibold text-gray-700">Info</h2>
@@ -141,7 +151,7 @@ export default function Section5Product({ productpage, setActiveBox, sectionsSta
                 <label className="block font-medium">Title</label>
                 <input type="text" value={item.title} onChange={(e) => handleInfoChange(index, "title", e.target.value)} className="w-full p-2 border rounded" />
                 <label className="block font-medium">Content</label>
-                <ReactQuill theme="snow" value={item.content} onChange={(value) => handleInfoChange(index, "content", value)} />
+                <ReactQuill theme="snow" modules={modules} value={item.content} onChange={(value) => handleInfoChange(index, "content", value)} />
               </div>
             ))}
             <button type="button" onClick={handleAddInfo} className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 mt-2">

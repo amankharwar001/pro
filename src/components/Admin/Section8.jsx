@@ -19,6 +19,17 @@ const Section8Page = ({ setActiveBox, sectionsStatusHandle }) => {
   const [imageStatus, setImageStatus] = useState(false);
   const [multiImageStatus, setMultiImageStatus] = useState(false);
 
+
+  const modules = {
+    toolbar: [
+      [{ header: [1, 2, 3, 4, 5, 6, false] }],
+      ["bold", "italic", "underline"],
+      [{ color: [] }],
+      [{ list: "ordered" }, { list: "bullet" }],
+      ["clean"],
+    ],
+  };
+
   useEffect(() => {
     if (apiStatus && imageStatus && multiImageStatus) {
       sectionsStatusHandle(true);
@@ -132,6 +143,7 @@ const Section8Page = ({ setActiveBox, sectionsStatusHandle }) => {
           <ReactQuill
             value={sectionData.content}
             onChange={handleContentChange}
+            modules={modules}
             className="mt-2 border border-gray-300 rounded-md w-full"
           />
         </div>

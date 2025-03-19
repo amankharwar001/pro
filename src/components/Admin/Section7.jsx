@@ -25,6 +25,16 @@ export default function Section7Manager({ setActiveBox, sectionsStatusHandle }) 
       sectionsStatusHandle(false);
     }
   }, [apiStatus, imageStatus]);
+  
+  const modules = {
+    toolbar: [
+      [{ header: [1, 2, 3, 4, 5, 6, false] }],
+      ["bold", "italic", "underline"],
+      [{ color: [] }],
+      [{ list: "ordered" }, { list: "bullet" }],
+      ["clean"],
+    ],
+  };
 
   useEffect(() => {
     async function fetchSection7() {
@@ -102,7 +112,7 @@ export default function Section7Manager({ setActiveBox, sectionsStatusHandle }) 
         </div>
         <div>
           <label htmlFor="content" className="block font-bold text-gray-700">Content</label>
-          <ReactQuill value={content} onChange={setContent} className=" w-full rounded-md" />
+          <ReactQuill value={content} onChange={setContent} modules={modules} className=" w-full rounded-md" />
         </div>
         <div>
           <label htmlFor="btn" className="block font-bold text-gray-700">Button Text</label>

@@ -99,9 +99,8 @@ const CommonEditor = forwardRef(({ blogId }, ref) => {
       },
       
     },
-  }), [blogId]); // Empty dependency array ensures this is only calculated once on mount  check here to problem face not work remove ref
-
-  // Fetch existing content on component mount
+  }), [blogId]); 
+  
   useEffect(() => {
     const fetchData = async () => {
       try {

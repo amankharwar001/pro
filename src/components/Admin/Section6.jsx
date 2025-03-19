@@ -22,6 +22,17 @@ const AdminSection6Panel = ({ setActiveBox, sectionsStatusHandle }) => {
   const [apiStatus, setApiStatus] = useState(false);
   const [imageStatus, setImageStatus] = useState({});
 
+  
+const modules = {
+  toolbar: [
+    [{ header: [1, 2, 3, 4, 5, 6, false] }],
+    ["bold", "italic", "underline"],
+    [{ color: [] }],
+    [{ list: "ordered" }, { list: "bullet" }],
+    ["clean"],
+  ],
+};
+
   const updateImageStatus = (index, status) => {
     setImageStatus((prevStatus) => ({
       ...prevStatus,
@@ -178,6 +189,7 @@ const AdminSection6Panel = ({ setActiveBox, sectionsStatusHandle }) => {
           </label>
           <ReactQuill
             value={formData.bottomtext}
+            modules={modules}
             onChange={(value) => handleInputChange("bottomtext", value)}
             className="bg-white rounded-md shadow-sm"
           />
@@ -249,6 +261,7 @@ const AdminSection6Panel = ({ setActiveBox, sectionsStatusHandle }) => {
                           value={card.content}
                           onChange={(value) => handleCardChange(index, "content", value)}
                           className="bg-white rounded-md shadow-sm"
+                          modules={modules}
                         />
                       </div>
                       <div>
@@ -259,6 +272,7 @@ const AdminSection6Panel = ({ setActiveBox, sectionsStatusHandle }) => {
                           value={card.info}
                           onChange={(value) => handleCardChange(index, "info", value)}
                           className="bg-white rounded-md shadow-sm"
+                          modules={modules}
                         />
                       </div>
                       <div>

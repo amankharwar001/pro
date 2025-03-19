@@ -320,7 +320,7 @@ const CreatePageHeroSectionForm = forwardRef(({ page, onSubmitId, setActiveBox, 
           >
             <option value="">Select Section</option>
             <option value="footer">Footer</option>
-            <option value="page">Page</option>
+            <option value="page">Transaction Document</option>
           </select>
         </div>
 

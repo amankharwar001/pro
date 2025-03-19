@@ -19,6 +19,16 @@ const Section3Form = ({ setActiveBox, sectionsStatusHandle }) => {
     const [imageStatus, setImageStatus] = useState({});
     const [multiImageStatus, setMultiImageStatus] = useState(false);
 
+    const modules = {
+        toolbar: [
+          [{ header: [1, 2, 3, 4, 5, 6, false] }],
+          ["bold", "italic", "underline"],
+          [{ color: [] }],
+          [{ list: "ordered" }, { list: "bullet" }],
+          ["clean"],
+        ],
+      };
+
     useEffect(() => {
         const allImagesUploaded =
             imageStatus.home_section3_1 === true && imageStatus.home_section3_2 === true;
@@ -158,6 +168,7 @@ const Section3Form = ({ setActiveBox, sectionsStatusHandle }) => {
                     <ReactQuill
                         value={content}
                         onChange={setContent}
+                        modules={modules}
                         theme="snow"
                         className="bg-white border border-gray-300 rounded-md"
                     />
