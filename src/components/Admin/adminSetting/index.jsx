@@ -1,7 +1,7 @@
 
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { HiEye, HiEyeOff } from 'react-icons/hi'; // Import eye icons
 
 const ChangeCredentials = () => {
@@ -19,6 +19,32 @@ const ChangeCredentials = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false); // State for toggling confirm password visibility
 
   const [passwordError, setPasswordError] = useState(''); // To hold password-specific error
+  const [adminUsername, setAdminUsername] = useState(""); 
+  console.log("admin usernamae show is here......",adminUsername)
+  
+  
+  useEffect(() => {
+      const fetchAdminUsername = async () => {
+        try {
+          const response = await fetch("/api/adminpassword/change-credentials",{
+            headers: {
+              'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+            },
+          }); // API to get admin email
+          const data = await response.json();
+          // console.log("admin usernamae show is here",data)
+          if (response.ok) {
+            setAdminUsername(data.username); // Store the fetched email
+          } else {
+            setError(data.error || "Failed to fetch admin email");
+          }
+        } catch (err) {
+          setError("Network error while fetching email.");
+        }
+      };
+  
+      fetchAdminUsername();
+    }, []);
 
 
 const handleSubmit = async (e) => {
@@ -110,6 +136,12 @@ const handleSubmit = async (e) => {
 
       <div className="max-w-md mx-auto mt-5 p-6 border rounded-lg shadow-inner bg-gray-50">
         <h2 className="text-2xl font-bold mb-6 text-center">Change {isUsername ? 'Username' : 'Password'}</h2>
+        {isUsername&&(
+          <div className="flex items-center justify-center mb-6 gap-3">
+            <span>current username: </span>
+            <span className="text-blue-950 text-[13px]">{adminUsername}</span>
+          </div>
+        )}
 
         {error && <p className="text-red-500 mb-4">{error}</p>}
         {success && <p className="text-green-500 mb-4">{success}</p>}

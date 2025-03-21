@@ -16,7 +16,11 @@ const BlogHeroImage = () => {
     const fetchHeading = async () => {
         try {
             setLoading(true);
-            const response = await fetch("/api/blog/blogheading");
+            const response = await fetch("/api/blog/blogheading",{
+                headers: {
+                 'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+                },
+              });
             if (response.ok) {
                 const data = await response.json();
                 setHeadingName(data.headingName || "");
@@ -34,7 +38,7 @@ const BlogHeroImage = () => {
             setLoading(true);
             const response = await fetch("/api/blog/blogheading", {
                 method: "PUT",
-                headers: { "Content-Type": "application/json" },
+                headers: { "Content-Type": "application/json",'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY,  },
                 body: JSON.stringify({ headingName }),
             });
             if (response.ok) {

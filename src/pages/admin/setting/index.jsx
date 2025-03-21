@@ -26,7 +26,11 @@ const Index = () => {
   useEffect(() => {
     const fetchAdminName = async () => {
       try {
-        const response = await fetch('/api/adminsetting');
+        const response = await fetch('/api/adminsetting',{
+          headers: {
+            'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+           },
+        });
         const result = await response.json();
         if (response.ok) {
           setAdminName(result.name); // Set the initial value from the server
@@ -48,7 +52,7 @@ const Index = () => {
     try {
       const response = await fetch('/api/adminsetting', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json','x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY,  },
         body: JSON.stringify({ name }),
       });
 

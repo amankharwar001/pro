@@ -5,6 +5,24 @@ export default async function handler(req, res) {
   if (req.headers['x-system-key'] !== process.env.NEXT_PUBLIC_SYSTEM_KEY) {
     return res.status(401).json({ message: 'Unauthorized Access' });
   }
+
+  if (req.method === "GET") {
+    try {
+      // Fetch the admin's email
+      const admin = await AdminModel.findOne({ attributes: ['email'] });
+      
+      if (!admin) {
+        return res.status(404).json({ error: "Admin not found" });
+      }
+      
+      return res.status(200).json({ email: admin.email });
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ error: "Internal server error" });
+    }
+  }
+
+
   if (req.method === "POST") {
     const { currentPassword, newEmail } = req.body;  // Current password & new email
 

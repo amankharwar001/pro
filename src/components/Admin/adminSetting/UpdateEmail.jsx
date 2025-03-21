@@ -1,14 +1,41 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"; // Import eye icons
 import { HiEye, HiEyeOff } from 'react-icons/hi'; // Import eye icons
 
 const UpdateEmailForm = () => {
+  const [adminEmail, setAdminEmail] = useState(""); 
   const [currentPassword, setCurrentPassword] = useState("");
   const [newEmail, setNewEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
+
+
+  console.log("admin email show is here",adminEmail)
+
+
+  useEffect(() => {
+    const fetchAdminEmail = async () => {
+      try {
+        const response = await fetch("/api/email-change/update",{
+          headers: {
+            'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+           },
+        }); // API to get admin email
+        const data = await response.json();
+        if (response.ok) {
+          setAdminEmail(data.email); // Store the fetched email
+        } else {
+          setError(data.error || "Failed to fetch admin email");
+        }
+      } catch (err) {
+        setError("Network error while fetching email.");
+      }
+    };
+
+    fetchAdminEmail();
+  }, []);
 
   // Handle form submission
   const handleSubmit = async (e) => {
@@ -55,9 +82,12 @@ const UpdateEmailForm = () => {
   return (
     <div className="flex justify-center  mt-5">
       <div className="w-full max-w-md bg-gray-50 p-6 rounded-lg shadow-inner border  ">
-        <h2 className="text-2xl font-bold text-center text-black mb-6">
-          Update Admin Email
+        <h2 className="text-2xl font-bold text-center text-black mb-2">
+          Admin Email
         </h2>
+        <div className="flex items-center justify-center mb-6">
+          <span className="text-blue-950 text-[13px]">{adminEmail}</span>
+        </div>
 
         {error && (
           <div className="bg-red-100 text-red-700 p-3 mb-4 rounded-md">
