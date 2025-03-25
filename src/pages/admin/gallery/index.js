@@ -39,10 +39,10 @@ const Gallery = ({ images }) => {
 
   // Function to delete image
   const handleDeleteImage = async (imagePath) => {
-    const confirmed = prompt('Type "yes" to confirm deletion:');
-    if (confirmed !== 'yes') {
-      alert('Deletion canceled.');
-      return;
+    const confirmed = window.confirm("Are you sure you want to delete this image?");
+    if (!confirmed) {
+        alert("Deletion canceled.");
+        return;
     }
 
     try {

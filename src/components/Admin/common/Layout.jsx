@@ -21,7 +21,11 @@ const Layout = ({ children }) => {
   useEffect(() => {
     const fetchAdminSetting = async () => {
       try {
-        const response = await fetch('/api/adminsetting/info');
+        const response = await fetch('/api/adminsetting/info', {
+          headers: {
+            'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+           },
+        });
 
         // Handle non-OK responses
         if (!response.ok) {
@@ -102,7 +106,7 @@ const Layout = ({ children }) => {
             <div className="flex items-center gap-5">
               <div className="flex items-center gap-4 ">
                 <div className="w-12 h-12 flex-shrink-0 rounded-full overflow-hidden ">
-                  {/* {avatarImages?.filePath &&
+                  {avatarImages?.filePath &&
                     <Image
                       src={`${baseUrl}${avatarImages.filePath}` } 
                       alt={avatarImages?.altText || 'Avatar'}
@@ -110,8 +114,8 @@ const Layout = ({ children }) => {
                       height={20}
                       width={20}
                     />
-                  } */}
-                  {/* {avatarImages?.length > 0 && (
+                  }
+                  {avatarImages?.length > 0 && (
                     <Image
                       src={`${baseUrl}${avatarImages[0]?.filePath}`}
                       alt={avatarImages[0]?.altText || 'Avatar'}
@@ -119,12 +123,12 @@ const Layout = ({ children }) => {
                       height={20}
                       width={20}
                     />
-                  )} */}
+                  )}
                 </div>
                 <div>
                   <span className="text-admin_name font-semibold text-orange-400 max-w-full">
                    
-                    {/* {adminData || "Admin"} */}
+                    {adminData || "Admin"}
 
                   </span>
                 </div>

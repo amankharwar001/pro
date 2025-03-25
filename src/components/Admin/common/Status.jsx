@@ -9,7 +9,11 @@ const ProductStatusDropdown = ({ productStatusId }) => {
   useEffect(() => {
     const fetchStatus = async () => {
       try {
-        const response = await fetch(`/api/product/status/${productStatusId}`);
+        const response = await fetch(`/api/product/status/${productStatusId}`, {
+          headers: {
+            'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+           },
+        });
         if (response.ok) {
           const data = await response.json();
           setStatus(data.statusbar); // Set the current status
@@ -33,7 +37,7 @@ const ProductStatusDropdown = ({ productStatusId }) => {
     try {
       const response = await fetch(`/api/product/status/${productStatusId}`, {
         method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json','x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY },
         body: JSON.stringify({ status: newStatus }), // Send the new status
       });
 
