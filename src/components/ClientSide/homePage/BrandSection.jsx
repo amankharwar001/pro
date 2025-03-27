@@ -97,7 +97,7 @@ const BrandSection = ({ apidata }) => {
             <div className="lg:hidden">
               <Slider {...reversesettings} className=" brand-slider ">
                 {apidata?.images[0]?.slice().reverse().map((logo, index) => (
-                  <div key={index} className="flex-shrink-0  w-40 p-2 md:w-52 md:h-16 justify-end flex item-center h-auto gap-5 ">
+                  <div key={index} className="flex-shrink-0  w-40 p-2 md:w-52 md:h-18 justify-end flex item-center h-auto gap-5 ">
                     <Image
                       src={logo?.filePath}
                       alt={logo?.altText}
@@ -113,7 +113,7 @@ const BrandSection = ({ apidata }) => {
 
             <Slider {...reversesettings} className=" ">
               {apidata?.images[0]?.map((logo, index) => (
-                <div key={index} className="flex-shrink-0   w-40 p-2 md:w-52 md:h-16 justify-end flex item-center h-auto gap-5 ">
+                <div key={index} className="flex-shrink-0   w-40 p-2 md:w-52 md:h-18 justify-end flex item-center h-auto gap-5 ">
                   <Image
                     src={logo?.filePath}
                     alt={logo?.altText}
@@ -130,7 +130,7 @@ const BrandSection = ({ apidata }) => {
             <div className="lg:hidden">
               <Slider {...settings} className=" brand-slider">
                 {apidata?.images[1]?.slice().reverse().map((logo, index) => (
-                  <div key={`bottom-row-${index}`} className="flex-shrink-0 w-40p-2 md:w-52 md:h-16 justify-end flex h-auto item-center">
+                  <div key={`bottom-row-${index}`} className="flex-shrink-0 w-40p-2 md:w-52 md:h-18 justify-end flex h-auto item-center">
                     <Image
                       src={logo?.filePath}
                       alt={logo?.altText}
@@ -145,7 +145,7 @@ const BrandSection = ({ apidata }) => {
             <div className="hidden lg:block mt-4">
               <Slider {...settings}>
                 {apidata?.images[1]?.map((logo, index) => (
-                  <div key={`bottom-row-${index}`} className="flex-shrink-0  w-40 p-2 md:w-52 md:h-16 justify-end flex item-center h-auto gap-5 ">
+                  <div key={`bottom-row-${index}`} className="flex-shrink-0  w-40 p-2 md:w-52 md:h-18 justify-end flex item-center h-auto gap-5 ">
                     <Image
                       src={logo?.filePath}
                       alt={logo?.altText}
