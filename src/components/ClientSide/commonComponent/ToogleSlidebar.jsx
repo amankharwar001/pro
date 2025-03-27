@@ -8,10 +8,10 @@
 // import Link from 'next/link';
 
 // export default function Sidebar({ data, isOpen, closeSidebar }) {
-    
+
 //     return (
 //         <>
-            
+
 //             {isOpen && (
 //                 <div
 //                     className="fixed inset-0 bg-black opacity-50 z-[9999]"
@@ -87,7 +87,7 @@ import Link from 'next/link';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function Sidebar({ data, isOpen, closeSidebar }) {
+export default function Sidebar({ data, isOpen, closeSidebar, activationBlog }) {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     return (
@@ -163,11 +163,14 @@ export default function Sidebar({ data, isOpen, closeSidebar }) {
                                 Partner with Us
                             </li>
                         </Link>
-                        <Link href="/blog" passHref>
-                            <li onClick={closeSidebar} className="py-2 text-lg hover:text-[#003066] font-bold cursor-pointer">
-                                Resources
-                            </li>
-                        </Link>
+                        {activationBlog === "active" && (
+                            // <NavItem href="/blog" label="Resources" />
+                            <Link href="/blog" passHref>
+                                <li onClick={closeSidebar} className="py-2 text-lg hover:text-[#003066] font-bold cursor-pointer">
+                                    Resources
+                                </li>
+                            </Link>
+                        )}
                         <Link href="/contact" passHref>
                             <li onClick={closeSidebar} className="py-2 text-lg hover:text-[#003066] font-bold cursor-pointer">
                                 Contact

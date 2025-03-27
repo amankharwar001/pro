@@ -29,7 +29,7 @@ const BoxCard = ({ box, image }) => (
 
 const Section4 = ({ apidata }) => {
   return (
-    <div className="bg-gray-100 py-20">
+    <div className="bg-gray-100 py-20 ">
       <div className="container mx-auto px-4">
         <div className="md:grid grid-cols-2 ">
           <Fade triggerOnce direction="up" className="md:max-w-lg">

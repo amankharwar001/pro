@@ -31,8 +31,9 @@ const Index = ({ data, error }) => {
       {data?.section3 || data?.section4 ? (
         <OverviewSection3 apidata1={data?.section3} apidata2={data?.section4} />
       ) : null}
-      {data?.section5 ? <Section4 apidata={data.section5} /> : null}
       {data?.section6 ? <Homecard apidata={data.section6} /> : null}
+      <div className='mt-20'></div>
+      {data?.section5 ? <Section4 apidata={data.section5} /> : null}
       {data?.section7 ? <PersonSection1 apidata={data.section7} /> : null}
       {data?.section8 ? <PersonSection2 apidata={data.section8} /> : null}
       {data?.section9 ? <About apidata={data.section9} /> : null}

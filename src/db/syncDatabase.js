@@ -87,6 +87,7 @@ import CreatePageStatus from '../models/create-page/PageStatus.js';
 
 // document_transaction page
 import HeroSectionDocumentTransaction from '../models/document-transaction/HeroSectionDocumentTransaction.js';
+import BlogActivate from '../models/blogPage/blogactivate.js';
 
 
 

@@ -13,7 +13,7 @@ const Slug = ({ data, error, baseUrl }) => {
     const featureImageUrl = data?.featureImage ? `${baseUrl}${data?.featureImage?.filePath}` : null;
 
     // Check if the status is not 'active' or if data is missing
-    if (error || !data || data.status !== 'active' ) {
+    if (error || !data || data.status !== 'active') {
         return (<Found4O4 />);
     }
 
@@ -88,6 +88,19 @@ export async function getServerSideProps(context) {
     }
 
     try {
+        // Check if blog activation is enabled
+        const activationRes = await fetch(`${process.env.NEXT_PUBLIC_BASE_PATH}/api/public/blog/activate`);
+        const activationData = await activationRes.json();
+
+        if (activationData.status !== "active") {
+            return {
+                redirect: {
+                    destination: "/",
+                    permanent: false,
+                },
+            };
+        }
+
         const response = await fetch(`${baseUrl}/api/public/blog/${slug}`, {
             headers: {
                 'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY,

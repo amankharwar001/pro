@@ -17,7 +17,10 @@ const Header = ({ data, img }) => {
   const [isScrolled, setIsScrolled] = useState(false); // State to track scroll position
   const [isVisible, setIsVisible] = useState(true); // State to toggle visibility
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [activationBlog, setActivationBlog] = useState();
   const [isOpen, setIsOpen] = useState(false);
+
+  console.log("activation details show is here",activationBlog)
 
   // Toggle sidebar visibility
   const toggleSidebar = () => {
@@ -74,6 +77,22 @@ const Header = ({ data, img }) => {
       }
     };
 
+    fetchData();
+  }, []);
+  // Fetch blog for activation tab
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_PATH}/api/public/blog/activate`);
+        if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
+  
+        const data = await res.json();
+        setActivationBlog(data.status || "draft"); 
+      } catch (err) {
+        console.warn("Error fetching blog activation status:", err.message);
+      }
+    };
+  
     fetchData();
   }, []);
 
@@ -141,7 +160,7 @@ const Header = ({ data, img }) => {
             {/* Dropdown Menu for Desktop */}
             <div className="hidden lg:flex md:justify-end items-center justify-end gap-5 sm:justify-between ml-5 w-full evenly">
               <div className="z-[999]">
-                <DropDown data={productList} />
+                <DropDown data={productList} activationBlog={activationBlog}/>
               </div>
             </div>
             <div className='lg:hidden'>
@@ -161,7 +180,7 @@ const Header = ({ data, img }) => {
         <div
           className=" " // Separate the sidebar with a fixed position
         >
-          <Sidebar data={productList} isOpen={isOpen} closeSidebar={closeSidebar} />
+          <Sidebar data={productList} isOpen={isOpen} closeSidebar={closeSidebar} activationBlog={activationBlog} />
         </div>
       </div>
     </header>

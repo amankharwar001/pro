@@ -16,7 +16,25 @@ export default function FooterSection() {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_PATH;
   const [footerData, setFooterData] = useState(null);
   const [pageData, setPageData] = useState(null);
-  console.log("page list show is here", pageData)
+
+  const [activationBlog, setActivationBlog] = useState();
+  console.log("page list show is here", activationBlog)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_PATH}/api/public/blog/activate`);
+        if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
+
+        const data = await res.json();
+        setActivationBlog(data.status || "draft");
+      } catch (err) {
+        console.warn("Error fetching blog activation status:", err.message);
+      }
+    };
+
+    fetchData();
+  }, []);
 
 
   useEffect(() => {
@@ -145,11 +163,15 @@ export default function FooterSection() {
               <ul className="text-muted-foreground flex flex-col gap-5 mt-5">
                 <li className='text-p'><Link href="/about">About</Link></li>
                 <li className='text-p'><Link href="/partner">Partner with Us</Link></li>
-                <li className='text-p'><Link href="/blog">Resources</Link></li>
+                {activationBlog === "active" && (
+                  // <NavItem href="/blog" label="Resources" />
+                  <li className='text-p'><Link href="/blog">Resources</Link></li>
+
+                )}
                 <li className='text-p'><Link href="/contact">Contact</Link></li>
                 <li className='text-p'><Link href="/transaction-document">Transaction Document</Link></li>
                 {pageData?.data
-                  ?.filter((item) => item.sectionType === "footer" && item.status === "active") 
+                  ?.filter((item) => item.sectionType === "footer" && item.status === "active")
                   .map((item, index) => (
                     <h3 key={index}>
                       <Link href={`/${item.slug}`} className="text-p">

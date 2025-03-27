@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import BlogHeroImage from "@/components/Admin/blog/BlogHeroImage";
+import BlogActivation from "@/components/Admin/blog/BlogActivation";
 
 const BlogList = () => {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
@@ -141,6 +142,7 @@ const handleDeleteBlog = async (blogId) => {
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-bold text-gray-700">Blog List</h2>
           <div className="flex items-center gap-5">
+          <BlogActivation/>
             <div>
             <BlogHeroImage />
             </div>
