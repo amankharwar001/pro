@@ -159,7 +159,7 @@ const Header = ({ data, img }) => {
 
             {/* Dropdown Menu for Desktop */}
             <div className="hidden lg:flex md:justify-end items-center justify-end gap-5 sm:justify-between ml-5 w-full evenly">
-              <div className="z-[999]">
+              <div className="z-[999] ">
                 <DropDown data={productList} activationBlog={activationBlog}/>
               </div>
             </div>
