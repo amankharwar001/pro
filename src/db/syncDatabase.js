@@ -92,6 +92,7 @@ import BlogActivate from '../models/blogPage/blogactivate.js';
 
 
 
+
  async function syncDatabase() {
   try {
     // Ensure models are defined before syncing

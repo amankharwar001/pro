@@ -544,3 +544,33 @@ height: 100%;
   height: 100px;
   margin: auto;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+header.text-black ul.absolute li {
+  border-bottom: 1px solid #dddddd38;
+}
+header.text-black ul.absolute li:last-child {
+  border-bottom: none;
+}
+header.text-black ul.absolute {
+  max-width: 270px;
+  width: 300px !important;
+  padding: 0;
+}
+header.text-black ul.absolute .font-medium {
+  padding: 8px 15px;
+  word-break: break-word;
+  white-space: break-spaces;
+  font-size: 16px !important;
+  line-height: 26px;
+}

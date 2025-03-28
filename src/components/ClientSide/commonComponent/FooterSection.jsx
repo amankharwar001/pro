@@ -9,7 +9,7 @@ import { FaTwitter } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FaPinterestP, FaInstagram } from "react-icons/fa";
-
+import { useRouter } from 'next/router'; 
 
 export default function FooterSection() {
   const [productList, setProductList] = useState(null); // State to store API data
@@ -18,6 +18,8 @@ export default function FooterSection() {
   const [pageData, setPageData] = useState(null);
 
   const [activationBlog, setActivationBlog] = useState();
+  const router = useRouter(); 
+  const isContactPage = router.pathname === "/contact"; 
   console.log("page list show is here", activationBlog)
 
   useEffect(() => {
@@ -136,8 +138,11 @@ export default function FooterSection() {
 
   return (
     <div className="relative mt-20">
-      <Footercta />
-      <div className="bg-[#D4D4D4] py-10 pt-48 md:pt-40 -z-10">
+      {/* <Footercta /> */}
+      {!isContactPage && <Footercta />} {/* Footercta ko sirf /contact par hide karenge */}
+      {/* <div className="bg-[#D4D4D4] py-10 pt-48 md:pt-40 -z-10"> */}
+      <div className={`bg-[#D4D4D4] py-10 -z-10 ${!isContactPage ? 'pt-48 md:pt-40' : ''}`}>
+
         <div className="container m-auto  md:place-content-start  md:text-start grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5 lg:gap-14 mt-10">
           <Slide triggerOnce direction="left" className='lg:col-span-2'>
             <div className="mt-4">

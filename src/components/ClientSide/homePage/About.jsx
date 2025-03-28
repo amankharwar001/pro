@@ -72,7 +72,7 @@ const About = ({ apidata }) => {
                                 <Image
                                     src={`/${image.filePath}`}
                                     alt={image.altText || `Paramotor image ${index + 1}`}
-                                    className="w-24 h-auto md:w-32  object-contain"
+                                    className="w-24 h-auto md:w-24  object-contain"
                                     width={160}
                                     height={90}
                                 />

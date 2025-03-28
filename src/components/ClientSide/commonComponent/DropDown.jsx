@@ -21,7 +21,7 @@ export default function NavBar({ data, activationBlog }) {
             </div>
             {/* Dropdown on hover */}
             
-            <ul className="absolute left-0 hidden group-hover:flex flex-col bg-white shadow-md rounded-md py-3 w-auto min-w-max z-50">
+            <ul className="absolute left-0 hidden group-hover:flex flex-col bg-white shadow-md rounded-md py-3 w-auto  z-50">
               {data?.map((product) => (
                 <NavItem
                   key={product.id}

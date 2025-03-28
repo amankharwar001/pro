@@ -157,7 +157,7 @@ const Form1 = () => {
                   <option value="Bank Partners">Bank Partners</option>
                   <option value="Referral Partners">Referral Partners</option>
                   <option value="Distributor Partners">Distributor Partners</option>
-                  <option value="Lending Partners">Lending Partners</option>
+                  <option value="Lending Partners">Bill Payments Agent</option>
                 </select>
               </div>
               <div className="grid grid-cols-1">

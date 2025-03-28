@@ -218,6 +218,16 @@ export default function Section5Product({ setActiveBox, sectionsStatusHandle }) 
   const [edit, setEdit] = useState(false);
   const [apiStatus, setApiStatus] = useState(false);
   const [imageStatus, setImageStatus] = useState(false);
+  const modules = {
+    toolbar: [
+      [{ header: [1, 2, 3, 4, 5, 6, false] }],
+      ["bold", "italic", "underline"],
+      [{ color: [] }],
+      [{ align: [] }],
+      [{ list: "ordered" }, { list: "bullet" }],
+      ["clean"],
+    ],
+  };
 
   useEffect(() => {
     if (apiStatus && imageStatus) {
@@ -360,6 +370,7 @@ export default function Section5Product({ setActiveBox, sectionsStatusHandle }) 
                     value={item.content}
                     onChange={(value) => handleInfoChange(index, "content", value)}
                     className="bg-white"
+                    modules={modules}
                   />
                 </div>
               </div>

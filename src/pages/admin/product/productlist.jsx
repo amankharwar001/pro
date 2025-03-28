@@ -4,11 +4,12 @@ import { useRouter } from "next/router";
 const ProductList = () => {
   const [products, setProducts] = useState([]);
   const router = useRouter();
+  console.log("product lists show is here", products)
 
   useEffect(() => {
-    fetch("/api/product/productpage/getsection",{
+    fetch("/api/product/productpage/getsection", {
       headers: {
-       'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
+        'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY,
       },
     })
       .then((response) => response.json())
@@ -24,24 +25,24 @@ const ProductList = () => {
     router.push(`/admin/product/${productId}?edit=1`);
   };
 
-  
+
   const handleDeleteClick = async (productId) => {
     // Show prompt for confirmation
     const userConfirmation = prompt("Type 'yes' to confirm deletion:");
-  
+
     if (userConfirmation === null || userConfirmation.trim().toLowerCase() !== "yes") {
       return;
     }
-  
+
     try {
       // Proceed with DELETE request if 'yes' is typed
       const response = await fetch(`/api/product/productpage/deletesection?id=${productId}`, {
         method: "DELETE",
         headers: {
-          'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
-         },
+          'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY,
+        },
       });
-  
+
       if (!response.ok) {
         const errorData = await response.json();
         alert("Failed to delete product.");
@@ -54,7 +55,7 @@ const ProductList = () => {
       alert("An error occurred while deleting the product.");
     }
   };
-  
+
 
   // code
 
@@ -64,12 +65,17 @@ const ProductList = () => {
         {/* Header */}
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-bold text-gray-700">Product List</h2>
-          <button
-            onClick={handleAddProductClick}
-            className="bg-blue-600 text-white px-6 py-2 rounded-lg shadow  hover:bg-blue-700 transition-all duration-300"
-          >
-            + Add Product
-          </button>
+          <div className="flex gap-5 items-center">
+            
+            <div>
+              <button
+                onClick={handleAddProductClick}
+                className="bg-blue-600 text-white px-6 py-2 rounded-lg shadow  hover:bg-blue-700 transition-all duration-300"
+              >
+                + Add Product
+              </button>
+            </div>
+          </div>
         </div>
 
         {/* Table */}
