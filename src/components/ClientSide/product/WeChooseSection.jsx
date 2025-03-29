@@ -30,15 +30,20 @@ const WeChooseSection = ({ section7 }) => {
 
                 {/* Info Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
-                    {section7.info.map((item, index) => (
-                        <Zoom triggerOnce delay={500 + index * 100} key={index}>
-                            <div className={`bg-card h-100 whychoosebox_card p-6 lg:p-8 rounded-lg hover:shadow-custom hover:bg-white bg-[#F6F6F6]`}>
-                                <h5 className="text-[#003066] text-h2_large font-semibold">{String(index + 1).padStart(2, '0')}</h5>
-                                <h3 className="text-h5 font-bold mt-2 mb-2">{item.title}</h3>
-                                <p className="text-p">{item.content}</p>
-                            </div>
-                        </Zoom>
-                    ))}
+                    {section7.info
+                        .filter((item) => item.title.trim() !== "" && item.content.trim() !== "")
+                        .map((item, index) => (
+                            <Zoom triggerOnce delay={500 + index * 100} key={index}>
+                                <div className="bg-card h-100 whychoosebox_card p-6 lg:p-8 rounded-lg hover:shadow-custom hover:bg-white bg-[#F6F6F6]">
+                                    <h5 className="text-[#003066] text-h2_large font-semibold">
+                                        {String(index + 1).padStart(2, "0")}
+                                    </h5>
+                                    <h3 className="text-h5 font-bold mt-2 mb-2">{item.title}</h3>
+                                    <p className="text-p">{item.content}</p>
+                                </div>
+                            </Zoom>
+                        ))}
+
                 </div>
             </div>
         </div>
