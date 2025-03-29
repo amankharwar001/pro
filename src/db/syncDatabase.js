@@ -25,6 +25,8 @@ import section6Product from '../models/productPage/Section6Product.js';
 import section7Product from '../models/productPage/Section7Product.js';
 import SEOProductPage from '../models/productPage/SEO.js';
 import ProductPageStatus from '../models/productPage/Status.js';
+import ProductArrangement from '../models/productPage/ProductArrangement.js';
+
 
 // contact page
 import heroSectionContactPage from '../models/contactPage/HeroSection.js';

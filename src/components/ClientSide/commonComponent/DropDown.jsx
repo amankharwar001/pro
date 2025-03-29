@@ -4,6 +4,7 @@ import { TiArrowSortedUp } from "react-icons/ti";
 import { IoIosArrowDown } from "react-icons/io";
 
 export default function NavBar({ data, activationBlog }) {
+  console.log("data in dropdown show is here",data)
   return (
     <header className="text-black">
       {/* Main Navbar */}
@@ -26,8 +27,8 @@ export default function NavBar({ data, activationBlog }) {
                 <NavItem
                   key={product.id}
                   className='w-72'
-                  href={`${process.env.NEXT_PUBLIC_BASE_PATH}product/${product?.link}`}
-                  label={product.nickname}
+                  href={`${process.env.NEXT_PUBLIC_BASE_PATH}product/${product?.seo}`}
+                  label={product.content}
                 />
               ))}
             </ul>

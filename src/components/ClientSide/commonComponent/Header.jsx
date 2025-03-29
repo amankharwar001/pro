@@ -20,7 +20,7 @@ const Header = ({ data, img }) => {
   const [activationBlog, setActivationBlog] = useState();
   const [isOpen, setIsOpen] = useState(false);
 
-  console.log("product details show is here",productList)
+  console.log("product details show is here-----",productList)
 
   // Toggle sidebar visibility
   const toggleSidebar = () => {
@@ -62,7 +62,7 @@ const Header = ({ data, img }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('/api/public/product/list', {
+        const response = await fetch('/api/public/product/arrange-nav-list', {
           method: 'GET',
           headers: {
             'x-system-key': systemKey,
@@ -70,7 +70,7 @@ const Header = ({ data, img }) => {
         });
         if (response.ok) {
           const result = await response.json();
-          setProductList(result);
+          setProductList(result.data.info);
         }
       } catch (err) {
         console.warn(err.message);

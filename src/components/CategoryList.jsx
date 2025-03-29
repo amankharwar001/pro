@@ -119,8 +119,8 @@ const CategoryList = () => {
   
 
   return (
-    <div className="p-6 bg-white rounded-lg shadow-md max-w-2xl mx-auto">
-      <h3 className="text-3xl font-bold text-center mb-6">Manage Categories</h3>
+    <div className="p-6  bg-white rounded-lg shadow-md w-full mx-auto">
+      <h3 className="text-3xl font-bold text-center mb-6">Manage Blog Categories</h3>
 
       <div className="flex flex-col sm:flex-row items-center gap-2 mb-6">
         <input
@@ -143,7 +143,7 @@ const CategoryList = () => {
         </button>
       </div>
 
-      <ul className="space-y-4">
+      <ul className="space-y-4 max-h-[300px] overflow-y-auto">
         {categories.map((category) => (
           <li
             key={category.id}

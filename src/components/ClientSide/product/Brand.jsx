@@ -61,7 +61,7 @@ const Brand = ({ section2, baseUrl }) => {
                 <Image
                   src={`${baseUrl}${src.filePath}`}
                   alt={src.altText}
-                  className="w-24 sm:w-28 md:w-32 lg:w-36 xl:w-40 grayscale transition-all duration-300 ease-in-out hover:grayscale-0"
+                  className="w-24 sm:w-28 md:w-32 lg:w-36 xl:w-40  transition-all duration-300 ease-in-out "
                   width={200}
                   height={100}
                 />
