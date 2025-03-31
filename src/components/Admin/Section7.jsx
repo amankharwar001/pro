@@ -82,6 +82,7 @@ export default function Section7Manager({ setActiveBox, sectionsStatusHandle }) 
 
       const result = await response.json();
       if (result.success) {
+        alert('Section updated successfully!');
         setMessage(result.message);
         setIsEditMode(true);
         setActiveBox(8);

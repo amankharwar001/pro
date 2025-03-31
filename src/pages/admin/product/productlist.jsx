@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
@@ -66,7 +67,15 @@ const ProductList = () => {
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-bold text-gray-700">Product List</h2>
           <div className="flex gap-5 items-center">
-            
+
+            <div>
+
+              <Link href="/admin/category" passHref>
+                <button className="capitalize bg-blue-600 text-white px-6 py-2 rounded-lg shadow hover:bg-blue-700 transition-all duration-300">
+                  Product Arrange Header
+                </button>
+              </Link>
+            </div>
             <div>
               <button
                 onClick={handleAddProductClick}

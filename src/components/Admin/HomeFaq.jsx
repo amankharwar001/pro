@@ -103,6 +103,7 @@ export default function FAQManager({setActiveBox,sectionsStatusHandle}) {
 
       const result = await response.json();
       if (result.success) {
+        alert('Section updated successfully!');
         setFaqData(result.data);
         setMessage(result.message);
         setActiveBox(13)

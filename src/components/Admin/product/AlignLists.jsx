@@ -92,10 +92,10 @@ const ProductAlignLists = () => {
     };
 
     return (
-        <div>
-            <h2 className="text-lg font-semibold text-gray-700 mb-3">
-                Product Arrangement
-            </h2>
+        <div className="p-6  bg-white rounded-lg shadow-md w-full mx-auto"> 
+            <h3 className="text-3xl font-bold text-center mb-6 ">
+               Header Product Arrangement
+            </h3>
             <div className="flex bg-white rounded-lg shadow-md max-h-[300px] overflow-y-auto flex-col items-center space-y-4">
                 <DragDropContext onDragEnd={onDragEnd}>
                     <Droppable droppableId="tasks">

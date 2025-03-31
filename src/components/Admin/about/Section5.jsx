@@ -74,16 +74,16 @@ const AboutSection5Form = ({setActiveBox,sectionsStatusHandle}) => {
             <div className='flex justify-end'>
                 <StatusManager sectionName={"about_section5"}/>
             </div>
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="">
                 {formData.map((item, index) => (
-                    <div key={index} className="flex space-x-4 items-center">
+                    <div key={index} className="sm:flex gap-5 items-center">
                         <input
                             type="text"
                             value={item.counting}
                             onChange={(e) => handleChange(index, 'counting', e.target.value)}
                             placeholder="Counting"
                             required
-                            className="border p-2 rounded"
+                            className="border p-2 rounded my-2"
                         />
                         <input
                             type="text"
@@ -91,7 +91,7 @@ const AboutSection5Form = ({setActiveBox,sectionsStatusHandle}) => {
                             onChange={(e) => handleChange(index, 'text', e.target.value)}
                             placeholder="Text"
                             required
-                            className="border p-2 rounded"
+                            className="border p-2 rounded sm:ml-5"
                         />
                     </div>
                 ))}

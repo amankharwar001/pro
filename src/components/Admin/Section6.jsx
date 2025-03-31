@@ -118,6 +118,7 @@ const modules = {
 
       const result = await response.json();
       if (result.success) {
+        alert('Section updated successfully!');        
         setSuccessMessage("Section updated successfully!");
         setActiveBox(7);
         setApiStatus(true);
@@ -200,7 +201,7 @@ const modules = {
           <h3 className="text-lg font-semibold text-gray-800 mb-4">Cards</h3>
           <div className="relative">
 
-            <div className="flex space-x-4 items-center sticky top-[130px] bg-gray-50 z-20 pl-5 py-2">
+            <div className="flex w-full overflow-x-auto space-x-4 items-center sticky top-[130px] bg-gray-50 z-20 pl-5 py-2">
               {formData.card.map((card, index) => (
                 <button
                   key={index}

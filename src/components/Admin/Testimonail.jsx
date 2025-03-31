@@ -73,6 +73,7 @@ const TestimonialManager = ({ setActiveBox, sectionsStatusHandle }) => {
       const result = await response.json();
 
       if (result.success) {
+        alert('Section updated successfully!');
         setMessage(result.message);
         fetchTestimonial();
         setActiveBox(11);
@@ -102,7 +103,7 @@ const TestimonialManager = ({ setActiveBox, sectionsStatusHandle }) => {
       <div className="flex justify-end pb-5">
         <StatusManager sectionName={"homepage_section10"} />
       </div>
-      <div className="flex justify-between">
+      <div className="xl:flex justify-between  ">
       <ImageUploader referenceType={"homepage_testimonial_primary"} width={1920} height={750} setImageStatus={setImageStatus}/>
       <CommonImageUpload referenceType={"homepage_testimonial"} imageCount={8} setMultiImageStatus={setMultiImageStatus} />
       </div>

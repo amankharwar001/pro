@@ -84,6 +84,7 @@ export default function Section9Manager({ setActiveBox, sectionsStatusHandle }) 
             });
             const result = await response.json();
             if (result.success) {
+                alert('Section updated successfully!');
                 setMessage(result.message);
                 setActiveBox(10);
                 setApiStatus(true);

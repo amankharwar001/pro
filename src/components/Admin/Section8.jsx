@@ -82,6 +82,7 @@ const Section8Page = ({ setActiveBox, sectionsStatusHandle }) => {
 
       const data = await res.json();
       if (data.success) {
+        alert('Section updated successfully!');
         setMessage(data.message);
         setSectionData(data.data);
         setActiveBox(9);

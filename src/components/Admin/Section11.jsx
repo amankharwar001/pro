@@ -81,6 +81,7 @@ export default function Section11Manager({ setActiveBox, sectionsStatusHandle })
 
       const result = await response.json();
       if (result.success) {
+        alert('Section updated successfully!');
         setSectionData(result.data);
         setMessage(result.message);
         setIsEditing(true); // Switch to editing mode
