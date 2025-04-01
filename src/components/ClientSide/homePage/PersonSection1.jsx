@@ -28,9 +28,9 @@ export default function PersonSection1({ apidata }) {
                 <div className="animate-left-right -pb-20 relative hidden lg:block w-[350px] lg:-right-[45%]">
                     {secondaryImage && (
                         <Image
-                            width={550}
+                            width={500}
                             height={100}
-                            className="w-full absolute -top-32 shadow-xl rounded-xl"
+                            className="w-[260px] absolute -top-32 shadow-xl rounded-xl"
                             src={`/${secondaryImage.filePath}`}
                             alt={secondaryImage.altText }
                         />

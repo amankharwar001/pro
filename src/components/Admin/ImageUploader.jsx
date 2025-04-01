@@ -1,15 +1,15 @@
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { FaInfo } from "react-icons/fa";
 
-const ImageUploader = ({ referenceType, referenceId: propReferenceId, width, height,setImageStatus,setActiveProductBox }) => {
+const ImageUploader = ({ referenceType, referenceId: propReferenceId, width, height,setImageStatus,setActiveProductBox,deleteButtonRef }) => {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
   const [image, setImage] = useState(null);
   const [altText, setAltText] = useState('');
   const [uploadStatus, setUploadStatus] = useState('');
   const [images, setImages] = useState([]);
   const [editImageId, setEditImageId] = useState(null);
-
+  
   // Static referenceId
   const referenceId = propReferenceId || 1;
 
@@ -78,9 +78,8 @@ const ImageUploader = ({ referenceType, referenceId: propReferenceId, width, hei
     }
   };
 
-  const handleDelete = async (id) => {
-    const isConfirmed = window.confirm('Are you sure you want to delete this image?');
-    if (!isConfirmed) return;
+  const handleDelete = async (e, id) => {
+    e.preventDefault();
 
     try {
       const res = await fetch(`/api/images/${id}`, { method: 'DELETE' });
@@ -167,7 +166,9 @@ const ImageUploader = ({ referenceType, referenceId: propReferenceId, width, hei
                 <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white text-sm p-2 pr-10">
                   <p className="text-admin_image">{img.altText}</p>
                   <button
-                    onClick={() => handleDelete(img.id)}
+                  ref={deleteButtonRef}  // Assign the ref here
+                    // onClick={() => handleDelete(img.id)}
+                    onClick={(e) => handleDelete(e, img.id)} 
                     className="absolute -top-8 right-2 text-admin_image text-white bg-[#F80F10] p-1 rounded-md hover:bg-red-600"
                   >
                     Delete

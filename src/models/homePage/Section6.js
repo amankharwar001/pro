@@ -28,4 +28,3 @@ const Section6 = sequelize.define('HomeSection6', {
 export default Section6;
 
 
-

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import dynamic from 'next/dynamic';
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 import 'react-quill/dist/quill.snow.css';
@@ -8,6 +8,7 @@ import { IoMdAdd } from "react-icons/io";
 
 
 const AdminSection6Panel = ({ setActiveBox, sectionsStatusHandle }) => {
+  const deleteButtonRef = useRef(null);  // Ref for the delete button
   const [formData, setFormData] = useState({
     heading: "",
     content: "",
@@ -89,11 +90,21 @@ const modules = {
     setActiveCardIndex(index); // Set active card index on tab click
   };
 
-  const handleDeleteCard = (index) => {
+  const handleDeleteCard = (e,index) => {
+    e.preventDefault();
     const updatedCards = formData.card.filter((_, idx) => idx !== index);
     setFormData({ ...formData, card: updatedCards });
     if (activeCardIndex >= updatedCards.length) {
       setActiveCardIndex(updatedCards.length - 1); // Ensure the active card index is within bounds
+    }
+    if (deleteButtonRef.current) {
+      deleteButtonRef.current.click();
+    }
+  };
+  const handleDeletetest = () => {
+    alert("i am working")
+    if (deleteButtonRef.current) {
+      deleteButtonRef.current.click();
     }
   };
 
@@ -146,13 +157,14 @@ const modules = {
   return (
     <div className="p-4 shadow-inner bg-gray-50 rounded-lg space-y-6">
       <div className='flex justify-end '>
+        
         <StatusManager sectionName={"homepage_section6"} />
       </div>
       {/* {isLoading && <p className="text-blue-600">Loading...</p>}
       {errorMessage && <p className="text-red-600">{errorMessage}</p>}
       {successMessage && <p className="text-green-600">{successMessage}</p>} */}
 
-      <form onSubmit={handleFormSubmit} className="space-y-6">
+      <form  className="space-y-6">
         {/* Section Heading */}
         <div>
           <label className="block text-sm font-semibold text-gray-700 mb-1">
@@ -240,7 +252,9 @@ const modules = {
                     <h4 className="text-md font-medium text-gray-700 mb-2">
                       Card {index + 1}
                     </h4>
-                    <ImageUploader setImageStatus={(status) => updateImageStatus(index, status)} referenceType={`homepage_section6_${index + 1}`} width={421} height={260} />
+                    <ImageUploader deleteButtonRef={deleteButtonRef} setImageStatus={(status) => updateImageStatus(index, status)} referenceType={`homepage_section6_${index + 1}`} width={421} height={260} />
+                    <span className="bg-black text-white  cursor-pointer " onClick={handleDeletetest}>delete test button</span>
+
                     <div className="space-y-2">
                       <div>
                         <label className="block text-sm font-semibold text-gray-700 mb-1">
@@ -302,7 +316,8 @@ const modules = {
                       </div>
                       <button
                         type="button"
-                        onClick={() => handleDeleteCard(index)}
+                        // onClick={() => handleDeleteCard(index)}
+                        onClick={(e) => handleDeleteCard(e, index)}
                         className="mt-2 text-red-500"
                       >
                         Delete Card {index+1}
@@ -314,11 +329,11 @@ const modules = {
             </div>
           </div>
         </div>
-
+        
         {/* Submit Button */}
         <div className="flex justify-end">
           <button
-            type="submit"
+            onClick={handleFormSubmit}
             disabled={isLoading}
              className="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-gray-800 transition duration-300"
           >
