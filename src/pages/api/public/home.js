@@ -65,35 +65,7 @@ const homepagePublic = async (req, res) => {
         const section4Images = isSectionActive('homepage_section4') ? await fetchDataSafely(() => ImagesData.findAll({ where: { referenceType: ['homepage_section4', 'homepage_section4_png1','homepage_section4_png2',"homepage_section4_png3"] } }), []) : [];
         const section5Images = isSectionActive('homepage_section5') ? await fetchDataSafely(() => ImagesData.findAll({ where: { referenceType: ['homepage_section5_1', 'homepage_section5_2', 'homepage_section5_3'] } }), []) : [];
         // const section6Images = isSectionActive('homepage_section6') ? await fetchDataSafely(() => ImagesData.findAll({ where: { referenceType: ['homepage_section6_1', 'homepage_section6_2', 'homepage_section6_3','homepage_section6_4','homepage_section6_5','homepage_section6_6','homepage_section6_7','homepage_section6_8','homepage_section6_9','homepage_section6_10','homepage_section6_11'] } }), []) : [];
-        const section6Images = isSectionActive('homepage_section6')
-            ? await fetchDataSafely(() => ImagesData.findAll({
-                where: {
-                    referenceType: [
-                        'homepage_section6_1',
-                        'homepage_section6_2',
-                        'homepage_section6_3',
-                        'homepage_section6_4',
-                        'homepage_section6_5',
-                        'homepage_section6_6',
-                        'homepage_section6_7',
-                        'homepage_section6_8',
-                        'homepage_section6_9',
-                        'homepage_section6_10',
-                        'homepage_section6_11',
-                        'homepage_section6_12',
-                        'homepage_section6_13',
-                        'homepage_section6_14',
-                        'homepage_section6_15',
-                        'homepage_section6_16',
-                        'homepage_section6_17',
-                        'homepage_section6_18',
-                        'homepage_section6_19',
-                        'homepage_section6_20'
-                    ]
-                },
-                order: [['referenceType', 'ASC']] 
-            }), [])
-            : [];
+        
 
         const section7Images = isSectionActive('homepage_section7') ? await fetchDataSafely(() => ImagesData.findAll({ where: { referenceType: ['homepage_section7_primary', 'homepage_section7_1'] } }), []) : [];
         const section8Images = isSectionActive('homepage_section8') ? await fetchDataSafely(() => ImagesData.findAll({ where: { referenceType: ['homepage_section_8_primary' ] } }), []) : [];
@@ -110,7 +82,7 @@ const homepagePublic = async (req, res) => {
             section3: section3[0] ? { ...section3[0].dataValues, images: section3Images } : null,
             section4: section4[0] ? { ...section4[0].dataValues, images: section4Images } : null,
             section5: section5[0] ? { ...section5[0].dataValues, images: section5Images } : null,
-            section6: section6[0] ? { ...section6[0].dataValues, images: section6Images } : null,
+            section6: section6[0] ? { ...section6[0].dataValues } : null,
             section7: section7[0] ? { ...section7[0].dataValues, images: section7Images } : null,
             section8: section8[0] ? { ...section8[0].dataValues, images: section8Images,multiImages:section8ImagesGroup } : null,
             section9: section9[0] ? { ...section9[0].dataValues, images: section9Images } : null,

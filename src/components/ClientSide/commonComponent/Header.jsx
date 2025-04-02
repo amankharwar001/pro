@@ -20,7 +20,7 @@ const Header = ({ data, img }) => {
   const [activationBlog, setActivationBlog] = useState();
   const [isOpen, setIsOpen] = useState(false);
 
-  console.log("product details show is here-----",productList)
+  
 
   // Toggle sidebar visibility
   const toggleSidebar = () => {

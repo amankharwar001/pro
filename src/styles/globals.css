@@ -574,3 +574,10 @@ header.text-black ul.absolute .font-medium {
   font-size: 16px !important;
   line-height: 26px;
 }
+
+
+.grid_center .css-1vscx9z:nth-child(3):last-child {
+  grid-column: span 2;
+  justify-self: center;
+  max-width: 50%;
+}

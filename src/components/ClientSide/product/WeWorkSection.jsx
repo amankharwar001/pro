@@ -40,7 +40,7 @@ const WeWorkSection = ({section6,baseUrl}) => {
                         <h3 className="text_h3 font-semibold text-primary">{section6.section6Data.info[0].title}</h3>
                         <p className="text-muted-foreground">{section6.section6Data.info[0].content}</p>
                     </div>
-                    <div className="text-center mb-8 md:mb-8">
+                    <div className="text-center mb-0 md:mb-0">
 
                         <Image
                             src="/product/line-shape.png"

@@ -77,6 +77,8 @@ export default async function handler(req, res) {
 //         "info": "Card Info 1",
 //         "btnname": "Learn More",
 //         "btnlink": "/learn-more"
+//          "imagePath":"/upload/ajksdhkajshdf kjasd",
+//            "altText":"image"
 //       },
 //       {
 //         "title": "Card Title 2",
@@ -84,6 +86,8 @@ export default async function handler(req, res) {
 //         "info": "Card Info 2",
 //         "btnname": "Get Started",
 //         "btnlink": "/get-started"
+// "imagePath":"/upload/ajksdhkajshdf kjasd",
+//            "altText":"image"
 //       },
 //       {
 //         "title": "Card Title 3",
@@ -91,6 +95,8 @@ export default async function handler(req, res) {
 //         "info": "Card Info 3",
 //         "btnname": "Get Started",
 //         "btnlink": "/get-started"
+// "imagePath":"/upload/ajksdhkajshdf kjasd",
+//            "altText":"image"
 //       }
 //     ]
 //   }

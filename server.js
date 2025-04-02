@@ -1,7 +1,8 @@
 import express from 'express';
 import next from 'next';
 import sequelize from './src/db/dbConnect.js';  // Database connection
-
+// import section6Routes from './src/routes/homePage/section6.js';
+import section6 from './src/routes/homePage/section6.js'
 // single image uploader
 import { uploadImageRoute, getImages, uploadImage, deleteImage,updateImage } from './src/routes/imageRoutes.js';  // Importing image routes
 
@@ -48,6 +49,7 @@ server.use((err, req, res, next) => {
     }
     next();
 });
+server.use(section6);
 
 // single Image upload here
 // server.post('/api/upload/:section', uploadImage, uploadImageRoute);

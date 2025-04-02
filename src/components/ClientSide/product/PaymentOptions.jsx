@@ -122,6 +122,7 @@ const PaymentOptions = ({ section5, baseUrl }) => {
     autoplaySpeed: 4000,
     verticalSwiping: true,
     arrows: false,
+    centerMode: false,     // Avoid partial slides showing
     
   };
 

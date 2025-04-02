@@ -5,7 +5,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 const WeChooseSection = ({ section7 }) => {
     return (
         <div className='py-16'>
-            <div className="container mx-auto  lg:grid grid-cols-2 gap-5 place-items-center">
+            <div className="container mx-auto  lg:grid grid-cols-2 gap-5 place-items-center grid_center">
                 {/* Section Heading and Button */}
                 <div className="m-auto text-center lg:text-start place-content-start w-[100%]  p-4">
                     <Fade triggerOnce delay={100}>
@@ -29,7 +29,7 @@ const WeChooseSection = ({ section7 }) => {
                 </div>
 
                 {/* Info Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-0">
                     {section7.info
                         .filter((item) => item.title.trim() !== "" && item.content.trim() !== "")
                         .map((item, index) => (

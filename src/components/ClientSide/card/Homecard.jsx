@@ -95,7 +95,10 @@ const Homecard = ({ apidata }) => {
         <div ref={ref} className="pt-20 ">
             <div className="max-w-2xl m-auto  text-center ">
                 <h2 className="text-h2_medium  ">{apidata?.heading}</h2>
-                <p className="mt-2 text-p text-paragraph">{apidata?.content}</p>
+                <div
+                className="mt-2 text-p text-paragraph"
+                dangerouslySetInnerHTML={{ __html: apidata?.content }}
+              />
             </div>
             <div className="container overflow-hidden mt-10">
                 <Slider {...settings} className="md:homepage-card-slider flex ">
@@ -126,12 +129,8 @@ const Homecard = ({ apidata }) => {
                                                 height={150}
                                             /> */}
                                             <Image
-                                                src={
-                                                    apidata?.images?.[index]?.referenceType === `homepage_section6_${index + 1}`
-                                                        ? `/${apidata?.images[index]?.filePath}`
-                                                        : `/default_image_path.jpg`
-                                                }
-                                                alt={apidata?.images?.[index]?.altText || 'Card Image'}
+                                                src={card.image ||""}
+                                                alt={card.imagealt || 'Card Image'}
                                                 className="rounded-xl w-full ontab_210 md:h-[14vw] 2xl:h-[210px] border border-slate-400"
                                                 width={320}
                                                 height={150}
@@ -157,9 +156,10 @@ const Homecard = ({ apidata }) => {
                                                     ? 'bg-white text-black shadow-md'
                                                     : 'bg-[#013466] hover:bg-red-600 text-white'
                                                     } flex m-auto items-center justify-center text-button py-3 px-5 rounded-full`}
-                                                onClick={() => window.open(card.btnlink, '_blank')}
+                                                onClick={() => window.open(card.buttonLink
+                                                    , '_blank')}
                                             >
-                                                {card.btnname}
+                                                {card.buttonName}
                                             </button>
                                         </div>
                                     </div>

@@ -1,29 +1,13 @@
-import React, { useState, useEffect, useRef } from "react";
-import dynamic from 'next/dynamic';
-const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
-import 'react-quill/dist/quill.snow.css';
-import ImageUploader from "./ImageUploader";
+
+
+import { useState, useEffect } from "react";
+import dynamic from "next/dynamic";
+
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+import "react-quill/dist/quill.snow.css";
 import StatusManager from "./status";
-import { IoMdAdd } from "react-icons/io";
+import Image from "next/image";
 
-
-const AdminSection6Panel = ({ setActiveBox, sectionsStatusHandle }) => {
-  const deleteButtonRef = useRef(null);  // Ref for the delete button
-  const [formData, setFormData] = useState({
-    heading: "",
-    content: "",
-    bottomtext: "",
-    card: [],
-  });
-
-  const [isLoading, setIsLoading] = useState(false);
-  const [successMessage, setSuccessMessage] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-  const [activeCardIndex, setActiveCardIndex] = useState(0);
-  const [apiStatus, setApiStatus] = useState(false);
-  const [imageStatus, setImageStatus] = useState({});
-
-  
 const modules = {
   toolbar: [
     [{ header: [1, 2, 3, 4, 5, 6, false] }],
@@ -34,315 +18,142 @@ const modules = {
   ],
 };
 
-  const updateImageStatus = (index, status) => {
-    setImageStatus((prevStatus) => ({
-      ...prevStatus,
-      [`card_${index}`]: status,
-    }));
-  };
+export default function Section6Component({ setActiveBox, sectionsStatusHandle }) {
+  const [heading, setHeading] = useState("");
+  const [content, setContent] = useState("");
+  const [bottomText, setBottomText] = useState("");
+
+  const [cards, setCards] = useState([
+    { title: "", content: "", info: "", buttonName: "", buttonLink: "", image: "", imagealt: "" },
+  ]);
+
   useEffect(() => {
-    const allImagesUploaded = Object.values(imageStatus).every(status => status === true);
-    if (apiStatus && allImagesUploaded) {
+    const fetchSection = async () => {
+      try {
+        const response = await fetch("/api/admin/home/section6");
+        const data = await response.json();
+        if (data.success) {
+          setHeading(data.section.heading);
+          setContent(data.section.content);
+          setBottomText(data.section.bottomtext);
+          setCards(data.section.card || []);
+        }
+      } catch (error) {
+        console.error("Error fetching section data:", error);
+      }
+    };
+    fetchSection();
+  }, []);
+
+  useEffect(() => {
+    if (heading && content && bottomText) {
       sectionsStatusHandle(true);
     } else {
       sectionsStatusHandle(false);
     }
-  }, [apiStatus, imageStatus]);
+  }, [heading, content, bottomText]);
 
-  useEffect(() => {
-    const fetchSectionData = async () => {
-      setIsLoading(true);
-      try {
-        const response = await fetch("/api/homepage/section6", {
-          headers: {
-           'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
-          },
-        });
-        const result = await response.json();
-        if (result.success && result.data) {
-          setFormData({
-            ...result.data,
-            card: result.data.card || [], // Allow dynamic number of cards
-          });
-          setApiStatus(true);
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchSectionData();
-  }, []);
-
-  const handleInputChange = (name, value) => {
-    setFormData({ ...formData, [name]: value });
-  };
 
   const handleCardChange = (index, field, value) => {
-    const updatedCards = [...formData.card];
-    updatedCards[index] = { ...updatedCards[index], [field]: value };
-    setFormData({ ...formData, card: updatedCards });
+    const newCards = [...cards];
+    newCards[index][field] = value;
+    setCards(newCards);
   };
 
-  const handleTabClick = (index) => {
-    setActiveCardIndex(index); // Set active card index on tab click
+  const handleFileChange = (index, event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const newCards = [...cards];
+      newCards[index].image = file;
+      setCards(newCards);
+    }
   };
 
-  const handleDeleteCard = (e,index) => {
+  const addCard = () => {
+    setCards([...cards, { title: "", content: "", info: "", buttonName: "", buttonLink: "", image: "", imagealt: "" }]);
+  };
+
+  const removeCard = (index) => {
+    setCards(cards.filter((_, i) => i !== index));
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const updatedCards = formData.card.filter((_, idx) => idx !== index);
-    setFormData({ ...formData, card: updatedCards });
-    if (activeCardIndex >= updatedCards.length) {
-      setActiveCardIndex(updatedCards.length - 1); // Ensure the active card index is within bounds
-    }
-    if (deleteButtonRef.current) {
-      deleteButtonRef.current.click();
-    }
-  };
-  const handleDeletetest = () => {
-    alert("i am working")
-    if (deleteButtonRef.current) {
-      deleteButtonRef.current.click();
-    }
-  };
+    const formData = new FormData();
+    formData.append("heading", heading);
+    formData.append("content", content);
+    formData.append("bottomText", bottomText);
+    formData.append("cards", JSON.stringify(cards));
 
-  const hasCardData = (card) => {
-    return card.title || card.content || card.info || card.btnname || card.btnlink;
-  };
-
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setErrorMessage("");
-    setSuccessMessage("");
+    cards.forEach((card, index) => {
+      if (card.image instanceof File) {
+        formData.append("images", card.image);
+      }
+    });
 
     try {
-      const response = await fetch("/api/homepage/section6", {
-        method: "PUT",
-        headers: { "Content-Type": "application/json",
-          'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY, 
-         },
-        body: JSON.stringify({ ...formData }),
+      const response = await fetch("/api/admin/home/section6", {
+        method: "POST",
+        body: formData,
       });
-
-      const result = await response.json();
-      if (result.success) {
-        alert('Section updated successfully!');        
-        setSuccessMessage("Section updated successfully!");
-        setActiveBox(7);
-        setApiStatus(true);
+      const data = await response.json();
+      if (data.success) {
+        alert("Section saved successfully!");
+        setActiveBox(7)
       } else {
-        setErrorMessage(result.message || "Failed to save Section6 data.");
+        alert("Failed to save section.");
       }
     } catch (error) {
-      console.error("Error saving data:", error);
-      setErrorMessage("An error occurred while saving the data.");
-    } finally {
-      setIsLoading(false);
+      console.error("Error saving section data:", error);
     }
-  };
-
-  // Function to add a new card
-  const handleAddCard = () => {
-    const newCard = { title: "", content: "", info: "", btnname: "", btnlink: "" };
-    setFormData((prevData) => ({
-      ...prevData,
-      card: [...prevData.card, newCard],
-    }));
-    setActiveCardIndex(formData.card.length); // Set active card to the newly added card
   };
 
   return (
-    <div className="p-4 shadow-inner bg-gray-50 rounded-lg space-y-6">
+    <div className="w-full p-6 rounded-lg mt-10">
       <div className='flex justify-end '>
-        
+
         <StatusManager sectionName={"homepage_section6"} />
       </div>
-      {/* {isLoading && <p className="text-blue-600">Loading...</p>}
-      {errorMessage && <p className="text-red-600">{errorMessage}</p>}
-      {successMessage && <p className="text-green-600">{successMessage}</p>} */}
-
-      <form  className="space-y-6">
-        {/* Section Heading */}
+      <form onSubmit={handleSubmit} className="space-y-6">
         <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-1">
-            Section Heading
-          </label>
-          <input
-            type="text"
-            name="heading"
-            value={formData.heading}
-            onChange={(e) => handleInputChange("heading", e.target.value)}
-            className="w-full p-3 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
-            placeholder="Enter section heading"
-          />
+          <label className="block text-gray-800 font-semibold">Heading</label>
+          <input type="text" value={heading} onChange={(e) => setHeading(e.target.value)} className="w-full px-4 py-2 border rounded-md shadow-sm focus:ring-2 focus:ring-indigo-500" />
+        </div>
+        <div>
+          <label className="block text-gray-800 font-semibold">Content</label>
+          <ReactQuill value={content} onChange={setContent} modules={modules} className="w-full" />
+        </div>
+        <div>
+          <label className="block text-gray-800 font-semibold">Bottom Text</label>
+          <ReactQuill value={bottomText} onChange={setBottomText} modules={modules} className="w-full" />
         </div>
 
-        {/* Section Content (Text Area) */}
-        <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-1">
-            Section Content
-          </label>
-          <textarea
-            name="content"
-            value={formData.content}
-            onChange={(e) => handleInputChange("content", e.target.value)}
-            className="w-full p-3 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
-            placeholder="Enter section content"
-            rows="6"
-          />
-        </div>
-
-        {/* Bottom Text */}
-        <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-1">
-            Bottom Text
-          </label>
-          <ReactQuill
-            value={formData.bottomtext}
-            modules={modules}
-            onChange={(value) => handleInputChange("bottomtext", value)}
-            className="bg-white rounded-md shadow-sm"
-          />
-        </div>
-
-        {/* Cards Tabs */}
-        <div className="space-y-6">
-          <h3 className="text-lg font-semibold text-gray-800 mb-4">Cards</h3>
-          <div className="relative">
-
-            <div className="flex w-full overflow-x-auto space-x-4 items-center sticky top-[130px] bg-gray-50 z-20 pl-5 py-2">
-              {formData.card.map((card, index) => (
-                <button
-                  key={index}
-                  type="button"
-                  onClick={() => handleTabClick(index)}
-                  className={`py-2 px-4 rounded-md font-semibold flex items-center border border-gray-500  ${activeCardIndex === index
-                      ? "bg-black text-white"
-                      : "bg-gray-200 text-gray-700"
-                    }`}
-                >
-                  <span className="text-xs">Card {index + 1}</span>
-                  <span
-                    className={`ml-2 w-2.5 h-2.5 rounded-full ${hasCardData(card) ? "bg-green-500" : "bg-red-500"
-                      }`}
-                  />
-                </button>
-              ))}
-              <button
-                type="button"
-                onClick={handleAddCard}
-                className="py-2 px-4 rounded-md bg-gray-500 hover:bg-red-700 text-white font-semibold"
-              >
-                <span className="text-xs flex items-center gap-1 "><IoMdAdd/> Card</span>
-                
-              </button>
-            </div>
-
-            {/* Card Content */}
-            <div className="mt-6 px-5">
-              {formData.card.map((card, index) =>
-                activeCardIndex === index ? (
-                  <div
-                    key={index}
-                    className="p-4 bg-white rounded-md shadow-sm border border-gray-200 space-y-4"
-                  >
-                    <h4 className="text-md font-medium text-gray-700 mb-2">
-                      Card {index + 1}
-                    </h4>
-                    <ImageUploader deleteButtonRef={deleteButtonRef} setImageStatus={(status) => updateImageStatus(index, status)} referenceType={`homepage_section6_${index + 1}`} width={421} height={260} />
-                    <span className="bg-black text-white  cursor-pointer " onClick={handleDeletetest}>delete test button</span>
-
-                    <div className="space-y-2">
-                      <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-1">
-                          Title
-                        </label>
-                        <input
-                          type="text"
-                          value={card.title}
-                          onChange={(e) => handleCardChange(index, "title", e.target.value)}
-                          className="w-full p-3 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
-                          placeholder={`Enter title for Card ${index + 1}`}
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-1">
-                          Content
-                        </label>
-                        <ReactQuill
-                          value={card.content}
-                          onChange={(value) => handleCardChange(index, "content", value)}
-                          className="bg-white rounded-md shadow-sm"
-                          modules={modules}
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-1">
-                          Info
-                        </label>
-                        <ReactQuill
-                          value={card.info}
-                          onChange={(value) => handleCardChange(index, "info", value)}
-                          className="bg-white rounded-md shadow-sm"
-                          modules={modules}
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-1">
-                          Button Name
-                        </label>
-                        <input
-                          type="text"
-                          value={card.btnname}
-                          onChange={(e) => handleCardChange(index, "btnname", e.target.value)}
-                          className="w-full p-3 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
-                          placeholder={`Enter button name for Card ${index + 1}`}
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-1">
-                          Button Link
-                        </label>
-                        <input
-                          type="text"
-                          value={card.btnlink}
-                          onChange={(e) => handleCardChange(index, "btnlink", e.target.value)}
-                          className="w-full p-3 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
-                          placeholder={`Enter button link for Card ${index + 1}`}
-                        />
-                      </div>
-                      <button
-                        type="button"
-                        // onClick={() => handleDeleteCard(index)}
-                        onClick={(e) => handleDeleteCard(e, index)}
-                        className="mt-2 text-red-500"
-                      >
-                        Delete Card {index+1}
-                      </button>
-                    </div>
-                  </div>
-                ) : null
-              )}
-            </div>
+        {cards.map((card, index) => (
+          <div key={index} className="p-4 bg-gray-50 shadow-md rounded-md border">
+            <h2 className="text-lg font-semibold">Card {index + 1}</h2>
+            <label>Title</label>
+            <input type="text" name="title" value={card.title} onChange={(e) => handleCardChange(index, "title", e.target.value)} className="w-full px-4 py-2 border rounded-md shadow-sm" />
+            <label>Content</label>
+            <ReactQuill value={card.content} onChange={(value) => handleCardChange(index, "content", value)} modules={modules} className="w-full" />
+            <label>Info</label>
+            <ReactQuill value={card.info} onChange={(value) => handleCardChange(index, "info", value)} modules={modules} className="w-full" />
+            <label>Button Name</label>
+            <input type="text" name="buttonName" value={card.buttonName} onChange={(e) => handleCardChange(index, "buttonName", e.target.value)} className="w-full px-4 py-2 border rounded-md shadow-sm" />
+            <label>Button Link</label>
+            <input type="text" name="buttonLink" value={card.buttonLink} onChange={(e) => handleCardChange(index, "buttonLink", e.target.value)} className="w-full px-4 py-2 border rounded-md shadow-sm" />
+            <label>Image Alt Text</label>
+            <input type="text" name="imagealt" value={card.imagealt} onChange={(e) => handleCardChange(index, "imagealt", e.target.value)} className="w-full px-4 py-2 border rounded-md shadow-sm" />
+            {card.image && (
+              <Image width={100} height={100} src={card.image instanceof File ? URL.createObjectURL(card.image) : card.image} alt={card.imagealt || "Preview"} className="w-24 h-24 object-cover mt-2 rounded" />
+            )}
+            <input type="file" onChange={(e) => handleFileChange(index, e)} className="mt-2" />
+            <button type="button" onClick={() => removeCard(index)} className="mt-2 px-4 py-2 bg-red-500 text-white rounded shadow hover:bg-red-700">Remove card {index + 1}</button>
           </div>
-        </div>
-        
-        {/* Submit Button */}
-        <div className="flex justify-end">
-          <button
-            onClick={handleFormSubmit}
-            disabled={isLoading}
-             className="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-gray-800 transition duration-300"
-          >
-            {isLoading ? "Saving..." : "Save Section"}
-          </button>
-        </div>
+        ))}
+        <button type="button" onClick={addCard} className="px-6 py-3 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">Add Card</button>
+        <button type="submit" className="w-full px-6 py-3 bg-green-600 text-white rounded-md hover:bg-green-700">Save Section</button>
       </form>
     </div>
   );
-};
+}
 
-export default AdminSection6Panel;

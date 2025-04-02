@@ -4,7 +4,6 @@ import { TiArrowSortedUp } from "react-icons/ti";
 import { IoIosArrowDown } from "react-icons/io";
 
 export default function NavBar({ data, activationBlog }) {
-  console.log("data in dropdown show is here",data)
   return (
     <header className="text-black">
       {/* Main Navbar */}

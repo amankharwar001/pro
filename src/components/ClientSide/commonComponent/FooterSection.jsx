@@ -20,7 +20,7 @@ export default function FooterSection() {
   const [activationBlog, setActivationBlog] = useState();
   const router = useRouter(); 
   const isContactPage = router.pathname === "/contact"; 
-  console.log("page list show is here", activationBlog)
+  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -105,7 +105,7 @@ export default function FooterSection() {
   const [logo, setlogo] = useState(); // State to store admin settings
   const [feviconIcon, setfeviconIcon] = useState(); // State to store avatar images
 
-  console.log("logo show is here", logo)
+
 
 
   useEffect(() => {

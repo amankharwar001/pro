@@ -7,7 +7,7 @@ import Link from 'next/link';
 const Footercta = () => {
     const baseUrl = process.env.NEXT_PUBLIC_BASE_PATH;
     const [footerCta, setFooterCta] = useState(null);
-    console.log("footer cta show is here", footerCta)
+
 
 
     useEffect(() => {
