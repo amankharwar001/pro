@@ -354,8 +354,8 @@ font-size: clamp(1rem, 1.5vw + 0.4rem, 1rem);
 line-height: 1.6;
 }
 .text-h2_large {
-font-size: clamp(2rem, 3vw, 2.9rem);
-line-height: 1.4;
+font-size: clamp(2rem, 3vw, 2.4rem);
+line-height: 1.3;
 }
 .border-l-2.border-muted.h-16 {
 /* background: red; */
@@ -587,6 +587,7 @@ header.text-black ul.absolute .font-medium {
     grid-column: 1;
     justify-self: center;
     max-width: 100%;
+    width: 100%;
 }
 .grid-cols-1.whychoose_boxes {
     grid-template-columns: auto;
