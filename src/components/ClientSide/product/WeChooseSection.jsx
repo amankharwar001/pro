@@ -29,7 +29,7 @@ const WeChooseSection = ({ section7 }) => {
                 </div>
 
                 {/* Info Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-0">
+                <div className="grid grid-cols-1 md:grid-cols-2 sm:grid-cols-2 gap-4 mt-0 whychoose_boxes">
                     {section7.info
                         .filter((item) => item.title.trim() !== "" && item.content.trim() !== "")
                         .map((item, index) => (
