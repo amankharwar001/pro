@@ -82,12 +82,12 @@ export default async function handler(req, res) {
       ? await ImagesData.findAll({ where: { referenceType: id, referenceId: [3, 31, 32] } })
       : [];
 
-    const section4Images = section4Data
-      ? await ImagesData.findAll({ where: { referenceType: id, referenceId: [41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90] } })
-      : [];
+    // const section4Images = section4Data
+    //   ? await ImagesData.findAll({ where: { referenceType: id, referenceId: [41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90] } })
+    //   : [];
 
     const section5Images = section5Data
-      ? await ImagesData.findAll({ where: { referenceType: id, referenceId: [5, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70,71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90] } })
+      ? await ImagesData.findAll({ where: { referenceType: id, referenceId: [5] } })
       : [];
 
     const section6Images = section6Data
@@ -99,7 +99,7 @@ export default async function handler(req, res) {
       section2: section2Data ? { section2Data, Images: section2Images } : null,
       section2optional: section2DataOptional ? { section2DataOptional, topImages: section2OptionalImagesTop, bottomImages: section2OptionalImagesBottom } : null,
       section3: section3Data ? { section3Data, Images: section3Images } : null,
-      section4: section4Data ? { section4Data, Images: section4Images } : null,
+      section4: section4Data ? { section4Data } : null,
       section5: section5Data ? { section5Data, Images: section5Images } : null,
       section6: section6Data ? { section6Data, Images: section6Images } : null,
       section7: section7Data || null,

@@ -1,168 +1,283 @@
-import React, { useState, useEffect } from "react";
+
+
+// import { useState, useEffect } from "react";
+// import dynamic from "next/dynamic";
+// import Image from "next/image";
+// import ImageUploader from "../ImageUploader";
+// import StatusManager from "../status";
+// const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+// import "react-quill/dist/quill.snow.css";
+
+// const modules = {
+//   toolbar: [
+//     [{ header: [1, 2, 3, 4, 5, 6, false] }],
+//     ["bold", "italic", "underline"],
+//     [{ color: [] }],
+//     [{ list: "ordered" }, { list: "bullet" }],
+//     ["clean"],
+//   ],
+// };
+
+// export default function Section5Product({ productpage, setActiveBox, sectionsStatusHandle }) {
+//   const [heading, setHeading] = useState("");
+//   const [text, setText] = useState("");
+//   const [info, setInfo] = useState([{ title: "", content: "", image: "" }]);
+
+//   useEffect(() => {
+//     const fetchSection = async () => {
+//       try {
+//         const response = await fetch(`/api/admin/product/section5/${productpage?.id}`);
+//         const data = await response.json();
+//         if (data.success) {
+//           setHeading(data.section.heading);
+//           setText(data.section.text);
+//           setInfo(data.section.info || []);
+//         }
+//       } catch (error) {
+//         console.error("Error fetching section data:", error);
+//       }
+//     };
+//     fetchSection();
+//   }, [productpage]);
+
+//   const handleInfoChange = (index, value) => {
+//     const newInfo = [...info];
+//     newInfo[index].content = value;
+//     setInfo(newInfo);
+//   };
+
+//   const handleFileChange = (index, event) => {
+//     const file = event.target.files[0];
+//     if (file) {
+//       const newInfo = [...info];
+//       newInfo[index].image = file;
+//       setInfo(newInfo);
+//     }
+//   };
+
+//   const addInfo = () => {
+//     setInfo([...info, { title: "", content: "", image: "" }]);
+//   };
+
+//   const removeInfo = (index) => {
+//     setInfo(info.filter((_, i) => i !== index));
+//   };
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     const formData = new FormData();
+//     formData.append("heading", heading);
+//     formData.append("text", text);
+//     formData.append("info", JSON.stringify(info));
+
+//     info.forEach((item) => {
+//       if (item.image instanceof File) {
+//         formData.append("images", item.image);
+//       }
+//     });
+
+//     try {
+//       const response = await fetch(`/api/admin/product/section5/${productpage?.id}`, {
+//         method: "POST",
+//         body: formData,
+//       });
+//       const data = await response.json();
+//       if (data.success) {
+//         alert("Section saved successfully!");
+//       } else {
+//         alert("Failed to save section.");
+//       }
+//     } catch (error) {
+//       console.error("Error saving section data:", error);
+//     }
+//   };
+
+//   return (
+//     <div className=" p-6 bg-white  ">
+//       {/* <h1 className="text-4xl font-bold text-center mb-8 text-indigo-700">Manage Section 5</h1> */}
+//       <div className="flex justify-end">
+//         <StatusManager sectionName={`product_section5${productpage?.id}`} />
+//       </div>
+//       <ImageUploader referenceType={productpage?.id} referenceId={5} width={450} height={610} setImageStatus={(status) => handleImageStatusChange(5, status)} />
+
+
+//       <form onSubmit={handleSubmit} className="space-y-6">
+//         <label className="block text-gray-800 font-semibold">Heading</label>
+//         <input type="text" value={heading} onChange={(e) => setHeading(e.target.value)} className="w-full px-4 py-2 border rounded-md" />
+
+//         <label className="block text-gray-800 font-semibold">Text</label>
+//         <ReactQuill value={text} onChange={setText} modules={modules} className="bg-white" />
+
+//         {info.map((item, index) => (
+//           <div key={index} className="p-4 bg-gray-50 shadow-md rounded-md border">
+//             <h2 className="text-lg font-semibold">Info {index + 1}</h2>
+//             <label>Title</label>
+//             <input type="text" name="title" value={item.title} onChange={(e) => {
+//               const newInfo = [...info];
+//               newInfo[index].title = e.target.value;
+//               setInfo(newInfo);
+//             }} className="w-full px-4 py-2 border rounded-md" />
+
+//             <label>Content</label>
+//             <ReactQuill value={item.content} onChange={(value) => handleInfoChange(index, value)} modules={modules} className="bg-white" />
+
+//             {item.image && (
+//               <Image width={100} height={100} src={item.image instanceof File ? URL.createObjectURL(item.image) : item.image} alt="Preview" className="w-24 h-24 object-cover mt-2 rounded" />
+//             )}
+//             <input type="file" onChange={(e) => handleFileChange(index, e)} className="mt-2" />
+//             <button type="button" onClick={() => removeInfo(index)} className="mt-2 px-4 py-2 bg-red-500 text-white rounded">Remove Info {index + 1}</button>
+//           </div>
+//         ))}
+
+//         <button type="button" onClick={addInfo} className="px-6 py-3 bg-indigo-600 text-white rounded-md">Add Info</button>
+//         <button type="submit" className="w-full px-6 py-3 bg-green-600 text-white rounded-md">Save Section</button>
+//       </form>
+//     </div>
+//   );
+// }
+
+
+
+
+
+
+import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import ImageUploader from "../ImageUploader";
 import StatusManager from "../status";
-
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import "react-quill/dist/quill.snow.css";
 
+const modules = {
+  toolbar: [
+    [{ header: [1, 2, 3, 4, 5, 6, false] }],
+    ["bold", "italic", "underline"],
+    [{ color: [] }],
+    [{ list: "ordered" }, { list: "bullet" }],
+    ["clean"],
+  ],
+};
+
 export default function Section5Product({ productpage, setActiveBox, sectionsStatusHandle }) {
-  const [data, setData] = useState({
-    heading: "",
-    text: "",
-    info: [],
-  });
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [isEditing, setIsEditing] = useState(false);
-  const [apiStatus, setApiStatus] = useState(false);
-  const [imageStatuses, setImageStatuses] = useState({});
-
-  const modules = {
-    toolbar: [
-      [{ header: [1, 2, 3, 4, 5, 6, false] }],
-      ["bold", "italic", "underline"],
-      [{ color: [] }],
-      [{ list: "ordered" }, { list: "bullet" }],
-      ["clean"],
-    ],
-  };
-
-  const handleImageStatusChange = (id, status) => {
-    setImageStatuses((prevStatuses) => ({
-      ...prevStatuses,
-      [id]: status,
-    }));
-  };
+  const [heading, setHeading] = useState("");
+  const [text, setText] = useState("");
+  const [info, setInfo] = useState([{ title: "", content: "", image: "", imageAltText: "" }]);
 
   useEffect(() => {
-    const allUploaded = Object.values(imageStatuses).every((status) => status === true);
-    sectionsStatusHandle(apiStatus && allUploaded);
-  }, [apiStatus, imageStatuses]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
+    const fetchSection = async () => {
       try {
-        const response = await fetch(`/api/product/sectionproduct5/${productpage?.id}`, {
-          headers: {
-            'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY,
-          },
-        });
-        if (!response.ok) {
-          throw new Error("Failed to fetch data");
+        const response = await fetch(`/api/admin/product/section5/${productpage?.id}`);
+        const data = await response.json();
+        if (data.success) {
+          setHeading(data.section.heading);
+          setText(data.section.text);
+          setInfo(data.section.info || []);
         }
-        const result = await response.json();
-        setData(result);
-        setIsEditing(true);
-        setApiStatus(true);
-      } catch (err) {
-        setError(err.message);
-        setIsEditing(false);
-      } finally {
-        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching section data:", error);
       }
     };
-    if (productpage?.id) {
-      fetchData();
+    fetchSection();
+  }, [productpage]);
+
+  const handleInfoChange = (index, value) => {
+    const newInfo = [...info];
+    newInfo[index].content = value;
+    setInfo(newInfo);
+  };
+
+  const handleFileChange = (index, event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const newInfo = [...info];
+      newInfo[index].image = file;
+      setInfo(newInfo);
     }
-  }, [productpage?.id]);
-
-  const handleChange = (name, value) => {
-    setData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleInfoChange = (index, field, value) => {
-    setData((prev) => {
-      const updatedInfo = [...prev.info];
-      updatedInfo[index][field] = value;
-      return { ...prev, info: updatedInfo };
-    });
+  const addInfo = () => {
+    setInfo([...info, { title: "", content: "", image: "", imageAltText: "" }]);
   };
 
-  const handleAddInfo = () => {
-    setData((prev) => ({
-      ...prev,
-      info: [...prev.info, { title: "", content: "" }],
-    }));
+  const removeInfo = (index) => {
+    setInfo(info.filter((_, i) => i !== index));
   };
 
-  const handleDeleteInfo = (index) => {
-    setData((prev) => ({
-      ...prev,
-      info: prev.info.filter((_, i) => i !== index),
-    }));
-  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("heading", heading);
+    formData.append("text", text);
+    formData.append("info", JSON.stringify(info));
 
-  const handleSave = async () => {
-    setLoading(true);
-    try {
-      const method = isEditing ? "PUT" : "POST";
-      const response = await fetch(`/api/product/sectionproduct5/${productpage?.id}`, {
-        method,
-        headers: { "Content-Type": "application/json", 'x-system-key': process.env.NEXT_PUBLIC_SYSTEM_KEY },
-        body: JSON.stringify(data),
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to save data");
+    info.forEach((item) => {
+      if (item.image instanceof File) {
+        formData.append("images", item.image);
       }
+    });
 
-      const result = await response.json();
-      setData(result);
-      alert(`Data ${isEditing ? "updated" : "created"} successfully!`);
-      setActiveBox(7);
-      setApiStatus(true);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
+    try {
+      const response = await fetch(`/api/admin/product/section5/${productpage?.id}`, {
+        method: "POST",
+        body: formData,
+      });
+      const data = await response.json();
+      if (data.success) {
+        alert("Section saved successfully!");
+      } else {
+        alert("Failed to save section.");
+      }
+    } catch (error) {
+      console.error("Error saving section data:", error);
     }
   };
 
   return (
-    <div className="p-4 border bg-gray-50 shadow-inner rounded">
+    <div className=" p-6 bg-white  ">
       <div className="flex justify-end">
         <StatusManager sectionName={`product_section5${productpage?.id}`} />
       </div>
       <ImageUploader referenceType={productpage?.id} referenceId={5} width={450} height={610} setImageStatus={(status) => handleImageStatusChange(5, status)} />
 
-      {!loading && (
-        <form className="space-y-4 mt-4">
-          <div>
-            <label className="block text-sm text-gray-700 font-semibold">Heading</label>
-            <input type="text" name="heading" value={data.heading} onChange={(e) => handleChange("heading", e.target.value)} className="w-full p-2 border rounded" />
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <label className="block text-gray-800 font-semibold">Heading</label>
+        <input type="text" value={heading} onChange={(e) => setHeading(e.target.value)} className="w-full px-4 py-2 border rounded-md" />
+
+        <label className="block text-gray-800 font-semibold">Text</label>
+        <ReactQuill value={text} onChange={setText} modules={modules} className="bg-white" />
+
+        {info.map((item, index) => (
+          <div key={index} className="p-4 bg-gray-50 shadow-md rounded-md border">
+            <h2 className="text-lg font-semibold">Info {index + 1}</h2>
+            <label>Title</label>
+            <input type="text" name="title" value={item.title} onChange={(e) => {
+              const newInfo = [...info];
+              newInfo[index].title = e.target.value;
+              setInfo(newInfo);
+            }} className="w-full px-4 py-2 border rounded-md" />
+
+            <label>Content</label>
+            <ReactQuill value={item.content} onChange={(value) => handleInfoChange(index, value)} modules={modules} className="bg-white" />
+
+            <label>Image Alt Text</label>
+            <input type="text" name="imageAltText" value={item.imageAltText} onChange={(e) => {
+              const newInfo = [...info];
+              newInfo[index].imageAltText = e.target.value;
+              setInfo(newInfo);
+            }} className="w-full px-4 py-2 border rounded-md" />
+
+            {item.image && (
+              <Image width={100} height={100} src={item.image instanceof File ? URL.createObjectURL(item.image) : item.image} alt={item.imageAltText || "Preview"} className="w-24 h-24 object-cover mt-2 rounded" />
+            )}
+            <input type="file" onChange={(e) => handleFileChange(index, e)} className="mt-2" />
+            <button type="button" onClick={() => removeInfo(index)} className="mt-2 px-4 py-2 bg-red-500 text-white rounded">Remove Info {index + 1}</button>
           </div>
-          <div>
-            <label className="block text-sm text-gray-700 font-semibold">Text</label>
-            <ReactQuill theme="snow" modules={modules} value={data.text} onChange={(value) => handleChange("text", value)} />
-          </div>
-          <div>
-            <h2 className="text-sm font-semibold text-gray-700">Info</h2>
-            {data.info.map((item, index) => (
-              <div key={index} className="border p-4 rounded mb-4 shadow-md bg-white">
-                <div className="flex justify-between items-center">
-                  <h3 className="font-semibold">Info {index + 1}</h3>
-                  <button type="button" onClick={() => handleDeleteInfo(index)} className="text-red-500 text-sm hover:underline">
-                    Delete
-                  </button>
-                </div>
-                <ImageUploader referenceType={productpage?.id} referenceId={index + 51} width={50} height={50} setImageStatus={(status) => handleImageStatusChange(index + 51, status)} />
-                <label className="block font-medium">Title</label>
-                <input type="text" value={item.title} onChange={(e) => handleInfoChange(index, "title", e.target.value)} className="w-full p-2 border rounded" />
-                <label className="block font-medium">Content</label>
-                <ReactQuill theme="snow" modules={modules} value={item.content} onChange={(value) => handleInfoChange(index, "content", value)} />
-              </div>
-            ))}
-            <button type="button" onClick={handleAddInfo} className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 mt-2">
-              Add Info
-            </button>
-          </div>
-          <button type="button" onClick={handleSave} className="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-gray-800 transition duration-300">
-            {isEditing ? "Update" : "Create"}
-          </button>
-        </form>
-      )}
+        ))}
+
+        <button type="button" onClick={addInfo} className="px-6 py-3 bg-indigo-600 text-white rounded-md">Add Info</button>
+        <button type="submit" className="w-full px-6 py-3 bg-green-600 text-white rounded-md">Save Section</button>
+      </form>
     </div>
   );
 }

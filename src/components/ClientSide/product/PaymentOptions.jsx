@@ -105,6 +105,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 const PaymentOptions = ({ section5, baseUrl }) => {
+  console.log("section5 data here:",section5)
   const primaryImage = section5.Images.find((image) => image.referenceId === 5);
 
   
@@ -176,14 +177,14 @@ const PaymentOptions = ({ section5, baseUrl }) => {
           {/* Cards Section */}
           <Slider {...settings} className="max-w-[85%] m-auto md:max-w-full">
               {infoItems.map((info, index) => {
-                const icon = svgImages[index];
+                // const icon = svgImages[index];
                 return (
                   <Fade key={index} direction="up" delay={400 + index * 100} triggerOnce>
                     <div className="sm:flex items-start gap-4 p-6 mb-5 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                      {icon ? (
+                      {info?.image ? (
                         <Image
-                          src={`${baseUrl}${icon.filePath}`}
-                          alt={icon.altText || `Icon ${index + 1}`}
+                          src={`${baseUrl}${info.image}`}
+                          alt={info?.imageAltText }
                           className="w-12 h-12 m-auto sm:m-0"
                           width={50}
                           height={50}

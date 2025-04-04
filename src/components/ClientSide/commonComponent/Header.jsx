@@ -70,7 +70,8 @@ const Header = ({ data, img }) => {
         });
         if (response.ok) {
           const result = await response.json();
-          setProductList(result.data.info);
+          
+          setProductList(result.data);
         }
       } catch (err) {
         console.warn(err.message);

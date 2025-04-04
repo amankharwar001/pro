@@ -4,15 +4,15 @@ import Image from "next/image";
 import { Fade, Zoom } from "react-awesome-reveal";
 
 const CardSection2 = ({ section4, baseUrl }) => {
-    console.log("section 4 data:", section4);
+    console.log("section 4 data:", section4.section4Data.section4);
 
     return (
         <div className="relative bg-white py-20 lg:px-20  pb-10">
             <div className="container mx-auto flex flex-col gap-16">
                 {section4.section4Data.section4.map((item, index) => {
                     // Find image by referenceId (starting from 41)
-                    const imageIndex = index + 41;
-                    const image = section4.Images.find((img) => img.referenceId === imageIndex);
+                    // const imageIndex = index + 41;
+                    // const image = section4.Images.find((img) => img.referenceId === imageIndex);
 
                     // Alternate layouts: even indexes → text left, image right; odd indexes → image left, text right
                     const isTextLeft = index % 2 === 0;
@@ -52,12 +52,12 @@ const CardSection2 = ({ section4, baseUrl }) => {
                                 )}
 
                                 {/* Responsive Image */}
-                                {image && (
+                                {item?.image && (
                                     <div className={`relative w-full max-w-[320px] lg:max-w-[450px] ${!isTextLeft ? "xl:-left-16" : ""} `}>
                                         <Zoom triggerOnce delay={50}>
                                             <Image
-                                                src={`${baseUrl}${image.filePath}`}
-                                                alt={image.altText || "Section Image"}
+                                                src={`${baseUrl}${item?.image}`}
+                                                alt={item?.imageAltText}
                                                 layout="responsive"
                                                 width={550}
                                                 height={350}

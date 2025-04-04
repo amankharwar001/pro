@@ -20,16 +20,19 @@ export default function NavBar({ data, activationBlog }) {
               <span className=" group-hover:rotate-180 transform transition-all duration-2000 ease-out group-hover:text-[#013466]"> <IoIosArrowDown /></span>
             </div>
             {/* Dropdown on hover */}
-            
+
             <ul className="absolute left-0 hidden group-hover:flex flex-col bg-white shadow-md rounded-md py-3 w-auto  z-50">
-              {data?.map((product) => (
-                <NavItem
-                  key={product.id}
-                  className='w-72'
-                  href={`${process.env.NEXT_PUBLIC_BASE_PATH}product/${product?.seo}`}
-                  label={product.content}
-                />
-              ))}
+              {data
+                ?.filter((product) => product.status === "active")
+                .map((product) => (
+                  <NavItem
+                    key={product.id}
+                    className="w-72"
+                    href={`${process.env.NEXT_PUBLIC_BASE_PATH}product/${product?.seo}`}
+                    label={product.nickname}
+                  />
+                ))}
+
             </ul>
           </div>
 
@@ -68,7 +71,7 @@ const NavItem = ({ href, label }) => (
 
 
 
-{/* <ul className="absolute hidden group-hover:flex max-w-72 py-3 pr-5 flex-col bg-white shadow-md rounded-md"> */}
+{/* <ul className="absolute hidden group-hover:flex max-w-72 py-3 pr-5 flex-col bg-white shadow-md rounded-md"> */ }
 
 
 

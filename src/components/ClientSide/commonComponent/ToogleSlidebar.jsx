@@ -147,13 +147,23 @@ export default function Sidebar({ data, isOpen, closeSidebar, activationBlog }) 
                                     transition={{ duration: 0.3, ease: "easeInOut" }}
                                     className="ml-4  overflow-hidden"
                                 >
-                                    {data?.map((product) => (
-                                        <Link key={product.id} href={`${process.env.NEXT_PUBLIC_BASE_PATH}product/${product?.seo}`} passHref>
-                                            <li onClick={closeSidebar} className="py-2 text-md hover:text-[#003066] cursor-pointer">
-                                                {product.content}
-                                            </li>
-                                        </Link>
-                                    ))}
+                                    {data
+                                        ?.filter((product) => product.status === "active")
+                                        .map((product) => (
+                                            <Link
+                                                key={product.id}
+                                                href={`${process.env.NEXT_PUBLIC_BASE_PATH}product/${product?.seo}`}
+                                                passHref
+                                            >
+                                                <li
+                                                    onClick={closeSidebar}
+                                                    className="py-2 text-md hover:text-[#003066] cursor-pointer"
+                                                >
+                                                    {product.nickname}
+                                                </li>
+                                            </Link>
+                                        ))}
+
                                 </motion.ul>
                             )}
                         </AnimatePresence>
