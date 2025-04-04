@@ -50,8 +50,8 @@ const Homecard = ({ apidata }) => {
         slidesToShow: 3,
         speed: 500,
         autoplay: true,
-        autoplaySpeed: 10000,
-        pauseOnHover: false,
+        autoplaySpeed: 6000,
+        
         beforeChange: (current, next) => {
             setActiveIndex(next);
         },

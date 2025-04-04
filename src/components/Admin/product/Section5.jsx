@@ -164,6 +164,19 @@ export default function Section5Product({ productpage, setActiveBox, sectionsSta
   const [text, setText] = useState("");
   const [info, setInfo] = useState([{ title: "", content: "", image: "", imageAltText: "" }]);
 
+
+  useEffect(() => {
+    const isValid =
+      Boolean(heading) &&
+      Boolean(text) &&
+      info.length > 0 &&
+      info.some(item => item.title || item.content || item.image || item.imageAltText);
+
+    sectionsStatusHandle(isValid);
+  }, [heading, text, info]);
+
+
+
   useEffect(() => {
     const fetchSection = async () => {
       try {
@@ -225,6 +238,7 @@ export default function Section5Product({ productpage, setActiveBox, sectionsSta
       const data = await response.json();
       if (data.success) {
         alert("Section saved successfully!");
+        setActiveBox(7);
       } else {
         alert("Failed to save section.");
       }

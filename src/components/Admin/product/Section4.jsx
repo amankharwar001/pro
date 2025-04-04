@@ -180,6 +180,10 @@ const modules = {
 
 export default function Section4Product({ productpage, setActiveBox, sectionsStatusHandle }) {
   const [section4, setSection4] = useState([]);
+  useEffect(() => {
+    sectionsStatusHandle(Array.isArray(section4) && section4.length > 0);
+  }, [section4]);
+  
 
   useEffect(() => {
     const fetchSection = async () => {
@@ -247,6 +251,7 @@ export default function Section4Product({ productpage, setActiveBox, sectionsSta
       const data = await response.json();
       if (data.success) {
         alert("Section saved successfully!");
+        setActiveBox(6);
       } else {
         alert("Failed to save section.");
       }
