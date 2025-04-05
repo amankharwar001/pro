@@ -218,7 +218,7 @@ export default function FooterSection() {
                 <li className='text-p'><Link href="/privacy-policy">Privacy Policy</Link></li>
                 <li className='text-p'><Link href="/term-and-condition">Term and Condition</Link></li>
                 <li className='text-p'><Link href="/refund-policy">Refund Policy</Link></li>
-                <li className='text-p'><Link href="/sitemap">Sitemap</Link></li>
+                {/* <li className='text-p'><Link href="/sitemap">Sitemap</Link></li> */}
                 {footerData?.buttons?.map((item, index) => (
                   <li key={index}>
                     <Link href={item.btnlink || '/'}>{item.btnname}</Link>

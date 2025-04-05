@@ -116,7 +116,7 @@ const AboutSection3Form = ({ setActiveBox, sectionsStatusHandle }) => {
       <div className='flex justify-end'>
       <StatusManager sectionName={"about_section3"} />
       </div>
-      <form onSubmit={handleSubmit} className="space-y-4 w-full">
+      <div  className="space-y-4 w-full">
         <div>
           <label className="block font-semibold text-gray-700 mb-1 text-sm">Heading</label>
           <input
@@ -165,10 +165,11 @@ const AboutSection3Form = ({ setActiveBox, sectionsStatusHandle }) => {
           type="submit"
           className="w-full bg-adminbtn text-white py-2 rounded"
           disabled={isLoading}
+          onClick={handleSubmit}
         >
           {isLoading ? 'Submitting...' : isUpdate ? 'Update' : 'Create'}
         </button>
-      </form>
+      </div>
     </div>
   );
 };

@@ -322,12 +322,12 @@ h3 {
 font-size: clamp(1.4rem, 1.5vw + 0.7rem, 1.2rem);
 }
 .countingtitle h5 {
-font-size: 19px;
+font-size: 17px;
 font-weight: 600;
 line-height: 29px;
 }
 .countingtitle .text-h1 {
-font-size: clamp(2.5rem, 5vw, 3rem);
+font-size: clamp(2.5rem, 5vw, 2.5rem);
 margin-right: 5px;
 }
 .w-\[94\%\] {

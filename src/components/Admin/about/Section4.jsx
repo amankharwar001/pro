@@ -112,7 +112,7 @@ const AboutSection4Form = ({ setActiveBox,sectionsStatusHandle }) => {
         </div>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-4 w-full">
+      <div  className="space-y-4 w-full">
         <div>
           <label className="block font-semibold mb-1 text-sm text-gray-700">Cards</label>
           {formData.card.map((card, index) => (
@@ -143,10 +143,11 @@ const AboutSection4Form = ({ setActiveBox,sectionsStatusHandle }) => {
           type="submit"
           className="w-full bg-adminbtn text-white py-2 rounded"
           disabled={isLoading}
+          onClick={handleSubmit}
         >
           {isLoading ? 'Submitting...' : aboutSection4 ? 'Update' : 'Create'}
         </button>
-      </form>
+      </div>
     </div>
   );
 };

@@ -96,7 +96,7 @@ const ImageUploader = ({ referenceType, referenceId: propReferenceId, width, hei
     }
   };
 
-  const handleEdit = (img) => {
+  const handleImageEdit = (img) => {
     setEditImageId(img.id);
     setAltText(img.altText);
     setImage(null); 
@@ -174,7 +174,7 @@ const ImageUploader = ({ referenceType, referenceId: propReferenceId, width, hei
                     Delete
                   </button>
                   <button
-                    onClick={() => handleEdit(img)}
+                    onClick={() => handleImageEdit(img)}
                     className="absolute -top-8 left-2 text-admin_image text-white bg-blue-500 p-1 rounded-md hover:bg-blue-600"
                   >
                     Edit
