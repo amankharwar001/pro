@@ -4,7 +4,7 @@ import sequelize from '../../db/dbConnect.js';  // Import the sequelize i nstanc
 
 const BodyScript = sequelize.define('BodyScript', {
     script: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false, // Ensuring the content field is required
     },
 }, {

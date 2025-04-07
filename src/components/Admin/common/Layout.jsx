@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import { FaBars } from "react-icons/fa"; // React Icon
 import AdminSidebar from "./AdminSidebar";
+import Head from "next/head";
 
 const Layout = ({ children }) => {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_PATH;
@@ -15,7 +16,35 @@ const Layout = ({ children }) => {
   const sidebarRef = useRef();
   const [adminData, setAdminData] = useState(null); // Default state set to null
   const [avatarImages, setAvatarImages] = useState(null); // Default state set to null
-  console.log("admin data show is here", adminData)
+  const [feviconIcon, setFaviconIcon] = useState();
+  console.log("admin favicon data show is here", feviconIcon)
+
+  useEffect(() => {
+      const fetchAdminSetting = async () => {
+        try {
+          const response = await fetch('/api/public/logo', {
+            method: 'GET',
+            headers: {
+              'x-system-key':  process.env.NEXT_PUBLIC_SYSTEM_KEY,
+            },
+          });
+          if (response.ok) {
+            const data = await response.json();
+            // setLogo(data.logo || {}); // Set admin settings or empty object
+            setFaviconIcon(data.fevicon || []); // Set avatar images or empty array
+          } else {
+           
+            setFaviconIcon([]);
+          }
+        } catch (err) {
+          console.error('Error fetching admin settings:', err);
+         
+          setFaviconIcon([]);
+        }
+      };
+  
+      fetchAdminSetting();
+    }, []);
 
   // Fetch admin settings data safely
   useEffect(() => {
@@ -86,6 +115,9 @@ const Layout = ({ children }) => {
 
   return (
     <div className="h-screen w-full flex overflow-hidden transition-all duration-300 ease-in-out">
+      <Head>
+            <link rel="icon" href={`${baseUrl}${feviconIcon?.filePath}`} />
+          </Head>
       <div
         ref={sidebarRef}
         className={`bg-black fixed z-[9999] top-0 left-0 h-full overflow-y-auto transform transition-transform duration-300 ease-in-out  ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} ${isMediumDevice ? "md:w-[210px]" : "w-[50vw]"}`}

@@ -18,6 +18,8 @@ export default function App({ Component, pageProps, data }) {
   const isAdminPage = pathname.startsWith("/admin");
   const isAdminAccountPage = pathname.startsWith("/admin/account");
   const [showScroll, setShowScroll] = useState(false);
+  const [feviconIcon, setFaviconIcon] = useState();
+  
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 200) {
@@ -77,7 +79,7 @@ export default function App({ Component, pageProps, data }) {
   return (
     <>
       <Head>
-        <link rel="icon" href={`${process.env.NEXT_PUBLIC_BASE_PATH}${data?.filePath}`} />
+        <link rel="icon" href={`${process.env.NEXT_PUBLIC_BASE_PATH}${data?.fevicon?.filePath}`} />
          <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />

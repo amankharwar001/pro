@@ -14,6 +14,7 @@ import About from '../components/ClientSide/homePage/About';
 import HeadTagSEO from '@/components/HeadTag';
 
 const Index = ({ data, error }) => {
+  
   if (error) {
     return (
       <div className="text-center mt-20 py-">

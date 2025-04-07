@@ -216,8 +216,8 @@ export default function FooterSection() {
               <h5 className="text-h5 font-semibold">{footerData?.heading}</h5>
               <ul className="text-muted-foreground flex flex-col gap-5 mt-5">
                 <li className='text-p'><Link href="/privacy-policy">Privacy Policy</Link></li>
-                <li className='text-p'><Link href="/term-and-condition">Term and Condition</Link></li>
-                <li className='text-p'><Link href="/refund-policy">Refund Policy</Link></li>
+                <li className='text-p'><Link href="/term-and-condition">Terms & Conditions</Link></li>
+                <li className='text-p'><Link href="/refund-policy">Refund & Cancellation Policy</Link></li>
                 {/* <li className='text-p'><Link href="/sitemap">Sitemap</Link></li> */}
                 {footerData?.buttons?.map((item, index) => (
                   <li key={index}>

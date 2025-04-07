@@ -3,6 +3,7 @@ import FooterSection from '../components/ClientSide/commonComponent/FooterSectio
 import React from 'react'
 import HeadTagSEO from '@/components/HeadTag'
 const PrivacyPolicy = ({ data, error, baseUrl }) => {
+  console.log("data show is here privaxcy poilic",data)
 
   return (
     <div>
@@ -10,7 +11,7 @@ const PrivacyPolicy = ({ data, error, baseUrl }) => {
       <HeroSections heroSection={data?.heroSection} image={data?.heroSection?.images[0]?.filePath} alttext={data?.heroSection?.images[0]?.filePath} baseUrl={baseUrl} />
       <div
         className="mt-8 blog-content-editor prose container "
-        dangerouslySetInnerHTML={{ __html: data?.content?.content || "no content available" }}
+        dangerouslySetInnerHTML={{ __html: data?.content || "no content available" }}
       />
       {/* <ContactInfo /> */}
       <div className='mt-40'></div>

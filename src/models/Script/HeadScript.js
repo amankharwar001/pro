@@ -4,7 +4,7 @@ import sequelize from '../../db/dbConnect.js';  // Import the sequelize i nstanc
 
 const HeadScript = sequelize.define('HeadScript', {
     script: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false, // Ensuring the heading field is required
     },
 }, {
