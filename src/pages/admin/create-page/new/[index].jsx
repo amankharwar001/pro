@@ -63,12 +63,12 @@ const Index = () => {
     <div>
       <div className='flex items-center gap-10 justify-end py-5 px-2'>
         <PageStatusSelector blogId={index} />
-        <span
+        {/* <span
           onClick={handleClick}
           className="px-6 py-2 cursor-pointer bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
           Save
-        </span>
+        </span> */}
       </div>
 
       <div className="bg-white shadow-lg rounded-lg p-4">

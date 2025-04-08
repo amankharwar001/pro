@@ -226,6 +226,7 @@ const CustomQuillEditor = forwardRef(({ referenceType, sectionsStatusHandle, set
 
       if (response.ok) {
         if (method === 'POST') setContentId(result.section.id);
+        alert("Saved successfully")
         setActiveBox(3);
         setApiStatus(true);
       } else {
@@ -362,6 +363,9 @@ const CustomQuillEditor = forwardRef(({ referenceType, sectionsStatusHandle, set
           <div ref={editorRef} style={{ height: '400px' }} className="bg-white" />
         </div>
       )}
+      <button onClick={handleSubmit} className="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-gray-800 transition duration-300 mt-2">
+             {contentId ? "Update Content" : "Create Content"}
+           </button>
     </div>
   );
 });

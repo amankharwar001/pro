@@ -612,3 +612,13 @@ header.text-black ul.absolute .font-medium {
 
 
 
+
+table.ql-table-better tr, table.ql-table-better td {
+  border: 1px solid #00000069;
+  padding: 10px;
+  
+}
+
+table.ql-table-better p {
+  margin: 0;
+}
