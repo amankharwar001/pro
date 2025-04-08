@@ -100,13 +100,13 @@ const CreatePageSeo = ({ blogpageId }) => {
         const { title, description, keyword } = isSEOField;
     
         // Validate required fields
-        const errors = {};
-        if (!title.trim()) errors.title = 'Title is required';
-        if (!description.trim()) errors.description = 'Description is required';
-        if (!keyword || keyword.length === 0) errors.keyword = 'Keyword is required';
-        setValidationErrors(errors);
+        // const errors = {};
+        // if (!title.trim()) errors.title = 'Title is required';
+        // if (!description.trim()) errors.description = 'Description is required';
+        // if (!keyword || keyword.length === 0) errors.keyword = 'Keyword is required';
+        // setValidationErrors(errors);
     
-        if (Object.keys(errors).length > 0) return;
+        // if (Object.keys(errors).length > 0) return;
     
         // Ensure `keyword` is a string
         const keywordString = String(keyword || '').trim();
