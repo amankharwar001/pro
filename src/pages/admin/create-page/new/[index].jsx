@@ -5,6 +5,7 @@ import CreatePageHeroSectionForm from '@/components/Admin/create-page/herosectio
 import CreatePageSeo from '@/components/Admin/create-page/SEO';
 import PageStatusSelector from '@/components/Admin/create-page/StatusSelector';
 import ClientSidePageEditor from '@/components/Admin/create-page/PageEditor';
+import CustomQuillEditor2 from '@/components/Admin/create-page/PageEditor2';
 
 const Index = () => {
   const [sectionsStatus, setSectionsStatus] = useState(Array(3).fill(false));
@@ -80,6 +81,13 @@ const Index = () => {
         <div className='mb-10'></div>
 
         <ClientSidePageEditor
+          ref={pageEditorRef} 
+          sectionsStatus={sectionsStatus}
+          referenceType={index}
+          sectionsStatusHandle={(status) => sectionsStatusHandle(1, status)}
+        />
+        <div className='mb-10'></div>
+        <CustomQuillEditor2
           ref={pageEditorRef} 
           sectionsStatus={sectionsStatus}
           referenceType={index}

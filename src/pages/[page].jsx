@@ -58,6 +58,7 @@ import HeadTagSEO from '@/components/HeadTag';
 import { useRouter } from 'next/router';
 
 const PrivacyPolicy = ({ data, error, baseUrl }) => {
+  console.log("data show is here",data)
   const router = useRouter();
 
   // If there's an error, redirect to 404
@@ -76,7 +77,11 @@ const PrivacyPolicy = ({ data, error, baseUrl }) => {
       />
       <div 
         className="mt-8 blog-content-editor prose container"
-        dangerouslySetInnerHTML={{ __html: data?.content || "No content available" }}
+        dangerouslySetInnerHTML={{ __html: data?.content }}
+      />
+      <div 
+        className=" mt-2 blog-content-editor prose container"
+        dangerouslySetInnerHTML={{ __html: data?.content2  }}
       />
     <div className='mt-40'></div>
     </div>

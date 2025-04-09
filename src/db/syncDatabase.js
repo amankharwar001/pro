@@ -86,6 +86,8 @@ import CreatePageId from '../models/create-page/createid.js';
 import CreatePageContent from '../models/create-page/contentpage.js';
 import CreatePageSEO from '../models/create-page/SEO.js';
 import CreatePageStatus from '../models/create-page/PageStatus.js';
+import CommonTermConditionPage2 from '../models/commontermpolicypage/index2.js';
+
 
 // document_transaction page
 import HeroSectionDocumentTransaction from '../models/document-transaction/HeroSectionDocumentTransaction.js';

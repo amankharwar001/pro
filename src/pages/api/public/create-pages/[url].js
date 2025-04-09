@@ -1,11 +1,9 @@
 import ImagesData from "@/models/homePage/ImagesData";
-// import CommonSEO from "@/models/commonseo/SEO";
-// import heroSectionTermConditionPage from '@/models/termConditionPage/HeroSection';
 import CommonTermConditionPage from "@/models/commontermpolicypage";
 import heroSectionCreatePage from "@/models/create-page/herosection";
 import CreatePageSEO from "@/models/create-page/SEO";
 import CreatePageStatus from "@/models/create-page/PageStatus";
-
+import CommonTermConditionPage2 from '@/models/commontermpolicypage/index2';
 
 export default async function handler(req, res) {
   if (req.headers['x-system-key'] !== process.env.NEXT_PUBLIC_SYSTEM_KEY) {
@@ -32,11 +30,13 @@ export default async function handler(req, res) {
       const heroSectionImage = await ImagesData.findOne({where: { referenceType: id, referenceId:1 }});
       const status = await CreatePageStatus.findOne({ where: { id: id } });
       const Content = await CommonTermConditionPage.findOne({ where: { referenceType: id } });
+      const Content2 = await CommonTermConditionPage2.findOne({ where: { referenceType: id } });
 
       // Combine all data into a single response object
       const responseData = {
         heroSection: { ...heroSection.toJSON(), images: heroSectionImage },
         content: Content.content,
+        content2: Content2.content,
         seoData,
         status
       };

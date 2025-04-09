@@ -1,4 +1,5 @@
-import CommonTermConditionPage from '@/models/commontermpolicypage';
+
+import CommonTermConditionPage2 from '@/models/commontermpolicypage/index2';
 
 export default async function handler(req, res) {
     if (req.headers['x-system-key'] !== process.env.NEXT_PUBLIC_SYSTEM_KEY) {
@@ -14,7 +15,7 @@ export default async function handler(req, res) {
             try {
                 if (id) {
                     // Fetch a single record by ID
-                    const record = await CommonTermConditionPage.findOne({where:{referenceType:id}});
+                    const record = await CommonTermConditionPage2.findOne({where:{referenceType:id}});
                     if (!record) {
                         return res.status(404).json({ success: false, message: 'Record not found' });
                     }
@@ -34,7 +35,7 @@ export default async function handler(req, res) {
         //             return res.status(400).json({ success: false, message: 'Content and referenceType are required' });
         //         }
 
-        //         const newRecord = await CommonTermConditionPage.create({ content, referenceType });
+        //         const newRecord = await CommonTermConditionPage2.create({ content, referenceType });
         //         res.status(201).json({ success: true, data: newRecord });
         //     } catch (error) {
         //         res.status(500).json({ success: false, message: 'Server error', error: error.message });
@@ -51,7 +52,7 @@ export default async function handler(req, res) {
                 }
         
                 // Check if record already exists
-                let existingRecord = await CommonTermConditionPage.findOne({ where: { referenceType } });
+                let existingRecord = await CommonTermConditionPage2.findOne({ where: { referenceType } });
         
                 if (existingRecord) {
                     // If exists, update it
@@ -60,7 +61,7 @@ export default async function handler(req, res) {
                     return res.status(200).json({ success: true, data: existingRecord, message: 'Record updated' });
                 } else {
                     // If not, create new
-                    const newRecord = await CommonTermConditionPage.create({ content, referenceType });
+                    const newRecord = await CommonTermConditionPage2.create({ content, referenceType });
                     return res.status(201).json({ success: true, data: newRecord, message: 'Record created' });
                 }
             } catch (error) {
@@ -77,7 +78,7 @@ export default async function handler(req, res) {
                 const { content, referenceType } = req.body;
                 console.log('Content length:', req.body.content.length);
 
-                const record = await CommonTermConditionPage.findByPk(id);
+                const record = await CommonTermConditionPage2.findByPk(id);
                 if (!record) {
                     return res.status(404).json({ success: false, message: 'Record not found' });
                 }
@@ -98,7 +99,7 @@ export default async function handler(req, res) {
                     return res.status(400).json({ success: false, message: 'ID is required for deleting a record' });
                 }
 
-                const record = await CommonTermConditionPage.findByPk(id);
+                const record = await CommonTermConditionPage2.findByPk(id);
                 if (!record) {
                     return res.status(404).json({ success: false, message: 'Record not found' });
                 }
