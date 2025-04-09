@@ -2,6 +2,7 @@ import Head from 'next/head';
 import React from 'react'
 
 const HeadTagSEO = ({data}) => {
+    console.log("transaction document",data)
     
     return (
         <Head>

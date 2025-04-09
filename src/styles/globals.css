@@ -622,3 +622,11 @@ table.ql-table-better tr, table.ql-table-better td {
 table.ql-table-better p {
   margin: 0;
 }
+
+
+.ql-editor li[data-list="bullet"]::before {
+  content: "• ";
+}
+/* .ql-editor ol li[data-list="bullet"] {
+  list-style-type: disc;
+} */

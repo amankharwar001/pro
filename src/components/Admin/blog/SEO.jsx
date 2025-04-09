@@ -24,7 +24,7 @@ const SeoPage = ({ blogpageId }) => {
                 slug: prevFields.title.replace(/\s+/g, '-').toLowerCase(), // Replace spaces with hyphens
             }));
         }
-    }, [isSEOField.title, isSEOField.slug]);
+    }, [isSEOField.title]);
 
     // Fetch existing SEO data on component mount using blogpageId
     useEffect(() => {
@@ -97,16 +97,30 @@ const SeoPage = ({ blogpageId }) => {
 
     const handleSubmitSeoField = async (e) => {
         e.preventDefault();
-        const { title, description, keyword } = isSEOField;
+        const { title, description, keyword,slug } = isSEOField;
+        
+        if (!title?.trim()) {
+            alert('Title is required');
+            return;
+        }
+        if (!description?.trim()) {
+            alert('description is required');
+            return;
+        }
+    
+        if (!slug?.trim()) {
+            alert('Slug is required');
+            return;
+        }
     
         // Validate required fields
-        const errors = {};
-        if (!title.trim()) errors.title = 'Title is required';
-        if (!description.trim()) errors.description = 'Description is required';
-        if (!keyword || keyword.length === 0) errors.keyword = 'Keyword is required';
-        setValidationErrors(errors);
+        // const errors = {};
+        // if (!title.trim()) errors.title = 'Title is required';
+        // if (!description.trim()) errors.description = 'Description is required';
+        // if (!keyword || keyword.length === 0) errors.keyword = 'Keyword is required';
+        // setValidationErrors(errors);
     
-        if (Object.keys(errors).length > 0) return;
+        // if (Object.keys(errors).length > 0) return;
     
         // Ensure `keyword` is a string
         const keywordString = String(keyword || '').trim();

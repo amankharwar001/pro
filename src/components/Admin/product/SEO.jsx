@@ -15,7 +15,7 @@ const SeoPage = ({ productpage,sectionsStatusHandle }) => {
 
     const [dataFetched, setDataFetched] = useState(false); // Track if data exists in the database
 
-    // Auto-generate slug based on title
+    
     useEffect(() => {
         if (isSEOField.title && !isSEOField.slug) {
             setIsSEOField((prevFields) => ({
@@ -23,7 +23,7 @@ const SeoPage = ({ productpage,sectionsStatusHandle }) => {
                 slug: prevFields.title.replace(/\s+/g, "-").toLowerCase(),
             }));
         }
-    }, [isSEOField]);
+    }, [isSEOField.title]);
 
     // Fetch existing SEO data
     useEffect(() => {
@@ -95,15 +95,29 @@ const SeoPage = ({ productpage,sectionsStatusHandle }) => {
 
     const handleSubmitSeoField = async (e) => {
         e.preventDefault();
-        const { title, description, keyword } = isSEOField;
+        const { title, description, keyword,slug } = isSEOField;
+        
+        if (!title?.trim()) {
+            alert('Title is required');
+            return;
+        }
+        if (!description?.trim()) {
+            alert('description is required');
+            return;
+        }
+    
+        if (!slug?.trim()) {
+            alert('Slug is required');
+            return;
+        }
 
         // Validate fields
-        const errors = {};
-        if (!title.trim()) errors.title = "Title is required";
-        if (!description.trim()) errors.description = "Description is required";
-        setValidationErrors(errors);
+        // const errors = {};
+        // if (!title.trim()) errors.title = "Title is required";
+        // if (!description.trim()) errors.description = "Description is required";
+        // setValidationErrors(errors);
 
-        if (Object.keys(errors).length > 0) return;
+        // if (Object.keys(errors).length > 0) return;
 
         // const seoData = {
         //     ...isSEOField,

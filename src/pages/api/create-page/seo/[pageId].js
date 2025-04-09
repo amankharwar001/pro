@@ -13,7 +13,7 @@ export default async function handler(req, res) {
       const { title, description, slug, keyword } = req.body;
 
       // Validate input fields
-      if (!title || !description || !slug || !keyword) {
+      if (!title || !slug ) {
         return res.status(400).json({ error: 'Title, description, slug, and keyword are required' });
       }
 

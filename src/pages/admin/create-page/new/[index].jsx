@@ -13,6 +13,7 @@ const Index = () => {
   const [data, setData] = useState(null);
   const { index } = router.query;
   const [pageStatusSection,setPageStatusSection] = useState()
+  const [showSeo, setShowSeo] = useState(false);
 
 
   const heroSectionRef = useRef();
@@ -76,7 +77,7 @@ const Index = () => {
         <CreatePageHeroSectionForm
           page={index}
           ref={heroSectionRef} 
-          sectionsStatusHandle={(status) => sectionsStatusHandle(0, status)}
+         sectionsStatusHandle={setShowSeo}
         />
         <div className='mb-10'></div>
 
@@ -94,7 +95,8 @@ const Index = () => {
           sectionsStatusHandle={(status) => sectionsStatusHandle(1, status)}
         />
         <div className='mb-10'></div>
-        <CreatePageSeo blogpageId={index} />
+        {/* <CreatePageSeo blogpageId={index} /> */}
+        {showSeo && <CreatePageSeo blogpageId={index} />}
       </div>
     </div>
   );

@@ -20,8 +20,8 @@ export default async function handler(req, res) {
 
       // Combine all data into a single response object
       const responseData = {
-        heroSection: { ...heroSection.toJSON(), images: heroSectionImage },
-        content:Content.content,
+        heroSection: { ...heroSection.toJSON(), images: heroSectionImage?heroSectionImage:null },
+        content: Content ? Content.content:null,
         seoData,
       };
 

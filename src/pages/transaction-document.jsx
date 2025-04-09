@@ -31,10 +31,21 @@ const PrivacyPolicy = ({ data, pageData, error, baseUrl }) => {
           ))}
 
       </div>
-      <div
+      {/* <div
         className="mt-8 blog-content-editor prose container "
         dangerouslySetInnerHTML={{ __html: data?.content || "no content available" }}
-      />
+      /> */}
+
+
+      {data?.content && (
+        <div
+          className="mt-8 blog-content-editor prose container"
+          dangerouslySetInnerHTML={{ __html: data.content }}
+        />
+      )}
+
+
+
       {/* <ContactInfo /> */}
       <div className='mt-40'></div>
 

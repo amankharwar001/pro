@@ -12,8 +12,8 @@ export default async function handler(req, res) {
       const { title, description, slug, keyword } = req.body;
 
       // Validate input fields
-      if (!title || !description || !slug || !keyword) {
-        return res.status(400).json({ error: 'Title, description, slug, and keyword are required' });
+      if (!title  || !slug ) {
+        return res.status(400).json({ error: 'Title, slug are required' });
       }
 
       // Find the entry based on the blogId
@@ -46,7 +46,7 @@ export default async function handler(req, res) {
       const { title, description, slug, keyword } = req.body;
 
       // Validate input fields
-      if (!title || !description || !slug || !keyword ) {
+      if (!title || !slug  ) {
         return res.status(400).json({ error: 'Title, description, slug, keyword, and blogId are required' });
       }
 

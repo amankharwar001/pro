@@ -98,8 +98,8 @@ const SeoPage = ({ page,sectionsStatusHandle }) => {
         const errorData = await response.json();
         throw new Error(errorData.error || "Failed to save data.");
       }
-      setApiStatus(true)
       alert("SEO Data Submitted Successfully");
+      setApiStatus(true)
     } catch (error) {
       console.error(error);
       // alert(error.message);
