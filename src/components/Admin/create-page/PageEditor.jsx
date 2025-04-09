@@ -1033,7 +1033,7 @@ const CustomQuillEditor = ({ referenceType, sectionsStatusHandle, setActiveBox }
     const plainText = quillRef.current.getText() || '';
     const totalLength = plainText.trim().length;
 
-    if (totalLength > 66000) {
+    if (totalLength > 46000) {
       alert('Text exceeds 66,000 character limit. Please shorten your content.');
       return;
     }
@@ -1138,8 +1138,8 @@ const CustomQuillEditor = ({ referenceType, sectionsStatusHandle, setActiveBox }
   return (
     <div className="mx-auto rounded-lg">
       <div className="flex justify-between items-center mb-2">
-        <p className={`text-sm ${charCount > 66000 ? 'text-red-600' : 'text-gray-600'}`}>
-          Characters: {charCount}/66000
+        <p className={`text-sm ${charCount > 46000 ? 'text-red-600' : 'text-gray-600'}`}>
+          Characters: {charCount}/46000
         </p>
       </div>
 
