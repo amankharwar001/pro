@@ -1034,7 +1034,7 @@ const CustomQuillEditor = ({ referenceType, sectionsStatusHandle, setActiveBox }
     const totalLength = plainText.trim().length;
 
     if (totalLength > 46000) {
-      alert('Text exceeds 66,000 character limit. Please shorten your content.');
+      alert('Text exceeds 46,000 character limit. Please shorten your content.');
       return;
     }
 
@@ -1059,8 +1059,8 @@ const CustomQuillEditor = ({ referenceType, sectionsStatusHandle, setActiveBox }
       const result = await response.json();
 
       if (response.ok) {
-        if (method === 'POST') setContentId(result.section.id);
         alert("Saved successfully");
+        if (method === 'POST') setContentId(result.section.id);
         setActiveBox(3);
         setApiStatus(true);
       } else {
