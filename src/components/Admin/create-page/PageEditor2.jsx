@@ -121,7 +121,7 @@ const CustomQuillEditor2 = ({ referenceType, sectionsStatusHandle, setActiveBox 
       const content = quillRef.current.root.innerHTML;
       const endpoint = contentId
         ? `/api/common-term-policy-page2/${contentId}`
-        : `/api/common-term-policy-page2/post`;
+        : `/api/common-term-policy-page2/${contentId}`;
       const method = contentId ? 'PUT' : 'POST';
 
       const response = await fetch(endpoint, {
