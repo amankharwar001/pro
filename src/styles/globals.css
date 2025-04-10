@@ -630,3 +630,7 @@ table.ql-table-better p {
 /* .ql-editor ol li[data-list="bullet"] {
   list-style-type: disc;
 } */
+
+.ql-table-better{
+  max-width: 100% !important;
+}
