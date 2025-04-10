@@ -18,6 +18,7 @@ const Index = () => {
   const [loading, setLoading] = useState(true); // Loading state for fetching data
   const [error, setError] = useState(null); // Error state
   const [visible, setVisible] = useState(false)
+  const [showSeo, setShowSeo] = useState(false);
 
   const childRef = useRef();
 
@@ -54,6 +55,7 @@ const Index = () => {
         if (!response.ok) throw new Error("Failed to fetch blog content");
         const data = await response.json();
         setHeading(data.heading);
+        setShowSeo(true)
         setSelectedCategories(data.selectedCategories);
         setBlogExist(data); // Set blog content if it exists
       } catch (error) {
@@ -76,7 +78,7 @@ const Index = () => {
     );
   };
 
-  // Handle form submission (for updating the content)
+  // Handle form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -113,6 +115,8 @@ const Index = () => {
         // If a new blog was created, navigate to its edit page
         router.push(`/admin/blog/edit/${result.id}`);
       }
+      setShowSeo(true)
+      router.reload();
     } catch (error) {
       console.error("Error saving blog content:", error);
       alert("Failed to save blog content.");
@@ -207,7 +211,8 @@ const Index = () => {
 
         <div className="mt-5">
           <h2 className="text-2xl px-3 font-semibold text-gray-700 mb-6">SEO Management</h2>
-          <SeoPage blogpageId={index} />
+          {showSeo && <SeoPage blogpageId={index} /> }
+          
         </div>
       </div>
     </>

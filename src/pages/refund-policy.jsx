@@ -1,18 +1,39 @@
 import HeroSections from '../components/ClientSide/contactPage/HeroSections'
 import FooterSection from '../components/ClientSide/commonComponent/FooterSection'
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import HeadTagSEO from '@/components/HeadTag'
 
 const RefundPolicy = ({ data, error, baseUrl }) => {
-
+  const [safeContent, setSafeContent] = useState("");
+  
+    useEffect(() => {
+      if (data?.content) {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(data.content, "text/html");
+  
+        const tables = doc.querySelectorAll("table");
+        tables.forEach((table) => {
+          const wrapper = doc.createElement("div");
+          wrapper.setAttribute("class", "overflow-x-auto my-4");
+          table.parentNode?.insertBefore(wrapper, table);
+          wrapper.appendChild(table);
+        });
+  
+        setSafeContent(doc.body.innerHTML);
+      }
+    }, [data]);
   return (
     <div>
       <HeadTagSEO data={data} />
         <HeroSections heroSection={data?.heroSection} image={data?.heroSection?.images[0]?.filePath} alttext={data?.heroSection?.images[0]?.filePath} baseUrl={baseUrl} />
 
-        <div
+        {/* <div
         className="mt-8 blog-content-editor prose container"
         dangerouslySetInnerHTML={{ __html: data?.content || "no content available" }}
+      /> */}
+      <div
+        className="mt-8 blog-content-editor prose container"
+        dangerouslySetInnerHTML={{ __html: safeContent || "no content available" }}
       />
 
         {/* <ContactInfo /> */}

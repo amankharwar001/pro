@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../../components/ClientSide/commonComponent/Header';
 import FooterSection from '../../components/ClientSide/commonComponent/FooterSection';
 import Image from 'next/image';
@@ -11,6 +11,24 @@ import Found4O4 from '@/components/NotFound/4O4'; // Your custom 404 component
 const Slug = ({ data, error, baseUrl }) => {
     const blogUrl = `${baseUrl}blog/${data?.seo?.slug}`;
     const featureImageUrl = data?.featureImage ? `${baseUrl}${data?.featureImage?.filePath}` : null;
+    const [safeContent, setSafeContent] = useState("");
+        
+          useEffect(() => {
+            if (data?.content.content) {
+              const parser = new DOMParser();
+              const doc = parser.parseFromString(data.content.content, "text/html");
+        
+              const tables = doc.querySelectorAll("table");
+              tables.forEach((table) => {
+                const wrapper = doc.createElement("div");
+                wrapper.setAttribute("class", "overflow-x-auto my-4");
+                table.parentNode?.insertBefore(wrapper, table);
+                wrapper.appendChild(table);
+              });
+        
+              setSafeContent(doc.body.innerHTML);
+            }
+          }, [data]);
 
     // Check if the status is not 'active' or if data is missing
     if (error || !data || data.status !== 'active') {
@@ -67,7 +85,7 @@ const Slug = ({ data, error, baseUrl }) => {
                     </div>
                     <div
                         className="mt-8 blog-content-editor prose max-w-7xl m-auto"
-                        dangerouslySetInnerHTML={{ __html: data?.content?.content || "no content available" }}
+                        dangerouslySetInnerHTML={{ __html: safeContent || "no content available" }}
                     />
                 </div>
             </div>
