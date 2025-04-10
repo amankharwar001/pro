@@ -1263,21 +1263,23 @@ const CustomQuillEditor = ({ referenceType, sectionsStatusHandle, setActiveBox }
     };
   };
 
-  const handleSubmit = async () => {
-    const quill = quillRef.current;
-    const plainText = quill.getText().trim();
+ 
 
-    if (plainText.length > 46000) {
+  const handleSubmit = async () => {
+    const plainText = quillRef.current.getText() || '';
+    const totalLength = plainText.trim().length;
+
+    if (totalLength > 46000) {
       alert('Text exceeds 46,000 character limit. Please shorten your content.');
       return;
     }
 
     try {
-      const content = quill.root.innerHTML;
-      const method = contentId ? 'PUT' : 'POST';
+      const content = quillRef.current.root.innerHTML;
       const endpoint = contentId
         ? `/api/common-term-policy-page/${contentId}`
-        : `/api/common-term-policy-page`;
+        : `/api/common-term-policy-page/${contentId}`;
+      const method = contentId ? 'PUT' : 'POST';
 
       const response = await fetch(endpoint, {
         method,
@@ -1291,11 +1293,12 @@ const CustomQuillEditor = ({ referenceType, sectionsStatusHandle, setActiveBox }
       });
 
       const result = await response.json();
+
       if (response.ok) {
-        alert('Saved successfully');
-        if (!contentId && result?.section?.id) setContentId(result.section.id);
+        alert("Saved successfully");
+        if (method === 'POST') setContentId(result.section.id);
+        setActiveBox(3);
         setApiStatus(true);
-        setActiveBox?.(3);
       } else {
         alert(result.error || 'Failed to save content.');
       }
@@ -1303,8 +1306,9 @@ const CustomQuillEditor = ({ referenceType, sectionsStatusHandle, setActiveBox }
       console.error('Error saving content:', error);
     }
   };
-  // ✨ This ensures quill editor content is updated when editorContent changes
-useEffect(() => {
+
+
+  useEffect(() => {
   if (quillRef.current && editorContent !== null) {
     quillRef.current.root.innerHTML = editorContent;
   }
@@ -1314,7 +1318,7 @@ useEffect(() => {
 
    useEffect(() => {
       const initEditor = async () => {
-        // if (!editorRef.current || quillRef.current || loading) return;
+        if (!editorRef.current) return;
   
         const Quill = (await import('quill')).default;
         const QuillTableBetter = (await import('quill-table-better')).default;
@@ -1365,8 +1369,10 @@ useEffect(() => {
        
         quillRef.current.root.innerHTML = editorContent || '';
       };
-  
-      initEditor();
+      if (!loading && editorRef.current) {
+        initEditor();
+      }
+      // initEditor();
     }, [loading,editorContent,referenceType]);
   return (
     <div className="mx-auto rounded-lg">

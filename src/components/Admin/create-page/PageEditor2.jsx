@@ -159,7 +159,7 @@ const CustomQuillEditor2 = ({ referenceType, sectionsStatusHandle, setActiveBox 
   
   useEffect(() => {
     const initEditor = async () => {
-      // if (!editorRef.current || quillRef.current || loading) return;
+      if (!editorRef.current) return;
 
       const Quill = (await import('quill')).default;
       const QuillTableBetter = (await import('quill-table-better')).default;
@@ -211,7 +211,10 @@ const CustomQuillEditor2 = ({ referenceType, sectionsStatusHandle, setActiveBox 
       quillRef.current.root.innerHTML = editorContent || '';
     };
 
-    initEditor();
+    if (!loading && editorRef.current) {
+      initEditor();
+    }
+    // initEditor();
   }, [loading,editorContent]);
   return (
     <div className="mx-auto rounded-lg">
