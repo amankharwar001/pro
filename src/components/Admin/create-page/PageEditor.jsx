@@ -1303,12 +1303,18 @@ const CustomQuillEditor = ({ referenceType, sectionsStatusHandle, setActiveBox }
       console.error('Error saving content:', error);
     }
   };
+  // ✨ This ensures quill editor content is updated when editorContent changes
+useEffect(() => {
+  if (quillRef.current && editorContent !== null) {
+    quillRef.current.root.innerHTML = editorContent;
+  }
+}, [editorContent]);
 
   
 
    useEffect(() => {
       const initEditor = async () => {
-        if (!editorRef.current || quillRef.current || loading) return;
+        // if (!editorRef.current || quillRef.current || loading) return;
   
         const Quill = (await import('quill')).default;
         const QuillTableBetter = (await import('quill-table-better')).default;
@@ -1361,7 +1367,7 @@ const CustomQuillEditor = ({ referenceType, sectionsStatusHandle, setActiveBox }
       };
   
       initEditor();
-    }, [loading,editorContent]);
+    }, [loading,editorContent,referenceType]);
   return (
     <div className="mx-auto rounded-lg">
       <div className="flex justify-between items-center mb-2">

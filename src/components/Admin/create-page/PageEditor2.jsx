@@ -150,10 +150,16 @@ const CustomQuillEditor2 = ({ referenceType, sectionsStatusHandle, setActiveBox 
     }
   };
 
+  useEffect(() => {
+    if (quillRef.current && editorContent !== null) {
+      quillRef.current.root.innerHTML = editorContent;
+    }
+  }, [editorContent]);
+  
   
   useEffect(() => {
     const initEditor = async () => {
-      if (!editorRef.current || quillRef.current || loading) return;
+      // if (!editorRef.current || quillRef.current || loading) return;
 
       const Quill = (await import('quill')).default;
       const QuillTableBetter = (await import('quill-table-better')).default;

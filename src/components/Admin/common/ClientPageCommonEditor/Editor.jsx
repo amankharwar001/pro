@@ -610,11 +610,12 @@ const ClientSideCommonEditor = ({ referenceType, sectionsStatusHandle, setActive
       const data = await res.json();
 
       if (res.ok) {
+        alert("Saved successfully")
         if (method === 'POST') setContentId(data.section.id);
         setActiveBox(3);
         if (/[a-zA-Z]/.test(plainText)) setApiStatus(true);
       } else {
-        alert(data.error || 'Failed to save content.');
+        console.warn(data.error || 'Failed to save content.');
       }
     } catch (err) {
       console.error('Save error:', err);
