@@ -56,6 +56,7 @@
 import HeroSections from '../components/ClientSide/contactPage/HeroSections';
 import HeadTagSEO from '@/components/HeadTag';
 import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 
 const PrivacyPolicy = ({ data, error, baseUrl }) => {
   console.log("data show is here",data)
@@ -65,6 +66,42 @@ const PrivacyPolicy = ({ data, error, baseUrl }) => {
   if (error) {
     return <div className="text-center text-red-500 mt-10">Page Not Found</div>;
   }
+  const [safeContent, setSafeContent] = useState("");
+  const [safeContent2, setSafeContent2] = useState("");
+
+  useEffect(() => {
+    if (data?.content) {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(data.content, "text/html");
+
+      const tables = doc.querySelectorAll("table");
+      tables.forEach((table) => {
+        const wrapper = doc.createElement("div");
+        wrapper.setAttribute("class", "overflow-x-auto my-4");
+        table.parentNode?.insertBefore(wrapper, table);
+        wrapper.appendChild(table);
+      });
+
+      setSafeContent(doc.body.innerHTML);
+    }
+  }, [data]);
+
+  useEffect(() => {
+    if (data?.content2) {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(data.content2, "text/html");
+
+      const tables = doc.querySelectorAll("table");
+      tables.forEach((table) => {
+        const wrapper = doc.createElement("div");
+        wrapper.setAttribute("class", "overflow-x-auto my-4");
+        table.parentNode?.insertBefore(wrapper, table);
+        wrapper.appendChild(table);
+      });
+
+      setSafeContent2(doc.body.innerHTML);
+    }
+  }, [data]);
 
   return (
     <div>
@@ -77,11 +114,11 @@ const PrivacyPolicy = ({ data, error, baseUrl }) => {
       />
       <div 
         className="mt-8 blog-content-editor prose container"
-        dangerouslySetInnerHTML={{ __html: data?.content }}
+        dangerouslySetInnerHTML={{ __html: safeContent }}
       />
       <div 
         className=" mt-2 blog-content-editor prose container"
-        dangerouslySetInnerHTML={{ __html: data?.content2  }}
+        dangerouslySetInnerHTML={{ __html: safeContent2  }}
       />
     <div className='mt-40'></div>
     </div>

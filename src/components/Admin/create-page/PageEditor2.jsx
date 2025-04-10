@@ -150,9 +150,10 @@ const CustomQuillEditor2 = ({ referenceType, sectionsStatusHandle, setActiveBox 
     }
   };
 
+  
   useEffect(() => {
     const initEditor = async () => {
-      if (!editorRef.current || quillRef.current) return;
+      if (!editorRef.current || quillRef.current || loading) return;
 
       const Quill = (await import('quill')).default;
       const QuillTableBetter = (await import('quill-table-better')).default;
@@ -163,7 +164,7 @@ const CustomQuillEditor2 = ({ referenceType, sectionsStatusHandle, setActiveBox 
 
       Quill.register('modules/table-better', QuillTableBetter);
 
-      const options = {
+      quillRef.current = new Quill(editorRef.current, {
         theme: 'snow',
         modules: {
           toolbar: {
@@ -192,28 +193,20 @@ const CustomQuillEditor2 = ({ referenceType, sectionsStatusHandle, setActiveBox 
             bindings: keyboardBindings,
           },
         },
-      };
+      });
 
-      const quill = new Quill(editorRef.current, options);
-      quillRef.current = quill;
-
-      if (editorContent) {
-        quill.clipboard.dangerouslyPasteHTML(editorContent);
-      }
-
-      // ✅ Add this to update char count live
-      quill.on('text-change', () => {
-        const plainText = quill.getText() || '';
+      // 🆕 Update character count on each text change
+      quillRef.current.on('text-change', () => {
+        const plainText = quillRef.current.getText() || '';
         setCharCount(plainText.trim().length);
       });
 
-      // initial count
-      setCharCount(quill.getText().trim().length);
+     
+      quillRef.current.root.innerHTML = editorContent || '';
     };
 
-    if (!loading) initEditor();
-  }, [loading, editorContent]);
-
+    initEditor();
+  }, [loading,editorContent]);
   return (
     <div className="mx-auto rounded-lg">
       <div className="flex justify-between items-center mb-2">
