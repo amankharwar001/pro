@@ -100,14 +100,20 @@ export default async function handler(req, res) {
       
 
 
+      res.status(201).json({ message: "Form submitted successfully",  data: newSubmission });
+
+      
+      transporter.sendMail(mailOptions).catch(err => {
+        console.error("Email sending failed:", err);
+      });
 
       // Send email
-      await transporter.sendMail(mailOptions);
+      // await transporter.sendMail(mailOptions);
 
-      return res.status(201).json({
-        message: 'Form submitted successfully and email sent.',
-        data: newSubmission,
-      });
+      // return res.status(201).json({
+      //   message: 'Form submitted successfully and email sent.',
+      //   data: newSubmission,
+      // });
     } catch (error) {
       console.error('Error saving data or sending email:', error);
       return res.status(500).json({ error: 'Internal server error' });

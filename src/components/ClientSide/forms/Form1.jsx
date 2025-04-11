@@ -75,7 +75,9 @@ const Form1 = () => {
 
   return (
     <div className=" container md:max-w-[80%] border my-20 mx-auto   bg-card rounded-lg shadow-md">
-      <Zoom triggerOnce delay={100} className="p-6">
+      {/* <Zoom triggerOnce delay={100} className="p-6"> */}
+      <div className="p-6">
+
         <div className="">
           <h2 className="font-semibold mb-4 text-h2_large">Contact Us</h2>
           <form onSubmit={handleSubmit}>
@@ -200,7 +202,8 @@ const Form1 = () => {
             <p className="mt-4 text-sm text-center text-green-600">{responseMessage}</p>
           )}
         </div>
-      </Zoom>
+      </div>
+      {/* </Zoom> */}
     </div>
   );
 };

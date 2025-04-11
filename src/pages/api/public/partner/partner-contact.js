@@ -86,14 +86,17 @@ export default async function handler(req, res) {
         Query: ${query}
         Authorization: ${authorization ? "Yes" : "No"}`,
       };
+      res.status(201).json({ message: "Form submitted successfully", contact });
 
       // Send email
-      await transporter.sendMail(mailOptions);
-
-      return res.status(201).json({
-        message: "Form submitted successfully. Notification email sent.",
-        contact,
+      // await transporter.sendMail(mailOptions);
+      transporter.sendMail(mailOptions).catch(err => {
+        console.error("Email sending failed:", err);
       });
+      // return res.status(201).json({
+      //   message: "Form submitted successfully. Notification email sent.",
+      //   contact,
+      // });
     } catch (error) {
       console.error(error);
       return res.status(500).json({ error: "Internal server error." });
