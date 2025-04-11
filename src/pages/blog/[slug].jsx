@@ -59,14 +59,20 @@ const Slug = ({ data, error, baseUrl }) => {
                 {featureImageUrl ? (
                     <Image
                         src={featureImageUrl}
-                        alt={data.featureImage?.altText || 'Blog image'}
+                        alt={data.featureImage?.altText }
                         className="w-full h-auto object-cover md:h-[420px]"
                         style={{ aspectRatio: '16/9' }}
                         width={800}
                         height={100}
                     />
                 ) : (
-                    <div className="text-center text-gray-500 mt-5">No image available</div>
+                    <Image
+                        src='/fallback/image.webp'
+                        className="w-full h-auto object-cover md:h-[420px]"
+                        style={{ aspectRatio: '16/9' }}
+                        width={800}
+                        height={100}
+                    />
                 )}
             </div>
             <div className='container'>

@@ -17,7 +17,6 @@ const Layout = ({ children }) => {
   const [adminData, setAdminData] = useState(null); // Default state set to null
   const [avatarImages, setAvatarImages] = useState(null); // Default state set to null
   const [feviconIcon, setFaviconIcon] = useState();
-  console.log("admin favicon data show is here", feviconIcon)
 
   useEffect(() => {
       const fetchAdminSetting = async () => {

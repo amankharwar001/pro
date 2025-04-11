@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 
 const HeroSection = () => {
     const [blogData, setBlogData] = useState(null); // State to store blog data
-    console.log("blog data show is here",blogData)
 
     // Fetch data when the component mounts
     useEffect(() => {

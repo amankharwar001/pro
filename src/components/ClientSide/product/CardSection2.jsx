@@ -4,7 +4,6 @@ import Image from "next/image";
 import { Fade, Zoom } from "react-awesome-reveal";
 
 const CardSection2 = ({ section4, baseUrl }) => {
-    console.log("section 4 data:", section4.section4Data.section4);
 
     return (
         <div className="relative bg-white py-20 lg:px-20  pb-10">

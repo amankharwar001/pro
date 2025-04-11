@@ -12,7 +12,6 @@ const UpdateEmailForm = () => {
   const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
 
 
-  console.log("admin email show is here",adminEmail)
 
 
   useEffect(() => {

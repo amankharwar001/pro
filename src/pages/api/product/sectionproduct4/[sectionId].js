@@ -28,7 +28,7 @@ export default async function handler(req, res) {
   else if (req.method === 'POST') {
     try {
       const { section4 } = req.body;
-      console.log("section 4 api is here",section4)
+      
       const existingEntry = await section4Product.findOne({ where: { heroSectionId: sectionId } });
 
       if (existingEntry) {

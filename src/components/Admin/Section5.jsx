@@ -13,17 +13,17 @@ const Section5Form = ({ setActiveBox, sectionsStatusHandle }) => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [apiStatus, setApiStatus] = useState(false)
     const [imageStatus, setImageStatus] = useState({});
-    console.log("Image Status: ", imageStatus);
+   
 
 
     useEffect(() => {
         const allImagesUploaded = imageStatus.homepage_section5_1=== true && imageStatus.homepage_section5_2=== true  && imageStatus.homepage_section5_3;
 
         if (apiStatus && allImagesUploaded ) {
-            console.log("All conditions met: API and images are complete.");
+           
             sectionsStatusHandle(true);
         } else {
-            console.log("Conditions not met: Updating sections status to false.");
+            
             sectionsStatusHandle(false);
         }
     }, [apiStatus, imageStatus]);

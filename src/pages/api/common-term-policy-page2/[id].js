@@ -26,26 +26,11 @@ export default async function handler(req, res) {
             }
             break;
 
-        // case 'POST':
-        //     try {
-        //         const { content, referenceType } = req.body;
-        //         console.log('Content length:', req.body.content.length);
-
-        //         if ( !referenceType) {
-        //             return res.status(400).json({ success: false, message: 'Content and referenceType are required' });
-        //         }
-
-        //         const newRecord = await CommonTermConditionPage2.create({ content, referenceType });
-        //         res.status(201).json({ success: true, data: newRecord });
-        //     } catch (error) {
-        //         res.status(500).json({ success: false, message: 'Server error', error: error.message });
-        //     }
-        //     break;
-
+        
         case 'POST':
             try {
                 const { content, referenceType } = req.body;
-                console.log('Content length:', req.body.content.length);
+               
         
                 if (!referenceType) {
                     return res.status(400).json({ success: false, message: 'referenceType is required' });
@@ -76,7 +61,7 @@ export default async function handler(req, res) {
                 }
 
                 const { content, referenceType } = req.body;
-                console.log('Content length:', req.body.content.length);
+                
 
                 const record = await CommonTermConditionPage2.findByPk(id);
                 if (!record) {

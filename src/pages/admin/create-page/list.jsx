@@ -12,7 +12,6 @@ const BlogList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const blogsPerPage = 5;
 
-  console.log("blog list show is here",blogList)
 
   
   const [sortBy, setSortBy] = useState(null); 

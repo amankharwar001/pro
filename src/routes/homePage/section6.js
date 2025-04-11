@@ -73,7 +73,7 @@ router.get('/api/admin/home/section6', async (req, res) => {
 
 router.post('/api/admin/home/section6',  upload.any(), async (req, res) => {
     try {
-        console.log('Received request:', req.body);
+      
 
         const { heading, content, bottomText, cards } = req.body;
         const parsedCards = typeof cards === 'string' ? JSON.parse(cards) : cards;

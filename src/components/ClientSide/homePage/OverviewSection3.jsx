@@ -57,7 +57,6 @@ const OverviewSection3 = ({ apidata1, apidata2 }) => {
     const png3 = apidata2?.images.find(
         (image) => image.referenceType === "homepage_section4_png3"
     );
-    console.log("section4 png show is here", apidata2)
 
 
 

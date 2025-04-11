@@ -56,7 +56,7 @@ const LatestBlog = ({ baseUrl }) => {
                   alt={post.featureImage?.altText || "Blog image"}
                 />
                 <div>
-                <h5 className="text-h5 text-md mt-0 font-medium text-primary line-clamp-2">{post.heading}</h5>
+                <h5 className="text-h5 blogsidebar_head text-md mt-0 font-medium text-primary line-clamp-2">{post.heading}</h5>
                   {/* <h3 className="text-md mt-0 font-medium text-primary line-clamp-2">
                     {post.heading}
                   </h3> */}

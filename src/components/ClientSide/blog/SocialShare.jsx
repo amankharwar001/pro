@@ -36,12 +36,12 @@ const SocialShare = ({ url, title }) => {
                     </EmailShareButton>
 
                     {/* Add custom share functionality (not implemented with react-share) */}
-                    <a
+                    {/* <a
                         href="#"
                         className="text-white p-2  bg-blue-500"
                     >
                         <FaPlus size={16} />
-                    </a>
+                    </a> */}
                 </div>
             </div>
         </div>

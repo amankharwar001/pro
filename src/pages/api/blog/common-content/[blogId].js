@@ -78,23 +78,23 @@ export default async function handler(req, res) {
           selectedCategories,
         });
         if (heading) {
-          console.log("Generating slug for heading:", heading);
+         
           const slug = generateSlug(heading);
-          console.log("Generated Slug:", slug);
+          
   
           try {
-            console.log("Saving SEO Entry...");
+           
             const seoEntry = await SEOBlogPage.create({
               title: heading,
               slug: slug,
               blogId: blogId,
             });
-            console.log("SEO Entry Created Successfully:", seoEntry);
+            
           } catch (seoError) {
             console.error("Error saving SEO entry:", seoError);
           }
         } else {
-          console.log("No heading provided, skipping SEO entry.");
+          console.warn("No heading provided, skipping SEO entry.");
         }
 
         return res.status(201).json(newEntry);

@@ -49,7 +49,7 @@ const AboutSection3Form = ({ setActiveBox, sectionsStatusHandle }) => {
         });
         if (res.ok) {
           const data = await res.json();
-          console.log('Fetched data:', data); // Check the fetched data
+         
 
           // Ensure the fetched data has a valid card array
           setFormData({

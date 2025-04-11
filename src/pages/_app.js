@@ -13,7 +13,6 @@ import { IoIosArrowUp } from "react-icons/io";
 export default function App({ Component, pageProps, data }) {
   const router = useRouter();
   const pathname = router.pathname;
-  console.log("logo show is here1111", data)
   // Check if it's an admin page or admin account page
   const isAdminPage = pathname.startsWith("/admin");
   const isAdminAccountPage = pathname.startsWith("/admin/account");
@@ -56,7 +55,7 @@ export default function App({ Component, pageProps, data }) {
         // For non-admin pages, render Header and Footer
         return (
           <>
-            <Header apikey={process.env.API_KEY} img={data} />
+            <Header  img={data} />
             <div className='mt-[78px] md:pt-[0px] lg:mt-[74px] xl:mt-[83px] '> </div>
             
             <Component {...pageProps} />

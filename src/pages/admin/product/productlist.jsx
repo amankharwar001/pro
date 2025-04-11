@@ -5,8 +5,7 @@ import { useRouter } from "next/router";
 const ProductList = () => {
   const [products, setProducts] = useState([]);
   const router = useRouter();
-  console.log("product lists show is here", products)
-
+  
   useEffect(() => {
     fetch("/api/product/productpage/getsection", {
       headers: {

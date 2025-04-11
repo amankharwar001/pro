@@ -11,7 +11,7 @@ export default async function handler(req, res) {
         return res.status(401).json({ message: 'Unauthorized Access' });
       }
     const { id } = req.query;
-    console.log("delete id pages show is here",id)
+   
 
     if (req.method !== 'DELETE') {
         return res.status(405).json({ message: `Method ${req.method} not allowed` });

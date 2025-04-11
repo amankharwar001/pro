@@ -25,16 +25,17 @@ const Card1 = ({ blogData, baseUrl }) => {
 
     // Calculate the total number of pages
     const totalPages = Math.ceil(activeData.length / cardsPerPage);
+    
 
     return (
         <div className='md:mb-0 pb-10'>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
                 {currentCards.length > 0 ? (
                     currentCards.map((card, index) => (
-                        <div key={index} className="max-w-[380px] md:w-full mx-auto bg-white dark:bg-card rounded-lg shadow-md overflow-hidden">
-                            {card.image.length > 0 && (
-                                <Image className="w-full h-56 object-cover" src={`${baseUrl}${card.image[0].filePath}`} width={100} height={100} alt={`${card.image[0].altText}`} />
-                            )}
+                        <div key={index} className="max-w-[380px] blogm_width md:w-full mx-auto bg-white dark:bg-card rounded-lg shadow-md overflow-hidden">
+                           
+                                <Image className="w-full h-56 object-cover" src={`${baseUrl}${card?.image[0]?.filePath || "/fallback/image.webp"}`} width={100} height={100} alt={`${card?.image[0]?.altText}`} />
+                            
                             <div className="p-4 relative">
                                 <h5 className="text-h5 mt-2 md:text-xl  font-semibold text-black  line-clamp-2">{card.heading || "No Title"}</h5>
                                 <div className="absolute bg-[#DE6773] rounded-full w-5/6 -top-5 -translate-x-2/4 left-2/4">
@@ -43,10 +44,10 @@ const Card1 = ({ blogData, baseUrl }) => {
                                             <FaUser size={15} color='white' />
                                             <span className="text-sm text-white">By Admin</span>
                                         </div>
-                                        <div className='flex gap-2 items-center'>
+                                        {/* <div className='flex gap-2 items-center'>
                                             <FaClock size={15} color='white'/>
                                             <span className="text-sm text-white">Today</span>
-                                        </div>
+                                        </div> */}
                                     </div>
                                 </div>
                                 <hr className='mt-4' />

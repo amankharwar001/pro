@@ -6,7 +6,6 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 const PaymentOptions = ({ section5, baseUrl }) => {
-  console.log("section5 data here:",section5)
   const primaryImage = section5.Images.find((image) => image.referenceId === 5);
 
   

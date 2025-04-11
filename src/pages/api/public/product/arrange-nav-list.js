@@ -15,8 +15,7 @@ export default async function handler(req, res) {
 
       const productIds = arrangementData.info; // Selected product IDs
 
-      console.log("product id show is here in api ",productIds)
-
+      
       // Fetch full product details for each ID
       const selectedProducts = await Promise.all(
         productIds.map(async (id) => {

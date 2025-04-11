@@ -636,3 +636,15 @@ table.ql-table-better p {
 } */
 
 
+@media screen and (max-width: 767px)
+{
+	.max-w-\[380px\].blogm_width {
+    max-width: 100%;
+    width: 100%;
+}
+}
+
+.text-h5.blogsidebar_head {
+  font-size: 17px;
+  line-height: 27px;
+  }

@@ -16,7 +16,6 @@ import SeoPage from "@/components/Admin/seo/SEO";
 const Index = () => {
   const [activeBox, setActiveBox] = useState(1);
   const [sectionsStatus, setSectionsStatus] = useState(Array(13).fill(false));
-  console.log("system key show is here",process.env.NEXT_PUBLIC_SYSTEM_KEY)
   const sectionsStatusHandle = (index, status) => {
     setSectionsStatus((prevStatus) => {
       const updatedStatus = [...prevStatus];
@@ -43,15 +42,7 @@ const Index = () => {
     { id: 12, label: "FAQ", component: <FAQManager sectionsStatusHandle={(status) => sectionsStatusHandle(11, status)} setActiveBox={setActiveBox}/> },
     { id: 13, label: "SEO", component: <SeoPage page="home" sectionsStatusHandle={(status) => sectionsStatusHandle(12, status)}/> },
   ];
-  useEffect(() => {
-    // Trigger all tabs' APIs invisibly
-    tabs.forEach((tab) => {
-      console.log(`Triggering API for tab: ${tab.label}`);
-    });
-  }, [activeBox]);
-
-  console.log("value show is here",sectionsStatus)
-
+ 
 
   
   const getTabClass = (isActive, isCompleted) => {

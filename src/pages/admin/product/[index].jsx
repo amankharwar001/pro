@@ -156,13 +156,7 @@ const Index = () => {
       fetchData();
     }
   }, [index, queryActiveBox]);
-// dsaf
-  useEffect(() => {
-    // Simulate API trigger for all sections
-    tabs.forEach((tab) => {
-      console.log(`Triggering API for tab: ${tab.label}`);
-    });
-  }, []);
+
 
   const getTabClass = (isActive, isCompleted) => {
     return `${isCompleted ? 'bg-gradient-to-r from-[#1A2980] to-[#26D0CE] text-white' : ''} 

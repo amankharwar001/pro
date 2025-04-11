@@ -20,7 +20,6 @@ const ChangeCredentials = () => {
 
   const [passwordError, setPasswordError] = useState(''); // To hold password-specific error
   const [adminUsername, setAdminUsername] = useState(""); 
-  console.log("admin usernamae show is here......",adminUsername)
   
   
   useEffect(() => {
@@ -32,7 +31,6 @@ const ChangeCredentials = () => {
             },
           }); // API to get admin email
           const data = await response.json();
-          // console.log("admin usernamae show is here",data)
           if (response.ok) {
             setAdminUsername(data.username); // Store the fetched email
           } else {

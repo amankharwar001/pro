@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 const PageStatusSelector = ({ blogId, initialStatus = 'draft', onStatusChange }) => {
     const [status, setStatus] = useState(initialStatus);
-    console.log("blog id show is here",blogId)
+    
 
     useEffect(() => {
         if (blogId) {

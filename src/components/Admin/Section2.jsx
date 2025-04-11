@@ -26,10 +26,10 @@ const Section2 = ({setActiveBox,sectionsStatusHandle}) => {
   useEffect(() => {
     if (apiStatus && multiImageStatus) {
       sectionsStatusHandle(true);
-      console.log("api status in if ")
+      
     } else {
       sectionsStatusHandle(false);
-      console.log("api status in else ")
+     
 
     }
   }, [apiStatus,multiImageStatus]);

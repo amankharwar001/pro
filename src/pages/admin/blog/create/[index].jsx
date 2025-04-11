@@ -131,7 +131,7 @@ const Index = () => {
   }
 
   const vissibleHandle = () => {
-    console.log("vissible show is here", visible)
+   
     setVisible(!visible)
   }
 

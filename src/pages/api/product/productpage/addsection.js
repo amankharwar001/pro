@@ -32,18 +32,18 @@ export default async function handler(req, res) {
       if (heading) {
         
         const slug = generateSlug(heading);
-        console.log("🔹 Generated Slug:", slug);
+       
 
         try {
          
-          console.log("🔹 Saving SEO Entry...");
+
           const seoEntry = await SEOProductPage.create({
             title: heading,
             slug: slug,
             heroSectionId: newEntry.id,
           });
 
-          console.log("✅ SEO Entry Created Successfully:", seoEntry);
+         
         } catch (seoError) {
           console.error("❌ Error saving SEO entry:", seoError);
         }

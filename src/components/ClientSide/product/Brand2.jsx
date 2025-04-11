@@ -6,7 +6,6 @@ import Slider from "react-slick";
 import Image from "next/image";
 
 const Brand2Section = ({ section2,baseUrl }) => {
-  console.log("Brand section 2 data:", section2);
 
   const settings = {
     dots: false,

@@ -8,7 +8,6 @@ export default function PersonSection2({ apidata }) {
 
     const multiImages = apidata?.multiImages?.filter(img => img.referenceType === 'homepage_section_8');
 
-    console.log("multi images show is here,", multiImages)
 
 
     return (

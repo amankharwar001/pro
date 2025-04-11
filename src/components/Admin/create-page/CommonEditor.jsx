@@ -123,7 +123,6 @@ const ClientSideCommonEditor = ({ referenceType, sectionsStatusHandle, setActive
         if (response.ok) {
           const data = await response.json();
           setEditorContent(data.data.content); // Fetch full HTML content
-          console.log("data show is here privacy policy", data.data.content)
           setContentId(data.data.id); // Save the ID for future updates
 
           const plainText = data.data.content.replace(/<[^>]*>/g, "").trim();
@@ -187,7 +186,6 @@ const ClientSideCommonEditor = ({ referenceType, sectionsStatusHandle, setActive
         setActiveBox(3)
         // setApiStatus(true)
         const plainText = editorContent.replace(/<[^>]*>/g, "").trim();
-        console.log("plainText editior show is here", plainText)
         // Check if plain text contains at least one alphabet
         if (/[a-zA-Z]/.test(plainText)) {
           setApiStatus(true);
