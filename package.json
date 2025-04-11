@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development node server.js -H 192.168.1.33",
+    "dev": "cross-env NODE_ENV=development node server.js",
     "build": "next build",
     "start": "cross-env NODE_ENV=production node server.js",
     "lint": "next lint"
